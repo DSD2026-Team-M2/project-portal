@@ -1,0 +1,409 @@
+{
+  "meta": {
+    "titleSuffix": "Limb Motion Recognition and Assistant",
+    "description": "用于进度跟踪、文档访问、架构可见性与协作留痕的项目门户。",
+    "pages": {
+      "home": {
+        "title": "项目中枢总览",
+        "description": "展示项目定位、当前进展、仓库边界、团队关系与 M2 范围。"
+      },
+      "progress": {
+        "title": "进度",
+        "description": "时间线、甘特图、里程碑、迭代摘要与风险可见性。"
+      },
+      "logs": {
+        "title": "日志",
+        "description": "项目更新、周报、会议、研究记录与 demo 留痕。"
+      },
+      "logDetail": {
+        "title": "日志详情",
+        "description": "支持 markdown 与锚点分享的详细日志页面。"
+      },
+      "docs": {
+        "title": "文档",
+        "description": "需求、设计、接口、测试与展示材料的文档中心。"
+      },
+      "docDetail": {
+        "title": "文档详情",
+        "description": "带元数据与正文排版的正式文档详情页。"
+      },
+      "architecture": {
+        "title": "架构",
+        "description": "系统层级、团队职责矩阵、仓库地图与接口依赖。"
+      },
+      "calendar": {
+        "title": "日历",
+        "description": "展示里程碑、会议、截止日期与中葡公共假期的月历页。"
+      },
+      "team": {
+        "title": "团队成员",
+        "description": "展示成员、角色、工作重点与跨时区协作背景。"
+      },
+      "examples": {
+        "title": "示例与模板",
+        "description": "日志、文档、会议与研究记录的示例条目。"
+      },
+      "notFound": {
+        "title": "页面不存在",
+        "description": "缺失路由的回退页面。"
+      }
+    }
+  },
+  "language": {
+    "switchTo": "切换语言为 {{language}}"
+  },
+  "nav": {
+    "overview": "总览",
+    "progress": "进度",
+    "logs": "日志",
+    "docs": "文档",
+    "architecture": "架构",
+    "calendar": "日历",
+    "team": "团队",
+    "examples": "示例",
+    "language": "语言",
+    "logoAlt": "M2 团队 logo",
+    "primaryAria": "主导航",
+    "mobileAria": "移动导航",
+    "toggleMenu": "切换导航菜单"
+  },
+  "quickLinks": {
+    "main-web": "主站前端",
+    "portal-repo": "Portal 仓库",
+    "recruitment-site": "招募站",
+    "docs": "文档",
+    "demo": "Demo"
+  },
+  "common": {
+    "all": "全部",
+    "currentIteration": "当前迭代",
+    "currentSprint": "当前 Sprint",
+    "lastUpdated": "最后更新",
+    "thisSprintGoal": "本轮目标",
+    "completed": "已完成",
+    "inProgress": "进行中",
+    "nextMilestone": "下一个里程碑",
+    "risksBlockers": "风险 / 阻塞",
+    "openArticle": "打开条目",
+    "openDocument": "打开文档",
+    "browseDocuments": "浏览文档",
+    "viewAllLogs": "查看全部日志",
+    "viewCalendar": "打开日历",
+    "meetTheTeam": "查看团队",
+    "openArchitecture": "查看架构",
+    "openFullProgress": "查看完整进度",
+    "openExamples": "查看示例",
+    "viewTemplates": "查看模板",
+    "viewDetails": "查看详情",
+    "openLinkedRecord": "打开关联记录",
+    "copyLink": "复制链接",
+    "linkCopied": "已复制",
+    "sample": "示例",
+    "showingEnglishFallback": "当前内容仅提供英文版本。",
+    "bionic": "仿生阅读",
+    "bionicHint": "为较长英文段落启用仿生阅读强调",
+    "bionicAria": "切换较长英文段落的仿生阅读模式",
+    "metadata": "元数据",
+    "owner": "负责人",
+    "sprint": "Sprint",
+    "relatedTeams": "相关团队",
+    "relatedRepos": "相关仓库",
+    "version": "版本",
+    "reviewStatus": "评审状态",
+    "links": "链接",
+    "evidence": "证据",
+    "actionItems": "行动项",
+    "previous": "上一篇",
+    "next": "下一篇",
+    "backToLogs": "返回日志",
+    "backToDocs": "返回文档",
+    "maintainedBy": "维护方",
+    "primaryInputs": "主要输入",
+    "primaryOutputs": "主要输出",
+    "dependsOnShort": "依赖",
+    "dependedBy": "被依赖"
+  },
+  "status": {
+    "planned": "计划中",
+    "in-progress": "进行中",
+    "completed": "已完成",
+    "at-risk": "有风险",
+    "blocked": "阻塞",
+    "draft": "草稿",
+    "in-review": "评审中",
+    "final": "定稿",
+    "archived": "归档",
+    "active": "活跃",
+    "ready": "就绪",
+    "watch": "关注中"
+  },
+  "types": {
+    "update": "更新",
+    "meeting": "会议",
+    "weekly-report": "周报",
+    "decision": "决策",
+    "interface": "接口",
+    "test": "测试",
+    "demo": "Demo",
+    "research": "研究",
+    "requirement-analysis": "需求分析",
+    "system-design": "系统设计",
+    "testing": "测试",
+    "presentation": "展示材料",
+    "demo-assets": "Demo 资产",
+    "meeting-minutes": "会议纪要",
+    "milestone": "里程碑"
+  },
+  "eventTypes": {
+    "milestone": "里程碑",
+    "meeting": "会议",
+    "deadline": "截止",
+    "holiday-cn": "中国假期",
+    "holiday-pt": "葡萄牙假期",
+    "demo": "Demo",
+    "sprint-boundary": "Sprint 边界"
+  },
+  "home": {
+    "topStatusLead": "一个用于课程汇报、跨组协作、文档索引与过程留痕的中枢 portal。",
+    "statusBar": {
+      "title": "Portal 状态",
+      "iterationPending": "本次提交版隐藏了 PM 正式排期数据。"
+    },
+    "positioning": {
+      "title": "项目定位",
+      "lead": "首页先回答项目是什么、portal 是什么，以及 M2 的可见边界在哪里。"
+    },
+    "summaryCards": {
+      "system": {
+        "title": "系统"
+      },
+      "progress": {
+        "title": "进度"
+      },
+      "docs": {
+        "title": "文档"
+      },
+      "teams": {
+        "title": "团队"
+      }
+    },
+    "systemMap": {
+      "title": "系统结构摘要",
+      "lead": "首页只保留结构摘要，用层级、接口与仓库边界解释系统，而不是堆满同等级小卡片。",
+      "relatedRepos": "相关仓库",
+      "nodeDetail": "当前节点"
+    },
+    "progress": {
+      "title": "进度摘要",
+      "lead": "首页只展示当前阶段、下一动作与重点风险，并把完整信息交给进度页。",
+      "pendingNote": "本次提交版暂时隐藏了正式排期、里程碑和 blocker 细节；进度页结构已经准备好，后续可直接接入 PM 维护的数据。"
+    },
+    "latestUpdates": {
+      "title": "最新更新",
+      "lead": "更新流采用列表式阅读，让老师和队友能快速扫读日期、类型、owner 与摘要。"
+    },
+    "deliverables": {
+      "title": "文档中心预览",
+      "lead": "文档页采用正式列表，而不是小卡片陈列。"
+    },
+    "teams": {
+      "title": "团队与仓库",
+      "lead": "团队关系和仓库链接放在一起展示，但清楚区分职责说明与实际 repo 跳转。",
+      "teamLinks": "团队链接",
+      "repositoryLinks": "仓库链接"
+    },
+    "m2": {
+      "title": "M2 贡献",
+      "lead": "M2 作为 portal 维护方保持清晰可见，但不会冒领整个产品前端。",
+      "responsibilities": "职责",
+      "dependencies": "依赖",
+      "completed": "当前已覆盖",
+      "uncovered": "当前未覆盖"
+    }
+  },
+  "progress": {
+    "overview": {
+      "title": "进度概览",
+      "lead": "进度页聚焦时间维度、阶段状态和排期说明，不重复首页总览。",
+      "phase": "当前阶段",
+      "nextMilestone": "下一个里程碑",
+      "goal": "阶段目标",
+      "risk": "当前风险"
+    },
+    "hiddenDataNote": "本次提交版隐藏了正式排期数据；路由结构、页面框架和内容流水线已经准备好，后续可直接接入 PM 维护的记录。",
+    "gantt": {
+      "kicker": "排期视图",
+      "title": "甘特图与任务表",
+      "lead": "portal 改为使用数据驱动的甘特图，而不是假 sprint 卡片；在 PM 正式排期导入前，示例标记会保持可见。",
+      "filters": "按角色和状态筛选",
+      "legend": "图例",
+      "columns": {
+        "role": "角色",
+        "task": "任务",
+        "status": "状态"
+      }
+    },
+    "hiddenSections": {
+      "gantt": "甘特图能力已经接好，但当前提交版隐藏了示例排期数据。",
+      "milestones": "里程碑卡片会在 PM 发布正式记录后显示。",
+      "sprints": "迭代摘要会在确认后的进度记录可用时恢复显示。",
+      "risks": "风险登记会在团队发布确认后的条目后恢复显示。"
+    },
+    "filters": {
+      "all": "全部",
+      "current": "当前",
+      "completed": "已完成",
+      "at-risk": "有风险"
+    },
+    "milestones": {
+      "title": "里程碑列表",
+      "lead": "里程碑保持日期、owner、状态与证据链接可读，而不是退化成大表格。",
+      "evidence": "打开证据"
+    },
+    "sprints": {
+      "title": "迭代摘要",
+      "lead": "迭代摘要展示目标、已完成、未完成、阻塞与下一步。",
+      "incomplete": "未完成",
+      "blockers": "阻塞",
+      "nextStep": "下一步"
+    },
+    "risks": {
+      "title": "风险登记",
+      "lead": "风险项保持 owner、缓解措施与更新时间可见。"
+    },
+    "severity": {
+      "high": "高",
+      "medium": "中",
+      "low": "低"
+    }
+  },
+  "logs": {
+    "title": "日志与过程记录",
+    "lead": "日志中心负责聚合更新、会议、周报、研究记录与决策内容，并保持可筛选、可分享。",
+    "feedTitle": "日志流",
+    "feedLead": "当前筛选下共有 {{count}} 条记录。",
+    "filters": {
+      "type": "类型",
+      "ownerRole": "角色",
+      "sprint": "Sprint",
+      "team": "相关团队",
+      "tag": "标签",
+      "attention": "关注标签",
+      "search": "文本搜索",
+      "searchPlaceholder": "搜索标题或摘要"
+    }
+  },
+  "docs": {
+    "title": "文档与交付物",
+    "lead": "正式文档按分类、评审状态和归档状态组织，并使用更适合扫读的大列表样式。",
+    "current": {
+      "title": "当前文档",
+      "lead": "当前筛选下共有 {{count}} 条现行文档。"
+    },
+    "archived": {
+      "title": "归档文档",
+      "lead": "共有 {{count}} 条归档条目保留供追溯。"
+    },
+    "categories": {
+      "requirement-analysis": "需求分析",
+      "system-design": "系统设计",
+      "interface": "接口 / API",
+      "testing": "测试",
+      "presentation": "展示材料",
+      "demo-assets": "Demo 资产",
+      "meeting-minutes": "会议纪要",
+      "weekly-report": "周报",
+      "research": "研究 / 设计依据"
+    }
+  },
+  "architecture": {
+    "overview": {
+      "title": "整体系统概览",
+      "lead": "架构页通过层级、职责与交接逻辑讲清结构，而不是依赖复杂交互图工具。"
+    },
+    "teamMatrix": {
+      "title": "团队职责矩阵",
+      "lead": "每个团队块都会写明职责、输入、输出，以及它与 M2 的关系。"
+    },
+    "repositories": {
+      "title": "仓库地图",
+      "lead": "仓库地图保持角色、维护方、状态和边界清楚。"
+    },
+    "interfaces": {
+      "title": "接口依赖",
+      "lead": "IF1 与 IF2 用直白语言描述，并强调 M2 实际消费哪些结果。",
+      "labels": {
+        "IF1": "Sensor 到 Server 的交接",
+        "IF2": "Server 到 Monitor 的交接"
+      },
+      "source": "来源",
+      "destination": "去向",
+      "m2Usage": "M2 使用方式"
+    },
+    "roles": {
+      "title": "角色矩阵",
+      "lead": "portal 工作同时映射到 PM、协调、架构、实现与测试职责。"
+    },
+    "directM2Link": "与 M2 直接相关"
+  },
+  "calendar": {
+    "title": "项目日历",
+    "lead": "一个克制、清楚的项目月历，用于展示里程碑、会议、截止日期、Demo 与中葡公共假期。",
+    "timezones": {
+      "china": "中国时间",
+      "portugal": "葡萄牙时间",
+      "local": "本地时间"
+    },
+    "monthView": {
+      "title": "月视图",
+      "lead": "月历只保留必要能力：翻月、按类型筛选，以及查看所选日期与事件的详情。"
+    },
+    "today": "今天",
+    "prevMonth": "上个月",
+    "nextMonth": "下个月",
+    "selectedDate": "已选日期",
+    "selectedEvent": "已选事件",
+    "dayEventsCount": "该日期共有 {{count}} 个事件。",
+    "noEvents": "所选日期暂无事件。",
+    "emptySelection": "请选择某一天或某个事件查看详情。",
+    "sampleEventNote": "项目事件在 PM 正式排期确认前会明确标记为示例，避免被误读为正式项目历史。",
+    "staticHolidayNoteTitle": "假期数据",
+    "staticHolidayNote": "中国与葡萄牙假期会预先生成到静态 JSON 中，因此站点不依赖运行时在线请求。"
+  },
+  "team": {
+    "title": "团队成员",
+    "lead": "本页展示负责维护 portal 的 M2 成员、工作重点以及跨时区协作背景。",
+    "overview": "团队概览",
+    "crossTimezone": "跨时区协作",
+    "membersTitle": "成员目录",
+    "membersLead": "每张成员卡都聚焦职责、时区与 contribution focus，而不是做成社交式 profile wall。",
+    "rolesTitle": "角色职责摘要",
+    "rolesLead": "这一部分从维护 portal 的角度补充架构页中的角色矩阵。",
+    "timezonesTitle": "跨时区协作说明",
+    "timezonesLead": "由于 portal 的协作与排期经常涉及中葡两地，因此相关时区需要持续可见。"
+  },
+  "examples": {
+    "title": "示例与模板",
+    "lead": "示例内容集中展示，方便队友学习结构，但不会混入正式记录中。",
+    "policyTitle": "Mock 规则",
+    "policyBody": "任何非事实内容都必须明确标记为 SAMPLE、EXAMPLE、MOCK 或 TEMPLATE。这些条目用于说明结构，而不是伪装成真实项目历史。",
+    "authoringTitle": "编写提醒",
+    "authoringBody": "日志、文档、周报、会议纪要与研究记录应优先通过 markdown 更新。slug 要稳定，重要结论应尽量附证据链接。",
+    "docsTitle": "文档模板",
+    "docsLead": "当前共索引 {{count}} 条文档类示例。",
+    "logsTitle": "日志模板",
+    "logsLead": "当前共索引 {{count}} 条日志类示例。"
+  },
+  "notFound": {
+    "title": "页面不存在",
+    "lead": "请求的页面或内容记录不可用。",
+    "backHome": "返回首页"
+  },
+  "footer": {
+    "description": "一个由 M2 维护、以文档和协作为中心的项目门户，用于汇报、索引与可追溯交付。",
+    "maintainedBy": "维护方",
+    "lastUpdated": "最后更新",
+    "license": "许可证",
+    "relatedOrg": "相关组织"
+  }
+}

@@ -1,0 +1,248 @@
+{
+  "generatedAt": "2026-03-31T12:36:57.542Z",
+  "country": "PT",
+  "years": [
+    2026,
+    2027
+  ],
+  "events": [
+    {
+      "id": "2026-01-01-holiday-pt",
+      "title": "Ano Novo",
+      "date": "2026-01-01",
+      "type": "holiday-pt",
+      "summary": "New Year's Day"
+    },
+    {
+      "id": "2026-02-17-holiday-pt",
+      "title": "Carnaval",
+      "date": "2026-02-17",
+      "type": "holiday-pt",
+      "summary": "Carnival"
+    },
+    {
+      "id": "2026-04-03-holiday-pt",
+      "title": "Sexta-feira Santa",
+      "date": "2026-04-03",
+      "type": "holiday-pt",
+      "summary": "Good Friday"
+    },
+    {
+      "id": "2026-04-05-holiday-pt",
+      "title": "Domingo de Páscoa",
+      "date": "2026-04-05",
+      "type": "holiday-pt",
+      "summary": "Easter Sunday"
+    },
+    {
+      "id": "2026-04-25-holiday-pt",
+      "title": "Dia da Liberdade",
+      "date": "2026-04-25",
+      "type": "holiday-pt",
+      "summary": "Freedom Day"
+    },
+    {
+      "id": "2026-05-01-holiday-pt",
+      "title": "Dia do Trabalhador",
+      "date": "2026-05-01",
+      "type": "holiday-pt",
+      "summary": "Labour Day"
+    },
+    {
+      "id": "2026-06-01-holiday-pt",
+      "title": "Dia dos Açores",
+      "date": "2026-06-01",
+      "type": "holiday-pt",
+      "summary": "Azores Day"
+    },
+    {
+      "id": "2026-06-04-holiday-pt",
+      "title": "Corpo de Deus",
+      "date": "2026-06-04",
+      "type": "holiday-pt",
+      "summary": "Corpus Christi"
+    },
+    {
+      "id": "2026-06-10-holiday-pt",
+      "title": "Dia de Portugal, de Camões e das Comunidades Portuguesas",
+      "date": "2026-06-10",
+      "type": "holiday-pt",
+      "summary": "National Day"
+    },
+    {
+      "id": "2026-07-01-holiday-pt",
+      "title": "Dia da Madeira",
+      "date": "2026-07-01",
+      "type": "holiday-pt",
+      "summary": "Madeira Day"
+    },
+    {
+      "id": "2026-08-15-holiday-pt",
+      "title": "Assunção de Nossa Senhora",
+      "date": "2026-08-15",
+      "type": "holiday-pt",
+      "summary": "Assumption Day"
+    },
+    {
+      "id": "2026-10-05-holiday-pt",
+      "title": "Implantação da República",
+      "date": "2026-10-05",
+      "type": "holiday-pt",
+      "summary": "Republic Day"
+    },
+    {
+      "id": "2026-11-01-holiday-pt",
+      "title": "Dia de Todos-os-Santos",
+      "date": "2026-11-01",
+      "type": "holiday-pt",
+      "summary": "All Saints Day"
+    },
+    {
+      "id": "2026-12-01-holiday-pt",
+      "title": "Restauração da Independência",
+      "date": "2026-12-01",
+      "type": "holiday-pt",
+      "summary": "Restoration of Independence"
+    },
+    {
+      "id": "2026-12-08-holiday-pt",
+      "title": "Imaculada Conceição",
+      "date": "2026-12-08",
+      "type": "holiday-pt",
+      "summary": "Immaculate Conception"
+    },
+    {
+      "id": "2026-12-25-holiday-pt",
+      "title": "Natal",
+      "date": "2026-12-25",
+      "type": "holiday-pt",
+      "summary": "Christmas Day"
+    },
+    {
+      "id": "2026-12-26-holiday-pt",
+      "title": "Primeira Oitava",
+      "date": "2026-12-26",
+      "type": "holiday-pt",
+      "summary": "St. Stephen's Day"
+    },
+    {
+      "id": "2027-01-01-holiday-pt",
+      "title": "Ano Novo",
+      "date": "2027-01-01",
+      "type": "holiday-pt",
+      "summary": "New Year's Day"
+    },
+    {
+      "id": "2027-02-09-holiday-pt",
+      "title": "Carnaval",
+      "date": "2027-02-09",
+      "type": "holiday-pt",
+      "summary": "Carnival"
+    },
+    {
+      "id": "2027-03-26-holiday-pt",
+      "title": "Sexta-feira Santa",
+      "date": "2027-03-26",
+      "type": "holiday-pt",
+      "summary": "Good Friday"
+    },
+    {
+      "id": "2027-03-28-holiday-pt",
+      "title": "Domingo de Páscoa",
+      "date": "2027-03-28",
+      "type": "holiday-pt",
+      "summary": "Easter Sunday"
+    },
+    {
+      "id": "2027-04-25-holiday-pt",
+      "title": "Dia da Liberdade",
+      "date": "2027-04-25",
+      "type": "holiday-pt",
+      "summary": "Freedom Day"
+    },
+    {
+      "id": "2027-05-01-holiday-pt",
+      "title": "Dia do Trabalhador",
+      "date": "2027-05-01",
+      "type": "holiday-pt",
+      "summary": "Labour Day"
+    },
+    {
+      "id": "2027-05-27-holiday-pt",
+      "title": "Corpo de Deus",
+      "date": "2027-05-27",
+      "type": "holiday-pt",
+      "summary": "Corpus Christi"
+    },
+    {
+      "id": "2027-06-01-holiday-pt",
+      "title": "Dia dos Açores",
+      "date": "2027-06-01",
+      "type": "holiday-pt",
+      "summary": "Azores Day"
+    },
+    {
+      "id": "2027-06-10-holiday-pt",
+      "title": "Dia de Portugal, de Camões e das Comunidades Portuguesas",
+      "date": "2027-06-10",
+      "type": "holiday-pt",
+      "summary": "National Day"
+    },
+    {
+      "id": "2027-07-01-holiday-pt",
+      "title": "Dia da Madeira",
+      "date": "2027-07-01",
+      "type": "holiday-pt",
+      "summary": "Madeira Day"
+    },
+    {
+      "id": "2027-08-15-holiday-pt",
+      "title": "Assunção de Nossa Senhora",
+      "date": "2027-08-15",
+      "type": "holiday-pt",
+      "summary": "Assumption Day"
+    },
+    {
+      "id": "2027-10-05-holiday-pt",
+      "title": "Implantação da República",
+      "date": "2027-10-05",
+      "type": "holiday-pt",
+      "summary": "Republic Day"
+    },
+    {
+      "id": "2027-11-01-holiday-pt",
+      "title": "Dia de Todos-os-Santos",
+      "date": "2027-11-01",
+      "type": "holiday-pt",
+      "summary": "All Saints Day"
+    },
+    {
+      "id": "2027-12-01-holiday-pt",
+      "title": "Restauração da Independência",
+      "date": "2027-12-01",
+      "type": "holiday-pt",
+      "summary": "Restoration of Independence"
+    },
+    {
+      "id": "2027-12-08-holiday-pt",
+      "title": "Imaculada Conceição",
+      "date": "2027-12-08",
+      "type": "holiday-pt",
+      "summary": "Immaculate Conception"
+    },
+    {
+      "id": "2027-12-25-holiday-pt",
+      "title": "Natal",
+      "date": "2027-12-25",
+      "type": "holiday-pt",
+      "summary": "Christmas Day"
+    },
+    {
+      "id": "2027-12-26-holiday-pt",
+      "title": "Primeira Oitava",
+      "date": "2027-12-26",
+      "type": "holiday-pt",
+      "summary": "St. Stephen's Day"
+    }
+  ]
+}

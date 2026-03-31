@@ -1,0 +1,252 @@
+import { useMemo, useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import { siteMode } from "../config/siteMode";
+import {
+  ganttTasks,
+  milestones,
+  progressDatasetMeta,
+  progressOverview,
+  riskRegister,
+  sprintDigests,
+} from "../data/progressData";
+import type { SupportedLanguage } from "../i18n/language";
+import { useDocumentTitle } from "../hooks/useDocumentTitle";
+import { resolveLocalizedText } from "../utils/content";
+import { GanttPanel } from "../components/GanttPanel";
+import { InternalLinkPill } from "../components/InternalLinkPill";
+import { RevealOnScroll } from "../components/RevealOnScroll";
+import { SectionLead } from "../components/SectionLead";
+import { SectionTitle } from "../components/SectionTitle";
+import { StaticTag } from "../components/StaticTag";
+import { StatusBadge } from "../components/StatusBadge";
+
+const progressFilters = ["all", "current", "completed", "at-risk"] as const;
+
+export function ProgressPage() {
+  const { t, i18n } = useTranslation();
+  const language = (i18n.resolvedLanguage ?? i18n.language) as SupportedLanguage;
+  const [activeFilter, setActiveFilter] = useState<(typeof progressFilters)[number]>("all");
+  const hideSimulatedProgress = siteMode.hideSimulatedData && progressDatasetMeta.sample;
+
+  useDocumentTitle("meta.pages.progress.title", { descriptionKey: "meta.pages.progress.description" });
+
+  const filteredMilestones = useMemo(() => {
+    if (activeFilter === "all") return milestones;
+    if (activeFilter === "current") {
+      return milestones.filter((item) => item.status === "in-progress" || item.status === "planned");
+    }
+    if (activeFilter === "completed") {
+      return milestones.filter((item) => item.status === "completed");
+    }
+    return milestones.filter((item) => item.status === "at-risk");
+  }, [activeFilter]);
+
+  return (
+    <main className="page-shell">
+      <RevealOnScroll as="section" className="section-shell p-6 sm:p-8">
+        <SectionTitle
+          title={t("progress.overview.title")}
+          action={siteMode.showTemplateExamples ? <InternalLinkPill to="/examples">{t("common.viewTemplates")}</InternalLinkPill> : undefined}
+        />
+        <SectionLead>{t("progress.overview.lead")}</SectionLead>
+
+        {hideSimulatedProgress ? (
+          <div className="callout-box mt-6">
+            <p className="text-sm leading-7 text-slate-700">{t("progress.hiddenDataNote")}</p>
+          </div>
+        ) : (
+          <>
+            <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+              <div className="surface-card p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("progress.overview.phase")}</p>
+                <p className="mt-3 text-xl font-semibold tracking-tight text-slate-950">
+                  {resolveLocalizedText(progressOverview.currentStage, language)}
+                </p>
+              </div>
+              <div className="surface-card p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("progress.overview.goal")}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-700">{resolveLocalizedText(progressOverview.stageGoal, language)}</p>
+              </div>
+              <div className="surface-card p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("progress.overview.nextMilestone")}</p>
+                <p className="mt-3 text-xl font-semibold tracking-tight text-slate-950">
+                  {resolveLocalizedText(milestones[1].title, language)}
+                </p>
+                <p className="mt-2 text-sm text-slate-500">{milestones[1].dateLabel}</p>
+              </div>
+              <div className="surface-card p-5">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("progress.overview.risk")}</p>
+                <p className="mt-3 text-sm leading-7 text-slate-700">{resolveLocalizedText(progressOverview.currentRisk, language)}</p>
+              </div>
+            </div>
+
+            {progressDatasetMeta.sample ? (
+              <div className="callout-box mt-6">
+                <p className="text-sm leading-7 text-amber-800">{resolveLocalizedText(progressDatasetMeta.note, language)}</p>
+              </div>
+            ) : null}
+          </>
+        )}
+      </RevealOnScroll>
+
+      <RevealOnScroll as="section" id="timeline" className="section-shell anchor-target p-6 sm:p-8">
+        {hideSimulatedProgress ? (
+          <>
+            <SectionTitle title={t("progress.gantt.title")} />
+            <SectionLead>{t("progress.gantt.lead")}</SectionLead>
+            <div className="callout-box mt-6">
+              <p className="text-sm leading-7 text-slate-700">{t("progress.hiddenSections.gantt")}</p>
+            </div>
+          </>
+        ) : (
+          <GanttPanel
+            tasks={ganttTasks}
+            isSample={progressDatasetMeta.sample}
+            sampleLabel={progressDatasetMeta.label}
+            sampleNote={resolveLocalizedText(progressDatasetMeta.note, language)}
+          />
+        )}
+      </RevealOnScroll>
+
+      <RevealOnScroll as="section" id="milestones" className="section-shell anchor-target p-6 sm:p-8">
+        <SectionTitle title={t("progress.milestones.title")} />
+        <SectionLead>{t("progress.milestones.lead")}</SectionLead>
+
+        {hideSimulatedProgress ? (
+          <div className="callout-box mt-6">
+            <p className="text-sm leading-7 text-slate-700">{t("progress.hiddenSections.milestones")}</p>
+          </div>
+        ) : (
+          <>
+            <div className="mt-6 flex flex-wrap gap-2">
+              {progressFilters.map((filter) => (
+                <button
+                  key={filter}
+                  type="button"
+                  onClick={() => setActiveFilter(filter)}
+                  className={`filter-chip ${activeFilter === filter ? "filter-chip-active" : ""}`}
+                >
+                  {t(`progress.filters.${filter}`)}
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-6 grid gap-4">
+              {filteredMilestones.map((milestone) => (
+                <article key={milestone.id} className="surface-card p-5 sm:p-6">
+                  <div className="grid gap-4 lg:grid-cols-[12rem_minmax(0,1fr)_10rem] lg:items-start">
+                    <div>
+                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{milestone.dateLabel}</p>
+                      <p className="mt-2 text-sm text-slate-500">{milestone.owner}</p>
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold tracking-tight text-slate-950">
+                        {resolveLocalizedText(milestone.title, language)}
+                      </h3>
+                    </div>
+                    <div className="flex items-start justify-between gap-3 lg:justify-end">
+                      <StatusBadge value={milestone.status} />
+                      <InternalLinkPill to={milestone.evidenceLink}>{t("progress.milestones.evidence")}</InternalLinkPill>
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </>
+        )}
+      </RevealOnScroll>
+
+      <RevealOnScroll as="section" id="sprint-summaries" className="section-shell anchor-target p-6 sm:p-8">
+        <SectionTitle title={t("progress.sprints.title")} />
+        <SectionLead>{t("progress.sprints.lead")}</SectionLead>
+
+        {hideSimulatedProgress ? (
+          <div className="callout-box mt-6">
+            <p className="text-sm leading-7 text-slate-700">{t("progress.hiddenSections.sprints")}</p>
+          </div>
+        ) : (
+          <div className="mt-6 grid gap-4">
+            {sprintDigests.map((sprint) => (
+              <article key={sprint.id} className="surface-card p-5 sm:p-6">
+                <div className="flex flex-wrap items-center justify-between gap-3">
+                  <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{sprint.id}</h3>
+                  {progressDatasetMeta.sample ? <StaticTag label={progressDatasetMeta.label} tone="violet" /> : null}
+                </div>
+                <p className="mt-4 text-sm leading-7 text-slate-700">{resolveLocalizedText(sprint.goal, language)}</p>
+
+                <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("common.completed")}</p>
+                    <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
+                      {sprint.completed.map((item) => (
+                        <li key={item.en}>• {resolveLocalizedText(item, language)}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("progress.sprints.incomplete")}</p>
+                    <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
+                      {sprint.incomplete.map((item) => (
+                        <li key={item.en}>• {resolveLocalizedText(item, language)}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("progress.sprints.blockers")}</p>
+                    <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
+                      {sprint.blockers.map((item) => (
+                        <li key={item.en}>• {resolveLocalizedText(item, language)}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("progress.sprints.nextStep")}</p>
+                    <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
+                      {sprint.nextStep.map((item) => (
+                        <li key={item.en}>• {resolveLocalizedText(item, language)}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </RevealOnScroll>
+
+      <RevealOnScroll as="section" id="risk-register" className="section-shell anchor-target p-6 sm:p-8">
+        <SectionTitle title={t("progress.risks.title")} />
+        <SectionLead>{t("progress.risks.lead")}</SectionLead>
+
+        {hideSimulatedProgress ? (
+          <div className="callout-box mt-6">
+            <p className="text-sm leading-7 text-slate-700">{t("progress.hiddenSections.risks")}</p>
+          </div>
+        ) : (
+          <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {riskRegister.map((risk) => (
+              <article key={risk.riskId} className="surface-card p-5">
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{risk.riskId}</p>
+                    <h3 className="mt-2 text-xl font-semibold tracking-tight text-slate-950">
+                      {resolveLocalizedText(risk.title, language)}
+                    </h3>
+                  </div>
+                  <StatusBadge value={risk.status} />
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  <StaticTag label={t(`progress.severity.${risk.severity}`)} tone={risk.severity === "high" ? "violet" : "default"} />
+                  <StaticTag label={risk.owner} />
+                  <StaticTag label={risk.lastUpdated} />
+                </div>
+                <p className="mt-4 text-sm leading-7 text-slate-700">{resolveLocalizedText(risk.mitigation, language)}</p>
+              </article>
+            ))}
+          </div>
+        )}
+      </RevealOnScroll>
+    </main>
+  );
+}

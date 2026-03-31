@@ -1,0 +1,409 @@
+{
+  "meta": {
+    "titleSuffix": "Limb Motion Recognition and Assistant",
+    "description": "Portal do projeto para progresso, documentos, arquitetura e registos de colaboração.",
+    "pages": {
+      "home": {
+        "title": "Visão Geral do Portal",
+        "description": "Centro de visão geral para posicionamento do projeto, progresso, repositórios, equipas e âmbito da M2."
+      },
+      "progress": {
+        "title": "Progresso",
+        "description": "Linha temporal, gantt, marcos, resumos de iteração e visibilidade de risco."
+      },
+      "logs": {
+        "title": "Logs",
+        "description": "Atualizações do projeto, relatórios semanais, reuniões, notas de investigação e registos de demo."
+      },
+      "logDetail": {
+        "title": "Detalhe do Log",
+        "description": "Entrada detalhada com markdown e âncoras partilháveis."
+      },
+      "docs": {
+        "title": "Documentos",
+        "description": "Centro documental para requisitos, design, interface, testes e arquivos."
+      },
+      "docDetail": {
+        "title": "Detalhe do Documento",
+        "description": "Página detalhada do documento do portal com metadados e conteúdo markdown."
+      },
+      "architecture": {
+        "title": "Arquitetura",
+        "description": "Camadas do sistema, matriz das equipas, mapa de repositórios e dependências de interface."
+      },
+      "calendar": {
+        "title": "Calendário",
+        "description": "Calendário mensal com marcos, reuniões, prazos e feriados públicos."
+      },
+      "team": {
+        "title": "Equipa",
+        "description": "Membros, papéis, foco de trabalho e contexto de colaboração entre fusos."
+      },
+      "examples": {
+        "title": "Exemplos",
+        "description": "Entradas modelo para documentos, logs, reuniões e notas de investigação."
+      },
+      "notFound": {
+        "title": "Página não encontrada",
+        "description": "Página de fallback para rotas inexistentes."
+      }
+    }
+  },
+  "language": {
+    "switchTo": "Mudar idioma para {{language}}"
+  },
+  "nav": {
+    "overview": "Visão geral",
+    "progress": "Progresso",
+    "logs": "Logs",
+    "docs": "Docs",
+    "architecture": "Arquitetura",
+    "calendar": "Calendário",
+    "team": "Equipa",
+    "examples": "Exemplos",
+    "language": "Idioma",
+    "logoAlt": "Logótipo da equipa M2",
+    "primaryAria": "Navegação principal",
+    "mobileAria": "Navegação móvel",
+    "toggleMenu": "Alternar menu de navegação"
+  },
+  "quickLinks": {
+    "main-web": "Main Web",
+    "portal-repo": "Repo do Portal",
+    "recruitment-site": "Site de Recrutamento",
+    "docs": "Docs",
+    "demo": "Demo"
+  },
+  "common": {
+    "all": "Todos",
+    "currentIteration": "Iteração atual",
+    "currentSprint": "Sprint atual",
+    "lastUpdated": "Última atualização",
+    "thisSprintGoal": "Objetivo desta sprint",
+    "completed": "Concluído",
+    "inProgress": "Em progresso",
+    "nextMilestone": "Próximo marco",
+    "risksBlockers": "Riscos / bloqueios",
+    "openArticle": "Abrir artigo",
+    "openDocument": "Abrir documento",
+    "browseDocuments": "Explorar documentos",
+    "viewAllLogs": "Ver todos os logs",
+    "viewCalendar": "Abrir calendário",
+    "meetTheTeam": "Conhecer a equipa",
+    "openArchitecture": "Abrir arquitetura",
+    "openFullProgress": "Abrir progresso completo",
+    "openExamples": "Abrir exemplos",
+    "viewTemplates": "Ver modelos",
+    "viewDetails": "Ver detalhes",
+    "openLinkedRecord": "Abrir registo ligado",
+    "copyLink": "Copiar ligação",
+    "linkCopied": "Copiado",
+    "sample": "EXEMPLO",
+    "showingEnglishFallback": "Esta entrada está disponível apenas em inglês neste momento.",
+    "bionic": "Leitura biónica",
+    "bionicHint": "Destaca parágrafos longos em inglês com leitura biónica",
+    "bionicAria": "Ativar leitura biónica para parágrafos longos em inglês",
+    "metadata": "Metadados",
+    "owner": "Responsável",
+    "sprint": "Sprint",
+    "relatedTeams": "Equipas relacionadas",
+    "relatedRepos": "Repositórios relacionados",
+    "version": "Versão",
+    "reviewStatus": "Estado de revisão",
+    "links": "Ligações",
+    "evidence": "Evidências",
+    "actionItems": "Ações",
+    "previous": "Anterior",
+    "next": "Seguinte",
+    "backToLogs": "Voltar aos logs",
+    "backToDocs": "Voltar aos documentos",
+    "maintainedBy": "Mantido por",
+    "primaryInputs": "Entradas principais",
+    "primaryOutputs": "Saídas principais",
+    "dependsOnShort": "Depende de",
+    "dependedBy": "Usado por"
+  },
+  "status": {
+    "planned": "Planeado",
+    "in-progress": "Em progresso",
+    "completed": "Concluído",
+    "at-risk": "Em risco",
+    "blocked": "Bloqueado",
+    "draft": "Rascunho",
+    "in-review": "Em revisão",
+    "final": "Final",
+    "archived": "Arquivado",
+    "active": "Ativo",
+    "ready": "Pronto",
+    "watch": "Acompanhar"
+  },
+  "types": {
+    "update": "Atualização",
+    "meeting": "Reunião",
+    "weekly-report": "Relatório semanal",
+    "decision": "Decisão",
+    "interface": "Interface",
+    "test": "Teste",
+    "demo": "Demo",
+    "research": "Investigação",
+    "requirement-analysis": "Análise de requisitos",
+    "system-design": "Design do sistema",
+    "testing": "Testes",
+    "presentation": "Apresentação",
+    "demo-assets": "Ativos de demo",
+    "meeting-minutes": "Atas de reunião",
+    "milestone": "Marco"
+  },
+  "eventTypes": {
+    "milestone": "Marco",
+    "meeting": "Reunião",
+    "deadline": "Prazo",
+    "holiday-cn": "Feriado da China",
+    "holiday-pt": "Feriado de Portugal",
+    "demo": "Demo",
+    "sprint-boundary": "Fronteira da sprint"
+  },
+  "home": {
+    "topStatusLead": "Um portal central para relatório do projeto, colaboração entre equipas, indexação documental e rastreabilidade do processo.",
+    "statusBar": {
+      "title": "Estado do portal",
+      "iterationPending": "Os dados formais de iteração do PM estão ocultos nesta versão de submissão."
+    },
+    "positioning": {
+      "title": "Posicionamento do Projeto",
+      "lead": "A página inicial explica primeiro o projeto, depois esclarece para que serve o portal e qual é o limite visível da M2."
+    },
+    "summaryCards": {
+      "system": {
+        "title": "Sistema"
+      },
+      "progress": {
+        "title": "Progresso"
+      },
+      "docs": {
+        "title": "Docs"
+      },
+      "teams": {
+        "title": "Equipas"
+      }
+    },
+    "systemMap": {
+      "title": "Resumo do Sistema",
+      "lead": "A home mantém a arquitetura legível através de camadas, interfaces e limites de repositório, em vez de uma parede de cartões iguais.",
+      "relatedRepos": "Repositórios relacionados",
+      "nodeDetail": "Nó selecionado"
+    },
+    "progress": {
+      "title": "Resumo do Progresso",
+      "lead": "A home mostra apenas a fase atual, a próxima ação e o risco principal, e encaminha o resto para a página de progresso.",
+      "pendingNote": "Nesta versão de submissão, os detalhes formais de calendário, marcos e bloqueios estão ocultos; a rota de progresso permanece pronta para dados mantidos pelo PM."
+    },
+    "latestUpdates": {
+      "title": "Atualizações Recentes",
+      "lead": "As atualizações são apresentadas como fluxo legível, com data, tipo, owner e resumo."
+    },
+    "deliverables": {
+      "title": "Pré-visualização dos Docs",
+      "lead": "O hub documental é mostrado como centro de documentos, não como grelha de pequenos cartões."
+    },
+    "teams": {
+      "title": "Equipas e Repositórios",
+      "lead": "Equipas relacionadas e repositórios aparecem juntos, mas com distinção clara entre responsabilidade e ligação de repo.",
+      "teamLinks": "Ligações das equipas",
+      "repositoryLinks": "Ligações de repositórios"
+    },
+    "m2": {
+      "title": "Contribuição da M2",
+      "lead": "A M2 permanece visível como mantenedora do portal sem reivindicar a posse do frontend completo do produto.",
+      "responsibilities": "Responsabilidades",
+      "dependencies": "Dependências",
+      "completed": "Coberto agora",
+      "uncovered": "Não coberto aqui"
+    }
+  },
+  "progress": {
+    "overview": {
+      "title": "Visão Geral do Progresso",
+      "lead": "A página de progresso foca-se em tempo, fase e clareza de planeamento, sem repetir a home.",
+      "phase": "Fase atual",
+      "nextMilestone": "Próximo marco",
+      "goal": "Objetivo da fase",
+      "risk": "Risco atual"
+    },
+    "hiddenDataNote": "Os dados formais de calendário estão ocultos nesta versão de submissão. A estrutura das rotas e o pipeline de conteúdo estão prontos para registos mantidos pelo PM.",
+    "gantt": {
+      "kicker": "Vista de planeamento",
+      "title": "Gantt e Tabela de Tarefas",
+      "lead": "O portal usa um painel gantt orientado por dados em vez de cartões de sprint fictícios, e a etiqueta de exemplo permanece visível até entrar o plano confirmado do PM.",
+      "filters": "Filtrar por papel e estado",
+      "legend": "Legenda",
+      "columns": {
+        "role": "Papel",
+        "task": "Tarefa",
+        "status": "Estado"
+      }
+    },
+    "hiddenSections": {
+      "gantt": "O painel de gantt já está integrado, mas os dados de agenda de exemplo estão ocultos nesta versão de submissão.",
+      "milestones": "Os cartões de marcos aparecerão quando os registos mantidos pelo PM forem publicados.",
+      "sprints": "Os resumos de iteração ficam ocultos até existirem registos confirmados de progresso.",
+      "risks": "As entradas do registo de risco ficam ocultas até a equipa publicar itens confirmados."
+    },
+    "filters": {
+      "all": "Todos",
+      "current": "Atuais",
+      "completed": "Concluídos",
+      "at-risk": "Em risco"
+    },
+    "milestones": {
+      "title": "Lista de Marcos",
+      "lead": "Os marcos mantêm data, owner, estado e evidência visíveis sem cair numa folha de cálculo.",
+      "evidence": "Abrir evidência"
+    },
+    "sprints": {
+      "title": "Resumos de Iteração",
+      "lead": "Os resumos mostram objetivo, concluído, incompleto, bloqueios e próximo passo.",
+      "incomplete": "Incompleto",
+      "blockers": "Bloqueios",
+      "nextStep": "Próximo passo"
+    },
+    "risks": {
+      "title": "Registo de Riscos",
+      "lead": "Os riscos ativos permanecem visíveis com mitigação, owner e data de atualização."
+    },
+    "severity": {
+      "high": "Alta",
+      "medium": "Média",
+      "low": "Baixa"
+    }
+  },
+  "logs": {
+    "title": "Logs e Registos de Processo",
+    "lead": "O hub de logs agrega atualizações, reuniões, relatórios semanais, investigação e decisões, mantendo tudo filtrável e partilhável.",
+    "feedTitle": "Fluxo de Logs",
+    "feedLead": "{{count}} entradas correspondem aos filtros atuais.",
+    "filters": {
+      "type": "Tipo",
+      "ownerRole": "Papel do owner",
+      "sprint": "Sprint",
+      "team": "Equipa relacionada",
+      "tag": "Tag",
+      "attention": "Tag de atenção",
+      "search": "Pesquisa textual",
+      "searchPlaceholder": "Pesquisar por título ou resumo"
+    }
+  },
+  "docs": {
+    "title": "Documentos e Entregáveis",
+    "lead": "Os documentos formais ficam agrupados por categoria, estado de revisão e arquivo, usando um layout de linhas largas mais legível.",
+    "current": {
+      "title": "Documentos Atuais",
+      "lead": "{{count}} documentos atuais correspondem ao filtro ativo."
+    },
+    "archived": {
+      "title": "Documentos Arquivados",
+      "lead": "{{count}} entradas arquivadas continuam disponíveis para rastreabilidade."
+    },
+    "categories": {
+      "requirement-analysis": "Análise de requisitos",
+      "system-design": "Design do sistema",
+      "interface": "Interface / API",
+      "testing": "Testes",
+      "presentation": "Apresentação",
+      "demo-assets": "Ativos de demo",
+      "meeting-minutes": "Atas de reunião",
+      "weekly-report": "Relatórios semanais",
+      "research": "Investigação / Fundamentação"
+    }
+  },
+  "architecture": {
+    "overview": {
+      "title": "Visão Geral do Sistema",
+      "lead": "A arquitetura é explicada através de camadas, responsabilidades e lógica de handoff, e não por uma ferramenta visual complexa."
+    },
+    "teamMatrix": {
+      "title": "Matriz de Responsabilidades das Equipas",
+      "lead": "Cada bloco de equipa mostra responsabilidade, entradas, saídas e a sua relação com a M2."
+    },
+    "repositories": {
+      "title": "Mapa de Repositórios",
+      "lead": "O mapa de repositórios mantém visíveis o papel, o mantenedor, o estado e a fronteira de âmbito."
+    },
+    "interfaces": {
+      "title": "Dependências de Interface",
+      "lead": "IF1 e IF2 são descritas em linguagem simples, com foco no que a M2 consome e no que continua a montante.",
+      "labels": {
+        "IF1": "Passagem de sensores para servidor",
+        "IF2": "Passagem de servidor para monitorização"
+      },
+      "source": "Origem",
+      "destination": "Destino",
+      "m2Usage": "Uso pela M2"
+    },
+    "roles": {
+      "title": "Matriz de Papéis",
+      "lead": "O trabalho do portal também é mapeado para PM, coordenação, arquitetura, implementação e testes."
+    },
+    "directM2Link": "Ligação direta à M2"
+  },
+  "calendar": {
+    "title": "Calendário do Projeto",
+    "lead": "Um calendário mensal contido e legível para marcos, reuniões, prazos, demos e feriados entre China e Portugal.",
+    "timezones": {
+      "china": "Hora da China",
+      "portugal": "Hora de Portugal",
+      "local": "Hora local"
+    },
+    "monthView": {
+      "title": "Vista Mensal",
+      "lead": "O calendário mantém apenas os controlos necessários: mudar de mês, filtrar por tipo e inspecionar os detalhes do dia selecionado."
+    },
+    "today": "Hoje",
+    "prevMonth": "Mês anterior",
+    "nextMonth": "Mês seguinte",
+    "selectedDate": "Data selecionada",
+    "selectedEvent": "Evento selecionado",
+    "dayEventsCount": "{{count}} eventos nesta data.",
+    "noEvents": "Sem eventos para o dia selecionado.",
+    "emptySelection": "Selecione um dia ou um evento para ver os detalhes.",
+    "sampleEventNote": "Os eventos específicos do projeto no calendário permanecem marcados como EXEMPLO até o planeamento mantido pelo PM ser confirmado.",
+    "staticHolidayNoteTitle": "Dados de feriados",
+    "staticHolidayNote": "Os feriados da China e de Portugal são gerados para JSON estático, para que o portal continue a funcionar sem pedidos online em runtime."
+  },
+  "team": {
+    "title": "Membros da Equipa",
+    "lead": "Esta página apresenta os membros da M2 que mantêm o portal, o respetivo foco de trabalho e o contexto de colaboração entre fusos.",
+    "overview": "Visão geral da equipa",
+    "crossTimezone": "Trabalho entre fusos",
+    "membersTitle": "Diretório de membros",
+    "membersLead": "Cada cartão foca responsabilidade, fuso horário e contribuição, em vez de funcionar como mural social.",
+    "rolesTitle": "Resumo de responsabilidades",
+    "rolesLead": "Esta secção complementa a página de arquitetura ao resumir papéis do ponto de vista de manutenção do portal.",
+    "timezonesTitle": "Colaboração entre fusos",
+    "timezonesLead": "Como a coordenação do portal depende frequentemente dos horários da China e de Portugal, estes fusos permanecem visíveis."
+  },
+  "examples": {
+    "title": "Exemplos e Modelos",
+    "lead": "Os exemplos ficam agrupados num só local para que a equipa aprenda a estrutura esperada sem misturar modelos com registos factuais.",
+    "policyTitle": "Política de mock",
+    "policyBody": "Qualquer conteúdo não factual deve ser marcado claramente como SAMPLE, EXAMPLE, MOCK ou TEMPLATE. Estas entradas servem para explicar a estrutura, não para imitar o histórico real do projeto.",
+    "authoringTitle": "Lembrete de autoria",
+    "authoringBody": "Logs, docs, relatórios semanais, atas e notas de investigação devem ser atualizados primeiro por markdown. Mantenha slugs estáveis e ligue evidências sempre que a afirmação importar.",
+    "docsTitle": "Modelos de Documento",
+    "docsLead": "{{count}} entradas de exemplo do tipo documento estão indexadas neste momento.",
+    "logsTitle": "Modelos de Log",
+    "logsLead": "{{count}} entradas de exemplo do tipo log estão indexadas neste momento."
+  },
+  "notFound": {
+    "title": "Página não encontrada",
+    "lead": "A página ou registo solicitado não está disponível.",
+    "backHome": "Voltar à página inicial"
+  },
+  "footer": {
+    "description": "Um hub de projeto orientado para documentos, mantido pela M2 para relatório, indexação de colaboração e revisão rastreável de entregáveis.",
+    "maintainedBy": "Mantido por",
+    "lastUpdated": "Última atualização",
+    "license": "Licença",
+    "relatedOrg": "Organização relacionada"
+  }
+}

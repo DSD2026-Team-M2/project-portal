@@ -1,0 +1,1619 @@
+{
+  "generatedAt": "2026-03-31T12:36:55.957Z",
+  "entries": [
+    {
+      "id": "log-portal-shell-and-routing",
+      "slug": "portal-shell-and-routing",
+      "locale": "pt",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "Estrutura e routing do portal implementados",
+      "type": "update",
+      "date": "2026-03-31",
+      "owner": "M2 Developer",
+      "ownerRole": "Programmer",
+      "status": "in-progress",
+      "summary": "A estrutura com routing do portal já cobre visão geral, progresso, registos, documentos, arquitetura e calendário.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-31",
+      "links": [
+        {
+          "label": "Página de arquitetura",
+          "href": "/architecture"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Página de progresso",
+          "href": "/progress"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Ligar o conteúdo markdown gerado a todas as listas e páginas de detalhe."
+        }
+      ],
+      "featured": true,
+      "archived": false,
+      "markers": [],
+      "body": "## O que mudou\n\nO portal agora possui uma estrutura de routing estável, dando a cada pilar principal do projeto a sua própria página.\n\n## Conjunto de páginas\n\n- `/`\n- `/progress`\n- `/logs`\n- `/logs/:slug`\n- `/docs`\n- `/docs/:slug`\n- `/architecture`\n- `/calendar`\n\n## Impacto\n\nIsto transforma o portal num centro de colaboração partilhável, em vez de uma única página longa. Professores e colegas podem abrir diretamente a página ou registo relevante.",
+      "sourcePath": "content/pt/logs/portal-shell-and-routing.md"
+    },
+    {
+      "id": "doc-demo-assets-index-v0-1",
+      "slug": "demo-assets-index-v0-1",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Demo Assets Index",
+      "type": "demo-assets",
+      "date": "2026-03-31",
+      "owner": "M2",
+      "ownerRole": "Programmer",
+      "status": "draft",
+      "summary": "Index entry for screenshots, rehearsal notes and placeholder demo assets used by the portal walkthrough.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable",
+        "demo"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-31",
+      "version": "v0.1",
+      "reviewStatus": "draft",
+      "links": [
+        {
+          "label": "Demo checklist",
+          "href": "/logs/demo-path-checklist"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Demo review event",
+          "href": "/calendar#2026-04-15-demo-review"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Replace placeholders with approved screenshots and rehearsal captures."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Current State\n\nThe index exists so demo-related materials are easy to locate during review week. It currently points to placeholders and will be expanded as screenshots are finalized.",
+      "sourcePath": "content/en/docs/demo-assets-index-v0-1.md"
+    },
+    {
+      "id": "doc-template-document-entry",
+      "slug": "template-document-entry",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "TEMPLATE · Formal document entry",
+      "type": "system-design",
+      "date": "2026-03-31",
+      "owner": "M2",
+      "ownerRole": "Programmer",
+      "status": "draft",
+      "summary": "Template entry for a formal portal document. Use this when the team needs a versioned design, requirement or deliverable page.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Template",
+      "tags": [
+        "template",
+        "deliverable"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-31",
+      "version": "v0.0",
+      "reviewStatus": "draft",
+      "links": [
+        {
+          "label": "Content authoring guide",
+          "href": "/examples"
+        }
+      ],
+      "evidence": [],
+      "actionItems": [
+        {
+          "owner": "Author",
+          "task": "Replace placeholder sections with project-specific content and real evidence links."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [
+        "template"
+      ],
+      "body": "## Purpose\n\nState what this document is for and why it exists.\n\n## Scope\n\n- What this document covers\n- What it does not cover\n\n## Version Notes\n\n- `v0.x` for working draft\n- `v1.0` when the structure is stable\n\n## Review Checklist\n\n- owner confirmed\n- status confirmed\n- evidence links added\n- summary updated",
+      "sourcePath": "content/en/docs/template-document-entry.md"
+    },
+    {
+      "id": "log-demo-path-checklist",
+      "slug": "demo-path-checklist",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "Demo path checklist prepared",
+      "type": "demo",
+      "date": "2026-03-31",
+      "owner": "M2 Tester",
+      "ownerRole": "Tester",
+      "status": "in-progress",
+      "summary": "A teacher-facing walkthrough order is now prepared so the portal can be demonstrated as a coherent hub instead of a loose collection of pages.",
+      "relatedTeams": [
+        "M2",
+        "PM"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "demo",
+        "test"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-31",
+      "links": [
+        {
+          "label": "Demo review calendar item",
+          "href": "/calendar#2026-04-15-demo-review"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Presentation outline",
+          "href": "/docs/presentation-outline-v1"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Add the final screenshots and verify deep-links during rehearsal."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Walkthrough Order\n\n1. Start from the overview page to explain project scope and M2 boundary.\n2. Open the system map and repository cards to clarify ownership.\n3. Jump to progress for timeline, milestones and risks.\n4. Open one log detail page to demonstrate traceability and sharable anchors.\n5. Open the docs hub to show deliverable review states.\n6. Finish on the calendar page to review upcoming meetings, milestones and holidays.\n\n## Remaining Gaps\n\n- Screenshot assets still need to replace placeholders.\n- Final demo notes should be linked from the docs hub once approved.",
+      "sourcePath": "content/en/logs/demo-path-checklist.md"
+    },
+    {
+      "id": "log-portal-shell-and-routing",
+      "slug": "portal-shell-and-routing",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "Portal shell and routing implemented",
+      "type": "update",
+      "date": "2026-03-31",
+      "owner": "M2 Developer",
+      "ownerRole": "Programmer",
+      "status": "in-progress",
+      "summary": "The routed shell for the portal is now in place, covering overview, progress, logs, docs, architecture and calendar pages.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-31",
+      "links": [
+        {
+          "label": "Architecture page",
+          "href": "/architecture"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Progress page",
+          "href": "/progress"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Wire generated markdown content into all route-level list and detail pages."
+        }
+      ],
+      "featured": true,
+      "archived": false,
+      "markers": [],
+      "body": "## What Changed\n\nThe portal now has a stable routed shell so each major information pillar has its own addressable page.\n\n## Route Set\n\n- `/`\n- `/progress`\n- `/logs`\n- `/logs/:slug`\n- `/docs`\n- `/docs/:slug`\n- `/architecture`\n- `/calendar`\n\n## Why It Matters\n\nThis turns the portal into a real collaboration hub instead of a single long page. Teachers and teammates can now deep-link directly to the relevant section or record.\n\n## Next Steps\n\n1. Connect generated markdown data to every content list and detail page.\n2. Finalize section anchors and copy-link behavior.\n3. Polish the calendar page and holiday workflow.",
+      "sourcePath": "content/en/logs/portal-shell-and-routing.md"
+    },
+    {
+      "id": "log-template-meeting-minutes",
+      "slug": "template-meeting-minutes",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "TEMPLATE · Meeting minutes",
+      "type": "meeting",
+      "date": "2026-03-31",
+      "owner": "M2",
+      "ownerRole": "Vice PM",
+      "status": "draft",
+      "summary": "Template entry for meeting notes with agenda, decisions and action items.",
+      "relatedTeams": [
+        "M2",
+        "PM"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Template",
+      "tags": [
+        "template",
+        "meeting"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-31",
+      "links": [],
+      "evidence": [],
+      "actionItems": [
+        {
+          "owner": "Recorder",
+          "task": "Replace placeholders with confirmed meeting decisions and owners."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [
+        "template"
+      ],
+      "body": "## Meeting Info\n\n- Date:\n- Participants:\n- Purpose:\n\n## Agenda\n\n1. Topic one\n2. Topic two\n\n## Decisions\n\n- Decision A\n- Decision B\n\n## Action Items\n\n- Owner: task, due date",
+      "sourcePath": "content/en/logs/template-meeting-minutes.md"
+    },
+    {
+      "id": "log-template-research-note",
+      "slug": "template-research-note",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "TEMPLATE · Research note",
+      "type": "research",
+      "date": "2026-03-31",
+      "owner": "M2",
+      "ownerRole": "S.A.",
+      "status": "draft",
+      "summary": "Template entry for a research or design-rationale note. Use it when reviewing prior work, interaction patterns or technical trade-offs.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Template",
+      "tags": [
+        "template",
+        "research"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-31",
+      "links": [],
+      "evidence": [],
+      "actionItems": [
+        {
+          "owner": "Researcher",
+          "task": "Replace the prompts below with actual findings, derived decisions and follow-up questions."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [
+        "template"
+      ],
+      "body": "## Research Question\n\nWhat question is this note trying to answer?\n\n## Sources Reviewed\n\n- Source one\n- Source two\n\n## Findings\n\n- Finding one\n- Finding two\n\n## Decisions Derived\n\n- Decision one\n- Decision two",
+      "sourcePath": "content/en/logs/template-research-note.md"
+    },
+    {
+      "id": "log-template-update-entry",
+      "slug": "template-update-entry",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "TEMPLATE · Update entry",
+      "type": "update",
+      "date": "2026-03-31",
+      "owner": "M2",
+      "ownerRole": "Programmer",
+      "status": "draft",
+      "summary": "Template entry for a short factual update. Use it for progress notes, route changes, content updates or coordination checkpoints.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Template",
+      "tags": [
+        "template",
+        "update"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-31",
+      "links": [],
+      "evidence": [],
+      "actionItems": [
+        {
+          "owner": "Author",
+          "task": "Replace template bullets with concrete update details."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [
+        "template"
+      ],
+      "body": "## What Changed\n\n- Summarize the actual change.\n- Keep the wording factual.\n\n## Why It Matters\n\nExplain why this update matters for the portal, the project, or another team.\n\n## Next Step\n\n- State the immediate follow-up.",
+      "sourcePath": "content/en/logs/template-update-entry.md"
+    },
+    {
+      "id": "log-template-weekly-report",
+      "slug": "template-weekly-report",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "TEMPLATE · Weekly report",
+      "type": "weekly-report",
+      "date": "2026-03-31",
+      "owner": "M2",
+      "ownerRole": "PM",
+      "status": "draft",
+      "summary": "Template entry for weekly reporting with completed work, blockers and the next week's focus.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Template",
+      "tags": [
+        "template",
+        "weekly-report"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-31",
+      "links": [],
+      "evidence": [],
+      "actionItems": [
+        {
+          "owner": "Reporter",
+          "task": "Replace the placeholders with the actual weekly status."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [
+        "template"
+      ],
+      "body": "## Completed This Week\n\n- Item one\n- Item two\n\n## In Progress\n\n- Item one\n\n## Blockers\n\n- Blocker one\n\n## Next Week\n\n- Planned task one",
+      "sourcePath": "content/en/logs/template-weekly-report.md"
+    },
+    {
+      "id": "log-portal-shell-and-routing",
+      "slug": "portal-shell-and-routing",
+      "locale": "zh-CN",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "Portal 外壳与路由已完成",
+      "type": "update",
+      "date": "2026-03-31",
+      "owner": "M2 Developer",
+      "ownerRole": "Programmer",
+      "status": "in-progress",
+      "summary": "portal 的路由外壳已经搭好，覆盖总览、进度、日志、文档、架构与日历页面。",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-31",
+      "links": [
+        {
+          "label": "架构页",
+          "href": "/architecture"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "进度页",
+          "href": "/progress"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "将生成的 markdown 内容接入所有列表页与详情页。"
+        }
+      ],
+      "featured": true,
+      "archived": false,
+      "markers": [],
+      "body": "## 本次变更\n\nportal 现在已经有稳定的多页面路由外壳，每个核心信息支柱都有独立地址。\n\n## 已落下的页面\n\n- `/`\n- `/progress`\n- `/logs`\n- `/logs/:slug`\n- `/docs`\n- `/docs/:slug`\n- `/architecture`\n- `/calendar`\n\n## 这样做的意义\n\n这让 portal 真正变成可分享、可协作的中枢站，而不是一张很长的单页。老师和队友可以直接跳到对应页面或记录。",
+      "sourcePath": "content/zh-CN/logs/portal-shell-and-routing.md"
+    },
+    {
+      "id": "doc-presentation-outline-v1",
+      "slug": "presentation-outline-v1",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Presentation Outline",
+      "type": "presentation",
+      "date": "2026-03-30",
+      "owner": "PM",
+      "ownerRole": "PM",
+      "status": "in-review",
+      "summary": "Teacher-facing walkthrough outline for explaining the portal as a process and collaboration hub.",
+      "relatedTeams": [
+        "PM",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-30",
+      "version": "v1.0",
+      "reviewStatus": "in-review",
+      "links": [
+        {
+          "label": "Demo checklist",
+          "href": "/logs/demo-path-checklist"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Overview page",
+          "href": "/"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "PM",
+          "task": "Insert final screenshots and short evidence captions before rehearsal."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Walkthrough Sections\n\n1. Project positioning and portal boundary\n2. System map and repository roles\n3. Progress snapshot, milestones and risk register\n4. Logs as process traceability\n5. Docs hub and review states\n6. Calendar, upcoming events and cross-timezone coordination",
+      "sourcePath": "content/en/docs/presentation-outline-v1.md"
+    },
+    {
+      "id": "doc-weekly-report-index-v1",
+      "slug": "weekly-report-index-v1",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Weekly Reports Index",
+      "type": "weekly-report",
+      "date": "2026-03-30",
+      "owner": "PM",
+      "ownerRole": "PM",
+      "status": "in-review",
+      "summary": "Index entry for weekly reports that summarize sprint work, blockers and next steps.",
+      "relatedTeams": [
+        "PM",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-30",
+      "version": "v1.0",
+      "reviewStatus": "in-review",
+      "links": [
+        {
+          "label": "Week 05 report",
+          "href": "/logs/weekly-report-05"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Logs hub",
+          "href": "/logs"
+        }
+      ],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Purpose\n\nWeekly reports keep short-term progress readable and provide an easy bridge between milestone planning and day-to-day implementation.",
+      "sourcePath": "content/en/docs/weekly-report-index-v1.md"
+    },
+    {
+      "id": "weekly-report-05",
+      "slug": "weekly-report-05",
+      "locale": "en",
+      "collection": "weekly-reports",
+      "routeBase": "logs",
+      "title": "Week 05 report",
+      "type": "weekly-report",
+      "date": "2026-03-30",
+      "owner": "M2 Team",
+      "ownerRole": "Programmer",
+      "status": "in-progress",
+      "summary": "This week moved the portal from IA planning into routed pages and a maintainable content-driven shell.",
+      "relatedTeams": [
+        "M2",
+        "V2",
+        "M1"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-30",
+      "links": [
+        {
+          "label": "Logs hub",
+          "href": "/logs"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Routing update",
+          "href": "/logs/portal-shell-and-routing"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Finish the calendar page interaction and detail linking."
+        },
+        {
+          "owner": "PM",
+          "task": "Review summary wording for teacher-facing reporting."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Goal\n\nThis week we focused on turning the portal IA into actual routed pages with a maintainable content pipeline.\n\n## Completed\n\n- Implemented the required route structure for overview, progress, logs, docs, architecture and calendar.\n- Prepared markdown-driven content entries for logs, weekly reports, meetings and deliverables.\n- Clarified the narrative boundary between the portal, the main web repository and the archived recruitment site.\n\n## Technical Learning\n\n- Vite plus React Router is enough for a clean multi-page shell without adding extra state libraries.\n- Front matter validation is important because missing fields break list pages silently if left unchecked.\n\n## Coordination\n\n- Synced IF2-facing wording with V2 and M1 assumptions.\n- Kept PM requirements aligned with the portal IA and field template documents.\n\n## Blockers\n\n- Final holiday data fetch may fail if the source is unavailable, so fallback JSON needs to remain in repo.\n- Some evidence links still depend on the latest screenshots and demo notes.\n\n## Plan for Next Week\n\n- Finalize calendar polish and evidence deep-links.\n- Run content checks before every build.",
+      "sourcePath": "content/en/weekly-reports/week-05-report.md"
+    },
+    {
+      "id": "doc-testing-plan-v0-2",
+      "slug": "testing-plan-v0-2",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Portal Testing Plan",
+      "type": "testing",
+      "date": "2026-03-29",
+      "owner": "M2 Tester",
+      "ownerRole": "Tester",
+      "status": "draft",
+      "summary": "Testing checklist covering routing, generated content, language fallback, calendar visibility and link stability.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-29",
+      "version": "v0.2",
+      "reviewStatus": "draft",
+      "links": [
+        {
+          "label": "Demo checklist",
+          "href": "/logs/demo-path-checklist"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Calendar page",
+          "href": "/calendar"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Add regression checks for language fallback and generated content validation."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Coverage\n\n- Required routes load correctly.\n- Missing locale content falls back to English.\n- Markdown headings keep sharable anchors.\n- Calendar page shows holidays and timezone cards.\n- Docs and logs lists render from generated content data.",
+      "sourcePath": "content/en/docs/testing-plan-v0-2.md"
+    },
+    {
+      "id": "log-calendar-design-and-holiday-strategy",
+      "slug": "calendar-design-and-holiday-strategy",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "Calendar design and holiday strategy fixed",
+      "type": "decision",
+      "date": "2026-03-29",
+      "owner": "M2 Architect",
+      "ownerRole": "Architect",
+      "status": "completed",
+      "summary": "The calendar will stay month-view only, use static holiday generation and expose timezone context without becoming a scheduling system.",
+      "relatedTeams": [
+        "M2",
+        "PM"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-29",
+      "links": [
+        {
+          "label": "Calendar page",
+          "href": "/calendar"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "System design",
+          "href": "/docs/system-design-outline-v1"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Implement FullCalendar in dayGridMonth mode and keep holiday JSON static."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Decision Summary\n\nThe portal calendar should support reporting and coordination, not full task management. For that reason the view stays intentionally narrow and stable.\n\n## Static Holiday Workflow\n\n- Fetch China and Portugal public holidays during a script step.\n- Write generated JSON into the repository.\n- Keep previous JSON when fetching fails.\n- Render holidays as normal calendar events so the page still works offline.\n\n## Timezone Rules\n\n- Always show China time and Portugal time.\n- Optionally show the user's local browser timezone.\n- Use browser `Intl.DateTimeFormat` instead of introducing a time library.\n\n## Boundary\n\nNo drag-and-drop editing, no recurring-event editor, and no heavy planning features. This is a portal month calendar, not a team scheduler.",
+      "sourcePath": "content/en/logs/calendar-design-and-holiday-strategy.md"
+    },
+    {
+      "id": "doc-research-rationale-index-v1",
+      "slug": "research-rationale-index-v1",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Research and Design Rationale Index",
+      "type": "research",
+      "date": "2026-03-28",
+      "owner": "M2 Architect",
+      "ownerRole": "Architect",
+      "status": "in-review",
+      "summary": "Index entry grouping research notes and design rationale records that explain why the portal is structured this way.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "research",
+        "deliverable"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-28",
+      "version": "v1.0",
+      "reviewStatus": "in-review",
+      "links": [
+        {
+          "label": "Prior portal patterns",
+          "href": "/logs/prior-dsd-portal-patterns"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Docs hub",
+          "href": "/docs"
+        }
+      ],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Purpose\n\nResearch notes are treated as formal project content so design decisions remain reviewable instead of being buried in commit history.",
+      "sourcePath": "content/en/docs/research-rationale-index-v1.md"
+    },
+    {
+      "id": "research-prior-dsd-portal-patterns",
+      "slug": "prior-dsd-portal-patterns",
+      "locale": "en",
+      "collection": "research",
+      "routeBase": "logs",
+      "title": "Prior DSD portal patterns reviewed",
+      "type": "research",
+      "date": "2026-03-28",
+      "owner": "M2 PM",
+      "ownerRole": "PM",
+      "status": "completed",
+      "summary": "Comparative review of prior course project sites to extract recurring portal requirements for logs, milestones, deliverables and boundary statements.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "research",
+        "deliverable"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-28",
+      "links": [
+        {
+          "label": "Portal IA",
+          "href": "/docs/requirement-analysis-v1"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "IA planning note",
+          "href": "/docs/system-design-outline-v1"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Convert recurring portal patterns into reusable content and layout rules."
+        }
+      ],
+      "featured": true,
+      "archived": false,
+      "markers": [],
+      "body": "## Purpose\n\nReview prior DSD team sites and identify what repeatedly made a \"portal\" page useful during midterm and final reporting.\n\n## Scope\n\nThe review focused on structure rather than decoration:\n\n- how teams exposed progress\n- where deliverables were indexed\n- how meeting and weekly records were linked\n- whether ownership boundaries were stated clearly\n\n## Findings\n\nThe strongest examples were never the flashiest pages. They worked because they answered the same questions quickly: what the project is, who owns which part, what changed recently, and where formal evidence lives.\n\n> A portal is most useful when it reduces coordination cost instead of trying to look like the main product.\n\n## Design Decisions Derived\n\n- Keep the home page as a hub, not as a product landing page.\n- Separate `project-main-web`, `project-portal`, and `m2-recruitment-site` clearly.\n- Treat research notes, meeting minutes and weekly reports as first-class content, not hidden appendices.\n- Build list pages from markdown metadata so PM-side updates do not require React edits.\n\n## Open Questions\n\n- Which evidence links should point to repo files versus portal detail pages?\n- How much IF2 detail should be visible on the public architecture page before the interface is frozen?",
+      "sourcePath": "content/en/research/prior-dsd-portal-patterns.md"
+    },
+    {
+      "id": "research-prior-dsd-portal-patterns",
+      "slug": "prior-dsd-portal-patterns",
+      "locale": "zh-CN",
+      "collection": "research",
+      "routeBase": "logs",
+      "title": "过往 DSD portal 模式调研",
+      "type": "research",
+      "date": "2026-03-28",
+      "owner": "M2 PM",
+      "ownerRole": "PM",
+      "status": "completed",
+      "summary": "对过往课程项目网页进行比较研究，总结 portal 在日志、里程碑、交付物与边界说明上的共性需求。",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "research",
+        "deliverable"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-28",
+      "links": [
+        {
+          "label": "Portal IA",
+          "href": "/docs/requirement-analysis-v1"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "IA 设计记录",
+          "href": "/docs/system-design-outline-v1"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "将重复出现的 portal 模式沉淀为可复用的内容与布局规则。"
+        }
+      ],
+      "featured": true,
+      "archived": false,
+      "markers": [],
+      "body": "## 研究目的\n\n回看过往 DSD 项目站点，提炼哪些结构最能支撑老师汇报、跨组协作与过程留痕。\n\n## 核心发现\n\n- 最有效的 portal 往往不是最花哨的页面，而是最容易回答关键问题的页面。\n- 日志、周报、会议和正式文档需要被统一纳入信息架构，而不是分散在仓库深处。\n- 仓库与职责边界越清楚，越不容易在汇报时“越权叙事”。\n\n## 推导出的设计决策\n\n- 首页必须是中枢总览，而不是产品页。\n- `project-main-web`、`project-portal`、`m2-recruitment-site` 需要明确区分。\n- 研究记录要作为正式内容类型进入 portal。\n- 内容尽量从 markdown 生成，降低后续维护成本。",
+      "sourcePath": "content/zh-CN/research/prior-dsd-portal-patterns.md"
+    },
+    {
+      "id": "log-progress-snapshot-alignment",
+      "slug": "progress-snapshot-alignment",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "Progress snapshot aligned with milestones",
+      "type": "update",
+      "date": "2026-03-27",
+      "owner": "PM",
+      "ownerRole": "PM",
+      "status": "completed",
+      "summary": "The home page progress snapshot now reflects the same milestone data and risk notes used by the dedicated progress page.",
+      "relatedTeams": [
+        "PM",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-27",
+      "links": [
+        {
+          "label": "Progress page",
+          "href": "/progress"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Milestones section",
+          "href": "/progress#milestones"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Keep the risk and next milestone cards synced with milestone updates."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Scope\n\nThis update removed the gap between the home page summary wording and the tracked milestone data.\n\n## Alignment Rules\n\n- Use the same milestone source for overview and detail pages.\n- Surface one highlighted risk instead of duplicating a second risk narrative.\n- Keep \"next milestone\" tied to actual date records, not hand-written text.\n\n## Result\n\nThe overview page remains short, but it is now easier to trust because it points back to the structured progress view.",
+      "sourcePath": "content/en/logs/progress-snapshot-alignment.md"
+    },
+    {
+      "id": "log-repo-boundary-clarification",
+      "slug": "repo-boundary-clarification",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "Repository boundaries clarified for portal narrative",
+      "type": "decision",
+      "date": "2026-03-26",
+      "owner": "M2 PM",
+      "ownerRole": "PM",
+      "status": "completed",
+      "summary": "The portal narrative now distinguishes the main product web repository, the portal repository and the archived recruitment site.",
+      "relatedTeams": [
+        "M2",
+        "PM"
+      ],
+      "relatedRepos": [
+        "project-main-web",
+        "project-portal",
+        "m2-recruitment-site"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-26",
+      "links": [
+        {
+          "label": "Repository map",
+          "href": "/architecture#repository-map"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "M2 contribution",
+          "href": "/#m2-contribution"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Keep labels and responsibility notes consistent across cards, docs and logs."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Boundary Statement\n\nThe portal is not the main product web app, and the archived recruitment site is not the current portal deliverable.\n\n## Repository Roles\n\n- `project-main-web` remains the core product-facing frontend repository.\n- `project-portal` is the process, documentation and collaboration hub maintained by M2.\n- `m2-recruitment-site` is a completed historical artifact kept for traceability.\n\n## Reason\n\nThis distinction prevents over-claiming ownership and helps reviewers understand where to look for each kind of deliverable.",
+      "sourcePath": "content/en/logs/repo-boundary-clarification.md"
+    },
+    {
+      "id": "doc-system-design-outline-v1",
+      "slug": "system-design-outline-v1",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Portal System Design Outline",
+      "type": "system-design",
+      "date": "2026-03-25",
+      "owner": "M2 Architect",
+      "ownerRole": "Architect",
+      "status": "in-review",
+      "summary": "Design outline for routed pages, generated content indexes, language fallback, markdown rendering and static holiday data.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-29",
+      "version": "v0.9",
+      "reviewStatus": "in-review",
+      "links": [
+        {
+          "label": "Calendar decision",
+          "href": "/logs/calendar-design-and-holiday-strategy"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Docs hub",
+          "href": "/docs"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Confirm content index field coverage before the final build review."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Architecture\n\nThe portal uses a routed React shell with lightweight reusable sections and content-rendering pages.\n\n## Content Pipeline\n\n- Scan markdown files under `content/<locale>/...`\n- Parse front matter into a unified index\n- Validate required fields and duplicate slugs\n- Render lists and detail pages from generated JSON\n\n## Rendering Rules\n\n- UI strings come from i18n JSON.\n- Content lookup falls back to English when the selected locale is missing.\n- Markdown headings receive stable anchors for direct linking.",
+      "sourcePath": "content/en/docs/system-design-outline-v1.md"
+    },
+    {
+      "id": "doc-interface-contract-if2",
+      "slug": "interface-contract-if2",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "IF2 Interface Contract",
+      "type": "interface",
+      "date": "2026-03-24",
+      "owner": "V2 and M2",
+      "ownerRole": "Architect",
+      "status": "in-review",
+      "summary": "Working interface contract for the IF2 fields currently consumed by monitor-side pages and portal-facing explanations.",
+      "relatedTeams": [
+        "V2",
+        "M1",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-main-web",
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable",
+        "interface"
+      ],
+      "attentionTags": [
+        "attention:V2",
+        "attention:M1",
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-24",
+      "version": "v0.6",
+      "reviewStatus": "in-review",
+      "links": [
+        {
+          "label": "Interface sync meeting",
+          "href": "/logs/interface-sync-2026-03-24"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "IF2 dependency section",
+          "href": "/architecture#if2-dependencies"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "V2",
+          "task": "Freeze the minimum field subset required for the current review flow."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Minimum Field Set\n\n| Field | Meaning | Used by |\n| --- | --- | --- |\n| `patientSessionId` | Session identifier for traceability | M1, M2 |\n| `captureTime` | Timestamp for the processed result | M1, M2 |\n| `motionScoreSummary` | High-level motion result summary | M1, M2 |\n| `reviewFlags` | Warnings or status notes for review | M2 |\n\n## Notes\n\nThis contract is intentionally scoped to the current portal and dashboard communication needs. It is not the full backend schema.",
+      "sourcePath": "content/en/docs/interface-contract-if2.md"
+    },
+    {
+      "id": "doc-meeting-minutes-index-v1",
+      "slug": "meeting-minutes-index-v1",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Meeting Minutes Index",
+      "type": "meeting-minutes",
+      "date": "2026-03-24",
+      "owner": "Vice PM",
+      "ownerRole": "Vice PM",
+      "status": "in-review",
+      "summary": "Index entry grouping formal meeting records used for project tracking and interface coordination.",
+      "relatedTeams": [
+        "PM",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "deliverable"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-24",
+      "version": "v1.0",
+      "reviewStatus": "in-review",
+      "links": [
+        {
+          "label": "Interface sync meeting",
+          "href": "/logs/interface-sync-2026-03-24"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Logs hub",
+          "href": "/logs"
+        }
+      ],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Purpose\n\nThis entry indexes meeting records so reviewers can quickly find discussion history, decisions and follow-up actions without scanning the repository manually.",
+      "sourcePath": "content/en/docs/meeting-minutes-index-v1.md"
+    },
+    {
+      "id": "meeting-interface-sync-2026-03-24",
+      "slug": "interface-sync-2026-03-24",
+      "locale": "en",
+      "collection": "meetings",
+      "routeBase": "logs",
+      "title": "Interface sync meeting for IF2 fields",
+      "type": "meeting",
+      "date": "2026-03-24",
+      "owner": "Vice PM",
+      "ownerRole": "Vice PM",
+      "status": "completed",
+      "summary": "Alignment meeting on IF2 field names, display assumptions, missing payload items and demo-critical dependencies between V2, M1 and M2.",
+      "relatedTeams": [
+        "V2",
+        "M1",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-main-web",
+        "project-portal"
+      ],
+      "sprint": "Sprint 5",
+      "tags": [
+        "meeting",
+        "interface"
+      ],
+      "attentionTags": [
+        "attention:V2",
+        "attention:M1",
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-24",
+      "links": [
+        {
+          "label": "IF2 contract",
+          "href": "/docs/interface-contract-if2"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Milestone status",
+          "href": "/progress#timeline"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "V2",
+          "task": "Freeze the minimum IF2 field subset used by the portal and dashboard review flow."
+        },
+        {
+          "owner": "M2",
+          "task": "Keep wording and data labels aligned with the agreed field names."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Meeting Information\n\n| Item | Value |\n| --- | --- |\n| Type | Interface sync |\n| Date | 2026-03-24 |\n| Platform | Online call |\n| Host | Vice PM |\n| Participants | V2, M1, M2 |\n\n## Agenda\n\n- Review current IF2 payload assumptions\n- Confirm field names needed by monitor-side views\n- Mark demo-critical missing items\n\n## Decisions\n\n- M2 will only display confirmed IF2-facing fields in portal-facing examples.\n- V2 will provide a stable minimum subset before the next checkpoint.\n- M1 and M2 will avoid inventing labels that do not exist in the agreed contract.\n\n## Action Items\n\n- [ ] V2 freeze the minimum field subset\n- [ ] M2 reflect the same names in architecture and docs\n- [ ] PM track unresolved payload questions in the risk register",
+      "sourcePath": "content/en/meetings/interface-sync-2026-03-24.md"
+    },
+    {
+      "id": "doc-requirement-analysis-v1",
+      "slug": "requirement-analysis-v1",
+      "locale": "pt",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Análise de Requisitos",
+      "type": "requirement-analysis",
+      "date": "2026-03-20",
+      "owner": "PM",
+      "ownerRole": "PM",
+      "status": "final",
+      "summary": "Análise base que define o portal como centro de relatório, documentação e colaboração, e não como site do produto.",
+      "relatedTeams": [
+        "PM",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 4",
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-20",
+      "version": "v1.0",
+      "reviewStatus": "final",
+      "links": [
+        {
+          "label": "Esboço de desenho do sistema",
+          "href": "/docs/system-design-outline-v1"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Nota de investigação",
+          "href": "/logs/prior-dsd-portal-patterns"
+        }
+      ],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Âmbito\n\nDefinir o papel, as fronteiras e a estrutura mínima de páginas do `project-portal`.\n\n## Perguntas obrigatórias\n\n- O que é o projeto no seu todo?\n- Para que serve o portal?\n- O que está sob responsabilidade da M2?\n- Onde estão os registos, marcos, documentos e entregáveis?",
+      "sourcePath": "content/pt/docs/requirement-analysis-v1.md"
+    },
+    {
+      "id": "doc-requirement-analysis-v1",
+      "slug": "requirement-analysis-v1",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Requirement Analysis",
+      "type": "requirement-analysis",
+      "date": "2026-03-20",
+      "owner": "PM",
+      "ownerRole": "PM",
+      "status": "final",
+      "summary": "Baseline requirement analysis defining the portal as a reporting, documentation and collaboration hub rather than a product site.",
+      "relatedTeams": [
+        "PM",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 4",
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-20",
+      "version": "v1.0",
+      "reviewStatus": "final",
+      "links": [
+        {
+          "label": "System design outline",
+          "href": "/docs/system-design-outline-v1"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Research note",
+          "href": "/logs/prior-dsd-portal-patterns"
+        }
+      ],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Scope\n\nDefine the role, boundaries and minimum page structure of the project portal.\n\n## Must Answer\n\n- What is the overall project?\n- What is the portal for?\n- What is M2 responsible for?\n- Where are logs, milestones, documents and deliverables located?\n\n## Constraints\n\n- The portal must not impersonate the main product web application.\n- The implementation should stay simple enough for a Vite, React and TypeScript learner to maintain.\n- Content updates should rely on markdown and generated indexes wherever possible.",
+      "sourcePath": "content/en/docs/requirement-analysis-v1.md"
+    },
+    {
+      "id": "doc-requirement-analysis-v1",
+      "slug": "requirement-analysis-v1",
+      "locale": "zh-CN",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "需求分析",
+      "type": "requirement-analysis",
+      "date": "2026-03-20",
+      "owner": "PM",
+      "ownerRole": "PM",
+      "status": "final",
+      "summary": "定义 portal 的角色、边界与最小页面结构，明确它是汇报、文档与协作中枢，而不是产品站。",
+      "relatedTeams": [
+        "PM",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "sprint": "Sprint 4",
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-20",
+      "version": "v1.0",
+      "reviewStatus": "final",
+      "links": [
+        {
+          "label": "系统设计提纲",
+          "href": "/docs/system-design-outline-v1"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "调研记录",
+          "href": "/logs/prior-dsd-portal-patterns"
+        }
+      ],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## 范围\n\n定义 project-portal 的定位、边界、信息架构与最低实现范围。\n\n## 必须回答的问题\n\n- 这是什么项目？\n- portal 是做什么的？\n- M2 负责什么？\n- 日志、里程碑、文档和交付物在哪里？\n\n## 约束\n\n- portal 不能冒充主产品网页。\n- 实现必须足够简单，适合正在学习 Vite、React、TypeScript 的同学继续维护。\n- 内容更新应优先通过 markdown 和生成脚本完成。",
+      "sourcePath": "content/zh-CN/docs/requirement-analysis-v1.md"
+    },
+    {
+      "id": "doc-recruitment-site-retrospective-archive",
+      "slug": "recruitment-site-retrospective-archive",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Recruitment Site Retrospective Archive",
+      "type": "research",
+      "date": "2026-02-12",
+      "owner": "M2",
+      "ownerRole": "PM",
+      "status": "archived",
+      "summary": "Archived retrospective note for the earlier M2 recruitment site, kept as a historical outcome rather than part of the portal's main narrative.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "m2-recruitment-site"
+      ],
+      "sprint": "Sprint 2",
+      "tags": [
+        "research"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-02-12",
+      "version": "v1.0",
+      "reviewStatus": "archived",
+      "links": [
+        {
+          "label": "Recruitment repo section",
+          "href": "/architecture#repo-m2-recruitment-site"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "M2 contribution",
+          "href": "/#m2-contribution"
+        }
+      ],
+      "actionItems": [],
+      "featured": false,
+      "archived": true,
+      "markers": [],
+      "body": "## Archive Note\n\nThis record remains visible so the earlier recruitment deliverable is preserved, but it should not compete with the portal's current reporting and collaboration role.",
+      "sourcePath": "content/en/docs/recruitment-site-retrospective-archive.md"
+    }
+  ],
+  "taxonomies": {
+    "types": [
+      {
+        "value": "decision",
+        "count": 2
+      },
+      {
+        "value": "demo",
+        "count": 1
+      },
+      {
+        "value": "demo-assets",
+        "count": 1
+      },
+      {
+        "value": "interface",
+        "count": 1
+      },
+      {
+        "value": "meeting",
+        "count": 2
+      },
+      {
+        "value": "meeting-minutes",
+        "count": 1
+      },
+      {
+        "value": "presentation",
+        "count": 1
+      },
+      {
+        "value": "requirement-analysis",
+        "count": 3
+      },
+      {
+        "value": "research",
+        "count": 5
+      },
+      {
+        "value": "system-design",
+        "count": 2
+      },
+      {
+        "value": "testing",
+        "count": 1
+      },
+      {
+        "value": "update",
+        "count": 5
+      },
+      {
+        "value": "weekly-report",
+        "count": 3
+      }
+    ],
+    "tags": [
+      {
+        "value": "deliverable",
+        "count": 20
+      },
+      {
+        "value": "demo",
+        "count": 2
+      },
+      {
+        "value": "interface",
+        "count": 2
+      },
+      {
+        "value": "meeting",
+        "count": 2
+      },
+      {
+        "value": "milestone",
+        "count": 10
+      },
+      {
+        "value": "research",
+        "count": 5
+      },
+      {
+        "value": "template",
+        "count": 5
+      },
+      {
+        "value": "test",
+        "count": 1
+      },
+      {
+        "value": "update",
+        "count": 1
+      },
+      {
+        "value": "weekly-report",
+        "count": 1
+      }
+    ],
+    "attentionTags": [
+      {
+        "value": "attention:M1",
+        "count": 2
+      },
+      {
+        "value": "attention:M2",
+        "count": 28
+      },
+      {
+        "value": "attention:V2",
+        "count": 2
+      }
+    ],
+    "teams": [
+      {
+        "value": "M1",
+        "count": 3
+      },
+      {
+        "value": "M2",
+        "count": 28
+      },
+      {
+        "value": "PM",
+        "count": 11
+      },
+      {
+        "value": "V2",
+        "count": 3
+      }
+    ],
+    "years": [
+      {
+        "value": "2026",
+        "count": 28
+      }
+    ],
+    "sprints": [
+      {
+        "value": "Sprint 2",
+        "count": 1
+      },
+      {
+        "value": "Sprint 4",
+        "count": 3
+      },
+      {
+        "value": "Sprint 5",
+        "count": 19
+      },
+      {
+        "value": "Template",
+        "count": 5
+      }
+    ],
+    "collections": [
+      {
+        "value": "docs",
+        "count": 13
+      },
+      {
+        "value": "logs",
+        "count": 11
+      },
+      {
+        "value": "meetings",
+        "count": 1
+      },
+      {
+        "value": "research",
+        "count": 2
+      },
+      {
+        "value": "weekly-reports",
+        "count": 1
+      }
+    ]
+  }
+}

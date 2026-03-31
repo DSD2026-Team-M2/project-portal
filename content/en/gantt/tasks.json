@@ -1,0 +1,79 @@
+{
+  "sample": true,
+  "label": "SAMPLE",
+  "note": "Illustrative gantt structure for portal planning layout. Replace with confirmed PM-maintained schedule when available.",
+  "tasks": [
+    {
+      "id": "pm-requirement-analysis",
+      "name": "Requirement analysis alignment",
+      "role": "PM",
+      "owner": "Yihang LI",
+      "start": "2026-03-16",
+      "end": "2026-03-27",
+      "progress": 100,
+      "status": "completed",
+      "dependencies": [],
+      "category": "planning"
+    },
+    {
+      "id": "vp-prototype-direction",
+      "name": "Portal structure and prototype direction",
+      "role": "Vice PM / Programmer",
+      "owner": "Kika Vasconcelos Francisca",
+      "start": "2026-03-23",
+      "end": "2026-04-10",
+      "progress": 62,
+      "status": "in-progress",
+      "dependencies": ["pm-requirement-analysis"],
+      "category": "coordination"
+    },
+    {
+      "id": "prog-gantt-panel",
+      "name": "Progress view and gantt integration",
+      "role": "Programmer",
+      "owner": "Duhai XU",
+      "start": "2026-03-30",
+      "end": "2026-04-17",
+      "progress": 54,
+      "status": "in-progress",
+      "dependencies": ["vp-prototype-direction"],
+      "category": "frontend"
+    },
+    {
+      "id": "webmaster-portal-maintenance",
+      "name": "Portal shell and content system maintenance",
+      "role": "Webmaster",
+      "owner": "Congming LI",
+      "start": "2026-03-23",
+      "end": "2026-05-22",
+      "progress": 41,
+      "status": "in-progress",
+      "dependencies": ["pm-requirement-analysis"],
+      "category": "frontend"
+    },
+    {
+      "id": "sa-ia-revision",
+      "name": "Information architecture revision",
+      "role": "S.A.",
+      "owner": "Shu WANG",
+      "start": "2026-03-23",
+      "end": "2026-04-10",
+      "progress": 71,
+      "status": "in-progress",
+      "dependencies": ["pm-requirement-analysis"],
+      "category": "analysis"
+    },
+    {
+      "id": "m2-demo-prep",
+      "name": "Demo path and evidence preparation",
+      "role": "M2",
+      "owner": "M2 collaboration",
+      "start": "2026-04-07",
+      "end": "2026-04-24",
+      "progress": 24,
+      "status": "at-risk",
+      "dependencies": ["prog-gantt-panel", "webmaster-portal-maintenance"],
+      "category": "delivery"
+    }
+  ]
+}

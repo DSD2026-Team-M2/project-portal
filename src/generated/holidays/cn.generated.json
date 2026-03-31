@@ -1,0 +1,94 @@
+{
+  "generatedAt": "2026-03-31T12:36:57.153Z",
+  "country": "CN",
+  "years": [
+    2026,
+    2027
+  ],
+  "events": [
+    {
+      "id": "2026-01-01-holiday-cn",
+      "title": "元旦",
+      "date": "2026-01-01",
+      "type": "holiday-cn",
+      "summary": "New Year's Day"
+    },
+    {
+      "id": "2026-02-17-holiday-cn",
+      "title": "春节",
+      "date": "2026-02-17",
+      "type": "holiday-cn",
+      "summary": "Chinese New Year (Spring Festival)"
+    },
+    {
+      "id": "2026-05-01-holiday-cn",
+      "title": "劳动节",
+      "date": "2026-05-01",
+      "type": "holiday-cn",
+      "summary": "Labour Day"
+    },
+    {
+      "id": "2026-06-19-holiday-cn",
+      "title": "端午节",
+      "date": "2026-06-19",
+      "type": "holiday-cn",
+      "summary": "Dragon Boat Festival"
+    },
+    {
+      "id": "2026-09-25-holiday-cn",
+      "title": "中秋节",
+      "date": "2026-09-25",
+      "type": "holiday-cn",
+      "summary": "Mid-Autumn Festival"
+    },
+    {
+      "id": "2026-10-01-holiday-cn",
+      "title": "国庆节",
+      "date": "2026-10-01",
+      "type": "holiday-cn",
+      "summary": "National Day"
+    },
+    {
+      "id": "2027-01-01-holiday-cn",
+      "title": "元旦",
+      "date": "2027-01-01",
+      "type": "holiday-cn",
+      "summary": "New Year's Day"
+    },
+    {
+      "id": "2027-02-06-holiday-cn",
+      "title": "春节",
+      "date": "2027-02-06",
+      "type": "holiday-cn",
+      "summary": "Chinese New Year (Spring Festival)"
+    },
+    {
+      "id": "2027-05-01-holiday-cn",
+      "title": "劳动节",
+      "date": "2027-05-01",
+      "type": "holiday-cn",
+      "summary": "Labour Day"
+    },
+    {
+      "id": "2027-06-09-holiday-cn",
+      "title": "端午节",
+      "date": "2027-06-09",
+      "type": "holiday-cn",
+      "summary": "Dragon Boat Festival"
+    },
+    {
+      "id": "2027-09-15-holiday-cn",
+      "title": "中秋节",
+      "date": "2027-09-15",
+      "type": "holiday-cn",
+      "summary": "Mid-Autumn Festival"
+    },
+    {
+      "id": "2027-10-01-holiday-cn",
+      "title": "国庆节",
+      "date": "2027-10-01",
+      "type": "holiday-cn",
+      "summary": "National Day"
+    }
+  ]
+}
