@@ -12,7 +12,6 @@ relatedTeams:
   - M2
 relatedRepos:
   - m2-recruitment-site
-sprint: Sprint 2
 tags:
   - research
 attentionTags:

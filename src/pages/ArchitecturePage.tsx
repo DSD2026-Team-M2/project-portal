@@ -1,7 +1,7 @@
 import { ArrowRightLeft, Database, MonitorSmartphone, RadioTower, Waypoints } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
-import { externalLinks } from "../config/links";
+import { externalLinks, historicalReferenceLinks, projectResourceLinks, teamResourceLinks } from "../config/links";
 import {
   interfaces,
   layerSummaries,
@@ -27,9 +27,80 @@ const layerIconMap = {
   monitor: MonitorSmartphone,
 } as const;
 
+type ResourceSlot = {
+  label: string;
+  href?: string;
+};
+
+type ResourcePlaceholderPillProps = {
+  slot: ResourceSlot;
+  pendingLabel: string;
+};
+
+function ResourcePlaceholderPill({ slot, pendingLabel }: ResourcePlaceholderPillProps) {
+  if (slot.href) {
+    return <ExternalLinkPill href={slot.href}>{slot.label}</ExternalLinkPill>;
+  }
+
+  return (
+    <span className="placeholder-link-pill" aria-disabled="true">
+      <span className="min-w-0 truncate">{slot.label}</span>
+      <span className="text-[10px] font-semibold uppercase tracking-[0.14em] text-slate-400">{pendingLabel}</span>
+    </span>
+  );
+}
+
 export function ArchitecturePage() {
   const { t, i18n } = useTranslation();
   const language = (i18n.resolvedLanguage ?? i18n.language) as SupportedLanguage;
+
+  const teamResourceSlots: Record<string, { repo: ResourceSlot; overview: ResourceSlot }> = {
+    S1: {
+      repo: teamResourceLinks.S1.repo ?? { label: t("architecture.linkSlots.buttons.teamRepo") },
+      overview: teamResourceLinks.S1.overview ?? { label: t("architecture.linkSlots.buttons.teamOverview") },
+    },
+    S2: {
+      repo: teamResourceLinks.S2.repo ?? { label: t("architecture.linkSlots.buttons.teamRepo") },
+      overview: teamResourceLinks.S2.overview ?? { label: t("architecture.linkSlots.buttons.teamOverview") },
+    },
+    V1: {
+      repo: teamResourceLinks.V1.repo ?? { label: t("architecture.linkSlots.buttons.teamRepo") },
+      overview: teamResourceLinks.V1.overview ?? { label: t("architecture.linkSlots.buttons.teamOverview") },
+    },
+    V2: {
+      repo: teamResourceLinks.V2.repo ?? { label: t("architecture.linkSlots.buttons.teamRepo") },
+      overview: teamResourceLinks.V2.overview ?? { label: t("architecture.linkSlots.buttons.teamOverview") },
+    },
+    M1: {
+      repo: teamResourceLinks.M1.repo ?? { label: t("architecture.linkSlots.buttons.teamRepo") },
+      overview: teamResourceLinks.M1.overview ?? { label: t("architecture.linkSlots.buttons.teamOverview") },
+    },
+    M2: {
+      repo: teamResourceLinks.M2.repo ?? { label: "project-portal", href: externalLinks.portalRepo.href },
+      overview: teamResourceLinks.M2.overview ?? { label: t("architecture.linkSlots.buttons.portalOverview"), href: "/" },
+    },
+  };
+
+  const projectResourceSlots = [
+    {
+      id: "project-main",
+      title: t("architecture.linkSlots.projectCards.main.title"),
+      summary: t("architecture.linkSlots.projectCards.main.summary"),
+      slots: [
+        projectResourceLinks.main.repo ?? { label: t("architecture.linkSlots.buttons.projectRepo") },
+        projectResourceLinks.main.overview ?? { label: t("architecture.linkSlots.buttons.projectOverview") },
+      ],
+    },
+    {
+      id: "portal",
+      title: "project-portal",
+      summary: t("architecture.linkSlots.projectCards.portal.summary"),
+      slots: [
+        projectResourceLinks.portal.repo ?? { label: "project-portal", href: externalLinks.portalRepo.href },
+        projectResourceLinks.portal.overview ?? { label: t("architecture.linkSlots.buttons.portalOverview"), href: "/" },
+      ],
+    },
+  ];
 
   useDocumentTitle("meta.pages.architecture.title", { descriptionKey: "meta.pages.architecture.description" });
 
@@ -128,6 +199,21 @@ export function ArchitecturePage() {
                     </div>
                   </div>
                   {team.directInterfaceWithM2 ? <AttentionTag label={t("architecture.directM2Link")} /> : null}
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                      {t("architecture.linkSlots.teamLinks")}
+                    </p>
+                    <div className="mt-2 flex flex-wrap gap-2">
+                      <ResourcePlaceholderPill
+                        slot={teamResourceSlots[team.id].repo}
+                        pendingLabel={t("architecture.linkSlots.pending")}
+                      />
+                      <ResourcePlaceholderPill
+                        slot={teamResourceSlots[team.id].overview}
+                        pendingLabel={t("architecture.linkSlots.pending")}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
             </article>
@@ -169,6 +255,62 @@ export function ArchitecturePage() {
               </article>
             );
           })}
+        </div>
+      </RevealOnScroll>
+
+      <RevealOnScroll as="section" id="reference-links" className="section-shell anchor-target p-6 sm:p-8">
+        <SectionTitle title={t("architecture.linkSlots.title")} />
+        <SectionLead>{t("architecture.linkSlots.lead")}</SectionLead>
+
+        <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
+          <div className="space-y-4">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                {t("architecture.linkSlots.projectLinks")}
+              </p>
+              <div className="mt-3 space-y-3">
+                {projectResourceSlots.map((card) => (
+                  <article key={card.id} className="surface-card p-5">
+                    <p className="text-lg font-semibold text-slate-950">{card.title}</p>
+                    <p className="mt-2 text-sm leading-7 text-slate-600">{card.summary}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {card.slots.map((slot) => (
+                        <ResourcePlaceholderPill
+                          key={`${card.id}-${slot.label}`}
+                          slot={slot}
+                          pendingLabel={t("architecture.linkSlots.pending")}
+                        />
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+              {t("architecture.linkSlots.historicalLinks")}
+            </p>
+            <div className="mt-3 grid gap-3 md:grid-cols-2">
+              {historicalReferenceLinks.map((card) => (
+                <article key={card.id} className="surface-card p-5">
+                  <p className="text-base font-semibold text-slate-950">{card.label}</p>
+                  <p className="mt-2 text-sm leading-7 text-slate-600">{t("architecture.linkSlots.historicalCardSummary")}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    <ResourcePlaceholderPill
+                      slot={card.repo ?? { label: t("architecture.linkSlots.buttons.teamRepo") }}
+                      pendingLabel={t("architecture.linkSlots.pending")}
+                    />
+                    <ResourcePlaceholderPill
+                      slot={card.overview ?? { label: t("architecture.linkSlots.buttons.teamOverview") }}
+                      pendingLabel={t("architecture.linkSlots.pending")}
+                    />
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
         </div>
       </RevealOnScroll>
 

@@ -8,7 +8,6 @@ import {
   progressDatasetMeta,
   progressOverview,
   riskRegister,
-  sprintDigests,
 } from "../data/progressData";
 import type { SupportedLanguage } from "../i18n/language";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
@@ -154,64 +153,6 @@ export function ProgressPage() {
               ))}
             </div>
           </>
-        )}
-      </RevealOnScroll>
-
-      <RevealOnScroll as="section" id="sprint-summaries" className="section-shell anchor-target p-6 sm:p-8">
-        <SectionTitle title={t("progress.sprints.title")} />
-        <SectionLead>{t("progress.sprints.lead")}</SectionLead>
-
-        {hideSimulatedProgress ? (
-          <div className="callout-box mt-6">
-            <p className="text-sm leading-7 text-slate-700">{t("progress.hiddenSections.sprints")}</p>
-          </div>
-        ) : (
-          <div className="mt-6 grid gap-4">
-            {sprintDigests.map((sprint) => (
-              <article key={sprint.id} className="surface-card p-5 sm:p-6">
-                <div className="flex flex-wrap items-center justify-between gap-3">
-                  <h3 className="text-2xl font-semibold tracking-tight text-slate-950">{sprint.id}</h3>
-                  {progressDatasetMeta.sample ? <StaticTag label={progressDatasetMeta.label} tone="violet" /> : null}
-                </div>
-                <p className="mt-4 text-sm leading-7 text-slate-700">{resolveLocalizedText(sprint.goal, language)}</p>
-
-                <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("common.completed")}</p>
-                    <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
-                      {sprint.completed.map((item) => (
-                        <li key={item.en}>• {resolveLocalizedText(item, language)}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("progress.sprints.incomplete")}</p>
-                    <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
-                      {sprint.incomplete.map((item) => (
-                        <li key={item.en}>• {resolveLocalizedText(item, language)}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("progress.sprints.blockers")}</p>
-                    <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
-                      {sprint.blockers.map((item) => (
-                        <li key={item.en}>• {resolveLocalizedText(item, language)}</li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("progress.sprints.nextStep")}</p>
-                    <ul className="mt-3 space-y-2 text-sm leading-7 text-slate-600">
-                      {sprint.nextStep.map((item) => (
-                        <li key={item.en}>• {resolveLocalizedText(item, language)}</li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
         )}
       </RevealOnScroll>
 

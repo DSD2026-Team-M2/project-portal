@@ -7,13 +7,12 @@ date: 2026-03-30
 owner: PM
 ownerRole: PM
 status: in-review
-summary: Index entry for weekly reports that summarize sprint work, blockers and next steps.
+summary: Index entry for weekly reports that summarize progress, blockers and next steps.
 relatedTeams:
   - PM
   - M2
 relatedRepos:
   - project-portal
-sprint: Sprint 5
 tags:
   - deliverable
 attentionTags:

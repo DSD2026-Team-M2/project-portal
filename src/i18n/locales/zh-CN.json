@@ -9,7 +9,7 @@
       },
       "progress": {
         "title": "进度",
-        "description": "时间线、甘特图、里程碑、迭代摘要与风险可见性。"
+        "description": "时间线、甘特图、里程碑与风险可见性。"
       },
       "logs": {
         "title": "日志",
@@ -77,9 +77,7 @@
   "common": {
     "all": "全部",
     "currentIteration": "当前迭代",
-    "currentSprint": "当前 Sprint",
     "lastUpdated": "最后更新",
-    "thisSprintGoal": "本轮目标",
     "completed": "已完成",
     "inProgress": "进行中",
     "nextMilestone": "下一个里程碑",
@@ -105,7 +103,6 @@
     "bionicAria": "切换较长英文段落的仿生阅读模式",
     "metadata": "元数据",
     "owner": "负责人",
-    "sprint": "Sprint",
     "relatedTeams": "相关团队",
     "relatedRepos": "相关仓库",
     "version": "版本",
@@ -157,84 +154,134 @@
   "eventTypes": {
     "milestone": "里程碑",
     "meeting": "会议",
+    "course": "课程",
     "deadline": "截止",
-    "holiday-cn": "中国假期",
-    "holiday-pt": "葡萄牙假期",
-    "demo": "Demo",
-    "sprint-boundary": "Sprint 边界"
+    "holiday-cn": "🇨🇳 CN 假日",
+    "holiday-pt": "🇵🇹 PT 假日",
+    "demo": "Demo"
   },
   "home": {
-    "topStatusLead": "一个用于课程汇报、跨组协作、文档索引与过程留痕的中枢 portal。",
-    "statusBar": {
-      "title": "Portal 状态",
-      "iterationPending": "本次提交版隐藏了 PM 正式排期数据。"
+    "hero": {
+      "eyebrow": "总览看板",
+      "subtitle": "一个服务于跨组肢体运动识别项目的汇报、协作与文档中枢。",
+      "boundary": "Portal 只聚焦汇报、协调与留痕，不替代完整产品前端。",
+      "riskChip": "{{count}} 个风险跟踪中",
+      "status": {
+        "phase": "当前阶段",
+        "focus": "当前重点",
+        "updated": "最近更新",
+        "maintainedBy": "维护方"
+      },
+      "focusValue": "Portal 外壳、文档流与评审就绪度",
+      "maintainerValue": "M2",
+      "systemLabel": "系统总览",
+      "systemSummary": "Sensor · Server · Monitor",
+      "scroll": "继续向下看摘要",
+      "quickLinks": {
+        "mainWeb": "主站仓库",
+        "portalRepo": "Portal 仓库"
+      }
+    },
+    "snapshot": {
+      "title": "当前总览",
+      "subtitle": "快速查看项目定位、Portal 边界与当前状态。"
+    },
+    "hub": {
+      "title": "Portal 入口",
+      "subtitle": "从这里进入进度、日志、文档、架构、日历和团队页面。",
+      "emptyDetail": "暂无可展示内容",
+      "stats": {
+        "logs": "{{count}} 条记录",
+        "docs": "{{count}} 份文档",
+        "calendar": "{{count}} 个近期事件"
+      }
     },
     "positioning": {
       "title": "项目定位",
-      "lead": "首页先回答项目是什么、portal 是什么，以及 M2 的可见边界在哪里。"
-    },
-    "summaryCards": {
-      "system": {
-        "title": "系统"
-      },
-      "progress": {
-        "title": "进度"
-      },
-      "docs": {
-        "title": "文档"
-      },
-      "teams": {
-        "title": "团队"
+      "rows": {
+        "project": {
+          "title": "Project",
+          "text": "Limb Motion Recognition and Assistant 横跨感知、后端处理与监测端交付，由 6 个小组共同推进。",
+          "stat": "3 层 / 6 组"
+        },
+        "portal": {
+          "title": "Portal",
+          "text": "这个站点把汇报、日志、文档和协作记录收进一个面向评审的统一入口。",
+          "stat": "汇报 / 文档 / 日志"
+        },
+        "m2": {
+          "title": "M2 scope",
+          "text": "M2 负责 portal、总览摘要页和监测端汇报支持，而不是整个产品网页。",
+          "stat": "M2 汇报层"
+        }
       }
     },
-    "systemMap": {
-      "title": "系统结构摘要",
-      "lead": "首页只保留结构摘要，用层级、接口与仓库边界解释系统，而不是堆满同等级小卡片。",
-      "relatedRepos": "相关仓库",
-      "nodeDetail": "当前节点"
-    },
     "progress": {
-      "title": "进度摘要",
-      "lead": "首页只展示当前阶段、下一动作与重点风险，并把完整信息交给进度页。",
-      "pendingNote": "本次提交版暂时隐藏了正式排期、里程碑和 blocker 细节；进度页结构已经准备好，后续可直接接入 PM 维护的数据。"
+      "title": "进度预览",
+      "summaryLabel": "摘要",
+      "summaryLine": "当前重点包括阶段进展、文档更新与评审准备。",
+      "blockersValue": "{{count}} 个关注项"
     },
-    "latestUpdates": {
-      "title": "最新更新",
-      "lead": "更新流采用列表式阅读，让老师和队友能快速扫读日期、类型、owner 与摘要。"
+    "logs": {
+      "title": "日志预览",
+      "subtitle": "最近记录的更新",
+      "empty": "暂时还没有日志记录。"
     },
-    "deliverables": {
-      "title": "文档中心预览",
-      "lead": "文档页采用正式列表，而不是小卡片陈列。"
+    "docs": {
+      "title": "文档预览",
+      "subtitle": "近期重点文档",
+      "empty": "暂时还没有已索引文档。"
     },
-    "teams": {
-      "title": "团队与仓库",
-      "lead": "团队关系和仓库链接放在一起展示，但清楚区分职责说明与实际 repo 跳转。",
-      "teamLinks": "团队链接",
-      "repositoryLinks": "仓库链接"
+    "architecture": {
+      "title": "架构预览",
+      "summary": "展示项目中的关键接口与协作关系。",
+      "points": {
+        "if1": {
+          "title": "Sensor 到 Server",
+          "summary": "IF1 把 S1、S2 校验后的传感输出送入服务端流水线。"
+        },
+        "if2": {
+          "title": "Server 到 Monitor",
+          "summary": "IF2 把 V2 的处理结果暴露给 M1 与 M2 的监测端视图。"
+        },
+        "m2": {
+          "title": "M2 汇报层",
+          "summary": "Portal 页面、文档、日志和日历都留在 monitor 侧，作为可追踪的汇报界面。"
+        }
+      }
     },
-    "m2": {
-      "title": "M2 贡献",
-      "lead": "M2 作为 portal 维护方保持清晰可见，但不会冒领整个产品前端。",
-      "responsibilities": "职责",
-      "dependencies": "依赖",
-      "completed": "当前已覆盖",
-      "uncovered": "当前未覆盖"
+    "calendar": {
+      "title": "日历预览",
+      "subtitle": "本月关键事件",
+      "holidayHint": "完整日历里也包含 🇨🇳 CN 和 🇵🇹 PT 假期。",
+      "empty": "暂时没有可展示的近期事件。"
+    },
+    "team": {
+      "title": "成员预览",
+      "subtitle": "角色覆盖与时区交接",
+      "membersLabel": "核心成员",
+      "membersValue": "{{count}} 名核心成员",
+      "rolesLabel": "角色覆盖",
+      "rolesValue": "{{count}} 个有效角色标签",
+      "timezonesLabel": "时区",
+      "timezonesValue": "🇨🇳 CN / 🇵🇹 PT",
+      "summary": "团队页面也展示了 {{faculty}} 位教师指导角色和 {{ai}} 个 AI 协作支持。"
     }
   },
   "progress": {
     "overview": {
       "title": "进度概览",
-      "lead": "进度页聚焦时间维度、阶段状态和排期说明，不重复首页总览。",
+      "lead": "查看当前阶段、里程碑、风险与整体排期情况。",
       "phase": "当前阶段",
       "nextMilestone": "下一个里程碑",
       "goal": "阶段目标",
       "risk": "当前风险"
     },
-    "hiddenDataNote": "本次提交版隐藏了正式排期数据；路由结构、页面框架和内容流水线已经准备好，后续可直接接入 PM 维护的记录。",
+    "hiddenDataNote": "正式排期数据将在确认后补充更新。",
     "gantt": {
       "kicker": "排期视图",
       "title": "甘特图与任务表",
-      "lead": "portal 改为使用数据驱动的甘特图，而不是假 sprint 卡片；在 PM 正式排期导入前，示例标记会保持可见。",
+      "lead": "通过甘特图和任务表查看当前排期与阶段安排。",
       "filters": "按角色和状态筛选",
       "legend": "图例",
       "columns": {
@@ -244,10 +291,9 @@
       }
     },
     "hiddenSections": {
-      "gantt": "甘特图能力已经接好，但当前提交版隐藏了示例排期数据。",
-      "milestones": "里程碑卡片会在 PM 发布正式记录后显示。",
-      "sprints": "迭代摘要会在确认后的进度记录可用时恢复显示。",
-      "risks": "风险登记会在团队发布确认后的条目后恢复显示。"
+      "gantt": "甘特图将在确认后的排期数据补充后显示。",
+      "milestones": "里程碑内容将在正式记录发布后更新。",
+      "risks": "风险登记将在团队确认相关条目后更新。"
     },
     "filters": {
       "all": "全部",
@@ -257,15 +303,8 @@
     },
     "milestones": {
       "title": "里程碑列表",
-      "lead": "里程碑保持日期、owner、状态与证据链接可读，而不是退化成大表格。",
+      "lead": "查看各个里程碑的日期、负责人、状态与相关证据。",
       "evidence": "打开证据"
-    },
-    "sprints": {
-      "title": "迭代摘要",
-      "lead": "迭代摘要展示目标、已完成、未完成、阻塞与下一步。",
-      "incomplete": "未完成",
-      "blockers": "阻塞",
-      "nextStep": "下一步"
     },
     "risks": {
       "title": "风险登记",
@@ -285,7 +324,6 @@
     "filters": {
       "type": "类型",
       "ownerRole": "角色",
-      "sprint": "Sprint",
       "team": "相关团队",
       "tag": "标签",
       "attention": "关注标签",
@@ -295,7 +333,7 @@
   },
   "docs": {
     "title": "文档与交付物",
-    "lead": "正式文档按分类、评审状态和归档状态组织，并使用更适合扫读的大列表样式。",
+    "lead": "按分类、评审状态和归档状态浏览项目文档与交付物。",
     "current": {
       "title": "当前文档",
       "lead": "当前筛选下共有 {{count}} 条现行文档。"
@@ -319,7 +357,7 @@
   "architecture": {
     "overview": {
       "title": "整体系统概览",
-      "lead": "架构页通过层级、职责与交接逻辑讲清结构，而不是依赖复杂交互图工具。"
+      "lead": "从系统层级、团队职责和接口交接理解整体结构。"
     },
     "teamMatrix": {
       "title": "团队职责矩阵",
@@ -328,6 +366,31 @@
     "repositories": {
       "title": "仓库地图",
       "lead": "仓库地图保持角色、维护方、状态和边界清楚。"
+    },
+    "linkSlots": {
+      "title": "外部入口位",
+      "lead": "汇总相关团队、项目仓库与外部入口。",
+      "teamLinks": "外部链接",
+      "projectLinks": "项目级链接",
+      "historicalLinks": "往年调研参考",
+      "historicalCardSummary": "往年队伍仓库和项目总览页的参考入口。",
+      "pending": "待补",
+      "buttons": {
+        "teamRepo": "GitHub 仓库",
+        "teamOverview": "项目总览页",
+        "projectRepo": "项目总仓库",
+        "projectOverview": "项目总览",
+        "portalOverview": "Portal 总览"
+      },
+      "projectCards": {
+        "main": {
+          "title": "项目总仓库",
+          "summary": "项目总仓库及其总览页面入口。"
+        },
+        "portal": {
+          "summary": "当前 portal 仓库与 portal 首页入口。"
+        }
+      }
     },
     "interfaces": {
       "title": "接口依赖",
@@ -342,7 +405,7 @@
     },
     "roles": {
       "title": "角色矩阵",
-      "lead": "portal 工作同时映射到 PM、协调、架构、实现与测试职责。"
+      "lead": "展示 portal 工作中涉及的核心角色与职责分工。"
     },
     "directM2Link": "与 M2 直接相关"
   },
@@ -350,13 +413,13 @@
     "title": "项目日历",
     "lead": "一个克制、清楚的项目月历，用于展示里程碑、会议、截止日期、Demo 与中葡公共假期。",
     "timezones": {
-      "china": "中国时间",
-      "portugal": "葡萄牙时间",
+      "china": "🇨🇳 中国时间",
+      "portugal": "🇵🇹 葡萄牙时间",
       "local": "本地时间"
     },
     "monthView": {
       "title": "月视图",
-      "lead": "月历只保留必要能力：翻月、按类型筛选，以及查看所选日期与事件的详情。"
+      "lead": "查看本月项目事件，并按类型筛选。"
     },
     "today": "今天",
     "prevMonth": "上个月",
@@ -368,17 +431,21 @@
     "emptySelection": "请选择某一天或某个事件查看详情。",
     "sampleEventNote": "项目事件在 PM 正式排期确认前会明确标记为示例，避免被误读为正式项目历史。",
     "staticHolidayNoteTitle": "假期数据",
-    "staticHolidayNote": "中国与葡萄牙假期会预先生成到静态 JSON 中，因此站点不依赖运行时在线请求。"
+    "staticHolidayNote": "🇨🇳 CN 与 🇵🇹 PT 假期会预先生成到静态 JSON 中，因此站点不依赖运行时在线请求。"
   },
   "team": {
     "title": "团队成员",
-    "lead": "本页展示负责维护 portal 的 M2 成员、工作重点以及跨时区协作背景。",
+    "lead": "本页展示核心 M2 成员、教师指导角色以及当前使用的 AI 协作工具。",
     "overview": "团队概览",
     "crossTimezone": "跨时区协作",
     "membersTitle": "成员目录",
-    "membersLead": "每张成员卡都聚焦职责、时区与 contribution focus，而不是做成社交式 profile wall。",
+    "membersLead": "成员卡展示当前职责、时区与主要工作内容。",
+    "facultyTitle": "教师指导",
+    "facultyLead": "展示项目教师信息与相关指导角色。",
+    "aiTitle": "AI 协作支持",
+    "aiLead": "这部分用于记录当前实际参与起草、编码、维护与流程加速的 AI 工具，方便说明工作方式。",
     "rolesTitle": "角色职责摘要",
-    "rolesLead": "这一部分从维护 portal 的角度补充架构页中的角色矩阵。",
+    "rolesLead": "汇总团队当前承担的主要职责。",
     "timezonesTitle": "跨时区协作说明",
     "timezonesLead": "由于 portal 的协作与排期经常涉及中葡两地，因此相关时区需要持续可见。"
   },
@@ -400,10 +467,23 @@
     "backHome": "返回首页"
   },
   "footer": {
+    "title": "M2 项目页脚",
+    "subtitle": "把文档入口、进度回顾和跨组导航收进同一个更清楚的底栏。",
     "description": "一个由 M2 维护、以文档和协作为中心的项目门户，用于汇报、索引与可追溯交付。",
+    "sitemapTitle": "页面地图",
+    "sitemapDescription": "在评审或浏览 portal 时，可以从这里快速跳到主要页面区域。",
+    "relatedTitle": "相关链接",
+    "groups": {
+      "overview": "总览与规划",
+      "records": "记录与证据",
+      "collaboration": "团队与支持"
+    },
     "maintainedBy": "维护方",
     "lastUpdated": "最后更新",
     "license": "许可证",
-    "relatedOrg": "相关组织"
+    "relatedOrg": "相关组织",
+    "maintained": "由 M2 维护",
+    "copyright": "DSD 2025-2026 项目门户",
+    "language": "语言"
   }
 }

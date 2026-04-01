@@ -15,7 +15,6 @@ relatedTeams:
 relatedRepos:
   - project-main-web
   - project-portal
-sprint: Sprint 5
 tags:
   - meeting
   - interface

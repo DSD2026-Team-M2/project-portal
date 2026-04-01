@@ -22,7 +22,6 @@ export function LogsPage() {
 
   const [typeFilter, setTypeFilter] = useState("all");
   const [ownerRoleFilter, setOwnerRoleFilter] = useState("all");
-  const [sprintFilter, setSprintFilter] = useState("all");
   const [teamFilter, setTeamFilter] = useState("all");
   const [tagFilter, setTagFilter] = useState("all");
   const [attentionFilter, setAttentionFilter] = useState("all");
@@ -33,7 +32,6 @@ export function LogsPage() {
     return {
       types: unique(entries.map((entry) => entry.type)),
       ownerRoles: unique(entries.map((entry) => entry.ownerRole)),
-      sprints: unique(entries.map((entry) => entry.sprint)),
       teams: unique(entries.flatMap((entry) => entry.relatedTeams)),
       tags: unique(entries.flatMap((entry) => entry.tags)),
       attention: unique(entries.flatMap((entry) => entry.attentionTags)),
@@ -43,14 +41,13 @@ export function LogsPage() {
   const filteredEntries = entries.filter((entry) => {
     const matchesType = typeFilter === "all" || entry.type === typeFilter;
     const matchesRole = ownerRoleFilter === "all" || entry.ownerRole === ownerRoleFilter;
-    const matchesSprint = sprintFilter === "all" || entry.sprint === sprintFilter;
     const matchesTeam = teamFilter === "all" || entry.relatedTeams.includes(teamFilter);
     const matchesTag = tagFilter === "all" || entry.tags.includes(tagFilter);
     const matchesAttention = attentionFilter === "all" || entry.attentionTags.includes(attentionFilter);
     const haystack = `${entry.title} ${entry.summary}`.toLowerCase();
     const matchesQuery = query.trim().length === 0 || haystack.includes(query.trim().toLowerCase());
 
-    return matchesType && matchesRole && matchesSprint && matchesTeam && matchesTag && matchesAttention && matchesQuery;
+    return matchesType && matchesRole && matchesTeam && matchesTag && matchesAttention && matchesQuery;
   });
 
   return (
@@ -102,23 +99,6 @@ export function LogsPage() {
                 className="w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-700"
               >
                 {options.ownerRoles.map((value) => (
-                  <option key={value} value={value}>
-                    {value === "all" ? t("common.all") : value}
-                  </option>
-                ))}
-              </select>
-            </label>
-
-            <label className="space-y-2">
-              <span className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
-                {t("logs.filters.sprint")}
-              </span>
-              <select
-                value={sprintFilter}
-                onChange={(event) => setSprintFilter(event.target.value)}
-                className="w-full rounded-xl border border-slate-200 bg-white px-3 py-3 text-sm text-slate-700"
-              >
-                {options.sprints.map((value) => (
                   <option key={value} value={value}>
                     {value === "all" ? t("common.all") : value}
                   </option>
@@ -183,7 +163,6 @@ export function LogsPage() {
           title={t("logs.feedTitle")}
           action={siteMode.showTemplateExamples ? <InternalLinkPill to="/examples">{t("common.viewTemplates")}</InternalLinkPill> : undefined}
         />
-        <SectionLead>{t("logs.feedLead", { count: filteredEntries.length })}</SectionLead>
 
         <div className="mt-6 divide-y divide-slate-200/80">
           {filteredEntries.map((entry) => (

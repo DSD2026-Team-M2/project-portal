@@ -11,17 +11,17 @@ export function AttentionTag({ label, active = false, onClick }: AttentionTagPro
 
   if (onClick) {
     return (
-      <button type="button" onClick={onClick} className={className} aria-pressed={active}>
+      <button type="button" onClick={onClick} className={className} aria-pressed={active} title={label}>
         <AlertTriangle className="h-3.5 w-3.5" />
-        <span>{label}</span>
+        <span className="truncate">{label}</span>
       </button>
     );
   }
 
   return (
-    <span className={className}>
+    <span className={className} title={label}>
       <AlertTriangle className="h-3.5 w-3.5" />
-      <span>{label}</span>
+      <span className="truncate">{label}</span>
     </span>
   );
 }

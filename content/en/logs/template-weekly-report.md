@@ -12,7 +12,6 @@ relatedTeams:
   - M2
 relatedRepos:
   - project-portal
-sprint: Template
 tags:
   - template
   - weekly-report

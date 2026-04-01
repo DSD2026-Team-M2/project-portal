@@ -14,7 +14,6 @@ relatedTeams:
   - M1
 relatedRepos:
   - project-portal
-sprint: Sprint 5
 tags:
   - deliverable
   - milestone

@@ -25,6 +25,12 @@ type CalendarEventPanelProps = {
   language: SupportedLanguage;
 };
 
+function formatRelatedTeamLabel(team: string) {
+  if (team === "CN") return "🇨🇳 CN";
+  if (team === "PT") return "🇵🇹 PT";
+  return team;
+}
+
 export function CalendarEventPanel({ event, language }: CalendarEventPanelProps) {
   const { t } = useTranslation();
 
@@ -57,11 +63,11 @@ export function CalendarEventPanel({ event, language }: CalendarEventPanelProps)
         </p>
         <p className="flex items-center gap-2">
           <Users className="h-4 w-4 text-slate-400" />
-          <span>{event.relatedTeams.join(", ")}</span>
+          <span>{event.relatedTeams.map(formatRelatedTeamLabel).join(", ")}</span>
         </p>
       </div>
 
-      <p className="mt-4 text-sm leading-7 text-slate-700">{event.summary}</p>
+      {event.summary !== event.title ? <p className="mt-4 text-sm leading-7 text-slate-700">{event.summary}</p> : null}
 
       <div className="mt-4 flex flex-wrap gap-2">
         {event.tags.map((tag) =>

@@ -16,15 +16,6 @@ export type ProgressMilestone = {
   evidenceLink: string;
 };
 
-export type SprintDigest = {
-  id: string;
-  goal: LocalizedText;
-  completed: LocalizedText[];
-  incomplete: LocalizedText[];
-  blockers: LocalizedText[];
-  nextStep: LocalizedText[];
-};
-
 export type RiskItem = {
   riskId: string;
   title: LocalizedText;
@@ -53,8 +44,8 @@ export const progressDatasetMeta = {
   label: ganttDataset.label,
   note: text(
     ganttDataset.note,
-    "当前甘特数据为示例结构，用于替代旧的假 sprint 卡片；待 PM 侧确认后应替换为正式排期。",
-    "O dataset de gantt atual e um exemplo estrutural para substituir os antigos cards de sprint ficticios; deve ser trocado pelo planeamento formal quando o PM o confirmar.",
+    "当前甘特数据为示例结构；待 PM 侧确认后应替换为正式排期。",
+    "O dataset de gantt atual e um exemplo estrutural; deve ser trocado pelo planeamento formal quando o PM o confirmar.",
   ),
 };
 
@@ -126,48 +117,6 @@ export const milestones: ProgressMilestone[] = [
     owner: "PM + M2",
     status: "at-risk",
     evidenceLink: "/docs/presentation-outline-v1",
-  },
-];
-
-export const sprintDigests: SprintDigest[] = [
-  {
-    id: "Iteration A",
-    goal: text(
-      "Remove bubble-heavy patterns, clarify portal boundaries and rebuild the shared surface system.",
-      "清理 bubble 化模式，明确 portal 边界，并重建共享表面层级。",
-      "Remover padroes excessivamente bubble, clarificar fronteiras do portal e reconstruir o sistema de superficies partilhadas.",
-    ),
-    completed: [
-      text("Boundary rules were written into AGENT and docs guidance.", "已把边界规则写入 AGENT 与 docs。", "As regras de fronteira foram escritas no AGENT e na documentacao."),
-      text("Semantic controls are being separated into badges, tags, chips and link pills.", "标签、状态、筛选和链接语义正在拆分。", "Os controlos semanticos estao a ser separados em badges, tags, chips e links."),
-    ],
-    incomplete: [
-      text("Team member records still need final confirmation from the group.", "团队成员记录仍待组内最终确认。", "Os registos de membros ainda precisam de confirmacao final da equipa."),
-    ],
-    blockers: [
-      text("Some linked deliverables still point to placeholder evidence.", "部分交付物仍然依赖占位证据链接。", "Alguns entregaveis ligados ainda apontam para evidencias placeholder."),
-    ],
-    nextStep: [
-      text("Finish page rebuild and replace old card soup patterns route by route.", "逐页完成重构并替换旧的卡片拼贴模式。", "Concluir a reconstrucao das paginas e substituir os antigos padroes de card soup rota a rota."),
-    ],
-  },
-  {
-    id: "Iteration B",
-    goal: text(
-      "Connect refined pages back to generated content, examples, architecture traces and schedule views.",
-      "把重构后的页面重新接回生成内容、示例入口、架构留痕和时间视图。",
-      "Ligar novamente as paginas refinadas ao conteudo gerado, exemplos, rastos de arquitetura e vistas de calendario.",
-    ),
-    completed: [],
-    incomplete: [
-      text("Formal gantt data import is still sample-labeled until PM provides the confirmed schedule.", "正式甘特数据仍为示例标记，待 PM 确认后替换。", "A importacao formal do gantt continua marcada como exemplo ate o PM fornecer o calendario confirmado."),
-    ],
-    blockers: [
-      text("Cross-team deliverable statuses may change after the next review meeting.", "跨组交付状态可能在下次评审会后变化。", "Os estados dos entregaveis entre equipas podem mudar apos a proxima reuniao de revisao."),
-    ],
-    nextStep: [
-      text("Replace sample schedule blocks with PM-maintained data and update evidence links.", "用 PM 维护的数据替换示例排期，并更新证据链接。", "Substituir os blocos de agenda de exemplo por dados mantidos pelo PM e atualizar os links de evidencia."),
-    ],
   },
 ];
 

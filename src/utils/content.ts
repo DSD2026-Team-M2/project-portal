@@ -34,7 +34,6 @@ export type GeneratedContentEntry = {
   summary: string;
   relatedTeams: string[];
   relatedRepos: string[];
-  sprint: string;
   tags: string[];
   attentionTags: string[];
   lastUpdated?: string;
@@ -64,7 +63,6 @@ export type GeneratedContentIndex = {
     attentionTags: TaxonomyItem[];
     teams: TaxonomyItem[];
     years: TaxonomyItem[];
-    sprints: TaxonomyItem[];
     collections: TaxonomyItem[];
   };
 };

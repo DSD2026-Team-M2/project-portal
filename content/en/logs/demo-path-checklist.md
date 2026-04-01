@@ -13,7 +13,6 @@ relatedTeams:
   - PM
 relatedRepos:
   - project-portal
-sprint: Sprint 5
 tags:
   - demo
   - test

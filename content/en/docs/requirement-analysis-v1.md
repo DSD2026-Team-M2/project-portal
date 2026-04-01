@@ -13,7 +13,6 @@ relatedTeams:
   - M2
 relatedRepos:
   - project-portal
-sprint: Sprint 4
 tags:
   - deliverable
   - milestone

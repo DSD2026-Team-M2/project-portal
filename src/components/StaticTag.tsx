@@ -10,5 +10,9 @@ const toneClassMap = {
 } as const;
 
 export function StaticTag({ label, tone = "default" }: StaticTagProps) {
-  return <span className={toneClassMap[tone]}>{label}</span>;
+  return (
+    <span className={toneClassMap[tone]} title={label}>
+      <span className="truncate">{label}</span>
+    </span>
+  );
 }

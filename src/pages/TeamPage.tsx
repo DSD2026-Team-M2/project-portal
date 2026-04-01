@@ -19,6 +19,9 @@ import { TimezoneClockCard } from "../components/TimezoneClockCard";
 export function TeamPage() {
   const { t, i18n } = useTranslation();
   const language = (i18n.resolvedLanguage ?? i18n.language) as SupportedLanguage;
+  const coreMembers = teamMembers.filter((member) => member.group === "core");
+  const facultyMembers = teamMembers.filter((member) => member.group === "faculty");
+  const aiMembers = teamMembers.filter((member) => member.group === "ai");
 
   useDocumentTitle("meta.pages.team.title", { descriptionKey: "meta.pages.team.description" });
 
@@ -63,7 +66,29 @@ export function TeamPage() {
         <SectionLead>{t("team.membersLead")}</SectionLead>
 
         <div className="mt-6 grid gap-4 md:grid-cols-2">
-          {teamMembers.map((member) => (
+          {coreMembers.map((member) => (
+            <TeamMemberCard key={member.id} member={member} language={language} />
+          ))}
+        </div>
+      </RevealOnScroll>
+
+      <RevealOnScroll as="section" className="section-shell p-6 sm:p-8">
+        <SectionTitle title={t("team.facultyTitle")} />
+        <SectionLead>{t("team.facultyLead")}</SectionLead>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {facultyMembers.map((member) => (
+            <TeamMemberCard key={member.id} member={member} language={language} />
+          ))}
+        </div>
+      </RevealOnScroll>
+
+      <RevealOnScroll as="section" className="section-shell p-6 sm:p-8">
+        <SectionTitle title={t("team.aiTitle")} />
+        <SectionLead>{t("team.aiLead")}</SectionLead>
+
+        <div className="mt-6 grid gap-4 md:grid-cols-2">
+          {aiMembers.map((member) => (
             <TeamMemberCard key={member.id} member={member} language={language} />
           ))}
         </div>

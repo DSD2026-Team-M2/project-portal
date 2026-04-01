@@ -156,9 +156,6 @@ export function MarkdownArticle({
           <span className="font-semibold text-slate-900">{t("common.owner")}:</span> {entry.owner}
         </p>
         <p>
-          <span className="font-semibold text-slate-900">{t("common.sprint")}:</span> {entry.sprint}
-        </p>
-        <p>
           <span className="font-semibold text-slate-900">{t("common.relatedTeams")}:</span> {entry.relatedTeams.join(", ")}
         </p>
         <p>

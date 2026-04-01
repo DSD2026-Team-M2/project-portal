@@ -63,7 +63,7 @@ export function applyDocumentLanguage(language: SupportedLanguage): void {
 }
 
 export function getLanguageLabel(language: SupportedLanguage): string {
-  if (language === "zh-CN") return "中文";
+  if (language === "zh-CN") return "CN";
   if (language === "pt") return "PT";
   return "EN";
 }

@@ -53,7 +53,7 @@ export type RoleRecord = {
 export type CalendarEventRecord = {
   id: string;
   title: LocalizedText;
-  type: "milestone" | "meeting" | "deadline" | "demo" | "sprint-boundary";
+  type: "milestone" | "meeting" | "course" | "deadline" | "demo";
   start: string;
   end?: string;
   allDay?: boolean;
@@ -63,6 +63,38 @@ export type CalendarEventRecord = {
   tags: string[];
   sample?: boolean;
 };
+
+function toIsoDate(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+
+  return `${year}-${month}-${day}`;
+}
+
+function createWeeklyCalendarEvents(
+  startDate: string,
+  endDate: string,
+  dayOfWeek: number,
+  buildEvent: (isoDate: string) => CalendarEventRecord,
+) {
+  const start = new Date(`${startDate}T00:00:00`);
+  const end = new Date(`${endDate}T00:00:00`);
+  const cursor = new Date(start);
+
+  while (cursor.getDay() !== dayOfWeek) {
+    cursor.setDate(cursor.getDate() + 1);
+  }
+
+  const events: CalendarEventRecord[] = [];
+
+  while (cursor <= end) {
+    events.push(buildEvent(toIsoDate(cursor)));
+    cursor.setDate(cursor.getDate() + 7);
+  }
+
+  return events;
+}
 
 export const projectMeta = {
   projectName: "Limb Motion Recognition and Assistant",
@@ -408,9 +440,9 @@ export const roleMatrix: RoleRecord[] = [
   {
     id: "PM",
     description: text(
-      "Owns scope alignment, sprint priorities and report-facing storyline across teams.",
-      "负责跨组范围对齐、迭代优先级与面向汇报的整体叙事。",
-      "Responsável pelo alinhamento de âmbito, prioridades de sprint e narrativa global orientada à apresentação.",
+      "Owns scope alignment, delivery priorities and report-facing storyline across teams.",
+      "负责跨组范围对齐、交付优先级与面向汇报的整体叙事。",
+      "Responsável pelo alinhamento de âmbito, prioridades de entrega e narrativa global orientada à apresentação.",
     ),
   },
   {
@@ -457,21 +489,65 @@ export const roleMatrix: RoleRecord[] = [
 
 export const calendarEvents: CalendarEventRecord[] = [
   {
-    id: "2026-04-01-portal-review-checkpoint",
-    title: text("Portal review checkpoint", "Portal 检查点", "Checkpoint de revisao do portal"),
-    type: "sprint-boundary",
-    start: "2026-04-01",
+    id: "2026-03-29-m2-members-meeting-cn",
+    title: text("M2 members meeting (CN)", "M2 成员会议（中国）", "Reunião de membros da M2 (China)"),
+    type: "meeting",
+    start: "2026-03-29",
     allDay: true,
-    relatedTeams: ["PM", "M2"],
+    relatedTeams: ["M2", "CN"],
     summary: text(
-      "Internal check on portal shell completion, content coverage and unresolved dependency notes.",
-      "内部检查 portal 外壳完成度、内容覆盖情况与未解决依赖说明。",
-      "Verificação interna sobre conclusão da estrutura do portal, cobertura de conteúdo e notas de dependências pendentes.",
+      "China-side internal M2 member meeting.",
+      "M2 中方成员内部会议。",
+      "Reunião interna da M2 com os membros na China.",
     ),
-    link: "/progress#sprint-summaries",
-    tags: ["milestone", "attention:M2"],
-    sample: true,
+    link: "/team",
+    tags: ["meeting", "m2", "cn"],
   },
+  {
+    id: "2026-03-31-m2-members-meeting-cross-country",
+    title: text("M2 members meeting (CN-PT)", "M2 成员会议（跨国）", "Reunião de membros da M2 (CN-PT)"),
+    type: "meeting",
+    start: "2026-03-31",
+    allDay: true,
+    relatedTeams: ["M2", "CN", "PT"],
+    summary: text(
+      "Cross-country M2 member meeting across China and Portugal.",
+      "中葡两地共同参加的 M2 成员会议。",
+      "Reunião transnacional da M2 entre China e Portugal.",
+    ),
+    link: "/team",
+    tags: ["meeting", "m2", "cn", "pt"],
+  },
+  ...createWeeklyCalendarEvents("2026-03-25", "2026-05-20", 3, (isoDate) => ({
+    id: `${isoDate}-assessment-ddl`,
+    title: text("Assessment DDL", "Assessment 截止", "Prazo de Assessment"),
+    type: "deadline",
+    start: isoDate,
+    allDay: true,
+    relatedTeams: ["All"],
+    summary: text(
+      "Weekly Assessment deadline.",
+      "每周一次的 Assessment 截止时间。",
+      "Prazo semanal de Assessment.",
+    ),
+    link: "/calendar",
+    tags: ["deadline", "assessment"],
+  })),
+  ...createWeeklyCalendarEvents("2026-03-19", "2026-05-21", 4, (isoDate) => ({
+    id: `${isoDate}-cn-course-meeting`,
+    title: text("CN project course", "中方项目课", "Aula CN do projeto"),
+    type: "course",
+    start: isoDate,
+    allDay: true,
+    relatedTeams: ["CN"],
+    summary: text(
+      "Weekly in-person course session for all China-side members in the wider project.",
+      "整个大项目所有中方成员每周四的碰面课程。",
+      "Sessão semanal presencial com todos os membros do lado chinês do projeto.",
+    ),
+    link: "/calendar",
+    tags: ["meeting", "course", "cn"],
+  })),
   {
     id: "2026-04-03-if2-payload-sync",
     title: text("IF2 payload sync meeting", "IF2 payload 同步会", "Reunião de sincronização do payload IF2"),
@@ -544,9 +620,9 @@ export const calendarEvents: CalendarEventRecord[] = [
     allDay: true,
     relatedTeams: ["All"],
     summary: text(
-      "Deadline for updating logs, evidence links and sprint summaries before the next iteration planning.",
-      "在下一轮迭代计划前，完成日志、证据链接和 sprint 总结的更新。",
-      "Prazo para atualizar logs, links de evidência e resumos de sprint antes do planeamento da iteração seguinte.",
+      "Deadline for updating logs, evidence links and progress notes before the next planning review.",
+      "在下一次计划评审前，完成日志、证据链接和进度说明的更新。",
+      "Prazo para atualizar logs, links de evidência e notas de progresso antes da próxima revisão de planeamento.",
     ),
     link: "/logs",
     tags: ["deadline", "deliverable"],

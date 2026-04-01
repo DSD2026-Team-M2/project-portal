@@ -3,8 +3,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import type { DatesSetArg, EventClickArg } from "@fullcalendar/core";
 import type { DateClickArg } from "@fullcalendar/interaction";
-import { ChevronLeft, ChevronRight, Dot } from "lucide-react";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -15,6 +15,7 @@ import { siteMode } from "../config/siteMode";
 import type { SupportedLanguage } from "../i18n/language";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useTimezoneClock } from "../hooks/useTimezoneClock";
+import { localizeHolidayCopy } from "../utils/holidays";
 import { resolveLocalizedText } from "../utils/content";
 import { formatDate } from "../utils/date";
 import { CalendarEventPanel } from "../components/CalendarEventPanel";
@@ -35,28 +36,60 @@ type CalendarDisplayEvent = {
   relatedTeams: string[];
   link: string;
   tags: string[];
+  countryCode?: "CN" | "PT";
   sample?: boolean;
 };
 
 const typeOrder = [
   "milestone",
   "meeting",
+  "course",
   "deadline",
   "holiday-cn",
   "holiday-pt",
   "demo",
-  "sprint-boundary",
 ] as const;
 
 const eventToneMap = {
   milestone: "calendar-event-milestone",
   meeting: "calendar-event-meeting",
+  course: "calendar-event-course",
   deadline: "calendar-event-deadline",
   "holiday-cn": "calendar-event-holiday-cn",
   "holiday-pt": "calendar-event-holiday-pt",
   demo: "calendar-event-demo",
-  "sprint-boundary": "calendar-event-sprint-boundary",
 } as const;
+
+function CalendarEventLabel({ text }: { text: string }) {
+  const shellRef = useRef<HTMLDivElement | null>(null);
+  const trackRef = useRef<HTMLSpanElement | null>(null);
+  const [distance, setDistance] = useState(0);
+
+  useEffect(() => {
+    const measure = () => {
+      if (!shellRef.current || !trackRef.current) return;
+      const overflow = Math.max(0, trackRef.current.scrollWidth - shellRef.current.clientWidth);
+      setDistance(overflow);
+    };
+
+    measure();
+    window.addEventListener("resize", measure);
+    return () => window.removeEventListener("resize", measure);
+  }, [text]);
+
+  return (
+    <div
+      ref={shellRef}
+      className={`calendar-event-label ${distance > 0 ? "calendar-event-label-overflow" : ""}`}
+      style={{ "--marquee-distance": `${distance}px` } as CSSProperties}
+      title={text}
+    >
+      <span ref={trackRef} className="calendar-event-label-track">
+        {text}
+      </span>
+    </div>
+  );
+}
 
 export function CalendarPage() {
   const { t, i18n } = useTranslation();
@@ -93,17 +126,23 @@ export function CalendarPage() {
         sample: event.sample,
       }));
 
-    const holidayEvents = [...cnHolidays.events, ...ptHolidays.events].map((event) => ({
-      id: event.id,
-      title: event.title,
-      type: event.type,
-      start: event.date,
-      allDay: true,
-      summary: event.summary,
-      relatedTeams: [event.type === "holiday-cn" ? "CN" : "PT"],
-      link: "/calendar",
-      tags: [event.type],
-    }));
+    const holidayEvents = [...cnHolidays.events, ...ptHolidays.events].map((event) => {
+      const localized = localizeHolidayCopy(event.title, event.summary, language);
+      const countryCode: "CN" | "PT" = event.type === "holiday-cn" ? "CN" : "PT";
+
+      return {
+        id: event.id,
+        title: localized.title,
+        type: event.type,
+        start: event.date,
+        allDay: true,
+        summary: localized.summary,
+        relatedTeams: [countryCode],
+        link: "/calendar",
+        tags: [event.type],
+        countryCode,
+      };
+    });
 
     return [...manualEvents, ...holidayEvents].sort((left, right) => left.start.localeCompare(right.start));
   }, [language]);
@@ -223,17 +262,9 @@ export function CalendarPage() {
                     key={type}
                     label={t(`eventTypes.${type}`)}
                     selected={activeTypes.includes(type)}
+                    accentClassName={eventToneMap[type]}
                     onClick={() => toggleType(type)}
                   />
-                ))}
-              </div>
-
-              <div className="mt-4 flex flex-wrap gap-2 text-sm text-slate-600">
-                {typeOrder.map((type) => (
-                  <span key={type} className="legend-pill">
-                    <Dot className={`h-4 w-4 ${eventToneMap[type]}`} />
-                    <span>{t(`eventTypes.${type}`)}</span>
-                  </span>
                 ))}
               </div>
 
@@ -271,9 +302,9 @@ export function CalendarPage() {
                 dateClick={handleDateClick}
                 datesSet={handleDatesSet}
                 eventContent={(arg) => (
-                  <div className="truncate text-[11px] font-semibold">
-                    {arg.event.extendedProps.sample ? `${t("common.sample")} · ${arg.event.title}` : arg.event.title}
-                  </div>
+                  <CalendarEventLabel
+                    text={arg.event.extendedProps.sample ? `${t("common.sample")} · ${arg.event.title}` : arg.event.title}
+                  />
                 )}
               />
             </div>
@@ -298,9 +329,10 @@ export function CalendarPage() {
                       navigate({ hash: event.id }, { replace: true });
                     }}
                     className={`calendar-day-item ${selectedEvent?.id === event.id ? "calendar-day-item-active" : ""}`}
+                    title={event.title}
                   >
                     <span className={`calendar-day-dot ${eventToneMap[event.type as keyof typeof eventToneMap]}`} />
-                    <span className="truncate">{event.title}</span>
+                    <span className="min-w-0 truncate">{event.title}</span>
                   </button>
                 ))}
               </div>

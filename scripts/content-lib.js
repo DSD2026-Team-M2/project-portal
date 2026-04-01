@@ -16,7 +16,6 @@ const REQUIRED_FIELDS = [
     "summary",
     "relatedTeams",
     "relatedRepos",
-    "sprint",
     "tags",
 ];
 const REQUIRED_DOC_FIELDS = ["version", "reviewStatus", "lastUpdated"];
@@ -125,7 +124,6 @@ export async function buildContentIndex() {
             summary: String(parsed.data.summary ?? ""),
             relatedTeams: toArray(parsed.data.relatedTeams).map(String),
             relatedRepos: toArray(parsed.data.relatedRepos).map(String),
-            sprint: String(parsed.data.sprint ?? ""),
             tags: toArray(parsed.data.tags).map(String),
             attentionTags: toArray(parsed.data.attentionTags).map(String),
             lastUpdated: parsed.data.lastUpdated ? normalizeDateValue(parsed.data.lastUpdated) : undefined,
@@ -150,7 +148,6 @@ export async function buildContentIndex() {
             attentionTags: countBy(entries.flatMap((entry) => entry.attentionTags)),
             teams: countBy(entries.flatMap((entry) => entry.relatedTeams)),
             years: countBy(entries.map((entry) => entry.date.slice(0, 4))),
-            sprints: countBy(entries.map((entry) => entry.sprint)),
             collections: countBy(entries.map((entry) => entry.collection)),
         },
     };

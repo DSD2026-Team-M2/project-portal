@@ -13,7 +13,6 @@ relatedTeams:
   - PM
 relatedRepos:
   - project-portal
-sprint: Template
 tags:
   - template
   - meeting

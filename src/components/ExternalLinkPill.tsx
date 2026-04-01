@@ -9,8 +9,8 @@ type ExternalLinkPillProps = {
 export function ExternalLinkPill({ href, children }: ExternalLinkPillProps) {
   return (
     <a href={href} target="_blank" rel="noreferrer" className="external-link-pill">
-      <span>{children}</span>
-      <ExternalLink className="h-4 w-4" />
+      <span className="min-w-0 truncate">{children}</span>
+      <ExternalLink className="h-4 w-4 shrink-0" />
     </a>
   );
 }

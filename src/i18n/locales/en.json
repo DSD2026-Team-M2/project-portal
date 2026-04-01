@@ -9,7 +9,7 @@
       },
       "progress": {
         "title": "Progress",
-        "description": "Timeline, gantt, milestones, sprint digests and risk visibility."
+        "description": "Timeline, gantt, milestones and risk visibility."
       },
       "logs": {
         "title": "Logs",
@@ -77,9 +77,7 @@
   "common": {
     "all": "All",
     "currentIteration": "Current iteration",
-    "currentSprint": "Current sprint",
     "lastUpdated": "Last updated",
-    "thisSprintGoal": "This sprint goal",
     "completed": "Completed",
     "inProgress": "In progress",
     "nextMilestone": "Next milestone",
@@ -105,7 +103,6 @@
     "bionicAria": "Toggle bionic reading for longer English paragraphs",
     "metadata": "Metadata",
     "owner": "Owner",
-    "sprint": "Sprint",
     "relatedTeams": "Related teams",
     "relatedRepos": "Related repositories",
     "version": "Version",
@@ -157,84 +154,134 @@
   "eventTypes": {
     "milestone": "Milestone",
     "meeting": "Meeting",
+    "course": "Course",
     "deadline": "Deadline",
-    "holiday-cn": "China holiday",
-    "holiday-pt": "Portugal holiday",
-    "demo": "Demo",
-    "sprint-boundary": "Sprint boundary"
+    "holiday-cn": "🇨🇳 CN holiday",
+    "holiday-pt": "🇵🇹 PT holiday",
+    "demo": "Demo"
   },
   "home": {
-    "topStatusLead": "A central portal for project reporting, cross-team collaboration, documentation indexing and process traceability.",
-    "statusBar": {
-      "title": "Portal status",
-      "iterationPending": "Formal PM iteration data hidden in this submission build."
-    },
-    "positioning": {
-      "title": "Project Positioning",
-      "lead": "The home page explains what the project is, what the portal is for and where M2's visible boundary starts and ends."
-    },
-    "summaryCards": {
-      "system": {
-        "title": "System"
+    "hero": {
+      "eyebrow": "Overview board",
+      "subtitle": "Reporting, collaboration and documentation hub for a cross-team limb motion recognition project.",
+      "boundary": "Portal focuses on reporting, coordination and traceable records, not the full product frontend.",
+      "riskChip": "{{count}} risks tracked",
+      "status": {
+        "phase": "Current phase",
+        "focus": "Main focus",
+        "updated": "Last updated",
+        "maintainedBy": "Maintained by"
       },
-      "progress": {
-        "title": "Progress"
-      },
-      "docs": {
-        "title": "Docs"
-      },
-      "teams": {
-        "title": "Teams"
+      "focusValue": "Portal shell, docs flow and review readiness",
+      "maintainerValue": "M2",
+      "systemLabel": "System overview",
+      "systemSummary": "Sensor · Server · Monitor",
+      "scroll": "Explore details below",
+      "quickLinks": {
+        "mainWeb": "Main web",
+        "portalRepo": "Portal repo"
       }
     },
-    "systemMap": {
-      "title": "System Map Summary",
-      "lead": "The portal keeps the overall architecture readable through layers, interfaces and repository boundaries instead of turning the home page into a wall of equal cards.",
-      "relatedRepos": "Related repositories",
-      "nodeDetail": "Selected node"
+    "snapshot": {
+      "title": "Current snapshot",
+      "subtitle": "A quick view of project scope, portal boundary and current status."
+    },
+    "hub": {
+      "title": "Portal entry points",
+      "subtitle": "Use these routes to open progress, logs, docs, architecture, calendar and team pages.",
+      "emptyDetail": "Nothing to preview yet",
+      "stats": {
+        "logs": "{{count}} entries",
+        "docs": "{{count}} docs",
+        "calendar": "{{count}} upcoming events"
+      }
+    },
+    "positioning": {
+      "title": "Project positioning",
+      "rows": {
+        "project": {
+          "title": "Project",
+          "text": "Limb Motion Recognition and Assistant spans sensing, backend processing and monitor-side delivery across six teams.",
+          "stat": "3 layers / 6 teams"
+        },
+        "portal": {
+          "title": "Portal",
+          "text": "This site keeps reports, logs, documents and coordination records readable in one review-facing hub.",
+          "stat": "Reports / docs / logs"
+        },
+        "m2": {
+          "title": "M2 scope",
+          "text": "M2 owns the portal, summary surfaces and monitor-side reporting support rather than the entire product web.",
+          "stat": "M2 reporting layer"
+        }
+      }
     },
     "progress": {
-      "title": "Progress Snapshot",
-      "lead": "The home page only exposes the current phase, next action and highlighted risk, then points to the full progress page.",
-      "pendingNote": "Formal schedule, milestones and blocker details are hidden in this submission build. The progress route remains ready for PM-maintained records."
+      "title": "Progress preview",
+      "summaryLabel": "Summary",
+      "summaryLine": "Current focus includes stage progress, document updates and review preparation.",
+      "blockersValue": "{{count}} watch items"
     },
-    "latestUpdates": {
-      "title": "Latest Updates",
-      "lead": "Recent updates stay list-based so teachers and teammates can scan date, type, owner and summary quickly."
+    "logs": {
+      "title": "Logs preview",
+      "subtitle": "Latest recorded updates",
+      "empty": "No log entries indexed yet."
     },
-    "deliverables": {
-      "title": "Docs Hub Preview",
-      "lead": "The docs hub is presented as a document center, not a small-card gallery."
+    "docs": {
+      "title": "Docs preview",
+      "subtitle": "Recent key documents",
+      "empty": "No documents indexed yet."
     },
-    "teams": {
-      "title": "Teams and Repositories",
-      "lead": "Related teams and repositories are shown together, but with clear separation between responsibility mapping and actual repo links.",
-      "teamLinks": "Team links",
-      "repositoryLinks": "Repository links"
+    "architecture": {
+      "title": "Architecture preview",
+      "summary": "Key interfaces and collaboration links across the project.",
+      "points": {
+        "if1": {
+          "title": "Sensor to Server",
+          "summary": "IF1 carries validated sensor outputs from S1 and S2 into the server pipeline."
+        },
+        "if2": {
+          "title": "Server to Monitor",
+          "summary": "IF2 exposes processed results from V2 to M1 and M2 monitor-side views."
+        },
+        "m2": {
+          "title": "M2 reporting layer",
+          "summary": "Portal pages, docs, logs and calendar stay on the monitor side as traceable reporting surfaces."
+        }
+      }
     },
-    "m2": {
-      "title": "M2 Contribution",
-      "lead": "M2 remains visible as the portal maintainer without claiming ownership of the full product frontend.",
-      "responsibilities": "Responsibilities",
-      "dependencies": "Dependencies",
-      "completed": "Covered now",
-      "uncovered": "Not covered here"
+    "calendar": {
+      "title": "Calendar preview",
+      "subtitle": "Key events for this month",
+      "holidayHint": "The full calendar also includes 🇨🇳 CN and 🇵🇹 PT holidays.",
+      "empty": "No upcoming events available."
+    },
+    "team": {
+      "title": "Team preview",
+      "subtitle": "Coverage and timezone handoff",
+      "membersLabel": "Core members",
+      "membersValue": "{{count}} core members",
+      "rolesLabel": "Role coverage",
+      "rolesValue": "{{count}} active role labels",
+      "timezonesLabel": "Timezones",
+      "timezonesValue": "🇨🇳 CN / 🇵🇹 PT",
+      "summary": "The team page also includes {{faculty}} faculty guidance role and {{ai}} AI support members."
     }
   },
   "progress": {
     "overview": {
       "title": "Progress Overview",
-      "lead": "The progress page focuses on time, stage and planning clarity rather than reusing the home-page overview.",
+      "lead": "See the current stage, milestones, risks and overall schedule at a glance.",
       "phase": "Current phase",
       "nextMilestone": "Next milestone",
       "goal": "Stage goal",
       "risk": "Current risk"
     },
-    "hiddenDataNote": "Formal schedule data is hidden in this submission build. The route structure and content pipeline are ready for PM-maintained records.",
+    "hiddenDataNote": "Formal schedule data will be updated after confirmation.",
     "gantt": {
       "kicker": "Planning view",
       "title": "Gantt and Task Table",
-      "lead": "The portal uses a data-driven gantt panel instead of fake sprint cards, and the sample label remains visible until the confirmed PM schedule is imported.",
+      "lead": "Track the current schedule and phase plan through the gantt and task table.",
       "filters": "Filter by role and status",
       "legend": "Legend",
       "columns": {
@@ -244,10 +291,9 @@
       }
     },
     "hiddenSections": {
-      "gantt": "The gantt panel is wired and ready, but sample schedule data is hidden in the current submission build.",
-      "milestones": "Milestone cards will appear after PM-maintained records are published.",
-      "sprints": "Iteration digests are hidden here until confirmed progress records are available.",
-      "risks": "Risk register entries are hidden here until the team publishes confirmed items."
+      "gantt": "The gantt view will appear after confirmed schedule data is added.",
+      "milestones": "Milestone content will be updated after formal records are published.",
+      "risks": "Risk register entries will be updated after the team confirms the related items."
     },
     "filters": {
       "all": "All",
@@ -257,15 +303,8 @@
     },
     "milestones": {
       "title": "Milestones List",
-      "lead": "Milestones keep owner, date, status and linked evidence visible without collapsing into a spreadsheet.",
+      "lead": "View milestone dates, owners, statuses and linked evidence.",
       "evidence": "Open evidence"
-    },
-    "sprints": {
-      "title": "Iteration Digests",
-      "lead": "Iteration summaries show goal, completed work, incomplete work, blockers and next steps.",
-      "incomplete": "Incomplete",
-      "blockers": "Blockers",
-      "nextStep": "Next step"
     },
     "risks": {
       "title": "Risk Register",
@@ -285,7 +324,6 @@
     "filters": {
       "type": "Type",
       "ownerRole": "Owner role",
-      "sprint": "Sprint",
       "team": "Related team",
       "tag": "Tag",
       "attention": "Attention tag",
@@ -295,7 +333,7 @@
   },
   "docs": {
     "title": "Documents and Deliverables",
-    "lead": "Formal documents stay grouped by category, review state and archive state, but the reading rhythm is row-based rather than card-grid based.",
+    "lead": "Browse project documents and deliverables by category, review state and archive state.",
     "current": {
       "title": "Current Documents",
       "lead": "{{count}} current documents match the active category filter."
@@ -319,7 +357,7 @@
   "architecture": {
     "overview": {
       "title": "Overall System Overview",
-      "lead": "Architecture is explained through layers, responsibilities and handoff logic rather than a complex interactive visual tool."
+      "lead": "Understand the system through its layers, team responsibilities and interface handoffs."
     },
     "teamMatrix": {
       "title": "Team Responsibility Matrix",
@@ -328,6 +366,31 @@
     "repositories": {
       "title": "Repository Map",
       "lead": "The repository map keeps role, maintainer, status and scope boundary visible."
+    },
+    "linkSlots": {
+      "title": "External Entry Points",
+      "lead": "Related team links, project repositories and external entry points.",
+      "teamLinks": "External links",
+      "projectLinks": "Project-level links",
+      "historicalLinks": "Surveyed past cohorts",
+      "historicalCardSummary": "Reference links to repositories and overview pages from past teams.",
+      "pending": "pending",
+      "buttons": {
+        "teamRepo": "GitHub repo",
+        "teamOverview": "Overview page",
+        "projectRepo": "Project main repo",
+        "projectOverview": "Project overview",
+        "portalOverview": "Portal overview"
+      },
+      "projectCards": {
+        "main": {
+          "title": "Project main repository",
+          "summary": "Entry point to the overall project repository and overview page."
+        },
+        "portal": {
+          "summary": "Current portal repository and portal homepage."
+        }
+      }
     },
     "interfaces": {
       "title": "Interface Dependencies",
@@ -342,7 +405,7 @@
     },
     "roles": {
       "title": "Role Matrix",
-      "lead": "Portal work is also mapped to PM, coordination, architecture, implementation and testing responsibilities."
+      "lead": "Key roles and responsibilities involved in portal work."
     },
     "directM2Link": "Direct M2 interface"
   },
@@ -350,13 +413,13 @@
     "title": "Project Calendar",
     "lead": "A restrained month calendar for milestones, meetings, deadlines, demos and public holidays across China and Portugal.",
     "timezones": {
-      "china": "China Time",
-      "portugal": "Portugal Time",
+      "china": "🇨🇳 China Time",
+      "portugal": "🇵🇹 Portugal Time",
       "local": "Local Time"
     },
     "monthView": {
       "title": "Month View",
-      "lead": "The calendar keeps only the necessary controls: month paging, type filters and a selected-day detail area."
+      "lead": "Browse project events for the month and filter them by type."
     },
     "today": "Today",
     "prevMonth": "Previous month",
@@ -368,17 +431,21 @@
     "emptySelection": "Select a day or event to inspect details.",
     "sampleEventNote": "Project-specific calendar events are currently marked as SAMPLE until the PM-maintained schedule is confirmed.",
     "staticHolidayNoteTitle": "Holiday data",
-    "staticHolidayNote": "China and Portugal holidays are generated into static JSON so the portal remains usable without runtime requests."
+    "staticHolidayNote": "🇨🇳 CN and 🇵🇹 PT holidays are generated into static JSON so the portal remains usable without runtime requests."
   },
   "team": {
     "title": "Team Members",
-    "lead": "This page introduces the M2 members maintaining the portal, their working focus and the cross-timezone collaboration context.",
+    "lead": "This page introduces the core M2 members, faculty guidance and the AI tools currently used by the team.",
     "overview": "Team overview",
     "crossTimezone": "Cross-timezone work",
     "membersTitle": "Member Directory",
-    "membersLead": "Each card focuses on responsibility, timezone and contribution focus rather than a social-style profile wall.",
+    "membersLead": "Each member card highlights current responsibility, timezone and main contribution area.",
+    "facultyTitle": "Faculty Guidance",
+    "facultyLead": "Faculty information and teaching-side guidance related to the project.",
+    "aiTitle": "AI Support",
+    "aiLead": "These cards document the AI tools actively used in drafting, coding, maintenance and workflow acceleration around the portal.",
     "rolesTitle": "Role Responsibility Summary",
-    "rolesLead": "This complements the architecture page by restating role responsibilities from a team-maintenance point of view.",
+    "rolesLead": "A summary of the main responsibilities currently carried by the team.",
     "timezonesTitle": "Working Across Timezones",
     "timezonesLead": "China and Portugal time are kept visible because coordination decisions in the portal often depend on them."
   },
@@ -400,10 +467,23 @@
     "backHome": "Back to home"
   },
   "footer": {
+    "title": "M2 project footer",
+    "subtitle": "Shared entry point for documents, progress review and cross-team navigation.",
     "description": "A document-first project hub maintained by M2 for reporting, collaboration indexing and traceable delivery review.",
+    "sitemapTitle": "Page map",
+    "sitemapDescription": "Open the main portal areas quickly from the footer when reviewing the site as a project hub.",
+    "relatedTitle": "Related links",
+    "groups": {
+      "overview": "Overview and planning",
+      "records": "Records and evidence",
+      "collaboration": "Team and support"
+    },
     "maintainedBy": "Maintained by",
     "lastUpdated": "Last updated",
     "license": "License",
-    "relatedOrg": "Related org"
+    "relatedOrg": "Related org",
+    "maintained": "Maintained by M2",
+    "copyright": "DSD 2025-2026 project portal",
+    "language": "Language"
   }
 }

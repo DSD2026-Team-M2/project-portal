@@ -1,57 +1,53 @@
 {
-  "generatedAt": "2026-03-31T12:36:55.957Z",
+  "generatedAt": "2026-04-01T16:46:58.218Z",
   "entries": [
     {
-      "id": "log-portal-shell-and-routing",
-      "slug": "portal-shell-and-routing",
-      "locale": "pt",
-      "collection": "logs",
-      "routeBase": "logs",
-      "title": "Estrutura e routing do portal implementados",
-      "type": "update",
-      "date": "2026-03-31",
-      "owner": "M2 Developer",
-      "ownerRole": "Programmer",
-      "status": "in-progress",
-      "summary": "A estrutura com routing do portal já cobre visão geral, progresso, registos, documentos, arquitetura e calendário.",
+      "id": "doc-software-requirements-specification-v0-1",
+      "slug": "software-requirements-specification-v0-1",
+      "locale": "en",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Software Requirements Specification",
+      "type": "requirement-analysis",
+      "date": "2026-04-01",
+      "owner": "Lee",
+      "ownerRole": "PM",
+      "status": "final",
+      "summary": "Formal Software Requirements Specification for M2 covering system background, user use cases, and key example flows.",
       "relatedTeams": [
+        "PM",
         "M2"
       ],
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable",
-        "milestone"
+        "requirement-analysis"
       ],
       "attentionTags": [
         "attention:M2"
       ],
-      "lastUpdated": "2026-03-31",
+      "lastUpdated": "2026-04-01",
+      "version": "v1.0",
+      "reviewStatus": "final",
       "links": [
         {
-          "label": "Página de arquitetura",
-          "href": "/architecture"
-        }
-      ],
-      "evidence": [
+          "label": "Requirement analysis",
+          "href": "/docs/requirement-analysis-v1"
+        },
         {
-          "label": "Página de progresso",
-          "href": "/progress"
+          "label": "System design outline",
+          "href": "/docs/system-design-outline-v1"
         }
       ],
-      "actionItems": [
-        {
-          "owner": "M2",
-          "task": "Ligar o conteúdo markdown gerado a todas as listas e páginas de detalhe."
-        }
-      ],
-      "featured": true,
+      "evidence": [],
+      "actionItems": [],
+      "featured": false,
       "archived": false,
       "markers": [],
-      "body": "## O que mudou\n\nO portal agora possui uma estrutura de routing estável, dando a cada pilar principal do projeto a sua própria página.\n\n## Conjunto de páginas\n\n- `/`\n- `/progress`\n- `/logs`\n- `/logs/:slug`\n- `/docs`\n- `/docs/:slug`\n- `/architecture`\n- `/calendar`\n\n## Impacto\n\nIsto transforma o portal num centro de colaboração partilhável, em vez de uma única página longa. Professores e colegas podem abrir diretamente a página ou registo relevante.",
-      "sourcePath": "content/pt/logs/portal-shell-and-routing.md"
+      "body": "# Software Requirements Specification (M2)\n\nRevision History:\n\n| Date | Author | Description |\n| ---- | ------ | ----------- |\n| Apr 1 | Lee | Add use cases |\n\n## 0. Background\n\nOur team is responsible for designing and developing a web-based platform with the primary functions of receiving sensor data, conducting motion analysis, and providing health recommendations. The system users primarily include registered users (who upload motion data), doctors (who provide the recommendations) and administrators (who monitor and manage the data).\n## 1. Use Cases\n\n### 1.1. Patient\n\n| Case | Description | Trigger condition |\n| ---- | ----------- | ----------------- |\n| **Register** | Users can register as platform members by providing basic information. | The user clicks the \"Register\" button, and the system starts the registration process. |\n| **Log in** | The user inputs their account and password for authentication, and after successful authentication, they enter the platform. | The user clicks the \"Login\" button, and the system starts the login process. |\n| **View Rehabilitation Plan** | Patients can view their personalized rehabilitation plan, including scheduled exercises, frequency, and duration. | The user clicks \"My Plan\" on the dashboard. |\n| **Execute Motion with Guidance** | Patients can view motion demonstration videos or animations and receive step-by-step guidance during exercise execution. | The user selects a specific exercise and clicks \"Start Exercise\". |\n| **View Rehabilitation Records** | Patients can view historical rehabilitation records, including exercise completion status, motion quality scores, and progress trends. | The user clicks \"History\" or \"My Records\". |\n| **Receive Real-time Feedback** | Patients receive immediate feedback on motion execution quality during or after exercise, including correction suggestions. | The system detects motion completion or deviation during exercise. |\n| **Set Rehabilitation Goals** | Patients can set personal rehabilitation goals (e.g., weekly exercise frequency, motion accuracy targets) and track achievement progress. | The user clicks \"Set Goals\" in the goal tracking section. |\n| **View Achievements & Motivations** | Patients can view earned achievement badges, streaks, and receive motivational messages based on their progress. | The user clicks \"Achievements\" or receives system-triggered motivational notifications. |\n| **Receive Messages & Notifications** | Patients can receive system messages, doctor notifications, appointment reminders, and progress alerts. | The system pushes a notification when new messages arrive or important events occur. |\n\n### 1.2. Doctor\n\n| Case | Description | Trigger condition |\n| ---- | ----------- | ----------------- |\n| **Register** | Doctors can register as platform members by providing professional credentials and basic information. | The doctor clicks the \"Register as Doctor\" button, and the system starts the registration process. |\n| **Log in** | The doctor inputs their account and password for authentication, and after successful authentication, they enter the platform. | The doctor clicks the \"Login as Doctor\" button, and the system starts the login process. |\n| **View Patient Management Panel** | Doctors can view the list and basic information of all assigned patients. | The doctor clicks \"Patient Management\" after logging in. |\n| **View Data Visualization & Analysis** | Doctors can view patients' motion data charts, trends, and statistical analysis. | The doctor enters a patient's detail page and clicks \"Data Analysis\". |\n| **Playback Motion Capture** | Doctors can replay motion capture videos or data trajectories uploaded by patients. | The doctor enters a patient's motion record and clicks \"Playback\". |\n| **Generate Smart Report** | The system automatically generates motion analysis reports; doctors can review and modify them. | The doctor clicks the \"Generate Report\" button. |\n| **Handle Anomaly Detection Alerts** | Doctors receive abnormal motion alerts, review details, and provide recommendations. | The system detects abnormal motion and pushes a notification. |\n| **Adjust Treatment Plan** | Doctors can modify or create new rehabilitation plans based on patient data. | The doctor enters a patient's detail page and clicks \"Edit Treatment Plan\". |\n| **Collaboration & Discussion** | Doctors can discuss patient cases with other medical team members. | The doctor clicks the \"Collaboration\" entry. |\n\n### 1.3. Administration\n\n| Case | Description | Trigger condition |\n| ---- | ----------- | ----------------- |\n| **Register** | Administrators can register as platform members (typically created by super admin or system initialization). | The super admin clicks \"Create Administrator\", and the system starts the registration process. |\n| **Log in** | The administrator inputs their account and password for authentication, and after successful authentication, they enter the management platform. | The administrator clicks the \"Login as Administrator\" button, and the system starts the login process. |\n| **Manage Data Interfaces** | Administrators can view and manage API interface status and call logs. | The administrator enters the \"Interface Management\" page. |\n| **Manage Sensor Devices** | Administrators can monitor sensor device status and handle device binding exceptions. | The administrator enters the \"Sensor Management\" page. |\n| **Manage AI Models** | Administrators can manage AI analysis model versions, updates, and deployments. | The administrator enters the \"AI Model Management\" page. |\n| **View Logs & Monitoring** | Administrators can view system operation logs, performance monitoring, and anomaly alerts. | The administrator enters the \"Log Monitoring\" page. |\n| **Manage Permissions & Roles** | Administrators can manage user roles, access permissions, and data permissions. | The administrator enters the \"Permission Management\" page. |\n| **Data Export & Backup** | Administrators can perform system data backup and export data on demand. | The administrator enters the \"Data Management\" page and clicks \"Backup/Export\". |\n## 2. Key Examples\n\n### 2.1. User Register\n\n#### 2.1.1. Basic info\n\n- Reference to Use Case 1.1.\n- Version: 0.1\n- Created: Apr 1\n- Authors: Lee\n- Source: Web Interface\n- Actors: Patient\n- Goal: Allow users to become platform members through registration.\n- Summary: New users input basic information, and the system validates and creates a user account.\n- Trigger: User clicks the \"Register\" button.\n- Frequency: Depends on the number of new users.\n- Precondition: The system permits new user registration.\n- Postconditions: The system returns registration success information and creates an account.\n\n#### 2.1.2. Basic Flow\n\n| Actor | System |\n| ----- | ------ |\n| User fills in registration information (username, password, email, age, etc.) | |\n| User clicks the \"Register\" button | |\n| | Validate that the username is unique |\n| | Validate that the password meets format requirements |\n| | Create user account and store in the database |\n| | Return success information to the interface |\n| User receives registration success notification | |\n\n#### 2.1.3. Alternative Flow\n\n| Actor | System |\n| ----- | ------ |\n| | Username already exists, return \"Username already taken\" |\n| | Password does not meet format requirements, return \"Password must contain at least 8 characters, including letters and numbers\" |\n| | Email format is invalid, return \"Invalid email format\" |\n| | Required fields are missing, return \"Please fill in all required fields\" |\n\n### 2.2. Sensor Connection\n\n#### 2.2.1. Basic Info\n\n- Reference to Use Case 1.1. (Patient - Execute Motion with Guidance)\n- Version: 1.0\n- Created: Apr 1\n- Authors: Lee\n- Source: Sensor Device / Mobile SDK\n- Actors: Logged-in Patient\n- Goal: Allow patients to connect sensor devices to the platform and upload motion data.\n- Summary: Users connect sensor devices via Bluetooth/WiFi; the system validates the connection and begins receiving motion data streams.\n- Trigger: User clicks the \"Connect Device\" button.\n- Frequency: Before each rehabilitation training session.\n- Precondition: User is logged in; sensor device is powered on and has sufficient battery; device is within connection range.\n- Postconditions: The system successfully binds the sensor to the user account and begins receiving and storing motion data.\n\n#### 2.2.2. Basic Flow\n\n| Actor | System |\n| ----- | ------ |\n| User clicks the \"Connect Sensor\" button | |\n| User selects device type (e.g., IMU sensor, smartwatch) | |\n| | Scan for nearby available sensor devices |\n| | Return list of available devices |\n| User selects the target device from the list | |\n| | Initiate pairing request and verify device identity |\n| | Confirm successful pairing |\n| | Display \"Device Connected\" status |\n| | Begin receiving sensor data stream |\n| User starts training session | |\n\n#### 2.2.3. Alternative Flow\n\n| Actor | System |\n| ----- | ------ |\n| | No devices found, display \"No devices found. Please check Bluetooth/WiFi.\" |\n| | Device pairing fails, display \"Pairing failed. Please ensure the device is discoverable.\" |\n| | Connection interrupted, display \"Connection lost. Attempting to reconnect...\" |\n| | Low sensor battery, display \"Low battery. Please charge the device.\" |",
+      "sourcePath": "content/en/docs/software-requirements-specification-v0-1.md"
     },
     {
       "id": "doc-demo-assets-index-v0-1",
@@ -72,7 +68,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable",
         "demo"
@@ -126,7 +121,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Template",
       "tags": [
         "template",
         "deliverable"
@@ -178,7 +172,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "demo",
         "test"
@@ -230,7 +223,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable",
         "milestone"
@@ -283,7 +275,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Template",
       "tags": [
         "template",
         "meeting"
@@ -327,7 +318,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Template",
       "tags": [
         "template",
         "research"
@@ -371,7 +361,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Template",
       "tags": [
         "template",
         "update"
@@ -415,7 +404,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Template",
       "tags": [
         "template",
         "weekly-report"
@@ -459,7 +447,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable",
         "milestone"
@@ -493,6 +480,57 @@
       "sourcePath": "content/zh-CN/logs/portal-shell-and-routing.md"
     },
     {
+      "id": "log-portal-shell-and-routing",
+      "slug": "portal-shell-and-routing",
+      "locale": "pt",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "Estrutura e routing do portal implementados",
+      "type": "update",
+      "date": "2026-03-31",
+      "owner": "M2 Developer",
+      "ownerRole": "Programmer",
+      "status": "in-progress",
+      "summary": "A estrutura com routing do portal já cobre visão geral, progresso, registos, documentos, arquitetura e calendário.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-31",
+      "links": [
+        {
+          "label": "Página de arquitetura",
+          "href": "/architecture"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Página de progresso",
+          "href": "/progress"
+        }
+      ],
+      "actionItems": [
+        {
+          "owner": "M2",
+          "task": "Ligar o conteúdo markdown gerado a todas as listas e páginas de detalhe."
+        }
+      ],
+      "featured": true,
+      "archived": false,
+      "markers": [],
+      "body": "## O que mudou\n\nO portal agora possui uma estrutura de routing estável, dando a cada pilar principal do projeto a sua própria página.\n\n## Conjunto de páginas\n\n- `/`\n- `/progress`\n- `/logs`\n- `/logs/:slug`\n- `/docs`\n- `/docs/:slug`\n- `/architecture`\n- `/calendar`\n\n## Impacto\n\nIsto transforma o portal num centro de colaboração partilhável, em vez de uma única página longa. Professores e colegas podem abrir diretamente a página ou registo relevante.",
+      "sourcePath": "content/pt/logs/portal-shell-and-routing.md"
+    },
+    {
       "id": "doc-presentation-outline-v1",
       "slug": "presentation-outline-v1",
       "locale": "en",
@@ -512,7 +550,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable",
         "milestone"
@@ -559,7 +596,7 @@
       "owner": "PM",
       "ownerRole": "PM",
       "status": "in-review",
-      "summary": "Index entry for weekly reports that summarize sprint work, blockers and next steps.",
+      "summary": "Index entry for weekly reports that summarize progress, blockers and next steps.",
       "relatedTeams": [
         "PM",
         "M2"
@@ -567,7 +604,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable"
       ],
@@ -617,7 +653,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable",
         "milestone"
@@ -673,7 +708,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable"
       ],
@@ -727,7 +761,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable",
         "milestone"
@@ -779,7 +812,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "research",
         "deliverable"
@@ -828,7 +860,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "research",
         "deliverable"
@@ -880,7 +911,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "research",
         "deliverable"
@@ -933,7 +963,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "milestone"
       ],
@@ -987,7 +1016,6 @@
         "project-portal",
         "m2-recruitment-site"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable"
       ],
@@ -1038,7 +1066,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable"
       ],
@@ -1094,7 +1121,6 @@
         "project-main-web",
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable",
         "interface"
@@ -1151,7 +1177,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "deliverable"
       ],
@@ -1202,7 +1227,6 @@
         "project-main-web",
         "project-portal"
       ],
-      "sprint": "Sprint 5",
       "tags": [
         "meeting",
         "interface"
@@ -1244,56 +1268,6 @@
     {
       "id": "doc-requirement-analysis-v1",
       "slug": "requirement-analysis-v1",
-      "locale": "pt",
-      "collection": "docs",
-      "routeBase": "docs",
-      "title": "Análise de Requisitos",
-      "type": "requirement-analysis",
-      "date": "2026-03-20",
-      "owner": "PM",
-      "ownerRole": "PM",
-      "status": "final",
-      "summary": "Análise base que define o portal como centro de relatório, documentação e colaboração, e não como site do produto.",
-      "relatedTeams": [
-        "PM",
-        "M2"
-      ],
-      "relatedRepos": [
-        "project-portal"
-      ],
-      "sprint": "Sprint 4",
-      "tags": [
-        "deliverable",
-        "milestone"
-      ],
-      "attentionTags": [
-        "attention:M2"
-      ],
-      "lastUpdated": "2026-03-20",
-      "version": "v1.0",
-      "reviewStatus": "final",
-      "links": [
-        {
-          "label": "Esboço de desenho do sistema",
-          "href": "/docs/system-design-outline-v1"
-        }
-      ],
-      "evidence": [
-        {
-          "label": "Nota de investigação",
-          "href": "/logs/prior-dsd-portal-patterns"
-        }
-      ],
-      "actionItems": [],
-      "featured": false,
-      "archived": false,
-      "markers": [],
-      "body": "## Âmbito\n\nDefinir o papel, as fronteiras e a estrutura mínima de páginas do `project-portal`.\n\n## Perguntas obrigatórias\n\n- O que é o projeto no seu todo?\n- Para que serve o portal?\n- O que está sob responsabilidade da M2?\n- Onde estão os registos, marcos, documentos e entregáveis?",
-      "sourcePath": "content/pt/docs/requirement-analysis-v1.md"
-    },
-    {
-      "id": "doc-requirement-analysis-v1",
-      "slug": "requirement-analysis-v1",
       "locale": "en",
       "collection": "docs",
       "routeBase": "docs",
@@ -1311,7 +1285,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 4",
       "tags": [
         "deliverable",
         "milestone"
@@ -1361,7 +1334,6 @@
       "relatedRepos": [
         "project-portal"
       ],
-      "sprint": "Sprint 4",
       "tags": [
         "deliverable",
         "milestone"
@@ -1392,6 +1364,55 @@
       "sourcePath": "content/zh-CN/docs/requirement-analysis-v1.md"
     },
     {
+      "id": "doc-requirement-analysis-v1",
+      "slug": "requirement-analysis-v1",
+      "locale": "pt",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Análise de Requisitos",
+      "type": "requirement-analysis",
+      "date": "2026-03-20",
+      "owner": "PM",
+      "ownerRole": "PM",
+      "status": "final",
+      "summary": "Análise base que define o portal como centro de relatório, documentação e colaboração, e não como site do produto.",
+      "relatedTeams": [
+        "PM",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-20",
+      "version": "v1.0",
+      "reviewStatus": "final",
+      "links": [
+        {
+          "label": "Esboço de desenho do sistema",
+          "href": "/docs/system-design-outline-v1"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Nota de investigação",
+          "href": "/logs/prior-dsd-portal-patterns"
+        }
+      ],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Âmbito\n\nDefinir o papel, as fronteiras e a estrutura mínima de páginas do `project-portal`.\n\n## Perguntas obrigatórias\n\n- O que é o projeto no seu todo?\n- Para que serve o portal?\n- O que está sob responsabilidade da M2?\n- Onde estão os registos, marcos, documentos e entregáveis?",
+      "sourcePath": "content/pt/docs/requirement-analysis-v1.md"
+    },
+    {
       "id": "doc-recruitment-site-retrospective-archive",
       "slug": "recruitment-site-retrospective-archive",
       "locale": "en",
@@ -1410,7 +1431,6 @@
       "relatedRepos": [
         "m2-recruitment-site"
       ],
-      "sprint": "Sprint 2",
       "tags": [
         "research"
       ],
@@ -1472,7 +1492,7 @@
       },
       {
         "value": "requirement-analysis",
-        "count": 3
+        "count": 4
       },
       {
         "value": "research",
@@ -1498,7 +1518,7 @@
     "tags": [
       {
         "value": "deliverable",
-        "count": 20
+        "count": 21
       },
       {
         "value": "demo",
@@ -1515,6 +1535,10 @@
       {
         "value": "milestone",
         "count": 10
+      },
+      {
+        "value": "requirement-analysis",
+        "count": 1
       },
       {
         "value": "research",
@@ -1544,7 +1568,7 @@
       },
       {
         "value": "attention:M2",
-        "count": 28
+        "count": 29
       },
       {
         "value": "attention:V2",
@@ -1558,11 +1582,11 @@
       },
       {
         "value": "M2",
-        "count": 28
+        "count": 29
       },
       {
         "value": "PM",
-        "count": 11
+        "count": 12
       },
       {
         "value": "V2",
@@ -1572,31 +1596,13 @@
     "years": [
       {
         "value": "2026",
-        "count": 28
-      }
-    ],
-    "sprints": [
-      {
-        "value": "Sprint 2",
-        "count": 1
-      },
-      {
-        "value": "Sprint 4",
-        "count": 3
-      },
-      {
-        "value": "Sprint 5",
-        "count": 19
-      },
-      {
-        "value": "Template",
-        "count": 5
+        "count": 29
       }
     ],
     "collections": [
       {
         "value": "docs",
-        "count": 13
+        "count": 14
       },
       {
         "value": "logs",

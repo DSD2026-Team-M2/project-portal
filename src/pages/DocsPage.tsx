@@ -56,7 +56,6 @@ export function DocsPage() {
           title={t("docs.current.title")}
           action={siteMode.showTemplateExamples ? <InternalLinkPill to="/examples">{t("common.viewTemplates")}</InternalLinkPill> : undefined}
         />
-        <SectionLead>{t("docs.current.lead", { count: currentEntries.length })}</SectionLead>
 
         <div className="mt-6 space-y-4">
           {currentEntries.map((entry) => (
@@ -72,7 +71,6 @@ export function DocsPage() {
 
       <RevealOnScroll as="section" className="section-shell p-6 sm:p-8">
         <SectionTitle title={t("docs.archived.title")} />
-        <SectionLead>{t("docs.archived.lead", { count: archivedEntries.length })}</SectionLead>
 
         <div className="mt-6 space-y-4">
           {archivedEntries.map((entry) => (

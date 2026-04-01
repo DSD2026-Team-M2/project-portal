@@ -19,7 +19,7 @@ export function LanguageSwitcher() {
           <button
             key={language}
             type="button"
-            className={`rounded-full px-3 py-1.5 text-sm transition ${
+            className={`min-w-[3.25rem] rounded-full px-3 py-1.5 text-center text-sm font-semibold transition ${
               isActive ? "bg-slate-900 text-white" : "text-slate-600 hover:text-slate-900"
             }`}
             aria-label={t("language.switchTo", { language: getLanguageLabel(language) })}

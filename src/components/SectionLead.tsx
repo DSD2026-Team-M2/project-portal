@@ -3,9 +3,5 @@ type SectionLeadProps = {
 };
 
 export function SectionLead({ children }: SectionLeadProps) {
-  return (
-    <div className="callout-box mt-4 max-w-3xl">
-      <p className="reading-lead">{children}</p>
-    </div>
-  );
+  return <p className="section-lead mt-3 max-w-3xl">{children}</p>;
 }

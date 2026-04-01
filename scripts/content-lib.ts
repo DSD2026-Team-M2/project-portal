@@ -18,7 +18,6 @@ const REQUIRED_FIELDS = [
   "summary",
   "relatedTeams",
   "relatedRepos",
-  "sprint",
   "tags",
 ] as const;
 const REQUIRED_DOC_FIELDS = ["version", "reviewStatus", "lastUpdated"] as const;
@@ -53,7 +52,6 @@ type ContentEntry = {
   summary: string;
   relatedTeams: string[];
   relatedRepos: string[];
-  sprint: string;
   tags: string[];
   attentionTags: string[];
   lastUpdated?: string;
@@ -83,7 +81,6 @@ export type GeneratedContentIndex = {
     attentionTags: TaxonomyItem[];
     teams: TaxonomyItem[];
     years: TaxonomyItem[];
-    sprints: TaxonomyItem[];
     collections: TaxonomyItem[];
   };
 };
@@ -230,7 +227,6 @@ export async function buildContentIndex(): Promise<BuildResult> {
       summary: String(parsed.data.summary ?? ""),
       relatedTeams: toArray<string>(parsed.data.relatedTeams).map(String),
       relatedRepos: toArray<string>(parsed.data.relatedRepos).map(String),
-      sprint: String(parsed.data.sprint ?? ""),
       tags: toArray<string>(parsed.data.tags).map(String),
       attentionTags: toArray<string>(parsed.data.attentionTags).map(String),
       lastUpdated: parsed.data.lastUpdated ? normalizeDateValue(parsed.data.lastUpdated) : undefined,
@@ -258,7 +254,6 @@ export async function buildContentIndex(): Promise<BuildResult> {
       attentionTags: countBy(entries.flatMap((entry) => entry.attentionTags)),
       teams: countBy(entries.flatMap((entry) => entry.relatedTeams)),
       years: countBy(entries.map((entry) => entry.date.slice(0, 4))),
-      sprints: countBy(entries.map((entry) => entry.sprint)),
       collections: countBy(entries.map((entry) => entry.collection)),
     },
   };

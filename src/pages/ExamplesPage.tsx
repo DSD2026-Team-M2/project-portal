@@ -53,7 +53,6 @@ export function ExamplesPage() {
 
       <RevealOnScroll as="section" className="section-shell p-6 sm:p-8">
         <SectionTitle title={t("examples.docsTitle")} />
-        <SectionLead>{t("examples.docsLead", { count: grouped.docs.length })}</SectionLead>
 
         <div className="mt-6 space-y-4">
           {grouped.docs.map((entry) => (
@@ -64,7 +63,6 @@ export function ExamplesPage() {
 
       <RevealOnScroll as="section" className="section-shell p-6 sm:p-8">
         <SectionTitle title={t("examples.logsTitle")} />
-        <SectionLead>{t("examples.logsLead", { count: grouped.logs.length })}</SectionLead>
 
         <div className="mt-6 divide-y divide-slate-200/80">
           {grouped.logs.map((entry) => (

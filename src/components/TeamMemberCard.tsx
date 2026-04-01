@@ -1,5 +1,6 @@
 import { Clock3, Github, MapPin } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 import type { SupportedLanguage } from "../i18n/language";
 import { resolveLocalizedText } from "../utils/content";
@@ -13,15 +14,41 @@ type TeamMemberCardProps = {
   language: SupportedLanguage;
 };
 
+function getInitials(name: string) {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? "")
+    .join("");
+}
+
 export function TeamMemberCard({ member, language }: TeamMemberCardProps) {
   const { t } = useTranslation();
+  const [imageError, setImageError] = useState(false);
+  const photoSrc = member.photoPath ? `${import.meta.env.BASE_URL}${member.photoPath}` : null;
+  const showPhoto = Boolean(photoSrc) && !imageError;
 
   return (
     <article className="surface-card h-full p-5 sm:p-6">
       <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{member.role}</p>
-          <h3 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">{member.name}</h3>
+        <div className="flex min-w-0 items-start gap-4">
+          <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-3xl border border-white/80 bg-[linear-gradient(135deg,#dbeafe,#f8fafc_52%,#e2e8f0)] shadow-sm">
+            {showPhoto ? (
+              <img
+                src={photoSrc ?? undefined}
+                alt={member.name}
+                className="h-full w-full object-cover"
+                onError={() => setImageError(true)}
+              />
+            ) : (
+              <span className="text-xl font-semibold tracking-[0.14em] text-slate-600">{getInitials(member.name)}</span>
+            )}
+          </div>
+          <div className="min-w-0">
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{member.role}</p>
+            <h3 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">{member.name}</h3>
+          </div>
         </div>
         <StaticTag label={resolveLocalizedText(member.locationLabel, language)} tone="blue" />
       </div>

@@ -15,7 +15,6 @@ relatedRepos:
   - project-main-web
   - project-portal
   - m2-recruitment-site
-sprint: Sprint 5
 tags:
   - deliverable
 attentionTags:
