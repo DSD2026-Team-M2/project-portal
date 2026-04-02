@@ -25,8 +25,8 @@ links:
   - label: Esboço de desenho do sistema
     href: /docs/system-design-outline-v1
 evidence:
-  - label: Nota de investigação
-    href: /logs/prior-dsd-portal-patterns
+  - label: Proposta de estrutura da equipa
+    href: /logs/2026-03-team-structure-proposal-shared
 actionItems: []
 ---
 

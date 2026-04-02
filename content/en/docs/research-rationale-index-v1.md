@@ -21,8 +21,8 @@ version: v1.0
 reviewStatus: in-review
 lastUpdated: 2026-03-28
 links:
-  - label: Prior portal patterns
-    href: /logs/prior-dsd-portal-patterns
+  - label: Team structure proposal
+    href: /logs/2026-03-team-structure-proposal-shared
 evidence:
   - label: Docs hub
     href: /docs

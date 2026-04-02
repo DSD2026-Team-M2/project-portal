@@ -1,7 +1,8 @@
+import { Github } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-import { externalLinks, footerExternalLinks } from "../config/links";
+import { brandAssets, externalLinks } from "../config/links";
 import { siteMode } from "../config/siteMode";
 import { projectMeta } from "../data/portalData";
 import type { SupportedLanguage } from "../i18n/language";
@@ -11,11 +12,7 @@ import { LanguageSwitcher } from "./LanguageSwitcher";
 export function Footer() {
   const { t, i18n } = useTranslation();
   const language = (i18n.resolvedLanguage ?? i18n.language) as SupportedLanguage;
-  const footerStats = [
-    { label: t("footer.maintainedBy"), value: "M2" },
-    { label: t("footer.lastUpdated"), value: projectMeta.lastUpdated },
-    { label: t("footer.license"), value: projectMeta.license },
-  ];
+  const currentYear = new Date().getFullYear();
   const sitemapGroups = [
     {
       title: t("footer.groups.overview"),
@@ -41,68 +38,78 @@ export function Footer() {
       ],
     },
   ];
+  const externalNavLinks = [
+    { label: "Portal", href: externalLinks.portalRepo.href },
+    { label: "Main Page", href: externalLinks.mainWebRepo.href },
+    { label: "Recruitment", href: externalLinks.recruitmentSite.href },
+  ];
+  const logoLinks = [
+    { href: externalLinks.jlu.href, src: brandAssets.jluLogo, alt: "Jilin University logo", label: "JLU" },
+    { href: externalLinks.utad.href, src: brandAssets.utadLogo, alt: "UTAD logo", label: "UTAD" },
+  ];
 
   return (
     <footer className="mt-14 border-t border-white/60 bg-white/45 backdrop-blur-xl">
-      <div className="mx-auto max-w-[1200px] px-4 py-8 sm:px-6 lg:px-8">
-        <div className="grid gap-8 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-start">
-          <div className="space-y-4">
+      <div className="mx-auto max-w-[1200px] px-4 py-6 sm:px-6 lg:px-8">
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
+          <div className="space-y-3">
             <div>
-              <p className="text-[0.72rem] font-semibold uppercase tracking-[0.22em] text-slate-500">{t("footer.title")}</p>
               <p className="mt-2 text-lg font-semibold text-slate-950">{projectMeta.projectName}</p>
               <p className="mt-1 text-sm text-slate-500">{resolveLocalizedText(projectMeta.term, language)}</p>
-              <p className="mt-3 max-w-2xl text-sm leading-7 text-slate-600">{t("footer.description")}</p>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-slate-600">{t("footer.description")}</p>
+              <p className="mt-1 text-sm font-medium text-slate-500">{t("footer.subtitle")}</p>
             </div>
 
-            <div className="flex flex-wrap gap-x-5 gap-y-2 text-sm text-slate-600">
-              {footerStats.map((item) => (
-                <p key={item.label}>
-                  <span className="font-semibold text-slate-900">{item.label}:</span> {item.value}
-                </p>
+            <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm text-slate-500">
+              {sitemapGroups.flatMap((group) => group.links).map((link) => (
+                <Link key={link.to} to={link.to} className="font-medium transition hover:text-sky-800">
+                  {link.label}
+                </Link>
               ))}
-              <p>
-                <span className="font-semibold text-slate-900">{t("footer.relatedOrg")}:</span>{" "}
-                <a href={externalLinks.m2Org.href} target="_blank" rel="noreferrer" className="text-sky-700 hover:text-sky-900">
-                  {externalLinks.m2Org.label}
-                </a>
-              </p>
             </div>
 
-            <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm">
-              {footerExternalLinks.map((link) => (
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-base text-slate-700">
+              {externalNavLinks.map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-slate-500 transition hover:text-sky-800"
+                  className="font-semibold transition hover:text-sky-800"
                 >
                   {link.label}
                 </a>
               ))}
+              <a
+                href={externalLinks.portalRepo.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-slate-300/80 bg-white/80 px-4 py-2 text-[0.95rem] font-semibold text-slate-800 shadow-sm transition hover:border-slate-400 hover:bg-white"
+                aria-label="GitHub repository"
+              >
+                <span>repo</span>
+                <Github className="h-4 w-4" />
+              </a>
             </div>
           </div>
 
-          <div className="rounded-[1.5rem] border border-white/70 bg-white/55 p-5">
-            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-slate-500">{t("footer.sitemapTitle")}</p>
-            <p className="mt-2 text-sm leading-6 text-slate-600">{t("footer.sitemapDescription")}</p>
-
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              {sitemapGroups.map((group) => (
-                <div key={group.title}>
-                  <p className="text-sm font-semibold text-slate-900">{group.title}</p>
-                  <div className="mt-2 flex flex-col gap-2">
-                    {group.links.map((link) => (
-                      <Link key={link.to} to={link.to} className="text-sm text-slate-600 transition hover:text-sky-800">
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
+          <div className="flex flex-col gap-4 lg:items-end">
+            <div className="flex items-center gap-3">
+              {logoLinks.map((logo) => (
+                <a
+                  key={logo.label}
+                  href={logo.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex h-11 items-center justify-center rounded-2xl border border-white/70 bg-white/70 px-3 shadow-sm transition hover:-translate-y-0.5"
+                  aria-label={logo.label}
+                >
+                  <img src={logo.src} alt={logo.alt} className="h-7 w-auto object-contain" />
+                </a>
               ))}
             </div>
 
-            <div className="mt-5 flex items-center gap-3 border-t border-white/70 pt-4 text-sm text-slate-500">
+            <div className="flex items-center gap-3 text-sm text-slate-500">
               <span>{t("footer.language")}</span>
               <LanguageSwitcher />
             </div>
@@ -110,10 +117,10 @@ export function Footer() {
         </div>
 
         <div className="mt-6 flex flex-col gap-2 border-t border-white/70 pt-4 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-          <div className="flex flex-wrap items-center gap-3 sm:gap-5">
-            <span>{t("footer.maintained")}</span>
-            <span>{t("footer.copyright")}</span>
-          </div>
+          <a href={externalLinks.portalRepo.href} target="_blank" rel="noreferrer" className="transition hover:text-sky-800">
+            {t("footer.maintained")}
+          </a>
+          <span>{`© ${currentYear} DSD2026-Team-M2 · Licensed under the MIT License`}</span>
         </div>
       </div>
     </footer>

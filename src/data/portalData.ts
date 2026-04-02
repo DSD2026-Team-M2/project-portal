@@ -105,7 +105,7 @@ export const projectMeta = {
   ),
   term: text("2025-2026 · Semester 2", "2025-2026 · 第二学期", "2025-2026 · Semestre 2"),
   subtitle: text("DSD 2025-2026 · Project Portal", "DSD 2025-2026 · 项目中枢", "DSD 2025-2026 · Portal do Projeto"),
-  lastUpdated: "2026-03-31",
+  lastUpdated: "2026-04-02",
   license: "MIT",
 };
 
@@ -560,7 +560,7 @@ export const calendarEvents: CalendarEventRecord[] = [
       "跨组确认字段命名、数据可用性与下一里程碑前的展示假设。",
       "Revisão entre equipas dos nomes de campos, disponibilidade de dados e pressupostos de apresentação antes do próximo marco.",
     ),
-    link: "/logs/interface-sync-2026-03-24",
+    link: "/logs",
     tags: ["interface", "attention:V2", "attention:M1", "attention:M2"],
     sample: true,
   },
@@ -576,7 +576,7 @@ export const calendarEvents: CalendarEventRecord[] = [
       "计划内部发布包含首页、进度、日志、文档、架构和日历页的 portal 路由外壳。",
       "Lançamento interno planeado da estrutura roteada do portal com páginas de visão geral, progresso, logs, docs, arquitetura e calendário.",
     ),
-    link: "/logs/portal-shell-and-routing",
+    link: "/logs/2026-03-31-first-portal-online",
     tags: ["deliverable", "milestone", "attention:M2"],
     sample: true,
   },

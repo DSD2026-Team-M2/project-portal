@@ -22,8 +22,8 @@ version: v1.0
 reviewStatus: in-review
 lastUpdated: 2026-03-30
 links:
-  - label: Demo checklist
-    href: /logs/demo-path-checklist
+  - label: First main mockup
+    href: /logs/2026-03-24-first-main-mockup-online
 evidence:
   - label: Overview page
     href: /

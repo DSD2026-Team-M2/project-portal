@@ -1,11 +1,11 @@
 import { Clock3 } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import type { SupportedLanguage } from "../i18n/language";
 import type { GeneratedContentEntry } from "../utils/content";
 import { formatDate } from "../utils/date";
 import { AttentionTag } from "./AttentionTag";
-import { InternalLinkPill } from "./InternalLinkPill";
 import { StaticTag } from "./StaticTag";
 
 type LogListItemProps = {
@@ -18,7 +18,7 @@ export function LogListItem({ entry, language, showFallback = false }: LogListIt
   const { t } = useTranslation();
 
   return (
-    <article className="border-b border-slate-200/80 py-5 last:border-b-0">
+    <Link to={`/logs/${entry.slug}`} className="log-list-row border-b border-slate-200/80 py-5 last:border-b-0">
       <div className="grid gap-4 lg:grid-cols-[11rem_minmax(0,1fr)_10rem] lg:items-start">
         <div className="space-y-3">
           <div className="inline-flex items-center gap-2 text-sm text-slate-500">
@@ -49,9 +49,9 @@ export function LogListItem({ entry, language, showFallback = false }: LogListIt
         </div>
 
         <div className="lg:flex lg:justify-end">
-          <InternalLinkPill to={`/logs/${entry.slug}`}>{t("common.openArticle")}</InternalLinkPill>
+          <span className="internal-link-pill">{t("common.openArticle")}</span>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }

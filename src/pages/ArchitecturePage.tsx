@@ -125,14 +125,14 @@ export function ArchitecturePage() {
                       <Icon className="h-5 w-5" />
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                      <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">
                         {resolveLocalizedText(layer.title, language)}
                       </p>
-                      <p className="mt-1 text-base font-semibold text-slate-950">{layer.id.toUpperCase()}</p>
+                      <p className="mt-1 text-lg font-bold text-slate-950">{layer.id.toUpperCase()}</p>
                     </div>
                   </div>
 
-                  <p className="mt-4 text-sm leading-7 text-slate-600">{resolveLocalizedText(layer.summary, language)}</p>
+                  <p className="mt-4 text-[1rem] leading-8 text-slate-700">{resolveLocalizedText(layer.summary, language)}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {teams
                       .filter((team) => team.layer === layer.id)
@@ -164,43 +164,43 @@ export function ArchitecturePage() {
             <article key={team.id} id={`team-${team.id.toLowerCase()}`} className="surface-card anchor-target p-5 sm:p-6">
               <div className="grid gap-4 lg:grid-cols-[8rem_minmax(0,1fr)_14rem]">
                 <div>
-                  <p className="text-2xl font-semibold tracking-tight text-slate-950">{team.id}</p>
-                  <p className="mt-1 text-sm text-slate-500">{team.layer}</p>
+                  <p className="text-3xl font-bold tracking-tight text-slate-950">{team.id}</p>
+                  <p className="mt-1 text-base text-slate-500">{team.layer}</p>
                   <div className="mt-3">
                     <StatusBadge value={team.status} />
                   </div>
                 </div>
 
                 <div>
-                  <p className="text-sm leading-7 text-slate-700">{resolveLocalizedText(team.responsibility, language)}</p>
+                  <p className="text-[1.05rem] leading-8 text-slate-800">{resolveLocalizedText(team.responsibility, language)}</p>
                   <div className="mt-4 grid gap-3 md:grid-cols-2">
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("common.primaryInputs")}</p>
-                      <p className="mt-2 text-sm leading-7 text-slate-600">{resolveLocalizedText(team.primaryInputs, language)}</p>
+                      <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">{t("common.primaryInputs")}</p>
+                      <p className="mt-2 text-[1rem] leading-8 text-slate-700">{resolveLocalizedText(team.primaryInputs, language)}</p>
                     </div>
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("common.primaryOutputs")}</p>
-                      <p className="mt-2 text-sm leading-7 text-slate-600">{resolveLocalizedText(team.primaryOutputs, language)}</p>
+                      <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">{t("common.primaryOutputs")}</p>
+                      <p className="mt-2 text-[1rem] leading-8 text-slate-700">{resolveLocalizedText(team.primaryOutputs, language)}</p>
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-4">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("common.dependsOnShort")}</p>
+                    <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">{t("common.dependsOnShort")}</p>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {team.dependsOn.length === 0 ? <StaticTag label="-" /> : team.dependsOn.map((item) => <StaticTag key={item} label={item} />)}
                     </div>
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("common.dependedBy")}</p>
+                    <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">{t("common.dependedBy")}</p>
                     <div className="mt-2 flex flex-wrap gap-2">
                       {team.dependedBy.length === 0 ? <StaticTag label="-" /> : team.dependedBy.map((item) => <StaticTag key={item} label={item} />)}
                     </div>
                   </div>
                   {team.directInterfaceWithM2 ? <AttentionTag label={t("architecture.directM2Link")} /> : null}
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+                    <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">
                       {t("architecture.linkSlots.teamLinks")}
                     </p>
                     <div className="mt-2 flex flex-wrap gap-2">
@@ -237,11 +237,11 @@ export function ArchitecturePage() {
             return (
               <article key={repo.id} id={`repo-${repo.id}`} className="surface-card anchor-target p-5">
                 <div className="flex items-center justify-between gap-3">
-                  <p className="text-lg font-semibold text-slate-950">{repo.id}</p>
+                  <p className="text-xl font-bold text-slate-950">{repo.id}</p>
                   <StatusBadge value={repo.status} />
                 </div>
-                <p className="mt-3 text-sm leading-7 text-slate-600">{resolveLocalizedText(repo.role, language)}</p>
-                <p className="mt-3 text-sm leading-7 text-slate-500">{resolveLocalizedText(repo.summary, language)}</p>
+                <p className="mt-3 text-[1rem] leading-8 font-medium text-slate-700">{resolveLocalizedText(repo.role, language)}</p>
+                <p className="mt-3 text-[0.98rem] leading-8 text-slate-600">{resolveLocalizedText(repo.summary, language)}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   <StaticTag label={repo.maintainedBy} />
                   {repo.dependencies.map((dependency) => (
@@ -265,14 +265,14 @@ export function ArchitecturePage() {
         <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
           <div className="space-y-4">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+              <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">
                 {t("architecture.linkSlots.projectLinks")}
               </p>
               <div className="mt-3 space-y-3">
                 {projectResourceSlots.map((card) => (
                   <article key={card.id} className="surface-card p-5">
-                    <p className="text-lg font-semibold text-slate-950">{card.title}</p>
-                    <p className="mt-2 text-sm leading-7 text-slate-600">{card.summary}</p>
+                    <p className="text-xl font-bold text-slate-950">{card.title}</p>
+                    <p className="mt-2 text-[0.98rem] leading-8 text-slate-600">{card.summary}</p>
                     <div className="mt-4 flex flex-wrap gap-2">
                       {card.slots.map((slot) => (
                         <ResourcePlaceholderPill
@@ -289,14 +289,14 @@ export function ArchitecturePage() {
           </div>
 
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
+            <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">
               {t("architecture.linkSlots.historicalLinks")}
             </p>
             <div className="mt-3 grid gap-3 md:grid-cols-2">
               {historicalReferenceLinks.map((card) => (
                 <article key={card.id} className="surface-card p-5">
-                  <p className="text-base font-semibold text-slate-950">{card.label}</p>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">{t("architecture.linkSlots.historicalCardSummary")}</p>
+                  <p className="text-lg font-bold text-slate-950">{card.label}</p>
+                  <p className="mt-2 text-[0.98rem] leading-8 text-slate-600">{t("architecture.linkSlots.historicalCardSummary")}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     <ResourcePlaceholderPill
                       slot={card.repo ?? { label: t("architecture.linkSlots.buttons.teamRepo") }}
@@ -327,28 +327,28 @@ export function ArchitecturePage() {
                     <ArrowRightLeft className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{item.id}</p>
-                    <h3 className="mt-1 text-xl font-semibold tracking-tight text-slate-950">{t(`architecture.interfaces.labels.${item.id}`)}</h3>
+                    <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">{item.id}</p>
+                    <h3 className="mt-1 text-[1.45rem] font-bold tracking-tight text-slate-950">{t(`architecture.interfaces.labels.${item.id}`)}</h3>
                   </div>
                 </div>
                 <StatusBadge value="active" />
               </div>
 
-              <p className="mt-4 text-sm leading-7 text-slate-700">{resolveLocalizedText(item.summary, language)}</p>
+              <p className="mt-4 text-[1rem] leading-8 text-slate-700">{resolveLocalizedText(item.summary, language)}</p>
               <div className="mt-4 grid gap-4 md:grid-cols-2">
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("architecture.interfaces.source")}</p>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">{item.from}</p>
+                  <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">{t("architecture.interfaces.source")}</p>
+                  <p className="mt-2 text-[0.98rem] leading-8 text-slate-700">{item.from}</p>
                 </div>
                 <div>
-                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("architecture.interfaces.destination")}</p>
-                  <p className="mt-2 text-sm leading-7 text-slate-600">{item.to}</p>
+                  <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">{t("architecture.interfaces.destination")}</p>
+                  <p className="mt-2 text-[0.98rem] leading-8 text-slate-700">{item.to}</p>
                 </div>
               </div>
 
               <div className="mt-4 rounded-2xl border border-slate-200/80 bg-slate-50/70 p-4">
-                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{t("architecture.interfaces.m2Usage")}</p>
-                <p className="mt-2 text-sm leading-7 text-slate-700">{resolveLocalizedText(item.m2Usage, language)}</p>
+                <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">{t("architecture.interfaces.m2Usage")}</p>
+                <p className="mt-2 text-[1rem] leading-8 text-slate-700">{resolveLocalizedText(item.m2Usage, language)}</p>
               </div>
             </article>
           ))}
@@ -362,8 +362,8 @@ export function ArchitecturePage() {
         <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {roleMatrix.map((role) => (
             <article key={role.id} className="surface-card p-5">
-              <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{role.id}</p>
-              <p className="mt-3 text-sm leading-7 text-slate-700">{resolveLocalizedText(role.description, language)}</p>
+              <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">{role.id}</p>
+              <p className="mt-3 text-[1rem] leading-8 text-slate-700">{resolveLocalizedText(role.description, language)}</p>
             </article>
           ))}
         </div>

@@ -48,6 +48,9 @@ export function TeamMemberCard({ member, language }: TeamMemberCardProps) {
           <div className="min-w-0">
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{member.role}</p>
             <h3 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">{member.name}</h3>
+            {member.displayCode ? (
+              <p className="mt-1 text-sm text-slate-400">{member.displayCode}</p>
+            ) : null}
           </div>
         </div>
         <StaticTag label={resolveLocalizedText(member.locationLabel, language)} tone="blue" />

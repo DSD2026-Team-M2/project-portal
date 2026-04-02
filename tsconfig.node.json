@@ -10,5 +10,13 @@
     "noEmit": true,
     "types": ["node"]
   },
-  "include": ["vite.config.ts", "tailwind.config.js", "scripts"]
+  "include": [
+    "vite.config.ts",
+    "tailwind.config.js",
+    "scripts",
+    "src/config/siteMode.ts",
+    "src/data/portalData.ts",
+    "src/i18n/language.ts",
+    "src/utils/content.ts"
+  ]
 }

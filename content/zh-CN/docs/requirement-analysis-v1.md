@@ -25,8 +25,8 @@ links:
   - label: 系统设计提纲
     href: /docs/system-design-outline-v1
 evidence:
-  - label: 调研记录
-    href: /logs/prior-dsd-portal-patterns
+  - label: 团队结构提案
+    href: /logs/2026-03-team-structure-proposal-shared
 actionItems: []
 ---
 

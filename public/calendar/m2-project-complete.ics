@@ -1,0 +1,1166 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//DSD2026 Team M2//Project Portal Calendar//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:Limb Motion Recognition and Assistant · M2 Calendar · Comple
+ te
+X-WR-TIMEZONE:Asia/Shanghai
+BEGIN:VEVENT
+UID:2026-03-29-m2-members-meeting-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:M2 members meeting (CN)
+DESCRIPTION:China-side internal M2 member meeting.\n\nPortal link: https:
+ //dsd2026-team-m2.github.io/project-portal/#/team
+URL:https://dsd2026-team-m2.github.io/project-portal/#/team
+CATEGORIES:meeting,project-portal
+DTSTART;VALUE=DATE:20260329
+DTEND;VALUE=DATE:20260330
+X-DSD-RELATED-TEAMS:M2\, CN
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-03-31-m2-members-meeting-cross-country@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:M2 members meeting (CN-PT)
+DESCRIPTION:Cross-country M2 member meeting across China and Portugal.\n\
+ nPortal link: https://dsd2026-team-m2.github.io/project-portal/#/team
+URL:https://dsd2026-team-m2.github.io/project-portal/#/team
+CATEGORIES:meeting,project-portal
+DTSTART;VALUE=DATE:20260331
+DTEND;VALUE=DATE:20260401
+X-DSD-RELATED-TEAMS:M2\, CN\, PT
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-03-25-assessment-ddl@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assessment DDL
+DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
+ eam-m2.github.io/project-portal/#/calendar#2026-03-25-assessment-ddl
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-03-2
+ 5-assessment-ddl
+CATEGORIES:deadline,project-portal
+DTSTART;VALUE=DATE:20260325
+DTEND;VALUE=DATE:20260326
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-01-assessment-ddl@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assessment DDL
+DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
+ eam-m2.github.io/project-portal/#/calendar#2026-04-01-assessment-ddl
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-0
+ 1-assessment-ddl
+CATEGORIES:deadline,project-portal
+DTSTART;VALUE=DATE:20260401
+DTEND;VALUE=DATE:20260402
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-08-assessment-ddl@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assessment DDL
+DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
+ eam-m2.github.io/project-portal/#/calendar#2026-04-08-assessment-ddl
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-0
+ 8-assessment-ddl
+CATEGORIES:deadline,project-portal
+DTSTART;VALUE=DATE:20260408
+DTEND;VALUE=DATE:20260409
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-15-assessment-ddl@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assessment DDL
+DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
+ eam-m2.github.io/project-portal/#/calendar#2026-04-15-assessment-ddl
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-1
+ 5-assessment-ddl
+CATEGORIES:deadline,project-portal
+DTSTART;VALUE=DATE:20260415
+DTEND;VALUE=DATE:20260416
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-22-assessment-ddl@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assessment DDL
+DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
+ eam-m2.github.io/project-portal/#/calendar#2026-04-22-assessment-ddl
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-2
+ 2-assessment-ddl
+CATEGORIES:deadline,project-portal
+DTSTART;VALUE=DATE:20260422
+DTEND;VALUE=DATE:20260423
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-29-assessment-ddl@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assessment DDL
+DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
+ eam-m2.github.io/project-portal/#/calendar#2026-04-29-assessment-ddl
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-2
+ 9-assessment-ddl
+CATEGORIES:deadline,project-portal
+DTSTART;VALUE=DATE:20260429
+DTEND;VALUE=DATE:20260430
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-06-assessment-ddl@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assessment DDL
+DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
+ eam-m2.github.io/project-portal/#/calendar#2026-05-06-assessment-ddl
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-0
+ 6-assessment-ddl
+CATEGORIES:deadline,project-portal
+DTSTART;VALUE=DATE:20260506
+DTEND;VALUE=DATE:20260507
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-13-assessment-ddl@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assessment DDL
+DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
+ eam-m2.github.io/project-portal/#/calendar#2026-05-13-assessment-ddl
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-1
+ 3-assessment-ddl
+CATEGORIES:deadline,project-portal
+DTSTART;VALUE=DATE:20260513
+DTEND;VALUE=DATE:20260514
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-20-assessment-ddl@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assessment DDL
+DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
+ eam-m2.github.io/project-portal/#/calendar#2026-05-20-assessment-ddl
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-2
+ 0-assessment-ddl
+CATEGORIES:deadline,project-portal
+DTSTART;VALUE=DATE:20260520
+DTEND;VALUE=DATE:20260521
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-03-19-cn-course-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:CN project course
+DESCRIPTION:Weekly in-person course session for all China-side members in
+  the wider project.\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2026-03-19-cn-course-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-03-1
+ 9-cn-course-meeting
+CATEGORIES:course,project-portal
+DTSTART;VALUE=DATE:20260319
+DTEND;VALUE=DATE:20260320
+X-DSD-RELATED-TEAMS:CN
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-03-26-cn-course-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:CN project course
+DESCRIPTION:Weekly in-person course session for all China-side members in
+  the wider project.\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2026-03-26-cn-course-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-03-2
+ 6-cn-course-meeting
+CATEGORIES:course,project-portal
+DTSTART;VALUE=DATE:20260326
+DTEND;VALUE=DATE:20260327
+X-DSD-RELATED-TEAMS:CN
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-02-cn-course-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:CN project course
+DESCRIPTION:Weekly in-person course session for all China-side members in
+  the wider project.\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2026-04-02-cn-course-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-0
+ 2-cn-course-meeting
+CATEGORIES:course,project-portal
+DTSTART;VALUE=DATE:20260402
+DTEND;VALUE=DATE:20260403
+X-DSD-RELATED-TEAMS:CN
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-09-cn-course-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:CN project course
+DESCRIPTION:Weekly in-person course session for all China-side members in
+  the wider project.\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2026-04-09-cn-course-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-0
+ 9-cn-course-meeting
+CATEGORIES:course,project-portal
+DTSTART;VALUE=DATE:20260409
+DTEND;VALUE=DATE:20260410
+X-DSD-RELATED-TEAMS:CN
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-16-cn-course-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:CN project course
+DESCRIPTION:Weekly in-person course session for all China-side members in
+  the wider project.\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2026-04-16-cn-course-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-1
+ 6-cn-course-meeting
+CATEGORIES:course,project-portal
+DTSTART;VALUE=DATE:20260416
+DTEND;VALUE=DATE:20260417
+X-DSD-RELATED-TEAMS:CN
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-23-cn-course-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:CN project course
+DESCRIPTION:Weekly in-person course session for all China-side members in
+  the wider project.\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2026-04-23-cn-course-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-2
+ 3-cn-course-meeting
+CATEGORIES:course,project-portal
+DTSTART;VALUE=DATE:20260423
+DTEND;VALUE=DATE:20260424
+X-DSD-RELATED-TEAMS:CN
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-30-cn-course-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:CN project course
+DESCRIPTION:Weekly in-person course session for all China-side members in
+  the wider project.\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2026-04-30-cn-course-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-3
+ 0-cn-course-meeting
+CATEGORIES:course,project-portal
+DTSTART;VALUE=DATE:20260430
+DTEND;VALUE=DATE:20260501
+X-DSD-RELATED-TEAMS:CN
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-07-cn-course-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:CN project course
+DESCRIPTION:Weekly in-person course session for all China-side members in
+  the wider project.\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2026-05-07-cn-course-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-0
+ 7-cn-course-meeting
+CATEGORIES:course,project-portal
+DTSTART;VALUE=DATE:20260507
+DTEND;VALUE=DATE:20260508
+X-DSD-RELATED-TEAMS:CN
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-14-cn-course-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:CN project course
+DESCRIPTION:Weekly in-person course session for all China-side members in
+  the wider project.\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2026-05-14-cn-course-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-1
+ 4-cn-course-meeting
+CATEGORIES:course,project-portal
+DTSTART;VALUE=DATE:20260514
+DTEND;VALUE=DATE:20260515
+X-DSD-RELATED-TEAMS:CN
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-21-cn-course-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:CN project course
+DESCRIPTION:Weekly in-person course session for all China-side members in
+  the wider project.\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2026-05-21-cn-course-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-2
+ 1-cn-course-meeting
+CATEGORIES:course,project-portal
+DTSTART;VALUE=DATE:20260521
+DTEND;VALUE=DATE:20260522
+X-DSD-RELATED-TEAMS:CN
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-01-01-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:元旦
+DESCRIPTION:New Year's Day\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2026-01-01-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-01-0
+ 1-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260101
+DTEND;VALUE=DATE:20260102
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-01-02-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:元旦
+DESCRIPTION:New Year's Day\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2026-01-02-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-01-0
+ 2-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260102
+DTEND;VALUE=DATE:20260103
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-01-03-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:元旦
+DESCRIPTION:New Year's Day\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2026-01-03-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-01-0
+ 3-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260103
+DTEND;VALUE=DATE:20260104
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-02-15-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:春节
+DESCRIPTION:Chinese New Year (Spring Festival)\n\nPortal link: https://ds
+ d2026-team-m2.github.io/project-portal/#/calendar#2026-02-15-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-02-1
+ 5-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260215
+DTEND;VALUE=DATE:20260216
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-02-16-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:春节
+DESCRIPTION:Chinese New Year (Spring Festival)\n\nPortal link: https://ds
+ d2026-team-m2.github.io/project-portal/#/calendar#2026-02-16-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-02-1
+ 6-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260216
+DTEND;VALUE=DATE:20260217
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-02-17-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:春节
+DESCRIPTION:Chinese New Year (Spring Festival)\n\nPortal link: https://ds
+ d2026-team-m2.github.io/project-portal/#/calendar#2026-02-17-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-02-1
+ 7-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260217
+DTEND;VALUE=DATE:20260218
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-02-18-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:春节
+DESCRIPTION:Chinese New Year (Spring Festival)\n\nPortal link: https://ds
+ d2026-team-m2.github.io/project-portal/#/calendar#2026-02-18-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-02-1
+ 8-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260218
+DTEND;VALUE=DATE:20260219
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-02-19-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:春节
+DESCRIPTION:Chinese New Year (Spring Festival)\n\nPortal link: https://ds
+ d2026-team-m2.github.io/project-portal/#/calendar#2026-02-19-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-02-1
+ 9-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260219
+DTEND;VALUE=DATE:20260220
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-02-20-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:春节
+DESCRIPTION:Chinese New Year (Spring Festival)\n\nPortal link: https://ds
+ d2026-team-m2.github.io/project-portal/#/calendar#2026-02-20-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-02-2
+ 0-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260220
+DTEND;VALUE=DATE:20260221
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-02-21-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:春节
+DESCRIPTION:Chinese New Year (Spring Festival)\n\nPortal link: https://ds
+ d2026-team-m2.github.io/project-portal/#/calendar#2026-02-21-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-02-2
+ 1-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260221
+DTEND;VALUE=DATE:20260222
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-02-22-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:春节
+DESCRIPTION:Chinese New Year (Spring Festival)\n\nPortal link: https://ds
+ d2026-team-m2.github.io/project-portal/#/calendar#2026-02-22-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-02-2
+ 2-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260222
+DTEND;VALUE=DATE:20260223
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-02-23-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:春节
+DESCRIPTION:Chinese New Year (Spring Festival)\n\nPortal link: https://ds
+ d2026-team-m2.github.io/project-portal/#/calendar#2026-02-23-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-02-2
+ 3-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260223
+DTEND;VALUE=DATE:20260224
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-04-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:清明节
+DESCRIPTION:Qingming Festival\n\nPortal link: https://dsd2026-team-m2.git
+ hub.io/project-portal/#/calendar#2026-04-04-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-0
+ 4-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260404
+DTEND;VALUE=DATE:20260405
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-05-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:清明节
+DESCRIPTION:Qingming Festival\n\nPortal link: https://dsd2026-team-m2.git
+ hub.io/project-portal/#/calendar#2026-04-05-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-0
+ 5-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260405
+DTEND;VALUE=DATE:20260406
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-06-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:清明节
+DESCRIPTION:Qingming Festival\n\nPortal link: https://dsd2026-team-m2.git
+ hub.io/project-portal/#/calendar#2026-04-06-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-0
+ 6-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260406
+DTEND;VALUE=DATE:20260407
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-01-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:劳动节
+DESCRIPTION:Labour Day\n\nPortal link: https://dsd2026-team-m2.github.io/
+ project-portal/#/calendar#2026-05-01-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-0
+ 1-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260501
+DTEND;VALUE=DATE:20260502
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-02-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:劳动节
+DESCRIPTION:Labour Day\n\nPortal link: https://dsd2026-team-m2.github.io/
+ project-portal/#/calendar#2026-05-02-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-0
+ 2-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260502
+DTEND;VALUE=DATE:20260503
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-03-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:劳动节
+DESCRIPTION:Labour Day\n\nPortal link: https://dsd2026-team-m2.github.io/
+ project-portal/#/calendar#2026-05-03-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-0
+ 3-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260503
+DTEND;VALUE=DATE:20260504
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-04-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:劳动节
+DESCRIPTION:Labour Day\n\nPortal link: https://dsd2026-team-m2.github.io/
+ project-portal/#/calendar#2026-05-04-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-0
+ 4-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260504
+DTEND;VALUE=DATE:20260505
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-05-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:劳动节
+DESCRIPTION:Labour Day\n\nPortal link: https://dsd2026-team-m2.github.io/
+ project-portal/#/calendar#2026-05-05-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-0
+ 5-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260505
+DTEND;VALUE=DATE:20260506
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-06-19-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:端午节
+DESCRIPTION:Dragon Boat Festival\n\nPortal link: https://dsd2026-team-m2.
+ github.io/project-portal/#/calendar#2026-06-19-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-06-1
+ 9-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260619
+DTEND;VALUE=DATE:20260620
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-06-20-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:端午节
+DESCRIPTION:Dragon Boat Festival\n\nPortal link: https://dsd2026-team-m2.
+ github.io/project-portal/#/calendar#2026-06-20-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-06-2
+ 0-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260620
+DTEND;VALUE=DATE:20260621
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-06-21-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:端午节
+DESCRIPTION:Dragon Boat Festival\n\nPortal link: https://dsd2026-team-m2.
+ github.io/project-portal/#/calendar#2026-06-21-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-06-2
+ 1-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260621
+DTEND;VALUE=DATE:20260622
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-25-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:中秋节
+DESCRIPTION:Mid-Autumn Festival\n\nPortal link: https://dsd2026-team-m2.g
+ ithub.io/project-portal/#/calendar#2026-09-25-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-09-2
+ 5-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260925
+DTEND;VALUE=DATE:20260926
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-26-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:中秋节
+DESCRIPTION:Mid-Autumn Festival\n\nPortal link: https://dsd2026-team-m2.g
+ ithub.io/project-portal/#/calendar#2026-09-26-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-09-2
+ 6-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260926
+DTEND;VALUE=DATE:20260927
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-09-27-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:中秋节
+DESCRIPTION:Mid-Autumn Festival\n\nPortal link: https://dsd2026-team-m2.g
+ ithub.io/project-portal/#/calendar#2026-09-27-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-09-2
+ 7-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20260927
+DTEND;VALUE=DATE:20260928
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-01-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:国庆节
+DESCRIPTION:National Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2026-10-01-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-10-0
+ 1-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20261001
+DTEND;VALUE=DATE:20261002
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-02-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:国庆节
+DESCRIPTION:National Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2026-10-02-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-10-0
+ 2-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20261002
+DTEND;VALUE=DATE:20261003
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-03-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:国庆节
+DESCRIPTION:National Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2026-10-03-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-10-0
+ 3-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20261003
+DTEND;VALUE=DATE:20261004
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-04-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:国庆节
+DESCRIPTION:National Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2026-10-04-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-10-0
+ 4-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20261004
+DTEND;VALUE=DATE:20261005
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-05-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:国庆节
+DESCRIPTION:National Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2026-10-05-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-10-0
+ 5-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261006
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-06-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:国庆节
+DESCRIPTION:National Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2026-10-06-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-10-0
+ 6-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20261006
+DTEND;VALUE=DATE:20261007
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-07-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:国庆节
+DESCRIPTION:National Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2026-10-07-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-10-0
+ 7-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20261007
+DTEND;VALUE=DATE:20261008
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-01-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:元旦
+DESCRIPTION:New Year's Day\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2027-01-01-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-01-0
+ 1-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-02-06-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:春节
+DESCRIPTION:Chinese New Year (Spring Festival)\n\nPortal link: https://ds
+ d2026-team-m2.github.io/project-portal/#/calendar#2027-02-06-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-02-0
+ 6-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20270206
+DTEND;VALUE=DATE:20270207
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-01-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:劳动节
+DESCRIPTION:Labour Day\n\nPortal link: https://dsd2026-team-m2.github.io/
+ project-portal/#/calendar#2027-05-01-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-05-0
+ 1-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-06-09-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:端午节
+DESCRIPTION:Dragon Boat Festival\n\nPortal link: https://dsd2026-team-m2.
+ github.io/project-portal/#/calendar#2027-06-09-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-06-0
+ 9-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20270609
+DTEND;VALUE=DATE:20270610
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-09-15-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:中秋节
+DESCRIPTION:Mid-Autumn Festival\n\nPortal link: https://dsd2026-team-m2.g
+ ithub.io/project-portal/#/calendar#2027-09-15-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-09-1
+ 5-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20270915
+DTEND;VALUE=DATE:20270916
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-01-holiday-cn@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:国庆节
+DESCRIPTION:National Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2027-10-01-holiday-cn
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-10-0
+ 1-holiday-cn
+CATEGORIES:holiday-cn,holiday,project-portal
+DTSTART;VALUE=DATE:20271001
+DTEND;VALUE=DATE:20271002
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-01-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Ano Novo
+DESCRIPTION:New Year's Day\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2026-01-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-01-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20260101
+DTEND;VALUE=DATE:20260102
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-02-17-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Carnaval
+DESCRIPTION:Carnival\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2026-02-17-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-02-1
+ 7-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20260217
+DTEND;VALUE=DATE:20260218
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-03-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Sexta-feira Santa
+DESCRIPTION:Good Friday\n\nPortal link: https://dsd2026-team-m2.github.io
+ /project-portal/#/calendar#2026-04-03-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-0
+ 3-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20260403
+DTEND;VALUE=DATE:20260404
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-05-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Domingo de Páscoa
+DESCRIPTION:Easter Sunday\n\nPortal link: https://dsd2026-team-m2.github.
+ io/project-portal/#/calendar#2026-04-05-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-0
+ 5-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20260405
+DTEND;VALUE=DATE:20260406
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-25-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia da Liberdade
+DESCRIPTION:Freedom Day\n\nPortal link: https://dsd2026-team-m2.github.io
+ /project-portal/#/calendar#2026-04-25-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-2
+ 5-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20260425
+DTEND;VALUE=DATE:20260426
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia do Trabalhador
+DESCRIPTION:Labour Day\n\nPortal link: https://dsd2026-team-m2.github.io/
+ project-portal/#/calendar#2026-05-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20260501
+DTEND;VALUE=DATE:20260502
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-06-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia dos Açores
+DESCRIPTION:Azores Day\n\nPortal link: https://dsd2026-team-m2.github.io/
+ project-portal/#/calendar#2026-06-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-06-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20260601
+DTEND;VALUE=DATE:20260602
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-06-04-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Corpo de Deus
+DESCRIPTION:Corpus Christi\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2026-06-04-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-06-0
+ 4-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20260604
+DTEND;VALUE=DATE:20260605
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-06-10-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia de Portugal\, de Camões e das Comunidades Portuguesas
+DESCRIPTION:National Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2026-06-10-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-06-1
+ 0-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20260610
+DTEND;VALUE=DATE:20260611
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-07-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia da Madeira
+DESCRIPTION:Madeira Day\n\nPortal link: https://dsd2026-team-m2.github.io
+ /project-portal/#/calendar#2026-07-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-07-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20260701
+DTEND;VALUE=DATE:20260702
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-08-15-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assunção de Nossa Senhora
+DESCRIPTION:Assumption Day\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2026-08-15-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-08-1
+ 5-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20260815
+DTEND;VALUE=DATE:20260816
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-10-05-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Implantação da República
+DESCRIPTION:Republic Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2026-10-05-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-10-0
+ 5-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20261005
+DTEND;VALUE=DATE:20261006
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-11-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia de Todos-os-Santos
+DESCRIPTION:All Saints Day\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2026-11-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-11-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20261101
+DTEND;VALUE=DATE:20261102
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Restauração da Independência
+DESCRIPTION:Restoration of Independence\n\nPortal link: https://dsd2026-t
+ eam-m2.github.io/project-portal/#/calendar#2026-12-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-12-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20261201
+DTEND;VALUE=DATE:20261202
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-08-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Imaculada Conceição
+DESCRIPTION:Immaculate Conception\n\nPortal link: https://dsd2026-team-m2
+ .github.io/project-portal/#/calendar#2026-12-08-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-12-0
+ 8-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20261208
+DTEND;VALUE=DATE:20261209
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-25-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Natal
+DESCRIPTION:Christmas Day\n\nPortal link: https://dsd2026-team-m2.github.
+ io/project-portal/#/calendar#2026-12-25-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-12-2
+ 5-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20261225
+DTEND;VALUE=DATE:20261226
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-12-26-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Primeira Oitava
+DESCRIPTION:St. Stephen's Day\n\nPortal link: https://dsd2026-team-m2.git
+ hub.io/project-portal/#/calendar#2026-12-26-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-12-2
+ 6-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20261226
+DTEND;VALUE=DATE:20261227
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-01-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Ano Novo
+DESCRIPTION:New Year's Day\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2027-01-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-01-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20270101
+DTEND;VALUE=DATE:20270102
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-02-09-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Carnaval
+DESCRIPTION:Carnival\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/calendar#2027-02-09-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-02-0
+ 9-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20270209
+DTEND;VALUE=DATE:20270210
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-26-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Sexta-feira Santa
+DESCRIPTION:Good Friday\n\nPortal link: https://dsd2026-team-m2.github.io
+ /project-portal/#/calendar#2027-03-26-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-03-2
+ 6-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20270326
+DTEND;VALUE=DATE:20270327
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-03-28-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Domingo de Páscoa
+DESCRIPTION:Easter Sunday\n\nPortal link: https://dsd2026-team-m2.github.
+ io/project-portal/#/calendar#2027-03-28-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-03-2
+ 8-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20270328
+DTEND;VALUE=DATE:20270329
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-04-25-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia da Liberdade
+DESCRIPTION:Freedom Day\n\nPortal link: https://dsd2026-team-m2.github.io
+ /project-portal/#/calendar#2027-04-25-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-04-2
+ 5-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20270425
+DTEND;VALUE=DATE:20270426
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia do Trabalhador
+DESCRIPTION:Labour Day\n\nPortal link: https://dsd2026-team-m2.github.io/
+ project-portal/#/calendar#2027-05-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-05-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20270501
+DTEND;VALUE=DATE:20270502
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-05-27-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Corpo de Deus
+DESCRIPTION:Corpus Christi\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2027-05-27-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-05-2
+ 7-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20270527
+DTEND;VALUE=DATE:20270528
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-06-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia dos Açores
+DESCRIPTION:Azores Day\n\nPortal link: https://dsd2026-team-m2.github.io/
+ project-portal/#/calendar#2027-06-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-06-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20270601
+DTEND;VALUE=DATE:20270602
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-06-10-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia de Portugal\, de Camões e das Comunidades Portuguesas
+DESCRIPTION:National Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2027-06-10-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-06-1
+ 0-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20270610
+DTEND;VALUE=DATE:20270611
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-07-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia da Madeira
+DESCRIPTION:Madeira Day\n\nPortal link: https://dsd2026-team-m2.github.io
+ /project-portal/#/calendar#2027-07-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-07-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20270701
+DTEND;VALUE=DATE:20270702
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-08-15-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assunção de Nossa Senhora
+DESCRIPTION:Assumption Day\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2027-08-15-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-08-1
+ 5-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20270815
+DTEND;VALUE=DATE:20270816
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-10-05-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Implantação da República
+DESCRIPTION:Republic Day\n\nPortal link: https://dsd2026-team-m2.github.i
+ o/project-portal/#/calendar#2027-10-05-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-10-0
+ 5-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20271005
+DTEND;VALUE=DATE:20271006
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-11-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Dia de Todos-os-Santos
+DESCRIPTION:All Saints Day\n\nPortal link: https://dsd2026-team-m2.github
+ .io/project-portal/#/calendar#2027-11-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-11-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20271101
+DTEND;VALUE=DATE:20271102
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-12-01-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Restauração da Independência
+DESCRIPTION:Restoration of Independence\n\nPortal link: https://dsd2026-t
+ eam-m2.github.io/project-portal/#/calendar#2027-12-01-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-12-0
+ 1-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20271201
+DTEND;VALUE=DATE:20271202
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-12-08-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Imaculada Conceição
+DESCRIPTION:Immaculate Conception\n\nPortal link: https://dsd2026-team-m2
+ .github.io/project-portal/#/calendar#2027-12-08-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-12-0
+ 8-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20271208
+DTEND;VALUE=DATE:20271209
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-12-25-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Natal
+DESCRIPTION:Christmas Day\n\nPortal link: https://dsd2026-team-m2.github.
+ io/project-portal/#/calendar#2027-12-25-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-12-2
+ 5-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20271225
+DTEND;VALUE=DATE:20271226
+END:VEVENT
+BEGIN:VEVENT
+UID:2027-12-26-holiday-pt@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Primeira Oitava
+DESCRIPTION:St. Stephen's Day\n\nPortal link: https://dsd2026-team-m2.git
+ hub.io/project-portal/#/calendar#2027-12-26-holiday-pt
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2027-12-2
+ 6-holiday-pt
+CATEGORIES:holiday-pt,holiday,project-portal
+DTSTART;VALUE=DATE:20271226
+DTEND;VALUE=DATE:20271227
+END:VEVENT
+END:VCALENDAR

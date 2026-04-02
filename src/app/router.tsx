@@ -1,5 +1,6 @@
 import { createHashRouter, Outlet } from "react-router-dom";
 
+import { BackToTopButton } from "../components/BackToTopButton";
 import { RouterEffects } from "./RouterEffects";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
@@ -21,6 +22,7 @@ function RootLayout() {
       <Header />
       <RouterEffects />
       <Outlet />
+      <BackToTopButton />
       <Footer />
     </div>
   );

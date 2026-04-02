@@ -60,7 +60,7 @@
     "architecture": "架构",
     "calendar": "日历",
     "team": "团队",
-    "examples": "示例",
+    "examples": "模板",
     "language": "语言",
     "logoAlt": "M2 团队 logo",
     "primaryAria": "主导航",
@@ -114,6 +114,7 @@
     "next": "下一篇",
     "backToLogs": "返回日志",
     "backToDocs": "返回文档",
+    "backToTop": "返回顶部",
     "maintainedBy": "维护方",
     "primaryInputs": "主要输入",
     "primaryOutputs": "主要输出",
@@ -430,8 +431,11 @@
     "noEvents": "所选日期暂无事件。",
     "emptySelection": "请选择某一天或某个事件查看详情。",
     "sampleEventNote": "项目事件在 PM 正式排期确认前会明确标记为示例，避免被误读为正式项目历史。",
-    "staticHolidayNoteTitle": "假期数据",
-    "staticHolidayNote": "🇨🇳 CN 与 🇵🇹 PT 假期会预先生成到静态 JSON 中，因此站点不依赖运行时在线请求。"
+    "subscriptionTitle": "日历订阅",
+    "subscriptionBody": "项目日历现在会生成 3 份静态 ICS。中国队员版本不包含中国假期，葡萄牙队员版本不包含葡萄牙假期，完整版本则同时包含项目事件与中葡两国节假日，方便按需订阅，避免和个人系统日历重复。",
+    "subscriptionActionCnTeam": "中国队员版",
+    "subscriptionActionPtTeam": "葡萄牙队员版",
+    "subscriptionActionComplete": "完整版本"
   },
   "team": {
     "title": "团队成员",
@@ -468,8 +472,8 @@
   },
   "footer": {
     "title": "M2 项目页脚",
-    "subtitle": "把文档入口、进度回顾和跨组导航收进同一个更清楚的底栏。",
-    "description": "一个由 M2 维护、以文档和协作为中心的项目门户，用于汇报、索引与可追溯交付。",
+    "subtitle": "Team M2 面向整个项目工作区的总览入口。",
+    "description": "用于文档、进度回顾和协作记录的项目门户。",
     "sitemapTitle": "页面地图",
     "sitemapDescription": "在评审或浏览 portal 时，可以从这里快速跳到主要页面区域。",
     "relatedTitle": "相关链接",
@@ -482,7 +486,7 @@
     "lastUpdated": "最后更新",
     "license": "许可证",
     "relatedOrg": "相关组织",
-    "maintained": "由 M2 维护",
+    "maintained": "Maintained on GitHub",
     "copyright": "DSD 2025-2026 项目门户",
     "language": "语言"
   }

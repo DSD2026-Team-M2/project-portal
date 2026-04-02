@@ -1,4 +1,3 @@
-import { useMemo, useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import { siteMode } from "../config/siteMode";
@@ -20,26 +19,12 @@ import { SectionTitle } from "../components/SectionTitle";
 import { StaticTag } from "../components/StaticTag";
 import { StatusBadge } from "../components/StatusBadge";
 
-const progressFilters = ["all", "current", "completed", "at-risk"] as const;
-
 export function ProgressPage() {
   const { t, i18n } = useTranslation();
   const language = (i18n.resolvedLanguage ?? i18n.language) as SupportedLanguage;
-  const [activeFilter, setActiveFilter] = useState<(typeof progressFilters)[number]>("all");
   const hideSimulatedProgress = siteMode.hideSimulatedData && progressDatasetMeta.sample;
 
   useDocumentTitle("meta.pages.progress.title", { descriptionKey: "meta.pages.progress.description" });
-
-  const filteredMilestones = useMemo(() => {
-    if (activeFilter === "all") return milestones;
-    if (activeFilter === "current") {
-      return milestones.filter((item) => item.status === "in-progress" || item.status === "planned");
-    }
-    if (activeFilter === "completed") {
-      return milestones.filter((item) => item.status === "completed");
-    }
-    return milestones.filter((item) => item.status === "at-risk");
-  }, [activeFilter]);
 
   return (
     <main className="page-shell">
@@ -90,70 +75,21 @@ export function ProgressPage() {
       </RevealOnScroll>
 
       <RevealOnScroll as="section" id="timeline" className="section-shell anchor-target p-6 sm:p-8">
-        {hideSimulatedProgress ? (
-          <>
-            <SectionTitle title={t("progress.gantt.title")} />
-            <SectionLead>{t("progress.gantt.lead")}</SectionLead>
-            <div className="callout-box mt-6">
-              <p className="text-sm leading-7 text-slate-700">{t("progress.hiddenSections.gantt")}</p>
-            </div>
-          </>
-        ) : (
-          <GanttPanel
-            tasks={ganttTasks}
-            isSample={progressDatasetMeta.sample}
-            sampleLabel={progressDatasetMeta.label}
-            sampleNote={resolveLocalizedText(progressDatasetMeta.note, language)}
-          />
-        )}
+        <GanttPanel
+          tasks={ganttTasks}
+          isSample={progressDatasetMeta.sample}
+          sampleLabel={progressDatasetMeta.label}
+          sampleNote={resolveLocalizedText(progressDatasetMeta.note, language)}
+        />
       </RevealOnScroll>
 
       <RevealOnScroll as="section" id="milestones" className="section-shell anchor-target p-6 sm:p-8">
         <SectionTitle title={t("progress.milestones.title")} />
         <SectionLead>{t("progress.milestones.lead")}</SectionLead>
 
-        {hideSimulatedProgress ? (
-          <div className="callout-box mt-6">
-            <p className="text-sm leading-7 text-slate-700">{t("progress.hiddenSections.milestones")}</p>
-          </div>
-        ) : (
-          <>
-            <div className="mt-6 flex flex-wrap gap-2">
-              {progressFilters.map((filter) => (
-                <button
-                  key={filter}
-                  type="button"
-                  onClick={() => setActiveFilter(filter)}
-                  className={`filter-chip ${activeFilter === filter ? "filter-chip-active" : ""}`}
-                >
-                  {t(`progress.filters.${filter}`)}
-                </button>
-              ))}
-            </div>
-
-            <div className="mt-6 grid gap-4">
-              {filteredMilestones.map((milestone) => (
-                <article key={milestone.id} className="surface-card p-5 sm:p-6">
-                  <div className="grid gap-4 lg:grid-cols-[12rem_minmax(0,1fr)_10rem] lg:items-start">
-                    <div>
-                      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{milestone.dateLabel}</p>
-                      <p className="mt-2 text-sm text-slate-500">{milestone.owner}</p>
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold tracking-tight text-slate-950">
-                        {resolveLocalizedText(milestone.title, language)}
-                      </h3>
-                    </div>
-                    <div className="flex items-start justify-between gap-3 lg:justify-end">
-                      <StatusBadge value={milestone.status} />
-                      <InternalLinkPill to={milestone.evidenceLink}>{t("progress.milestones.evidence")}</InternalLinkPill>
-                    </div>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </>
-        )}
+        <div className="callout-box mt-6">
+          <p className="text-sm leading-7 text-slate-700">{t("progress.hiddenSections.milestones")}</p>
+        </div>
       </RevealOnScroll>
 
       <RevealOnScroll as="section" id="risk-register" className="section-shell anchor-target p-6 sm:p-8">

@@ -114,6 +114,7 @@
     "next": "Seguinte",
     "backToLogs": "Voltar aos logs",
     "backToDocs": "Voltar aos documentos",
+    "backToTop": "Voltar ao topo",
     "maintainedBy": "Mantido por",
     "primaryInputs": "Entradas principais",
     "primaryOutputs": "Saídas principais",
@@ -430,8 +431,11 @@
     "noEvents": "Sem eventos para o dia selecionado.",
     "emptySelection": "Selecione um dia ou um evento para ver os detalhes.",
     "sampleEventNote": "Os eventos específicos do projeto no calendário permanecem marcados como EXEMPLO até o planeamento mantido pelo PM ser confirmado.",
-    "staticHolidayNoteTitle": "Dados de feriados",
-    "staticHolidayNote": "Os feriados 🇨🇳 CN e 🇵🇹 PT são gerados para JSON estático, para que o portal continue a funcionar sem pedidos online em runtime."
+    "subscriptionTitle": "Subscrição de calendário",
+    "subscriptionBody": "O calendário do projeto passa agora a gerar 3 ficheiros ICS estáticos. A versão para a equipa CN exclui feriados CN, a versão para a equipa PT exclui feriados PT, e a versão completa inclui eventos do projeto mais os feriados dos dois países para evitar importações duplicadas.",
+    "subscriptionActionCnTeam": "Feed equipa CN",
+    "subscriptionActionPtTeam": "Feed equipa PT",
+    "subscriptionActionComplete": "Feed completo"
   },
   "team": {
     "title": "Membros da Equipa",
@@ -468,8 +472,8 @@
   },
   "footer": {
     "title": "Rodape do projeto M2",
-    "subtitle": "Uma faixa final mais clara para documentos, revisão de progresso e navegação entre áreas do portal.",
-    "description": "Um hub de projeto orientado para documentos, mantido pela M2 para relatório, indexação de colaboração e revisão rastreável de entregáveis.",
+    "subtitle": "Entrada geral da Team M2 para o workspace mais amplo do projeto.",
+    "description": "Portal do projeto para documentos, revisao de progresso e registos de colaboracao.",
     "sitemapTitle": "Mapa de paginas",
     "sitemapDescription": "Abre rapidamente as principais areas do portal a partir do rodape durante revisao ou demonstracao.",
     "relatedTitle": "Ligacoes relacionadas",
@@ -482,7 +486,7 @@
     "lastUpdated": "Última atualização",
     "license": "Licença",
     "relatedOrg": "Organização relacionada",
-    "maintained": "Mantido pela M2",
+    "maintained": "Maintained on GitHub",
     "copyright": "Portal do projeto DSD 2025-2026",
     "language": "Idioma"
   }

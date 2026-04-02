@@ -4,7 +4,6 @@ import {
   FileText,
   FolderKanban,
   Github,
-  Layers3,
   Logs,
   Network,
   ShieldAlert,
@@ -24,7 +23,7 @@ import { externalLinks } from "../config/links";
 import { siteMode } from "../config/siteMode";
 import { getLatestUpdates, getResolvedEntries } from "../content/queries";
 import { calendarEvents, interfaces, layerSummaries, projectMeta } from "../data/portalData";
-import { milestones, progressOverview, riskRegister } from "../data/progressData";
+import { milestones, progressDatasetMeta, progressOverview, riskRegister } from "../data/progressData";
 import { teamMembers } from "../data/teamMembers";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import type { SupportedLanguage } from "../i18n/language";
@@ -86,7 +85,8 @@ export function HomePage() {
     .sort()
     .at(-1);
   const nextMilestone = milestones.find((item) => item.status !== "completed") ?? milestones[0];
-  const activeRiskCount = riskRegister.length;
+  const hideSimulatedProgress = siteMode.hideSimulatedData && progressDatasetMeta.sample;
+  const activeRiskCount = hideSimulatedProgress ? 0 : riskRegister.length;
   const coreMembers = teamMembers.filter((member) => member.group === "core");
   const aiMembers = teamMembers.filter((member) => member.group === "ai");
   const facultyMembers = teamMembers.filter((member) => member.group === "faculty");
@@ -132,30 +132,6 @@ export function HomePage() {
     {
       label: t("home.hero.status.updated"),
       value: latestTouchedDate ? formatLocalDate(latestTouchedDate, language) : projectMeta.lastUpdated,
-    },
-  ];
-
-  const positioningRows = [
-    {
-      id: "project",
-      icon: Layers3,
-      title: t("home.positioning.rows.project.title"),
-      text: t("home.positioning.rows.project.text"),
-      stat: t("home.positioning.rows.project.stat"),
-    },
-    {
-      id: "portal",
-      icon: FileText,
-      title: t("home.positioning.rows.portal.title"),
-      text: t("home.positioning.rows.portal.text"),
-      stat: t("home.positioning.rows.portal.stat"),
-    },
-    {
-      id: "m2",
-      icon: Users,
-      title: t("home.positioning.rows.m2.title"),
-      text: t("home.positioning.rows.m2.text"),
-      stat: t("home.positioning.rows.m2.stat"),
     },
   ];
 
@@ -301,28 +277,6 @@ export function HomePage() {
           <aside className="home-snapshot-panel">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">{t("home.snapshot.title")}</p>
-              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-slate-950">{t("home.snapshot.subtitle")}</h2>
-            </div>
-
-            <div className="mt-6 grid gap-3">
-              {positioningRows.map((row) => {
-                const Icon = row.icon;
-
-                return (
-                  <div key={row.id} className="home-snapshot-row">
-                    <div className="flex min-w-0 items-start gap-4">
-                      <div className="home-snapshot-row-icon">
-                        <Icon className="h-5 w-5" />
-                      </div>
-                      <div className="min-w-0">
-                        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-slate-500">{row.title}</p>
-                        <p className="mt-2 text-sm leading-7 text-slate-700">{row.text}</p>
-                      </div>
-                    </div>
-                    <div className="home-snapshot-row-stat">{row.stat}</div>
-                  </div>
-                );
-              })}
             </div>
 
             <div className="home-snapshot-grid">

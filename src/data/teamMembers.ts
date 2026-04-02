@@ -10,6 +10,7 @@ const text = (en: string, zhCN: string, pt: string): LocalizedText => ({
 export type TeamMemberRecord = {
   id: string;
   name: string;
+  displayCode?: string;
   role: string;
   timezone: string;
   group: "core" | "faculty" | "ai";
@@ -41,6 +42,7 @@ export const teamMembers: TeamMemberRecord[] = [
   {
     id: "yihang-li",
     name: "Lee",
+    displayCode: "Lee-YihangLI-55230714",
     role: "Project Manager",
     timezone: "Asia/Shanghai",
     group: "core",
@@ -65,6 +67,7 @@ export const teamMembers: TeamMemberRecord[] = [
   {
     id: "kika-vasconcelos-francisca",
     name: "Kika",
+    displayCode: "Vasconcelos Francisca",
     role: "Vice PM / Programmer",
     timezone: "Europe/Lisbon",
     group: "core",
@@ -91,7 +94,8 @@ export const teamMembers: TeamMemberRecord[] = [
   },
   {
     id: "duhai-xu",
-    name: "徐杜海",
+    name: "Shu",
+    displayCode: "Hai-DuhaiXU-21230517",
     role: "Programmer",
     timezone: "Asia/Shanghai",
     group: "core",
@@ -115,7 +119,8 @@ export const teamMembers: TeamMemberRecord[] = [
   },
   {
     id: "congming-li",
-    name: "BFD_QT",
+    name: "BFD_qt",
+    displayCode: "Congming-CongmingLI-38230227",
     role: "Web Maintainer",
     timezone: "Asia/Shanghai",
     group: "core",
@@ -142,7 +147,8 @@ export const teamMembers: TeamMemberRecord[] = [
   },
   {
     id: "shu-wang",
-    name: "WangShu",
+    name: "Hai",
+    displayCode: "Shu-ShuWANG-35232116",
     role: "System Architect and Designer",
     timezone: "Asia/Shanghai",
     group: "core",

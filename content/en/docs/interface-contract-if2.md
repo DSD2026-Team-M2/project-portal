@@ -26,8 +26,8 @@ version: v0.6
 reviewStatus: in-review
 lastUpdated: 2026-03-24
 links:
-  - label: Interface sync meeting
-    href: /logs/interface-sync-2026-03-24
+  - label: Related log archive
+    href: /logs
 evidence:
   - label: IF2 dependency section
     href: /architecture#if2-dependencies

@@ -1,10 +1,10 @@
 import { FileText } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 import type { SupportedLanguage } from "../i18n/language";
 import type { GeneratedContentEntry } from "../utils/content";
 import { formatDate } from "../utils/date";
-import { InternalLinkPill } from "./InternalLinkPill";
 import { StaticTag } from "./StaticTag";
 import { StatusBadge } from "./StatusBadge";
 
@@ -18,7 +18,7 @@ export function DocListItem({ entry, language, showFallback = false }: DocListIt
   const { t } = useTranslation();
 
   return (
-    <article className="surface-card p-5 sm:p-6">
+    <Link to={`/docs/${entry.slug}`} className="doc-list-card surface-card p-5 sm:p-6">
       <div className="grid gap-4 xl:grid-cols-[11rem_minmax(0,1fr)_10.5rem] xl:items-start">
         <div className="space-y-3">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">
@@ -61,10 +61,10 @@ export function DocListItem({ entry, language, showFallback = false }: DocListIt
             </p>
           </div>
           <div className="xl:flex xl:justify-end">
-            <InternalLinkPill to={`/docs/${entry.slug}`}>{t("common.openDocument")}</InternalLinkPill>
+            <span className="internal-link-pill">{t("common.openDocument")}</span>
           </div>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }

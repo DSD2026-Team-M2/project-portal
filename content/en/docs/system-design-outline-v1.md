@@ -20,8 +20,8 @@ version: v0.9
 reviewStatus: in-review
 lastUpdated: 2026-03-29
 links:
-  - label: Calendar decision
-    href: /logs/calendar-design-and-holiday-strategy
+  - label: Portal launch log
+    href: /logs/2026-03-31-first-portal-online
 evidence:
   - label: Docs hub
     href: /docs

@@ -24,6 +24,8 @@ export type HistoricalReferenceDefinition = {
 
 export const brandAssets = {
   m2Logo: "https://dsd2026-team-m2.github.io/m2-recruitment/images/logos/team-logo.png",
+  jluLogo: "/images/logos/jlu-logo.webp",
+  utadLogo: "/images/logos/utad-logo.jpg",
 } as const;
 
 export const externalLinks = {
@@ -31,9 +33,33 @@ export const externalLinks = {
     label: "M2 GitHub Org",
     href: "https://github.com/DSD2026-Team-M2",
   },
+  jlu: {
+    label: "Jilin University",
+    href: "https://en.jlu.edu.cn/",
+  },
+  utad: {
+    label: "UTAD",
+    href: "https://www.utad.pt/",
+  },
   portalRepo: {
     label: "project-portal",
     href: "https://github.com/DSD2026-Team-M2/project-portal",
+  },
+  portalSite: {
+    label: "project-portal site",
+    href: "https://dsd2026-team-m2.github.io/project-portal/",
+  },
+  portalCalendarFeed: {
+    label: "M2 project calendar feed (complete)",
+    href: "https://dsd2026-team-m2.github.io/project-portal/calendar/m2-project-complete.ics",
+  },
+  portalCalendarFeedCnTeam: {
+    label: "M2 project calendar feed (CN team)",
+    href: "https://dsd2026-team-m2.github.io/project-portal/calendar/m2-project-cn-team.ics",
+  },
+  portalCalendarFeedPtTeam: {
+    label: "M2 project calendar feed (PT team)",
+    href: "https://dsd2026-team-m2.github.io/project-portal/calendar/m2-project-pt-team.ics",
   },
   mainWebRepo: {
     label: "project-main-web",

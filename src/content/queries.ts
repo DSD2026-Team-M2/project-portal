@@ -4,6 +4,7 @@ import type { SupportedLanguage } from "../i18n/language";
 import type { GeneratedContentEntry } from "../utils/content";
 
 const visibleExampleSlugs = new Set<string>(siteMode.visibleExampleSlugs);
+const visibleDocSlugs = new Set<string>(["software-requirements-specification-v0-1"]);
 
 function selectLocalizedEntry(entries: GeneratedContentEntry[], language: SupportedLanguage): GeneratedContentEntry | null {
   return (
@@ -40,6 +41,14 @@ function shouldIncludeEntry(entry: GeneratedContentEntry, options?: EntryQueryOp
   return !isMarked;
 }
 
+function isRouteEntryVisible(routeBase: "logs" | "docs", slug: string) {
+  if (routeBase !== "docs") {
+    return true;
+  }
+
+  return visibleDocSlugs.has(slug);
+}
+
 export function getResolvedEntries(
   routeBase: "logs" | "docs",
   language: SupportedLanguage,
@@ -49,6 +58,7 @@ export function getResolvedEntries(
   const resolved = [...grouped.values()]
     .map((entries) => selectLocalizedEntry(entries, language))
     .filter((entry): entry is GeneratedContentEntry => Boolean(entry))
+    .filter((entry) => isRouteEntryVisible(routeBase, entry.slug))
     .filter((entry) => shouldIncludeEntry(entry, options))
     .sort((left, right) => new Date(right.date).getTime() - new Date(left.date).getTime());
 
@@ -64,6 +74,10 @@ export function getContentEntryBySlug(
   const entries = grouped.get(slug) ?? [];
   const localeEntry = entries.find((item) => item.locale === language);
   const isVisibleTemplateExample = siteMode.showTemplateExamples && visibleExampleSlugs.has(slug);
+
+  if (!isRouteEntryVisible(routeBase, slug)) {
+    return { entry: null, isFallback: false };
+  }
 
   const canExposeEntry = (entry: GeneratedContentEntry | null) => {
     if (!entry) return false;

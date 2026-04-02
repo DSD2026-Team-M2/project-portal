@@ -30,6 +30,8 @@ evidence: []
 actionItems: []
 ---
 
+![SRS Use Case Diagram](images/docs/srs-use-case-diagram.png)
+
 # Software Requirements Specification (M2)
 
 Revision History:
@@ -40,7 +42,7 @@ Revision History:
 
 ## 0. Background
 
-Our team is responsible for designing and developing a web-based platform with the primary functions of receiving sensor data, conducting motion analysis, and providing health recommendations. The system users primarily include registered users (who upload motion data), doctors (who provide the recommendations) and administrators (who monitor and manage the data).
+Our team is responsible for designing and developing a **web-based platform** with the primary functions of **receiving sensor data**, **conducting motion analysis**, and **providing health recommendations**. The system users primarily include **registered users** (who upload motion data), **doctors** (who provide the recommendations) and **administrators** (who monitor and manage the data).
 ## 1. Use Cases
 
 ### 1.1. Patient
@@ -89,18 +91,18 @@ Our team is responsible for designing and developing a web-based platform with t
 
 #### 2.1.1. Basic info
 
-- Reference to Use Case 1.1.
-- Version: 0.1
-- Created: Apr 1
-- Authors: Lee
-- Source: Web Interface
-- Actors: Patient
-- Goal: Allow users to become platform members through registration.
-- Summary: New users input basic information, and the system validates and creates a user account.
-- Trigger: User clicks the "Register" button.
-- Frequency: Depends on the number of new users.
-- Precondition: The system permits new user registration.
-- Postconditions: The system returns registration success information and creates an account.
+- **Reference to Use Case** 1.1.
+- **Version:** 0.1
+- **Created:** Apr 1
+- **Authors:** Lee
+- **Source:** Web Interface
+- **Actors:** Patient
+- **Goal:** Allow users to become platform members through registration.
+- **Summary:** New users input basic information, and the system validates and creates a user account.
+- **Trigger:** User clicks the "Register" button.
+- **Frequency:** Depends on the number of new users.
+- **Precondition:** The system permits new user registration.
+- **Postconditions:** The system returns registration success information and creates an account.
 
 #### 2.1.2. Basic Flow
 
@@ -108,37 +110,37 @@ Our team is responsible for designing and developing a web-based platform with t
 | ----- | ------ |
 | User fills in registration information (username, password, email, age, etc.) | |
 | User clicks the "Register" button | |
-| | Validate that the username is unique |
-| | Validate that the password meets format requirements |
-| | Create user account and store in the database |
-| | Return success information to the interface |
+| | **Validate** that the username is unique |
+| | **Validate** that the password meets format requirements |
+| | **Create user account** and store in the database |
+| | **Return success information** to the interface |
 | User receives registration success notification | |
 
 #### 2.1.3. Alternative Flow
 
 | Actor | System |
 | ----- | ------ |
-| | Username already exists, return "Username already taken" |
-| | Password does not meet format requirements, return "Password must contain at least 8 characters, including letters and numbers" |
-| | Email format is invalid, return "Invalid email format" |
-| | Required fields are missing, return "Please fill in all required fields" |
+| | **Username already exists**, return "Username already taken" |
+| | **Password does not meet format requirements**, return "Password must contain at least 8 characters, including letters and numbers" |
+| | **Email format is invalid**, return "Invalid email format" |
+| | **Required fields are missing**, return "Please fill in all required fields" |
 
 ### 2.2. Sensor Connection
 
 #### 2.2.1. Basic Info
 
-- Reference to Use Case 1.1. (Patient - Execute Motion with Guidance)
-- Version: 1.0
-- Created: Apr 1
-- Authors: Lee
-- Source: Sensor Device / Mobile SDK
-- Actors: Logged-in Patient
-- Goal: Allow patients to connect sensor devices to the platform and upload motion data.
-- Summary: Users connect sensor devices via Bluetooth/WiFi; the system validates the connection and begins receiving motion data streams.
-- Trigger: User clicks the "Connect Device" button.
-- Frequency: Before each rehabilitation training session.
-- Precondition: User is logged in; sensor device is powered on and has sufficient battery; device is within connection range.
-- Postconditions: The system successfully binds the sensor to the user account and begins receiving and storing motion data.
+- **Reference to Use Case** 1.1. (Patient - Execute Motion with Guidance)
+- **Version:** 1.0
+- **Created:** Apr 1
+- **Authors:** Lee
+- **Source:** Sensor Device / Mobile SDK
+- **Actors:** Logged-in Patient
+- **Goal:** Allow patients to connect sensor devices to the platform and upload motion data.
+- **Summary:** Users connect sensor devices via Bluetooth/WiFi; the system validates the connection and begins receiving motion data streams.
+- **Trigger:** User clicks the "Connect Device" button.
+- **Frequency:** Before each rehabilitation training session.
+- **Precondition:** User is logged in; sensor device is powered on and has sufficient battery; device is within connection range.
+- **Postconditions:** The system successfully binds the sensor to the user account and begins receiving and storing motion data.
 
 #### 2.2.2. Basic Flow
 
@@ -146,20 +148,20 @@ Our team is responsible for designing and developing a web-based platform with t
 | ----- | ------ |
 | User clicks the "Connect Sensor" button | |
 | User selects device type (e.g., IMU sensor, smartwatch) | |
-| | Scan for nearby available sensor devices |
-| | Return list of available devices |
+| | **Scan** for nearby available sensor devices |
+| | **Return list** of available devices |
 | User selects the target device from the list | |
-| | Initiate pairing request and verify device identity |
-| | Confirm successful pairing |
-| | Display "Device Connected" status |
-| | Begin receiving sensor data stream |
+| | **Initiate pairing request** and verify device identity |
+| | **Confirm successful pairing** |
+| | **Display** "Device Connected" status |
+| | **Begin receiving sensor data stream** |
 | User starts training session | |
 
 #### 2.2.3. Alternative Flow
 
 | Actor | System |
 | ----- | ------ |
-| | No devices found, display "No devices found. Please check Bluetooth/WiFi." |
-| | Device pairing fails, display "Pairing failed. Please ensure the device is discoverable." |
-| | Connection interrupted, display "Connection lost. Attempting to reconnect..." |
-| | Low sensor battery, display "Low battery. Please charge the device." |
+| | **No devices found**, display "No devices found. Please check Bluetooth/WiFi." |
+| | **Device pairing fails**, display "Pairing failed. Please ensure the device is discoverable." |
+| | **Connection interrupted**, display "Connection lost. Attempting to reconnect..." |
+| | **Low sensor battery**, display "Low battery. Please charge the device." |

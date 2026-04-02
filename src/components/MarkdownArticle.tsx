@@ -13,8 +13,7 @@ import {
 } from "react";
 import { useTranslation } from "react-i18next";
 import ReactMarkdown from "react-markdown";
-import { Link } from "react-router-dom";
-import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import { Link, useLocation } from "react-router-dom";
 import rehypeSlug from "rehype-slug";
 import remarkGfm from "remark-gfm";
 import { textVide } from "text-vide";
@@ -52,17 +51,6 @@ type MarkdownArticleProps = {
 type HeadingProps = HTMLAttributes<HTMLHeadingElement>;
 type HeadingTag = "h1" | "h2" | "h3" | "h4";
 
-const autolinkContent = [
-  {
-    type: "element",
-    tagName: "span",
-    properties: {
-      "aria-hidden": "true",
-    },
-    children: [{ type: "text", value: "#" }],
-  },
-] as unknown[];
-
 const BIONIC_MIN_WORDS = 12;
 
 function countWords(text: string): number {
@@ -99,9 +87,20 @@ function transformBionicChildren(children: ReactNode, enabled: boolean): ReactNo
   });
 }
 
-function ArticleHeading(level: HeadingTag, className: string) {
-  return function HeadingRenderer({ children, ...props }: HeadingProps) {
-    return createElement(level, { ...props, className: `anchor-target ${className}` }, children);
+function ArticleHeading(level: HeadingTag, className: string, resolveHref: (id: string) => string) {
+  return function HeadingRenderer({ children, id, ...props }: HeadingProps) {
+    return createElement(
+      level,
+      { ...props, id, className: `anchor-target ${className}` },
+      <>
+        {children}
+        {typeof id === "string" ? (
+          <a href={resolveHref(id)} className="inline-anchor" aria-label={id}>
+            <span aria-hidden="true">¶</span>
+          </a>
+        ) : null}
+      </>,
+    );
   };
 }
 
@@ -134,6 +133,7 @@ export function MarkdownArticle({
   next,
 }: MarkdownArticleProps) {
   const { t } = useTranslation();
+  const location = useLocation();
   const { isBionicEnabled } = useReadingPreferences();
   const [copied, setCopied] = useState(false);
   const isEnglishArticle = entry.locale === "en";
@@ -295,28 +295,19 @@ export function MarkdownArticle({
     () => `article-prose ${bionicEnabled ? "article-prose-bionic" : ""}`,
     [bionicEnabled],
   );
+  const resolveHeadingHref = (id: string) => `#${location.pathname}#${id}`;
 
   return (
     <ArticleShell header={header} sidebar={sidebar} footer={footer}>
       <article className={articleClassName}>
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
-          rehypePlugins={[
-            rehypeSlug,
-            [
-              rehypeAutolinkHeadings,
-              {
-                behavior: "append",
-                properties: { className: ["inline-anchor"], "aria-label": t("common.copyLink") },
-                content: autolinkContent,
-              },
-            ],
-          ]}
+          rehypePlugins={[rehypeSlug]}
           components={{
-            h1: ArticleHeading("h1", "mt-8 text-3xl font-semibold tracking-tight text-slate-950"),
-            h2: ArticleHeading("h2", "mt-10 text-2xl font-semibold tracking-tight text-slate-950"),
-            h3: ArticleHeading("h3", "mt-8 text-xl font-semibold tracking-tight text-slate-900"),
-            h4: ArticleHeading("h4", "mt-6 text-lg font-semibold tracking-tight text-slate-900"),
+            h1: ArticleHeading("h1", "mt-8 text-4xl font-bold tracking-tight text-slate-950", resolveHeadingHref),
+            h2: ArticleHeading("h2", "mt-12 text-[2rem] font-bold tracking-tight text-slate-950", resolveHeadingHref),
+            h3: ArticleHeading("h3", "mt-9 text-[1.45rem] font-bold tracking-tight text-slate-950", resolveHeadingHref),
+            h4: ArticleHeading("h4", "mt-7 text-[1.18rem] font-bold tracking-tight text-slate-900", resolveHeadingHref),
             p: ({ children }) => <p className="mt-5">{transformBionicChildren(children, bionicEnabled)}</p>,
             li: ({ children }) => <li>{transformBionicChildren(children, bionicEnabled)}</li>,
             a: (props) => <ArticleLink {...props} />,
@@ -329,14 +320,16 @@ export function MarkdownArticle({
             ),
             hr: () => <hr className="my-8 border-slate-200" />,
             table: ({ children }) => (
-              <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-white/90">
-                <table className="min-w-full border-collapse text-left text-sm">{children}</table>
+              <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-300 bg-white/95 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
+                <table className="min-w-full border-collapse text-left text-[0.98rem]">{children}</table>
               </div>
             ),
             th: ({ children }) => (
-              <th className="border-b border-slate-200 px-4 py-3 font-semibold text-slate-900">{children}</th>
+              <th className="border border-slate-300 px-4 py-3.5 font-bold text-slate-950">{children}</th>
             ),
-            td: ({ children }) => <td className="border-b border-slate-100 px-4 py-3 align-top">{children}</td>,
+            td: ({ children }) => (
+              <td className="border border-slate-200 px-4 py-3.5 align-top text-slate-700">{children}</td>
+            ),
             code: ({ className, children }) => (
               <code className={`rounded bg-slate-100 px-1.5 py-0.5 text-[0.92em] text-slate-900 ${className ?? ""}`}>
                 {children}

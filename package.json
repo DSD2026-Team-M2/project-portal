@@ -9,8 +9,9 @@
     "preview": "vite preview",
     "build:content": "tsx scripts/build-content.ts",
     "build:holidays": "tsx scripts/fetch-holidays.ts",
+    "build:calendar-feed": "tsx scripts/build-calendar-feed.ts",
     "check:content": "tsx scripts/check-content.ts",
-    "prebuild": "tsx scripts/build-content.ts && tsx scripts/fetch-holidays.ts"
+    "prebuild": "tsx scripts/build-content.ts && tsx scripts/fetch-holidays.ts && tsx scripts/build-calendar-feed.ts"
   },
   "dependencies": {
     "@fullcalendar/core": "^6.1.17",

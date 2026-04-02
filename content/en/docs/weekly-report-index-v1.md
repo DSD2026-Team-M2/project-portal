@@ -21,8 +21,8 @@ version: v1.0
 reviewStatus: in-review
 lastUpdated: 2026-03-30
 links:
-  - label: Week 05 report
-    href: /logs/weekly-report-05
+  - label: Logs hub
+    href: /logs
 evidence:
   - label: Logs hub
     href: /logs

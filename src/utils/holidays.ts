@@ -16,6 +16,10 @@ const holidayCopy: Record<string, { title: LocalizedText; summary: LocalizedText
     title: text("Chinese New Year", "春节", "Ano Novo Chinês"),
     summary: text("Chinese New Year", "春节", "Ano Novo Chinês"),
   },
+  "Qingming Festival": {
+    title: text("Qingming Festival", "清明节", "Festival Qingming"),
+    summary: text("Qingming Festival", "清明节", "Festival Qingming"),
+  },
   "Labour Day": {
     title: text("Labour Day", "劳动节", "Dia do Trabalhador"),
     summary: text("Labour Day", "劳动节", "Dia do Trabalhador"),

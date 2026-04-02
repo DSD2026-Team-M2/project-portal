@@ -21,8 +21,8 @@ version: v1.0
 reviewStatus: in-review
 lastUpdated: 2026-03-24
 links:
-  - label: Interface sync meeting
-    href: /logs/interface-sync-2026-03-24
+  - label: Kickoff meeting record
+    href: /logs/2026-03-19-course-begins-first-video-meeting
 evidence:
   - label: Logs hub
     href: /logs

@@ -1,9 +1,10 @@
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import type { DayCellContentArg } from "@fullcalendar/core";
 import type { DatesSetArg, EventClickArg } from "@fullcalendar/core";
 import type { DateClickArg } from "@fullcalendar/interaction";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, Link2 } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
@@ -12,6 +13,7 @@ import { calendarEvents } from "../data/portalData";
 import cnHolidays from "../generated/holidays/cn.generated.json";
 import ptHolidays from "../generated/holidays/pt.generated.json";
 import { siteMode } from "../config/siteMode";
+import { externalLinks } from "../config/links";
 import type { SupportedLanguage } from "../i18n/language";
 import { useDocumentTitle } from "../hooks/useDocumentTitle";
 import { useTimezoneClock } from "../hooks/useTimezoneClock";
@@ -87,6 +89,30 @@ function CalendarEventLabel({ text }: { text: string }) {
       <span ref={trackRef} className="calendar-event-label-track">
         {text}
       </span>
+    </div>
+  );
+}
+
+function toLocalIsoDate(date: Date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const day = String(date.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
+function getMonthShortLabel(date: Date, language: SupportedLanguage) {
+  return new Intl.DateTimeFormat(language === "zh-CN" ? "zh-CN" : language === "pt" ? "pt-PT" : "en-US", {
+    month: "short",
+  }).format(date);
+}
+
+function CalendarDayNumber({ arg, language }: { arg: DayCellContentArg; language: SupportedLanguage }) {
+  const isMonthStart = arg.date.getDate() === 1;
+
+  return (
+    <div className="calendar-day-number-shell">
+      <span className="calendar-day-number-value">{arg.dayNumberText.replace(/\D/g, "") || arg.date.getDate()}</span>
+      {isMonthStart ? <span className="calendar-day-month-chip">{getMonthShortLabel(arg.date, language)}</span> : null}
     </div>
   );
 }
@@ -301,6 +327,8 @@ export function CalendarPage() {
                 eventClick={handleEventClick}
                 dateClick={handleDateClick}
                 datesSet={handleDatesSet}
+                dayCellClassNames={(arg) => (toLocalIsoDate(arg.date) === selectedDate ? ["calendar-day-selected"] : [])}
+                dayCellContent={(arg) => <CalendarDayNumber arg={arg} language={language} />}
                 eventContent={(arg) => (
                   <CalendarEventLabel
                     text={arg.event.extendedProps.sample ? `${t("common.sample")} · ${arg.event.title}` : arg.event.title}
@@ -341,8 +369,37 @@ export function CalendarPage() {
             <CalendarEventPanel event={selectedEvent} language={language} />
 
             <section className="meta-panel">
-              <p className="meta-panel-title">{t("calendar.staticHolidayNoteTitle")}</p>
-              <p className="mt-4 text-sm leading-7 text-slate-600">{t("calendar.staticHolidayNote")}</p>
+              <p className="meta-panel-title">{t("calendar.subscriptionTitle")}</p>
+              <p className="mt-4 text-sm leading-7 text-slate-600">{t("calendar.subscriptionBody")}</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                <a
+                  href={externalLinks.portalCalendarFeedCnTeam.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="filter-chip inline-flex"
+                >
+                  <Link2 className="h-4 w-4" />
+                  <span>{t("calendar.subscriptionActionCnTeam")}</span>
+                </a>
+                <a
+                  href={externalLinks.portalCalendarFeedPtTeam.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="filter-chip inline-flex"
+                >
+                  <Link2 className="h-4 w-4" />
+                  <span>{t("calendar.subscriptionActionPtTeam")}</span>
+                </a>
+                <a
+                  href={externalLinks.portalCalendarFeed.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="filter-chip inline-flex"
+                >
+                  <Link2 className="h-4 w-4" />
+                  <span>{t("calendar.subscriptionActionComplete")}</span>
+                </a>
+              </div>
             </section>
           </div>
         </div>

@@ -114,6 +114,7 @@
     "next": "Next",
     "backToLogs": "Back to logs",
     "backToDocs": "Back to docs",
+    "backToTop": "Back to top",
     "maintainedBy": "Maintained by",
     "primaryInputs": "Primary inputs",
     "primaryOutputs": "Primary outputs",
@@ -430,8 +431,11 @@
     "noEvents": "No events for the selected day.",
     "emptySelection": "Select a day or event to inspect details.",
     "sampleEventNote": "Project-specific calendar events are currently marked as SAMPLE until the PM-maintained schedule is confirmed.",
-    "staticHolidayNoteTitle": "Holiday data",
-    "staticHolidayNote": "🇨🇳 CN and 🇵🇹 PT holidays are generated into static JSON so the portal remains usable without runtime requests."
+    "subscriptionTitle": "Calendar subscription",
+    "subscriptionBody": "The project calendar is now exported as 3 static ICS feeds. The CN-team version excludes CN holidays, the PT-team version excludes PT holidays, and the complete version includes project events plus both countries' holidays so teammates can avoid duplicate holiday imports.",
+    "subscriptionActionCnTeam": "CN team feed",
+    "subscriptionActionPtTeam": "PT team feed",
+    "subscriptionActionComplete": "Complete feed"
   },
   "team": {
     "title": "Team Members",
@@ -468,8 +472,8 @@
   },
   "footer": {
     "title": "M2 project footer",
-    "subtitle": "Shared entry point for documents, progress review and cross-team navigation.",
-    "description": "A document-first project hub maintained by M2 for reporting, collaboration indexing and traceable delivery review.",
+    "subtitle": "Team M2 overview entry for the wider project workspace.",
+    "description": "Project portal for documents, progress review and collaboration records.",
     "sitemapTitle": "Page map",
     "sitemapDescription": "Open the main portal areas quickly from the footer when reviewing the site as a project hub.",
     "relatedTitle": "Related links",
@@ -482,7 +486,7 @@
     "lastUpdated": "Last updated",
     "license": "License",
     "relatedOrg": "Related org",
-    "maintained": "Maintained by M2",
+    "maintained": "Maintained on GitHub",
     "copyright": "DSD 2025-2026 project portal",
     "language": "Language"
   }
