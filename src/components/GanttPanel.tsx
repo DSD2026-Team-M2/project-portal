@@ -4,13 +4,8 @@ import Gantt from "frappe-gantt";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 
-import { StaticTag } from "./StaticTag";
-
 type GanttPanelProps = {
   tasks?: GanttSourceTask[];
-  isSample?: boolean;
-  sampleLabel?: string;
-  sampleNote?: string;
 };
 
 type DatasetTask = {
@@ -61,6 +56,13 @@ type GanttPopupContext = {
   task?: BuiltTask;
 };
 
+const GANTT_BAR_HEIGHT = 28;
+const GANTT_PADDING = 18;
+const GANTT_ROW_HEIGHT = GANTT_BAR_HEIGHT + GANTT_PADDING;
+const GANTT_UPPER_HEADER_HEIGHT = 45;
+const GANTT_LOWER_HEADER_HEIGHT = 30;
+const GANTT_HEADER_HEIGHT = GANTT_UPPER_HEADER_HEIGHT + GANTT_LOWER_HEADER_HEIGHT + 10;
+
 function addDays(date: Date, days: number) {
   const value = new Date(date);
   value.setDate(value.getDate() + days);
@@ -75,6 +77,14 @@ function formatRange(start: Date, end: Date) {
     });
 
   return `${formatter(start)} – ${formatter(end)}`;
+}
+
+function formatFullDate(date: Date) {
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 function toDateString(date: Date) {
@@ -304,34 +314,18 @@ function isLegacyTask(task: GanttSourceTask): task is GanttRow {
   return "weekStart" in task && "weekEnd" in task;
 }
 
-function formatScheduleStart(tasks: BuiltTask[]) {
-  if (!tasks.length) return "";
-
-  const earliest = tasks.reduce(
-    (current, task) => (task._meta.startDate < current ? task._meta.startDate : current),
-    tasks[0]._meta.startDate,
-  );
-
-  return earliest.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
+function getSidebarTone(status: GanttRow["status"]) {
+  if (status === "Completed") return "gantt-sidebar-completed";
+  if (status === "At Risk") return "gantt-sidebar-risk";
+  return "gantt-sidebar-progress";
 }
 
-function formatLegendDate(date: Date) {
-  return date.toLocaleDateString("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  });
-}
-
-export function GanttPanel({ tasks, isSample = false, sampleLabel, sampleNote }: GanttPanelProps) {
+export function GanttPanel({ tasks }: GanttPanelProps) {
   const { t } = useTranslation();
   const ganttRef = useRef<HTMLDivElement | null>(null);
   const [viewMode, setViewMode] = useState("Day");
   const [error, setError] = useState("");
+  const [selectedTaskId, setSelectedTaskId] = useState<string>("");
 
   const sourceTasks = useMemo(() => (tasks && tasks.length ? tasks : rawRows), [tasks]);
   const builtTasks = useMemo(
@@ -343,9 +337,20 @@ export function GanttPanel({ tasks, isSample = false, sampleLabel, sampleNote }:
     () => (sourceTasks.every(isLegacyTask) ? validateRows(sourceTasks) : validateBuiltTasks(builtTasks)),
     [builtTasks, sourceTasks],
   );
-  const scheduleStartLabel = useMemo(() => formatScheduleStart(builtTasks), [builtTasks]);
+  const selectedTask = useMemo(
+    () => builtTasks.find((task) => task.id === selectedTaskId) ?? null,
+    [builtTasks, selectedTaskId],
+  );
   const hasRiskTasks = useMemo(() => builtTasks.some((task) => task._meta.status === "At Risk"), [builtTasks]);
-  const weekOneLabel = useMemo(() => formatLegendDate(weekOneStart), []);
+
+  useEffect(() => {
+    if (!builtTasks.length) {
+      setSelectedTaskId("");
+      return;
+    }
+
+    setSelectedTaskId((current) => (current && builtTasks.some((task) => task.id === current) ? current : builtTasks[0].id));
+  }, [builtTasks]);
 
   useEffect(() => {
     if (!ganttRef.current) return;
@@ -367,10 +372,12 @@ export function GanttPanel({ tasks, isSample = false, sampleLabel, sampleNote }:
         new Gantt(ganttRef.current, builtTasks, {
           view_mode: viewMode,
           column_width: viewMode === "Day" ? 40 : viewMode === "Week" ? 72 : 120,
-          bar_height: 28,
+          bar_height: GANTT_BAR_HEIGHT,
           bar_corner_radius: 6,
-          container_height: builtTasks.length * 48 + 72,
-          padding: 18,
+          container_height: builtTasks.length * GANTT_ROW_HEIGHT + 90,
+          padding: GANTT_PADDING,
+          upper_header_height: GANTT_UPPER_HEADER_HEIGHT,
+          lower_header_height: GANTT_LOWER_HEADER_HEIGHT,
           auto_move_label: true,
           lines: "both",
           readonly: true,
@@ -379,19 +386,10 @@ export function GanttPanel({ tasks, isSample = false, sampleLabel, sampleNote }:
           infinite_padding: false,
           scroll_to: builtTasks[0]?.start ?? toDateString(weekOneStart),
           today_button: false,
-          popup_on: "click",
-          popup: (context: unknown) => {
-            const task = (context as GanttPopupContext)?.task;
-            const meta = task?._meta;
-            if (!meta) return false;
-            return `
-              <div style="padding:12px 14px; min-width:280px; font-family:Aptos, Segoe UI, sans-serif;">
-                <div style="font-size:14px; font-weight:700; color:#0f172a; margin-bottom:4px;">${meta.task}</div>
-                <div style="font-size:12px; color:#475569; margin-bottom:8px;">${meta.role} · ${meta.name}</div>
-                <div style="font-size:12px; color:#0f172a; margin-bottom:4px;">Status: ${meta.status}</div>
-                <div style="font-size:12px; color:#0f172a;">${formatRange(meta.startDate, meta.endDate)}</div>
-              </div>
-            `;
+          popup: false,
+          on_click: (task: unknown) => {
+            const clickedTask = task as BuiltTask | undefined;
+            if (clickedTask?.id) setSelectedTaskId(clickedTask.id);
           },
         });
       } catch (renderError) {
@@ -410,69 +408,174 @@ export function GanttPanel({ tasks, isSample = false, sampleLabel, sampleNote }:
   return (
     <div className="overflow-hidden">
       <style>{`
-        .gantt-shell .gantt-container {
-          border-radius: 24px;
+        .gantt-shell {
+          overflow: hidden;
+        }
+
+        .gantt-board {
+          display: grid;
+          grid-template-columns: minmax(238px, 290px) minmax(0, 1fr);
           border: 1px solid rgba(148, 163, 184, 0.18);
+          border-radius: 24px;
           overflow: hidden;
           background: #ffffff;
         }
 
-        .gantt-shell .grid-background {
+        .gantt-sidebar {
+          border-right: 1px solid rgba(148, 163, 184, 0.16);
+          background:
+            linear-gradient(180deg, rgba(248, 250, 252, 0.96) 0%, rgba(255, 255, 255, 0.98) 100%);
+        }
+
+        .gantt-sidebar-header {
+          display: flex;
+          align-items: center;
+          min-height: ${GANTT_HEADER_HEIGHT}px;
+          padding: 18px 16px 14px;
+          border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+        }
+
+        .gantt-sidebar-header-label {
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.14em;
+          text-transform: uppercase;
+          color: #64748b;
+        }
+
+        .gantt-sidebar-header-title {
+          margin-top: 4px;
+          font-size: 15px;
+          font-weight: 700;
+          color: #0f172a;
+        }
+
+        .gantt-sidebar-rows {
+          padding-bottom: 8px;
+        }
+
+        .gantt-sidebar-row {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          min-height: ${GANTT_ROW_HEIGHT}px;
+          padding: 6px 14px;
+          border-bottom: 1px solid rgba(226, 232, 240, 0.72);
+        }
+
+        .gantt-sidebar-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 999px;
+          flex: 0 0 10px;
+          box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9);
+        }
+
+        .gantt-sidebar-copy {
+          min-width: 0;
+        }
+
+        .gantt-sidebar-owner {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 12px;
+          font-weight: 700;
+          color: #0f172a;
+        }
+
+        .gantt-sidebar-task {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          font-size: 12px;
+          color: #475569;
+        }
+
+        .gantt-sidebar-completed .gantt-sidebar-dot {
+          background: #09b24d;
+        }
+
+        .gantt-sidebar-progress .gantt-sidebar-dot {
+          background: #f0c000;
+        }
+
+        .gantt-sidebar-risk .gantt-sidebar-dot {
+          background: #f59e0b;
+        }
+
+        .gantt-chart {
+          min-width: 0;
+          background: #ffffff;
+        }
+
+        .gantt-chart .gantt-container {
+          border: 0;
+          border-radius: 0;
+          overflow: auto;
+          background: #ffffff;
+        }
+
+        .gantt-chart .grid-background {
           fill: transparent;
         }
 
-        .gantt-shell .grid-row:nth-child(even) {
+        .gantt-chart .grid-row:nth-child(even) {
           fill: #fbfcfe;
         }
 
-        .gantt-shell .row-line,
-        .gantt-shell .tick,
-        .gantt-shell .grid-header {
+        .gantt-chart .row-line,
+        .gantt-chart .tick,
+        .gantt-chart .grid-header {
           stroke: rgba(148, 163, 184, 0.24);
         }
 
-        .gantt-shell .upper-text,
-        .gantt-shell .lower-text,
-        .gantt-shell .bar-label {
+        .gantt-chart .upper-text,
+        .gantt-chart .lower-text,
+        .gantt-chart .bar-label {
           font-family: Aptos, Segoe UI, sans-serif;
         }
 
-        .gantt-shell .upper-text {
+        .gantt-chart .upper-text {
           fill: #1e293b;
           font-size: 16px;
           font-weight: 700;
         }
 
-        .gantt-shell .lower-text {
+        .gantt-chart .lower-text {
           fill: #64748b;
           font-size: 12px;
           font-weight: 600;
         }
 
-        .gantt-shell .bar-label {
-          fill: #0f172a;
-          font-size: 12px;
-          font-weight: 600;
+        .gantt-chart .bar-label {
+          display: none;
         }
 
-        .gantt-shell .bar-wrapper .bar {
+        .gantt-chart .bar-wrapper .bar {
           stroke: rgba(148, 163, 184, 0.24);
           stroke-width: 1;
         }
 
-        .gantt-shell .task-completed .bar,
-        .gantt-shell .task-completed .bar-progress {
+        .gantt-chart .task-completed .bar,
+        .gantt-chart .task-completed .bar-progress {
           fill: #09b24d;
         }
 
-        .gantt-shell .task-progress .bar,
-        .gantt-shell .task-progress .bar-progress {
+        .gantt-chart .task-progress .bar,
+        .gantt-chart .task-progress .bar-progress {
           fill: #f0e400;
         }
 
-        .gantt-shell .task-risk .bar,
-        .gantt-shell .task-risk .bar-progress {
+        .gantt-chart .task-risk .bar,
+        .gantt-chart .task-risk .bar-progress {
           fill: #f59e0b;
+        }
+
+        @media (max-width: 900px) {
+          .gantt-board {
+            grid-template-columns: 220px minmax(0, 1fr);
+          }
         }
 
         .legend-chip {
@@ -494,6 +597,92 @@ export function GanttPanel({ tasks, isSample = false, sampleLabel, sampleNote }:
           flex: 0 0 12px;
         }
 
+        .gantt-detail-card {
+          display: grid;
+          gap: 12px;
+          margin-bottom: 16px;
+          padding: 14px 16px;
+          border: 1px solid rgba(203, 213, 225, 0.82);
+          border-radius: 18px;
+          background: linear-gradient(180deg, rgba(248, 250, 252, 0.98) 0%, rgba(255, 255, 255, 0.98) 100%);
+        }
+
+        .gantt-detail-top {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 12px;
+        }
+
+        .gantt-detail-title {
+          font-size: 15px;
+          font-weight: 700;
+          color: #0f172a;
+        }
+
+        .gantt-detail-subtitle {
+          margin-top: 4px;
+          font-size: 12px;
+          color: #475569;
+        }
+
+        .gantt-detail-status {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          padding: 6px 10px;
+          border-radius: 999px;
+          border: 1px solid rgba(203, 213, 225, 0.82);
+          background: #ffffff;
+          font-size: 12px;
+          font-weight: 700;
+          color: #334155;
+          white-space: nowrap;
+        }
+
+        .gantt-detail-status-dot {
+          width: 10px;
+          height: 10px;
+          border-radius: 999px;
+          flex: 0 0 10px;
+        }
+
+        .gantt-detail-grid {
+          display: grid;
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .gantt-detail-item {
+          min-width: 0;
+          padding: 10px 12px;
+          border: 1px solid rgba(226, 232, 240, 0.9);
+          border-radius: 14px;
+          background: rgba(255, 255, 255, 0.88);
+        }
+
+        .gantt-detail-label {
+          font-size: 11px;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: #64748b;
+        }
+
+        .gantt-detail-value {
+          margin-top: 4px;
+          font-size: 13px;
+          font-weight: 600;
+          color: #0f172a;
+          overflow-wrap: anywhere;
+        }
+
+        @media (max-width: 760px) {
+          .gantt-detail-grid {
+            grid-template-columns: 1fr;
+          }
+        }
+
       `}</style>
 
       <div className="surface-card rounded-[28px] p-6">
@@ -510,7 +699,6 @@ export function GanttPanel({ tasks, isSample = false, sampleLabel, sampleNote }:
           </div>
 
           <div className="flex flex-wrap items-center gap-2">
-            {isSample && sampleLabel ? <StaticTag label={sampleLabel} tone="violet" /> : null}
             <button
               type="button"
               onClick={() => setViewMode("Day")}
@@ -541,8 +729,6 @@ export function GanttPanel({ tasks, isSample = false, sampleLabel, sampleNote }:
           </div>
         </div>
 
-        {sampleNote ? <p className="mt-3 text-sm leading-7 text-amber-800">{sampleNote}</p> : null}
-
         <div className="mt-5 flex flex-wrap gap-3">
           <span className="legend-chip">
             <span className="legend-dot" style={{ background: "#09b24d" }} />
@@ -558,10 +744,6 @@ export function GanttPanel({ tasks, isSample = false, sampleLabel, sampleNote }:
               At Risk
             </span>
           ) : null}
-          <span className="legend-chip">W1 = {weekOneLabel}</span>
-          <span className="legend-chip">Thursday → Wednesday</span>
-          {scheduleStartLabel ? <span className="legend-chip">Start = {scheduleStartLabel}</span> : null}
-          <span className="legend-chip">Default = Day View</span>
         </div>
 
         <div className="mt-6 rounded-[24px] border border-slate-200/80 bg-white/90 p-4">
@@ -576,12 +758,80 @@ export function GanttPanel({ tasks, isSample = false, sampleLabel, sampleNote }:
             </div>
           ) : null}
 
-          <div className="mb-4 rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-600">
-            Click a task bar to inspect details. The chart is read-only in this portal view.
-          </div>
+          {selectedTask ? (
+            <div className="gantt-detail-card">
+              <div className="gantt-detail-top">
+                <div>
+                  <div className="gantt-detail-title">{selectedTask._meta.task}</div>
+                  <div className="gantt-detail-subtitle">
+                    {selectedTask._meta.role} · {selectedTask._meta.name}
+                  </div>
+                </div>
 
-          <div className="gantt-shell overflow-x-auto">
-            <div ref={ganttRef} className="min-w-[1180px]" />
+                <div className="gantt-detail-status">
+                  <span
+                    className="gantt-detail-status-dot"
+                    style={{
+                      background:
+                        selectedTask._meta.status === "Completed"
+                          ? "#09b24d"
+                          : selectedTask._meta.status === "At Risk"
+                            ? "#f59e0b"
+                            : "#f0c000",
+                    }}
+                  />
+                  {selectedTask._meta.status}
+                </div>
+              </div>
+
+              <div className="gantt-detail-grid">
+                <div className="gantt-detail-item">
+                  <div className="gantt-detail-label">Progress</div>
+                  <div className="gantt-detail-value">{selectedTask.progress}%</div>
+                </div>
+                <div className="gantt-detail-item">
+                  <div className="gantt-detail-label">Start</div>
+                  <div className="gantt-detail-value">{formatFullDate(selectedTask._meta.startDate)}</div>
+                </div>
+                <div className="gantt-detail-item">
+                  <div className="gantt-detail-label">End</div>
+                  <div className="gantt-detail-value">{formatFullDate(selectedTask._meta.endDate)}</div>
+                </div>
+              </div>
+            </div>
+          ) : null}
+
+          <div className="gantt-shell">
+            <div className="gantt-board">
+              <div className="gantt-sidebar">
+                <div className="gantt-sidebar-header">
+                  <div>
+                    <div className="gantt-sidebar-header-label">Fixed Lane</div>
+                    <div className="gantt-sidebar-header-title">Owner · Task</div>
+                  </div>
+                </div>
+
+                <div className="gantt-sidebar-rows">
+                  {builtTasks.map((task) => (
+                    <div
+                      key={`sidebar-${task.id}`}
+                      className={`gantt-sidebar-row ${getSidebarTone(task._meta.status)}`}
+                      title={`${task._meta.role} · ${task._meta.name} · ${task._meta.task}`}
+                    >
+                      <span className="gantt-sidebar-dot" />
+                      <div className="gantt-sidebar-copy">
+                        <div className="gantt-sidebar-owner">{task._meta.name}</div>
+                        <div className="gantt-sidebar-task">{task._meta.task}</div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="gantt-chart">
+                <div ref={ganttRef} className="min-w-[980px] lg:min-w-[1180px]" />
+              </div>
+            </div>
           </div>
         </div>
       </div>

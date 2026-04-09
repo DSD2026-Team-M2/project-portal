@@ -75,12 +75,7 @@ export function ProgressPage() {
       </RevealOnScroll>
 
       <RevealOnScroll as="section" id="timeline" className="section-shell anchor-target p-6 sm:p-8">
-        <GanttPanel
-          tasks={ganttTasks}
-          isSample={progressDatasetMeta.sample}
-          sampleLabel={progressDatasetMeta.label}
-          sampleNote={resolveLocalizedText(progressDatasetMeta.note, language)}
-        />
+        <GanttPanel tasks={ganttTasks} />
       </RevealOnScroll>
 
       <RevealOnScroll as="section" id="milestones" className="section-shell anchor-target p-6 sm:p-8">
