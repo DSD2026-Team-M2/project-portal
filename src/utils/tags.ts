@@ -2,6 +2,10 @@ export function isAttentionTag(tag: string): boolean {
   return tag.startsWith("attention:");
 }
 
+export function getAttentionTagLabel(tag: string): string {
+  return isAttentionTag(tag) ? tag.slice("attention:".length) : tag;
+}
+
 export function getStatusTone(status: string): string {
   switch (status) {
     case "completed":

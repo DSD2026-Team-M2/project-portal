@@ -28,6 +28,11 @@ export function TeamMemberCard({ member, language }: TeamMemberCardProps) {
   const [imageError, setImageError] = useState(false);
   const photoSrc = member.photoPath ? `${import.meta.env.BASE_URL}${member.photoPath}` : null;
   const showPhoto = Boolean(photoSrc) && !imageError;
+  const hasRole = member.role.trim().length > 0;
+  const responsibilityFocus = resolveLocalizedText(member.responsibilityFocus, language).trim();
+  const shortNote = resolveLocalizedText(member.shortNote, language).trim();
+  const hasRelatedPages = member.relatedPages.length > 0;
+  const hasRelatedRepos = member.relatedRepos.length > 0;
 
   return (
     <article className="surface-card h-full p-5 sm:p-6">
@@ -46,8 +51,8 @@ export function TeamMemberCard({ member, language }: TeamMemberCardProps) {
             )}
           </div>
           <div className="min-w-0">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{member.role}</p>
-            <h3 className="mt-2 text-2xl font-semibold tracking-tight text-slate-950">{member.name}</h3>
+            {hasRole ? <p className="text-xs font-semibold uppercase tracking-[0.22em] text-slate-500">{member.role}</p> : null}
+            <h3 className={`${hasRole ? "mt-2" : "mt-0.5"} text-2xl font-semibold tracking-tight text-slate-950`}>{member.name}</h3>
             {member.displayCode ? (
               <p className="mt-1 text-sm text-slate-400">{member.displayCode}</p>
             ) : null}
@@ -67,32 +72,38 @@ export function TeamMemberCard({ member, language }: TeamMemberCardProps) {
         </p>
       </div>
 
-      <p className="mt-5 text-sm leading-7 text-slate-700">{resolveLocalizedText(member.responsibilityFocus, language)}</p>
-      <p className="mt-4 border-l-2 border-slate-200 pl-4 text-sm leading-7 text-slate-500">
-        {resolveLocalizedText(member.shortNote, language)}
-      </p>
+      {responsibilityFocus ? <p className="mt-5 text-sm leading-7 text-slate-700">{responsibilityFocus}</p> : null}
+      {shortNote ? (
+        <p className="mt-4 border-l-2 border-slate-200 pl-4 text-sm leading-7 text-slate-500">
+          {shortNote}
+        </p>
+      ) : null}
 
-      <div className="mt-5 flex flex-wrap gap-2">
-        {member.relatedPages.map((page) => (
-          <InternalLinkPill key={page.href} to={page.href}>
-            {page.labelKey ? t(page.labelKey) : page.label}
-          </InternalLinkPill>
-        ))}
-      </div>
-
-      <div className="mt-4 flex flex-wrap gap-2">
-        {member.relatedRepos.map((repo) =>
-          repo.external ? (
-            <ExternalLinkPill key={repo.href} href={repo.href}>
-              {repo.label}
-            </ExternalLinkPill>
-          ) : (
-            <InternalLinkPill key={repo.href} to={repo.href}>
-              {repo.label}
+      {hasRelatedPages ? (
+        <div className="mt-5 flex flex-wrap gap-2">
+          {member.relatedPages.map((page) => (
+            <InternalLinkPill key={page.href} to={page.href}>
+              {page.labelKey ? t(page.labelKey) : page.label}
             </InternalLinkPill>
-          ),
-        )}
-      </div>
+          ))}
+        </div>
+      ) : null}
+
+      {hasRelatedRepos ? (
+        <div className="mt-4 flex flex-wrap gap-2">
+          {member.relatedRepos.map((repo) =>
+            repo.external ? (
+              <ExternalLinkPill key={repo.href} href={repo.href}>
+                {repo.label}
+              </ExternalLinkPill>
+            ) : (
+              <InternalLinkPill key={repo.href} to={repo.href}>
+                {repo.label}
+              </InternalLinkPill>
+            ),
+          )}
+        </div>
+      ) : null}
 
       {member.github ? (
         <div className="mt-4">

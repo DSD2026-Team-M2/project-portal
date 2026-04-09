@@ -12,6 +12,7 @@ import { LogListItem } from "../components/LogListItem";
 import { RevealOnScroll } from "../components/RevealOnScroll";
 import { SectionLead } from "../components/SectionLead";
 import { SectionTitle } from "../components/SectionTitle";
+import { getAttentionTagLabel } from "../utils/tags";
 
 export function LogsPage() {
   const { t, i18n } = useTranslation();
@@ -80,7 +81,7 @@ export function LogsPage() {
               {options.attention.map((value) => (
                 <FilterChip
                   key={value}
-                  label={value === "all" ? t("common.all") : value}
+                  label={value === "all" ? t("common.all") : getAttentionTagLabel(value)}
                   selected={attentionFilter === value}
                   onClick={() => setAttentionFilter(value)}
                 />
