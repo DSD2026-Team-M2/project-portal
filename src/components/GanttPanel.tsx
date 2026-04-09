@@ -25,11 +25,11 @@ type GanttRow = {
   role: string;
   name: string;
   task: string;
-  status: "Completed" | "In Progress" | "At Risk";
+  status: "Completed" | "In Progress";
   weekStart: number;
   weekEnd: number;
   progress: number;
-  customClass: "task-completed" | "task-progress" | "task-risk";
+  customClass: "task-completed" | "task-progress";
 };
 
 type GanttSourceTask = GanttRow | DatasetTask;
@@ -62,6 +62,10 @@ const GANTT_ROW_HEIGHT = GANTT_BAR_HEIGHT + GANTT_PADDING;
 const GANTT_UPPER_HEADER_HEIGHT = 45;
 const GANTT_LOWER_HEADER_HEIGHT = 30;
 const GANTT_HEADER_HEIGHT = GANTT_UPPER_HEADER_HEIGHT + GANTT_LOWER_HEADER_HEIGHT + 10;
+const GANTT_LANE_WIDTH = 290;
+const GANTT_LANE_WIDTH_COMPACT = 236;
+const COMPLETED_COLOR = "#09b24d";
+const IN_PROGRESS_COLOR = "#f0e400";
 
 function addDays(date: Date, days: number) {
   const value = new Date(date);
@@ -220,21 +224,14 @@ const rawRows: GanttRow[] = [
 function getTaskColors(status: GanttRow["status"]) {
   if (status === "Completed") {
     return {
-      color: "#22c55e",
-      color_progress: "#16a34a",
-    };
-  }
-
-  if (status === "At Risk") {
-    return {
-      color: "#fdba74",
-      color_progress: "#ea580c",
+      color: COMPLETED_COLOR,
+      color_progress: COMPLETED_COLOR,
     };
   }
 
   return {
-    color: "#fde68a",
-    color_progress: "#eab308",
+    color: IN_PROGRESS_COLOR,
+    color_progress: IN_PROGRESS_COLOR,
   };
 }
 
@@ -242,13 +239,11 @@ function normalizeStatus(status: string): GanttRow["status"] {
   const value = status.trim().toLowerCase();
 
   if (value === "completed" || value === "done") return "Completed";
-  if (value === "at-risk" || value === "at risk" || value === "blocked") return "At Risk";
   return "In Progress";
 }
 
 function getCustomClass(status: GanttRow["status"]): GanttRow["customClass"] {
   if (status === "Completed") return "task-completed";
-  if (status === "At Risk") return "task-risk";
   return "task-progress";
 }
 
@@ -316,13 +311,14 @@ function isLegacyTask(task: GanttSourceTask): task is GanttRow {
 
 function getSidebarTone(status: GanttRow["status"]) {
   if (status === "Completed") return "gantt-sidebar-completed";
-  if (status === "At Risk") return "gantt-sidebar-risk";
   return "gantt-sidebar-progress";
 }
 
 export function GanttPanel({ tasks }: GanttPanelProps) {
   const { t } = useTranslation();
   const ganttRef = useRef<HTMLDivElement | null>(null);
+  const sidebarRowsRef = useRef<HTMLDivElement | null>(null);
+  const selectedTaskIdRef = useRef("");
   const [viewMode, setViewMode] = useState("Day");
   const [error, setError] = useState("");
   const [selectedTaskId, setSelectedTaskId] = useState<string>("");
@@ -341,7 +337,15 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
     () => builtTasks.find((task) => task.id === selectedTaskId) ?? null,
     [builtTasks, selectedTaskId],
   );
-  const hasRiskTasks = useMemo(() => builtTasks.some((task) => task._meta.status === "At Risk"), [builtTasks]);
+
+  const applySelectedBarState = (taskId: string) => {
+    const host = ganttRef.current;
+    if (!host) return;
+
+    host.querySelectorAll<SVGGElement>(".bar-wrapper").forEach((wrapper) => {
+      wrapper.classList.toggle("is-selected", wrapper.getAttribute("data-id") === taskId);
+    });
+  };
 
   useEffect(() => {
     if (!builtTasks.length) {
@@ -351,6 +355,11 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
 
     setSelectedTaskId((current) => (current && builtTasks.some((task) => task.id === current) ? current : builtTasks[0].id));
   }, [builtTasks]);
+
+  useEffect(() => {
+    selectedTaskIdRef.current = selectedTaskId;
+    applySelectedBarState(selectedTaskId);
+  }, [selectedTaskId]);
 
   useEffect(() => {
     if (!ganttRef.current) return;
@@ -392,16 +401,60 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
             if (clickedTask?.id) setSelectedTaskId(clickedTask.id);
           },
         });
+
+        const chartContainer = ganttRef.current.querySelector<HTMLElement>(".gantt-container");
+        if (!chartContainer) return () => {};
+
+        const syncSidebarOffset = () => {
+          if (!sidebarRowsRef.current) return;
+          const offset = chartContainer.scrollTop;
+          sidebarRowsRef.current.style.transform = offset ? `translateY(-${offset}px)` : "translateY(0)";
+        };
+
+        const handleWheel = (event: WheelEvent) => {
+          if (!event.deltaY || event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY)) return;
+          event.preventDefault();
+          window.scrollBy({ top: event.deltaY, left: 0, behavior: "auto" });
+        };
+
+        const handleBarClick = (event: Event) => {
+          const target = event.target;
+          if (!(target instanceof Element)) return;
+
+          const barWrapper = target.closest(".bar-wrapper");
+          const nextTaskId = barWrapper?.getAttribute("data-id");
+          if (nextTaskId) setSelectedTaskId(nextTaskId);
+        };
+
+        chartContainer.addEventListener("scroll", syncSidebarOffset, { passive: true });
+        chartContainer.addEventListener("wheel", handleWheel, { passive: false });
+        chartContainer.addEventListener("click", handleBarClick);
+
+        syncSidebarOffset();
+        applySelectedBarState(selectedTaskIdRef.current);
+
+        return () => {
+          chartContainer.removeEventListener("scroll", syncSidebarOffset);
+          chartContainer.removeEventListener("wheel", handleWheel);
+          chartContainer.removeEventListener("click", handleBarClick);
+          if (sidebarRowsRef.current) sidebarRowsRef.current.style.transform = "translateY(0)";
+        };
       } catch (renderError) {
         setError(renderError instanceof Error ? renderError.message : "Failed to render gantt chart.");
+        return () => {};
       }
     };
 
-    const timer = window.setTimeout(render, 80);
+    let cleanupInteractions: () => void = () => {};
+    const timer = window.setTimeout(() => {
+      cleanupInteractions = render() ?? (() => {});
+    }, 80);
 
     return () => {
       window.clearTimeout(timer);
+      cleanupInteractions();
       if (ganttRef.current) ganttRef.current.innerHTML = "";
+      if (sidebarRowsRef.current) sidebarRowsRef.current.style.transform = "translateY(0)";
     };
   }, [builtTasks, validationIssues, viewMode]);
 
@@ -414,7 +467,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
 
         .gantt-board {
           display: grid;
-          grid-template-columns: minmax(238px, 290px) minmax(0, 1fr);
+          grid-template-columns: ${GANTT_LANE_WIDTH}px minmax(0, 1fr);
           border: 1px solid rgba(148, 163, 184, 0.18);
           border-radius: 24px;
           overflow: hidden;
@@ -422,6 +475,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         }
 
         .gantt-sidebar {
+          overflow: hidden;
           border-right: 1px solid rgba(148, 163, 184, 0.16);
           background:
             linear-gradient(180deg, rgba(248, 250, 252, 0.96) 0%, rgba(255, 255, 255, 0.98) 100%);
@@ -430,7 +484,8 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         .gantt-sidebar-header {
           display: flex;
           align-items: center;
-          min-height: ${GANTT_HEADER_HEIGHT}px;
+          height: ${GANTT_HEADER_HEIGHT}px;
+          box-sizing: border-box;
           padding: 18px 16px 14px;
           border-bottom: 1px solid rgba(148, 163, 184, 0.16);
         }
@@ -451,16 +506,28 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         }
 
         .gantt-sidebar-rows {
-          padding-bottom: 8px;
+          padding-bottom: 0;
+          will-change: transform;
         }
 
         .gantt-sidebar-row {
           display: flex;
           align-items: center;
           gap: 10px;
-          min-height: ${GANTT_ROW_HEIGHT}px;
-          padding: 6px 14px;
+          height: ${GANTT_ROW_HEIGHT}px;
+          box-sizing: border-box;
+          padding: 0 14px;
           border-bottom: 1px solid rgba(226, 232, 240, 0.72);
+          cursor: pointer;
+          transition: background-color 0.2s ease;
+        }
+
+        .gantt-sidebar-row:hover {
+          background: rgba(241, 245, 249, 0.8);
+        }
+
+        .gantt-sidebar-row.is-selected {
+          background: rgba(226, 232, 240, 0.76);
         }
 
         .gantt-sidebar-dot {
@@ -493,15 +560,11 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         }
 
         .gantt-sidebar-completed .gantt-sidebar-dot {
-          background: #09b24d;
+          background: ${COMPLETED_COLOR};
         }
 
         .gantt-sidebar-progress .gantt-sidebar-dot {
-          background: #f0c000;
-        }
-
-        .gantt-sidebar-risk .gantt-sidebar-dot {
-          background: #f59e0b;
+          background: ${IN_PROGRESS_COLOR};
         }
 
         .gantt-chart {
@@ -512,7 +575,8 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         .gantt-chart .gantt-container {
           border: 0;
           border-radius: 0;
-          overflow: auto;
+          overflow-x: auto;
+          overflow-y: hidden;
           background: #ffffff;
         }
 
@@ -552,29 +616,33 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
           display: none;
         }
 
+        .gantt-chart .bar-progress {
+          display: none;
+        }
+
         .gantt-chart .bar-wrapper .bar {
           stroke: rgba(148, 163, 184, 0.24);
           stroke-width: 1;
         }
 
+        .gantt-chart .bar-wrapper.is-selected .bar {
+          stroke: #0f172a;
+          stroke-width: 2;
+        }
+
         .gantt-chart .task-completed .bar,
         .gantt-chart .task-completed .bar-progress {
-          fill: #09b24d;
+          fill: ${COMPLETED_COLOR};
         }
 
         .gantt-chart .task-progress .bar,
         .gantt-chart .task-progress .bar-progress {
-          fill: #f0e400;
-        }
-
-        .gantt-chart .task-risk .bar,
-        .gantt-chart .task-risk .bar-progress {
-          fill: #f59e0b;
+          fill: ${IN_PROGRESS_COLOR};
         }
 
         @media (max-width: 900px) {
           .gantt-board {
-            grid-template-columns: 220px minmax(0, 1fr);
+            grid-template-columns: ${GANTT_LANE_WIDTH_COMPACT}px minmax(0, 1fr);
           }
         }
 
@@ -686,7 +754,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
       `}</style>
 
       <div className="surface-card rounded-[28px] p-6">
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
           <div>
             <div className="mb-2 text-sm font-medium uppercase tracking-[0.24em] text-slate-500">
               DSD 2026 · Team M2
@@ -698,52 +766,48 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
             </p>
           </div>
 
-          <div className="flex flex-wrap items-center gap-2">
-            <button
-              type="button"
-              onClick={() => setViewMode("Day")}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                viewMode === "Day" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-              }`}
-            >
-              Day View
-            </button>
-            <button
-              type="button"
-              onClick={() => setViewMode("Week")}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                viewMode === "Week" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-              }`}
-            >
-              Week View
-            </button>
-            <button
-              type="button"
-              onClick={() => setViewMode("Month")}
-              className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                viewMode === "Month" ? "bg-slate-900 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"
-              }`}
-            >
-              Month View
-            </button>
+          <div className="max-w-full overflow-x-auto lg:shrink-0">
+            <div className="inline-flex min-w-max items-center rounded-full bg-slate-100 p-1">
+              <button
+                type="button"
+                onClick={() => setViewMode("Day")}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                  viewMode === "Day" ? "bg-slate-900 text-white" : "text-slate-700 hover:bg-slate-200"
+                }`}
+              >
+                Day
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode("Week")}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                  viewMode === "Week" ? "bg-slate-900 text-white" : "text-slate-700 hover:bg-slate-200"
+                }`}
+              >
+                Week
+              </button>
+              <button
+                type="button"
+                onClick={() => setViewMode("Month")}
+                className={`rounded-full px-4 py-2 text-sm font-medium transition ${
+                  viewMode === "Month" ? "bg-slate-900 text-white" : "text-slate-700 hover:bg-slate-200"
+                }`}
+              >
+                Month
+              </button>
+            </div>
           </div>
         </div>
 
         <div className="mt-5 flex flex-wrap gap-3">
           <span className="legend-chip">
-            <span className="legend-dot" style={{ background: "#09b24d" }} />
+            <span className="legend-dot" style={{ background: COMPLETED_COLOR }} />
             Completed
           </span>
           <span className="legend-chip">
-            <span className="legend-dot" style={{ background: "#f0e400" }} />
+            <span className="legend-dot" style={{ background: IN_PROGRESS_COLOR }} />
             In Progress
           </span>
-          {hasRiskTasks ? (
-            <span className="legend-chip">
-              <span className="legend-dot" style={{ background: "#f59e0b" }} />
-              At Risk
-            </span>
-          ) : null}
         </div>
 
         <div className="mt-6 rounded-[24px] border border-slate-200/80 bg-white/90 p-4">
@@ -772,12 +836,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
                   <span
                     className="gantt-detail-status-dot"
                     style={{
-                      background:
-                        selectedTask._meta.status === "Completed"
-                          ? "#09b24d"
-                          : selectedTask._meta.status === "At Risk"
-                            ? "#f59e0b"
-                            : "#f0c000",
+                      background: selectedTask._meta.status === "Completed" ? COMPLETED_COLOR : IN_PROGRESS_COLOR,
                     }}
                   />
                   {selectedTask._meta.status}
@@ -811,12 +870,15 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
                   </div>
                 </div>
 
-                <div className="gantt-sidebar-rows">
+                <div ref={sidebarRowsRef} className="gantt-sidebar-rows">
                   {builtTasks.map((task) => (
                     <div
                       key={`sidebar-${task.id}`}
-                      className={`gantt-sidebar-row ${getSidebarTone(task._meta.status)}`}
+                      className={`gantt-sidebar-row ${getSidebarTone(task._meta.status)} ${
+                        selectedTaskId === task.id ? "is-selected" : ""
+                      }`}
                       title={`${task._meta.role} · ${task._meta.name} · ${task._meta.task}`}
+                      onClick={() => setSelectedTaskId(task.id)}
                     >
                       <span className="gantt-sidebar-dot" />
                       <div className="gantt-sidebar-copy">
@@ -829,7 +891,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
               </div>
 
               <div className="gantt-chart">
-                <div ref={ganttRef} className="min-w-[980px] lg:min-w-[1180px]" />
+                <div ref={ganttRef} className="w-full min-w-[980px] lg:min-w-[1180px]" />
               </div>
             </div>
           </div>
