@@ -7,22 +7,37 @@ import { useTranslation } from "react-i18next";
 import { StaticTag } from "./StaticTag";
 
 type GanttPanelProps = {
-  tasks?: unknown[];
+  tasks?: GanttSourceTask[];
   isSample?: boolean;
   sampleLabel?: string;
   sampleNote?: string;
+};
+
+type DatasetTask = {
+  id: string;
+  name: string;
+  role: string;
+  owner: string;
+  start: string;
+  end: string;
+  progress: number;
+  status: string;
+  dependencies?: string[];
+  category?: string;
 };
 
 type GanttRow = {
   role: string;
   name: string;
   task: string;
-  status: "Completed" | "In Progress";
+  status: "Completed" | "In Progress" | "At Risk";
   weekStart: number;
   weekEnd: number;
   progress: number;
-  customClass: "task-completed" | "task-progress";
+  customClass: "task-completed" | "task-progress" | "task-risk";
 };
+
+type GanttSourceTask = GanttRow | DatasetTask;
 
 type BuiltTask = {
   id: string;
@@ -33,9 +48,12 @@ type BuiltTask = {
   custom_class: string;
   color: string;
   color_progress: string;
+  dependencies?: string[];
   _meta: GanttRow & {
+    id: string;
     startDate: Date;
     endDate: Date;
+    category?: string;
   };
 };
 
@@ -74,6 +92,21 @@ function validateRows(rows: GanttRow[]) {
     if (row.weekStart < 1) issues.push(`Row ${index + 1}: weekStart must be >= 1.`);
     if (row.weekEnd < 1) issues.push(`Row ${index + 1}: weekEnd must be >= 1.`);
     if (row.progress < 0 || row.progress > 100) issues.push(`Row ${index + 1}: progress must be 0–100.`);
+  });
+
+  return issues;
+}
+
+function validateBuiltTasks(tasks: BuiltTask[]) {
+  const issues: string[] = [];
+
+  tasks.forEach((task, index) => {
+    if (!task.id) issues.push(`Task ${index + 1}: missing id.`);
+    if (!task.name) issues.push(`Task ${index + 1}: missing name.`);
+    if (Number.isNaN(task._meta.startDate.getTime())) issues.push(`Task ${index + 1}: invalid start date.`);
+    if (Number.isNaN(task._meta.endDate.getTime())) issues.push(`Task ${index + 1}: invalid end date.`);
+    if (task._meta.startDate > task._meta.endDate) issues.push(`Task ${index + 1}: start date is after end date.`);
+    if (task.progress < 0 || task.progress > 100) issues.push(`Task ${index + 1}: progress must be 0–100.`);
   });
 
   return issues;
@@ -182,19 +215,41 @@ function getTaskColors(status: GanttRow["status"]) {
     };
   }
 
+  if (status === "At Risk") {
+    return {
+      color: "#fdba74",
+      color_progress: "#ea580c",
+    };
+  }
+
   return {
     color: "#fde68a",
     color_progress: "#eab308",
   };
 }
 
-function buildTask(row: GanttRow, index: number): BuiltTask {
+function normalizeStatus(status: string): GanttRow["status"] {
+  const value = status.trim().toLowerCase();
+
+  if (value === "completed" || value === "done") return "Completed";
+  if (value === "at-risk" || value === "at risk" || value === "blocked") return "At Risk";
+  return "In Progress";
+}
+
+function getCustomClass(status: GanttRow["status"]): GanttRow["customClass"] {
+  if (status === "Completed") return "task-completed";
+  if (status === "At Risk") return "task-risk";
+  return "task-progress";
+}
+
+function buildLegacyTask(row: GanttRow, index: number): BuiltTask {
+  const id = `legacy-task-${index + 1}`;
   const startDate = addDays(weekOneStart, (row.weekStart - 1) * 7);
   const endDate = addDays(weekOneStart, row.weekEnd * 7 - 1);
   const colors = getTaskColors(row.status);
 
   return {
-    id: `task-${index + 1}`,
+    id,
     name: `${row.name} · ${row.task}`,
     start: toDateString(startDate),
     end: toDateString(endDate),
@@ -204,20 +259,93 @@ function buildTask(row: GanttRow, index: number): BuiltTask {
     color_progress: colors.color_progress,
     _meta: {
       ...row,
+      id,
       startDate,
       endDate,
     },
   };
 }
 
-export function GanttPanel({ isSample = false, sampleLabel, sampleNote }: GanttPanelProps) {
+function buildDatasetTask(task: DatasetTask): BuiltTask {
+  const status = normalizeStatus(task.status);
+  const customClass = getCustomClass(status);
+  const colors = getTaskColors(status);
+  const startDate = new Date(`${task.start}T00:00:00`);
+  const endDate = new Date(`${task.end}T00:00:00`);
+
+  return {
+    id: task.id,
+    name: `${task.owner} · ${task.name}`,
+    start: task.start,
+    end: task.end,
+    progress: task.progress,
+    custom_class: customClass,
+    color: colors.color,
+    color_progress: colors.color_progress,
+    dependencies: task.dependencies,
+    _meta: {
+      id: task.id,
+      role: task.role,
+      name: task.owner,
+      task: task.name,
+      status,
+      weekStart: 1,
+      weekEnd: 1,
+      progress: task.progress,
+      customClass,
+      startDate,
+      endDate,
+      category: task.category,
+    },
+  };
+}
+
+function isLegacyTask(task: GanttSourceTask): task is GanttRow {
+  return "weekStart" in task && "weekEnd" in task;
+}
+
+function formatScheduleStart(tasks: BuiltTask[]) {
+  if (!tasks.length) return "";
+
+  const earliest = tasks.reduce(
+    (current, task) => (task._meta.startDate < current ? task._meta.startDate : current),
+    tasks[0]._meta.startDate,
+  );
+
+  return earliest.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+function formatLegendDate(date: Date) {
+  return date.toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
+}
+
+export function GanttPanel({ tasks, isSample = false, sampleLabel, sampleNote }: GanttPanelProps) {
   const { t } = useTranslation();
   const ganttRef = useRef<HTMLDivElement | null>(null);
   const [viewMode, setViewMode] = useState("Day");
   const [error, setError] = useState("");
 
-  const validationIssues = useMemo(() => validateRows(rawRows), []);
-  const tasks = useMemo(() => rawRows.map((row, index) => buildTask(row, index)), []);
+  const sourceTasks = useMemo(() => (tasks && tasks.length ? tasks : rawRows), [tasks]);
+  const builtTasks = useMemo(
+    () =>
+      sourceTasks.map((task, index) => (isLegacyTask(task) ? buildLegacyTask(task, index) : buildDatasetTask(task))),
+    [sourceTasks],
+  );
+  const validationIssues = useMemo(
+    () => (sourceTasks.every(isLegacyTask) ? validateRows(sourceTasks) : validateBuiltTasks(builtTasks)),
+    [builtTasks, sourceTasks],
+  );
+  const scheduleStartLabel = useMemo(() => formatScheduleStart(builtTasks), [builtTasks]);
+  const hasRiskTasks = useMemo(() => builtTasks.some((task) => task._meta.status === "At Risk"), [builtTasks]);
+  const weekOneLabel = useMemo(() => formatLegendDate(weekOneStart), []);
 
   useEffect(() => {
     if (!ganttRef.current) return;
@@ -236,12 +364,12 @@ export function GanttPanel({ isSample = false, sampleLabel, sampleNote }: GanttP
       try {
         ganttRef.current.innerHTML = "";
 
-        new Gantt(ganttRef.current, tasks, {
+        new Gantt(ganttRef.current, builtTasks, {
           view_mode: viewMode,
           column_width: viewMode === "Day" ? 40 : viewMode === "Week" ? 72 : 120,
           bar_height: 28,
           bar_corner_radius: 6,
-          container_height: tasks.length * 48 + 72,
+          container_height: builtTasks.length * 48 + 72,
           padding: 18,
           auto_move_label: true,
           lines: "both",
@@ -249,7 +377,7 @@ export function GanttPanel({ isSample = false, sampleLabel, sampleNote }: GanttP
           readonly_dates: true,
           readonly_progress: true,
           infinite_padding: false,
-          scroll_to: toDateString(weekOneStart),
+          scroll_to: builtTasks[0]?.start ?? toDateString(weekOneStart),
           today_button: false,
           popup_on: "click",
           popup: (context: unknown) => {
@@ -277,7 +405,7 @@ export function GanttPanel({ isSample = false, sampleLabel, sampleNote }: GanttP
       window.clearTimeout(timer);
       if (ganttRef.current) ganttRef.current.innerHTML = "";
     };
-  }, [tasks, validationIssues, viewMode]);
+  }, [builtTasks, validationIssues, viewMode]);
 
   return (
     <div className="overflow-hidden">
@@ -290,7 +418,7 @@ export function GanttPanel({ isSample = false, sampleLabel, sampleNote }: GanttP
         }
 
         .gantt-shell .grid-background {
-          fill: #ffffff;
+          fill: transparent;
         }
 
         .gantt-shell .grid-row:nth-child(even) {
@@ -340,6 +468,11 @@ export function GanttPanel({ isSample = false, sampleLabel, sampleNote }: GanttP
         .gantt-shell .task-progress .bar,
         .gantt-shell .task-progress .bar-progress {
           fill: #f0e400;
+        }
+
+        .gantt-shell .task-risk .bar,
+        .gantt-shell .task-risk .bar-progress {
+          fill: #f59e0b;
         }
 
         .legend-chip {
@@ -419,8 +552,15 @@ export function GanttPanel({ isSample = false, sampleLabel, sampleNote }: GanttP
             <span className="legend-dot" style={{ background: "#f0e400" }} />
             In Progress
           </span>
-          <span className="legend-chip">W1 = 19 Mar 2026</span>
+          {hasRiskTasks ? (
+            <span className="legend-chip">
+              <span className="legend-dot" style={{ background: "#f59e0b" }} />
+              At Risk
+            </span>
+          ) : null}
+          <span className="legend-chip">W1 = {weekOneLabel}</span>
           <span className="legend-chip">Thursday → Wednesday</span>
+          {scheduleStartLabel ? <span className="legend-chip">Start = {scheduleStartLabel}</span> : null}
           <span className="legend-chip">Default = Day View</span>
         </div>
 
