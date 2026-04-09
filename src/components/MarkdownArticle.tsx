@@ -31,6 +31,7 @@ import { InternalLinkPill } from "./InternalLinkPill";
 import { MetadataPanel } from "./MetadataPanel";
 import { StaticTag } from "./StaticTag";
 import { StatusBadge } from "./StatusBadge";
+import { UseCaseFlowPreview } from "./UseCaseFlowPreview";
 
 type NeighborEntry = {
   title: string;
@@ -50,6 +51,9 @@ type MarkdownArticleProps = {
 
 type HeadingProps = HTMLAttributes<HTMLHeadingElement>;
 type HeadingTag = "h1" | "h2" | "h3" | "h4";
+type MarkdownSegment =
+  | { kind: "markdown"; content: string }
+  | { kind: "usecase-flow"; imageSrc: string; title: string };
 
 const BIONIC_MIN_WORDS = 12;
 
@@ -122,6 +126,47 @@ function ArticleLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
   );
 }
 
+function splitMarkdownSegments(body: string): MarkdownSegment[] {
+  const segments: MarkdownSegment[] = [];
+  const blockPattern = /:::usecase-flow\s*\r?\n([\s\S]*?):::/g;
+  let cursor = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = blockPattern.exec(body)) !== null) {
+    const markdownBefore = body.slice(cursor, match.index);
+    const definition = match[1]?.trim() ?? "";
+    const lines = definition
+      .split(/\r?\n/)
+      .map((line) => line.trim())
+      .filter(Boolean);
+    const titleLine = lines.find((line) => line.startsWith("title:"));
+    const imageLine = lines.find((line) => line.startsWith("image:"));
+
+    if (markdownBefore.trim()) {
+      segments.push({ kind: "markdown", content: markdownBefore });
+    }
+
+    if (titleLine && imageLine) {
+      segments.push({
+        kind: "usecase-flow",
+        title: titleLine.replace("title:", "").trim(),
+        imageSrc: imageLine.replace("image:", "").trim(),
+      });
+    } else {
+      segments.push({ kind: "markdown", content: match[0] });
+    }
+
+    cursor = match.index + match[0].length;
+  }
+
+  const trailingMarkdown = body.slice(cursor);
+  if (trailingMarkdown.trim()) {
+    segments.push({ kind: "markdown", content: trailingMarkdown });
+  }
+
+  return segments.length > 0 ? segments : [{ kind: "markdown", content: body }];
+}
+
 export function MarkdownArticle({
   entry,
   language,
@@ -138,6 +183,7 @@ export function MarkdownArticle({
   const [copied, setCopied] = useState(false);
   const isEnglishArticle = entry.locale === "en";
   const bionicEnabled = isEnglishArticle && isBionicEnabled;
+  const contentSegments = useMemo(() => splitMarkdownSegments(entry.body), [entry.body]);
 
   const handleCopyLink = async () => {
     try {
@@ -296,54 +342,66 @@ export function MarkdownArticle({
     [bionicEnabled],
   );
   const resolveHeadingHref = (id: string) => `#${location.pathname}#${id}`;
+  const markdownComponents = {
+    h1: ArticleHeading("h1", "mt-8 text-4xl font-bold tracking-tight text-slate-950", resolveHeadingHref),
+    h2: ArticleHeading("h2", "mt-12 text-[2rem] font-bold tracking-tight text-slate-950", resolveHeadingHref),
+    h3: ArticleHeading("h3", "mt-9 text-[1.45rem] font-bold tracking-tight text-slate-950", resolveHeadingHref),
+    h4: ArticleHeading("h4", "mt-7 text-[1.18rem] font-bold tracking-tight text-slate-900", resolveHeadingHref),
+    p: ({ children }: { children?: ReactNode }) => <p className="mt-5">{transformBionicChildren(children, bionicEnabled)}</p>,
+    li: ({ children }: { children?: ReactNode }) => <li>{transformBionicChildren(children, bionicEnabled)}</li>,
+    a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => <ArticleLink {...props} />,
+    ul: ({ children }: { children?: ReactNode }) => <ul className="mt-4 list-disc space-y-2 pl-6">{children}</ul>,
+    ol: ({ children }: { children?: ReactNode }) => <ol className="mt-4 list-decimal space-y-2 pl-6">{children}</ol>,
+    blockquote: ({ children }: { children?: ReactNode }) => (
+      <blockquote className="mt-6 border-l-4 border-sky-200 bg-sky-50/70 px-5 py-4 text-slate-700">
+        {transformBionicChildren(children, bionicEnabled)}
+      </blockquote>
+    ),
+    hr: () => <hr className="my-8 border-slate-200" />,
+    table: ({ children }: { children?: ReactNode }) => (
+      <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-300 bg-white/95 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
+        <table className="min-w-full border-collapse text-left text-[0.98rem]">{children}</table>
+      </div>
+    ),
+    th: ({ children }: { children?: ReactNode }) => (
+      <th className="border border-slate-300 px-4 py-3.5 font-bold text-slate-950">{children}</th>
+    ),
+    td: ({ children }: { children?: ReactNode }) => (
+      <td className="border border-slate-200 px-4 py-3.5 align-top text-slate-700">{children}</td>
+    ),
+    code: ({ className, children }: { className?: string; children?: ReactNode }) => (
+      <code className={`rounded bg-slate-100 px-1.5 py-0.5 text-[0.92em] text-slate-900 ${className ?? ""}`}>
+        {children}
+      </code>
+    ),
+    pre: ({ children }: { children?: ReactNode }) => (
+      <pre className="mt-6 overflow-x-auto rounded-2xl bg-slate-950 px-5 py-4 text-sm text-slate-100">
+        {children}
+      </pre>
+    ),
+  };
 
   return (
     <ArticleShell header={header} sidebar={sidebar} footer={footer}>
       <article className={articleClassName}>
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          rehypePlugins={[rehypeSlug]}
-          components={{
-            h1: ArticleHeading("h1", "mt-8 text-4xl font-bold tracking-tight text-slate-950", resolveHeadingHref),
-            h2: ArticleHeading("h2", "mt-12 text-[2rem] font-bold tracking-tight text-slate-950", resolveHeadingHref),
-            h3: ArticleHeading("h3", "mt-9 text-[1.45rem] font-bold tracking-tight text-slate-950", resolveHeadingHref),
-            h4: ArticleHeading("h4", "mt-7 text-[1.18rem] font-bold tracking-tight text-slate-900", resolveHeadingHref),
-            p: ({ children }) => <p className="mt-5">{transformBionicChildren(children, bionicEnabled)}</p>,
-            li: ({ children }) => <li>{transformBionicChildren(children, bionicEnabled)}</li>,
-            a: (props) => <ArticleLink {...props} />,
-            ul: ({ children }) => <ul className="mt-4 list-disc space-y-2 pl-6">{children}</ul>,
-            ol: ({ children }) => <ol className="mt-4 list-decimal space-y-2 pl-6">{children}</ol>,
-            blockquote: ({ children }) => (
-              <blockquote className="mt-6 border-l-4 border-sky-200 bg-sky-50/70 px-5 py-4 text-slate-700">
-                {transformBionicChildren(children, bionicEnabled)}
-              </blockquote>
-            ),
-            hr: () => <hr className="my-8 border-slate-200" />,
-            table: ({ children }) => (
-              <div className="mt-6 overflow-x-auto rounded-2xl border border-slate-300 bg-white/95 shadow-[inset_0_1px_0_rgba(255,255,255,0.85)]">
-                <table className="min-w-full border-collapse text-left text-[0.98rem]">{children}</table>
-              </div>
-            ),
-            th: ({ children }) => (
-              <th className="border border-slate-300 px-4 py-3.5 font-bold text-slate-950">{children}</th>
-            ),
-            td: ({ children }) => (
-              <td className="border border-slate-200 px-4 py-3.5 align-top text-slate-700">{children}</td>
-            ),
-            code: ({ className, children }) => (
-              <code className={`rounded bg-slate-100 px-1.5 py-0.5 text-[0.92em] text-slate-900 ${className ?? ""}`}>
-                {children}
-              </code>
-            ),
-            pre: ({ children }) => (
-              <pre className="mt-6 overflow-x-auto rounded-2xl bg-slate-950 px-5 py-4 text-sm text-slate-100">
-                {children}
-              </pre>
-            ),
-          }}
-        >
-          {entry.body}
-        </ReactMarkdown>
+        {contentSegments.map((segment, index) =>
+          segment.kind === "markdown" ? (
+            <ReactMarkdown
+              key={`markdown-${index}`}
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeSlug]}
+              components={markdownComponents}
+            >
+              {segment.content}
+            </ReactMarkdown>
+          ) : (
+            <UseCaseFlowPreview
+              key={`usecase-flow-${segment.title}-${index}`}
+              title={segment.title}
+              imageSrc={segment.imageSrc}
+            />
+          ),
+        )}
       </article>
     </ArticleShell>
   );

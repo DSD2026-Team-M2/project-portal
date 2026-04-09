@@ -105,25 +105,31 @@ export const projectMeta = {
   ),
   term: text("2025-2026 · Semester 2", "2025-2026 · 第二学期", "2025-2026 · Semestre 2"),
   subtitle: text("DSD 2025-2026 · Project Portal", "DSD 2025-2026 · 项目中枢", "DSD 2025-2026 · Portal do Projeto"),
+  overline: text(
+    "DSD 2025-2026 · Project portal · Semester 2",
+    "DSD 2025-2026 · 项目中枢 · 第二学期",
+    "DSD 2025-2026 · Portal do projeto · Semestre 2",
+  ),
+  shortTitle: text("Project portal", "项目中枢", "Portal do projeto"),
   lastUpdated: "2026-04-02",
   license: "MIT",
 };
 
 export const projectPositioning = {
   project: text(
-    "This project builds a limb motion recognition and assistance system through coordinated work across sensing, backend processing, AI support and monitor-side web teams.",
-    "该项目通过传感、后端处理、AI 支持与监测端网页团队协作，构建一个肢体运动识别与辅助系统。",
-    "Este projeto constrói um sistema de reconhecimento e assistência ao movimento dos membros através do trabalho coordenado entre equipas de sensores, backend, apoio por IA e web de monitorização.",
+    "Cross-team project for limb motion recognition and assistance across sensor, server and monitor delivery.",
+    "这是一个横跨 Sensor、Server 与 Monitor 交付链路的肢体运动识别与辅助项目。",
+    "Projeto entre equipas para reconhecimento e assistência ao movimento com entrega entre Sensor, Server e Monitor.",
   ),
   portal: text(
-    "The portal is the hub for progress tracking, documentation indexing, meeting records, deliverable access and cross-team visibility.",
-    "该 portal 是项目进度跟踪、文档索引、会议记录、交付物入口与跨组可见性的中枢站。",
-    "O portal funciona como centro de acompanhamento de progresso, indexação de documentos, registos de reuniões, acesso a entregáveis e visibilidade entre equipas.",
+    "Portal is the reporting, collaboration and documentation hub for the cross-team project.",
+    "Portal 是这个跨组项目的汇报、协作与文档中枢。",
+    "O portal é o hub de relatório, colaboração e documentação do projeto entre equipas.",
   ),
   boundary: text(
-    "M2 maintains this portal and the clinical dashboard facing narrative, while the main product web frontend remains in a separate repository maintained by another responsible group.",
-    "M2 负责维护本 portal 以及与临床 dashboard 相关的可见网页叙事；主产品网页前端仍由其他负责小组在独立仓库维护。",
-    "A M2 mantém este portal e a narrativa web visível relacionada com o dashboard clínico, enquanto o frontend principal do produto permanece num repositório separado mantido por outra equipa responsável.",
+    "M2 tracks coordination and traceable records here rather than replacing the full product frontend.",
+    "M2 在这里维护协作协调与可追踪记录，而不是替代完整产品前端。",
+    "A M2 acompanha aqui a coordenação e os registos rastreáveis, sem substituir o frontend completo do produto.",
   ),
 };
 

@@ -1,6 +1,53 @@
 {
-  "generatedAt": "2026-04-02T06:36:49.605Z",
+  "generatedAt": "2026-04-09T08:00:36.131Z",
   "entries": [
+    {
+      "id": "log-2026-04-09-srs-updated-with-detailed-scenarios",
+      "slug": "2026-04-09-srs-updated-with-detailed-scenarios",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "SRS Updated With Detailed Multi-Role Scenarios",
+      "type": "update",
+      "date": "2026-04-09T18:00:00+08:00",
+      "owner": "Lee",
+      "ownerRole": "PM",
+      "status": "completed",
+      "summary": "The portal SRS entry was replaced with a more detailed version covering finer-grained patient, doctor, and administration scenarios plus the required interfaces behind them.",
+      "relatedTeams": [
+        "PM",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "tags": [
+        "docs",
+        "srs",
+        "requirements"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-04-09",
+      "links": [
+        {
+          "label": "Updated SRS",
+          "href": "/docs/software-requirements-specification-v0-1"
+        },
+        {
+          "label": "Requirement analysis",
+          "href": "/docs/requirement-analysis-v1"
+        }
+      ],
+      "evidence": [],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## What Changed\n\n- Replaced the previous SRS page with the newer draft provided by the team.\n- Expanded the use case section from a high-level list into detailed patient, doctor, and administration scenarios.\n- Added required interface and capability coverage for each major scenario.\n- Updated the key example flows so the registration and sensor connection examples align with the newer scope.\n\n## Why It Matters\n\nThe earlier SRS was still useful as a formal outline, but it did not describe enough of the interface-level and management-side behavior for implementation and review. The updated version gives the portal a stronger requirements reference for frontend, backend, AI, and administration discussions.\n\n## Next Step\n\n- Review the updated SRS against interface contracts and system design notes before the next checkpoint.\n\n---\n\nPosted by Team M2 · DSD 2025-2026 · UTAD × JLU",
+      "sourcePath": "content/en/logs/2026-04-09-srs-updated-with-detailed-scenarios.md"
+    },
     {
       "id": "doc-software-requirements-specification-v0-1",
       "slug": "software-requirements-specification-v0-1",
@@ -12,8 +59,8 @@
       "date": "2026-04-01",
       "owner": "Lee",
       "ownerRole": "PM",
-      "status": "final",
-      "summary": "Formal Software Requirements Specification for M2 covering system background, user use cases, and key example flows.",
+      "status": "in-review",
+      "summary": "Formal Software Requirements Specification for M2 covering detailed patient, doctor, and administration scenarios, required interfaces, and key example flows.",
       "relatedTeams": [
         "PM",
         "M2"
@@ -23,14 +70,15 @@
       ],
       "tags": [
         "deliverable",
-        "requirement-analysis"
+        "requirement-analysis",
+        "srs"
       ],
       "attentionTags": [
         "attention:M2"
       ],
-      "lastUpdated": "2026-04-01",
-      "version": "v1.0",
-      "reviewStatus": "final",
+      "lastUpdated": "2026-04-09",
+      "version": "v1.1",
+      "reviewStatus": "in-review",
       "links": [
         {
           "label": "Requirement analysis",
@@ -39,6 +87,10 @@
         {
           "label": "System design outline",
           "href": "/docs/system-design-outline-v1"
+        },
+        {
+          "label": "SRS update log",
+          "href": "/logs/2026-04-09-srs-updated-with-detailed-scenarios"
         }
       ],
       "evidence": [],
@@ -46,7 +98,7 @@
       "featured": false,
       "archived": false,
       "markers": [],
-      "body": "![SRS Use Case Diagram](images/docs/srs-use-case-diagram.png)\n\n# Software Requirements Specification (M2)\n\nRevision History:\n\n| Date | Author | Description |\n| ---- | ------ | ----------- |\n| Apr 1 | Lee | Add use cases |\n\n## 0. Background\n\nOur team is responsible for designing and developing a **web-based platform** with the primary functions of **receiving sensor data**, **conducting motion analysis**, and **providing health recommendations**. The system users primarily include **registered users** (who upload motion data), **doctors** (who provide the recommendations) and **administrators** (who monitor and manage the data).\n## 1. Use Cases\n\n### 1.1. Patient\n\n| Case | Description | Trigger condition |\n| ---- | ----------- | ----------------- |\n| **Register** | Users can register as platform members by providing basic information. | The user clicks the \"Register\" button, and the system starts the registration process. |\n| **Log in** | The user inputs their account and password for authentication, and after successful authentication, they enter the platform. | The user clicks the \"Login\" button, and the system starts the login process. |\n| **View Rehabilitation Plan** | Patients can view their personalized rehabilitation plan, including scheduled exercises, frequency, and duration. | The user clicks \"My Plan\" on the dashboard. |\n| **Execute Motion with Guidance** | Patients can view motion demonstration videos or animations and receive step-by-step guidance during exercise execution. | The user selects a specific exercise and clicks \"Start Exercise\". |\n| **View Rehabilitation Records** | Patients can view historical rehabilitation records, including exercise completion status, motion quality scores, and progress trends. | The user clicks \"History\" or \"My Records\". |\n| **Receive Real-time Feedback** | Patients receive immediate feedback on motion execution quality during or after exercise, including correction suggestions. | The system detects motion completion or deviation during exercise. |\n| **Set Rehabilitation Goals** | Patients can set personal rehabilitation goals (e.g., weekly exercise frequency, motion accuracy targets) and track achievement progress. | The user clicks \"Set Goals\" in the goal tracking section. |\n| **View Achievements & Motivations** | Patients can view earned achievement badges, streaks, and receive motivational messages based on their progress. | The user clicks \"Achievements\" or receives system-triggered motivational notifications. |\n| **Receive Messages & Notifications** | Patients can receive system messages, doctor notifications, appointment reminders, and progress alerts. | The system pushes a notification when new messages arrive or important events occur. |\n\n### 1.2. Doctor\n\n| Case | Description | Trigger condition |\n| ---- | ----------- | ----------------- |\n| **Register** | Doctors can register as platform members by providing professional credentials and basic information. | The doctor clicks the \"Register as Doctor\" button, and the system starts the registration process. |\n| **Log in** | The doctor inputs their account and password for authentication, and after successful authentication, they enter the platform. | The doctor clicks the \"Login as Doctor\" button, and the system starts the login process. |\n| **View Patient Management Panel** | Doctors can view the list and basic information of all assigned patients. | The doctor clicks \"Patient Management\" after logging in. |\n| **View Data Visualization & Analysis** | Doctors can view patients' motion data charts, trends, and statistical analysis. | The doctor enters a patient's detail page and clicks \"Data Analysis\". |\n| **Playback Motion Capture** | Doctors can replay motion capture videos or data trajectories uploaded by patients. | The doctor enters a patient's motion record and clicks \"Playback\". |\n| **Generate Smart Report** | The system automatically generates motion analysis reports; doctors can review and modify them. | The doctor clicks the \"Generate Report\" button. |\n| **Handle Anomaly Detection Alerts** | Doctors receive abnormal motion alerts, review details, and provide recommendations. | The system detects abnormal motion and pushes a notification. |\n| **Adjust Treatment Plan** | Doctors can modify or create new rehabilitation plans based on patient data. | The doctor enters a patient's detail page and clicks \"Edit Treatment Plan\". |\n| **Collaboration & Discussion** | Doctors can discuss patient cases with other medical team members. | The doctor clicks the \"Collaboration\" entry. |\n\n### 1.3. Administration\n\n| Case | Description | Trigger condition |\n| ---- | ----------- | ----------------- |\n| **Register** | Administrators can register as platform members (typically created by super admin or system initialization). | The super admin clicks \"Create Administrator\", and the system starts the registration process. |\n| **Log in** | The administrator inputs their account and password for authentication, and after successful authentication, they enter the management platform. | The administrator clicks the \"Login as Administrator\" button, and the system starts the login process. |\n| **Manage Data Interfaces** | Administrators can view and manage API interface status and call logs. | The administrator enters the \"Interface Management\" page. |\n| **Manage Sensor Devices** | Administrators can monitor sensor device status and handle device binding exceptions. | The administrator enters the \"Sensor Management\" page. |\n| **Manage AI Models** | Administrators can manage AI analysis model versions, updates, and deployments. | The administrator enters the \"AI Model Management\" page. |\n| **View Logs & Monitoring** | Administrators can view system operation logs, performance monitoring, and anomaly alerts. | The administrator enters the \"Log Monitoring\" page. |\n| **Manage Permissions & Roles** | Administrators can manage user roles, access permissions, and data permissions. | The administrator enters the \"Permission Management\" page. |\n| **Data Export & Backup** | Administrators can perform system data backup and export data on demand. | The administrator enters the \"Data Management\" page and clicks \"Backup/Export\". |\n## 2. Key Examples\n\n### 2.1. User Register\n\n#### 2.1.1. Basic info\n\n- **Reference to Use Case** 1.1.\n- **Version:** 0.1\n- **Created:** Apr 1\n- **Authors:** Lee\n- **Source:** Web Interface\n- **Actors:** Patient\n- **Goal:** Allow users to become platform members through registration.\n- **Summary:** New users input basic information, and the system validates and creates a user account.\n- **Trigger:** User clicks the \"Register\" button.\n- **Frequency:** Depends on the number of new users.\n- **Precondition:** The system permits new user registration.\n- **Postconditions:** The system returns registration success information and creates an account.\n\n#### 2.1.2. Basic Flow\n\n| Actor | System |\n| ----- | ------ |\n| User fills in registration information (username, password, email, age, etc.) | |\n| User clicks the \"Register\" button | |\n| | **Validate** that the username is unique |\n| | **Validate** that the password meets format requirements |\n| | **Create user account** and store in the database |\n| | **Return success information** to the interface |\n| User receives registration success notification | |\n\n#### 2.1.3. Alternative Flow\n\n| Actor | System |\n| ----- | ------ |\n| | **Username already exists**, return \"Username already taken\" |\n| | **Password does not meet format requirements**, return \"Password must contain at least 8 characters, including letters and numbers\" |\n| | **Email format is invalid**, return \"Invalid email format\" |\n| | **Required fields are missing**, return \"Please fill in all required fields\" |\n\n### 2.2. Sensor Connection\n\n#### 2.2.1. Basic Info\n\n- **Reference to Use Case** 1.1. (Patient - Execute Motion with Guidance)\n- **Version:** 1.0\n- **Created:** Apr 1\n- **Authors:** Lee\n- **Source:** Sensor Device / Mobile SDK\n- **Actors:** Logged-in Patient\n- **Goal:** Allow patients to connect sensor devices to the platform and upload motion data.\n- **Summary:** Users connect sensor devices via Bluetooth/WiFi; the system validates the connection and begins receiving motion data streams.\n- **Trigger:** User clicks the \"Connect Device\" button.\n- **Frequency:** Before each rehabilitation training session.\n- **Precondition:** User is logged in; sensor device is powered on and has sufficient battery; device is within connection range.\n- **Postconditions:** The system successfully binds the sensor to the user account and begins receiving and storing motion data.\n\n#### 2.2.2. Basic Flow\n\n| Actor | System |\n| ----- | ------ |\n| User clicks the \"Connect Sensor\" button | |\n| User selects device type (e.g., IMU sensor, smartwatch) | |\n| | **Scan** for nearby available sensor devices |\n| | **Return list** of available devices |\n| User selects the target device from the list | |\n| | **Initiate pairing request** and verify device identity |\n| | **Confirm successful pairing** |\n| | **Display** \"Device Connected\" status |\n| | **Begin receiving sensor data stream** |\n| User starts training session | |\n\n#### 2.2.3. Alternative Flow\n\n| Actor | System |\n| ----- | ------ |\n| | **No devices found**, display \"No devices found. Please check Bluetooth/WiFi.\" |\n| | **Device pairing fails**, display \"Pairing failed. Please ensure the device is discoverable.\" |\n| | **Connection interrupted**, display \"Connection lost. Attempting to reconnect...\" |\n| | **Low sensor battery**, display \"Low battery. Please charge the device.\" |",
+      "body": "# Software Requirements Specification (M2)\n\n## Revision History\n\n| Date | Author | Description |\n| ---- | ------ | ----------- |\n| Apr 1 | Lee | Add use cases |\n| Apr 4 | Shu | Add web frontend interface requirements |\n| Apr 5 | Shu | Consolidate and merge fine-grained use cases |\n\n## 0. Background\n\nOur team is responsible for designing and developing a web-based platform with the primary functions of receiving sensor data, conducting motion analysis, and providing health recommendations. The system users primarily include registered users (who upload motion data), doctors (who provide the recommendations) and administrators (who monitor and manage the data).\n\n## 1. Use Cases\n\n### 1.1. Patient - Complete scenario list\n\n| Case | Description | Required Interfaces / Capabilities |\n| ---- | ----------- | ---------------------------------- |\n| **Register** | Patient creates an account with username, password, email (optional). System validates input format, ensures username uniqueness, and stores new user credentials. | - Check username uniqueness across all roles.<br>- Validate email format, password strength, and character restrictions.<br>- Handle database errors (timeout, conflict) and return appropriate messages. |\n| **Login** | Patient authenticates with username and password, receives a session token. System tracks failed attempts and can temporarily lock the account. | - Verify username/password.<br>- Track failed login attempts per user.<br>- Generate and validate session tokens (JWT).<br>- Support logout (token revocation).<br>- (Optional) Support password reset via email. |\n| **View Rehabilitation Plan** | Patient views their personalized exercise plan (exercises, frequency, duration, notes). | - Retrieve the active (published) plan for the patient.<br>- Return an empty state if no plan exists. |\n| **Execute Motion with Guidance** | Patient performs an exercise with video guidance and real-time sensor feedback. System receives sensor data, detects disconnection, scores the motion, and detects anomalies. | - Stream video/animation guidance.<br>- Establish and maintain sensor connection (pairing, status).<br>- Receive and process real-time sensor data stream.<br>- Detect sensor disconnection and attempt to reconnect.<br>- Provide real-time audio/visual feedback based on motion deviation (via WebSocket).<br>- Generate a motion score and detect anomalies for the session. |\n| **View Rehabilitation Records** | Patient views historical exercise data (dates, scores, completion status) with pagination. | - Query historical session data with pagination support.<br>- Return empty set if none. |\n| **Set Rehabilitation Goals** | Patient sets weekly goals (e.g., number of sessions, target accuracy). System checks for existing goals and prompts for overwrite. | - Store and update weekly goal settings per patient.<br>- Handle existing goal conflicts. |\n| **View Achievements & Motivations** | Patient views earned badges, streaks, and motivational messages. System detects milestone completion. | - Store and retrieve earned badges and streak counts.<br>- Provide badge images and messages.<br>- Automatically detect and award milestone completions. |\n| **Receive Messages & Notifications** | Patient receives messages from doctors or system alerts (e.g., plan updated, new suggestion). | - Store and manage messages (unread count, mark as read).<br>- Support push notifications for real-time alerts. |\n\n### 1.2. Doctor - Detailed scenarios\n\n#### 1.2.1. Doctor Register\n\n:::usecase-flow\ntitle: Doctor Register\nimage: /images/docs/doctor-usecase-flows/doctor-register.svg\n:::\n\nDoctor creates an account with username and password. The system validates input format, ensures username uniqueness, and stores credentials with `role=doctor`.\n\nRequired Interfaces / Capabilities:\n\n- Same registration capabilities as Patient, including validation, uniqueness checks, and error handling.\n- Store user role as `doctor`.\n\n#### 1.2.2. Doctor Login\n\n:::usecase-flow\ntitle: Doctor Login\nimage: /images/docs/doctor-usecase-flows/doctor-login.svg\n:::\n\nDoctor authenticates, receives a session token. The system handles wrong password, non-existent user, account locking, session expiry, and concurrent sessions.\n\nRequired Interfaces / Capabilities:\n\n- Same authentication capabilities as Patient, including verification, lockout handling, and token management.\n- Support multiple concurrent sessions.\n- Support password reset flow.\n\n#### 1.2.3. Manage Patient List\n\n:::usecase-flow\ntitle: Manage Patient List\nimage: /images/docs/doctor-usecase-flows/manage-patient-list.svg\n:::\n\nDoctor views, searches, sorts, filters, and paginates a list of assigned patients. The list can be exported to CSV and individual patient profiles can be opened.\n\nRequired Interfaces / Capabilities:\n\n- Query patients assigned to the doctor.\n- Support sorting by name or last activity.\n- Support substring search on patient name.\n- Support filtering by active or inactive status based on last activity.\n- Support pagination with offset and limit.\n- Generate CSV from query results.\n- Retrieve full patient profile, including demographics, history, and plan.\n\n#### 1.2.4. View Patient Motion Data\n\n:::usecase-flow\ntitle: View Patient Motion Data\nimage: /images/docs/doctor-usecase-flows/view-patient-motion-data.svg\n:::\n\nDoctor views time-series charts of motion quality scores and joint angles. The view supports date range and exercise filters, joint comparison, and raw sensor data download.\n\nRequired Interfaces / Capabilities:\n\n- Provide time-series motion scores and per-joint angle data.\n- Support filtering by date range and exercise type.\n- Support overlaying symmetric joint data.\n- Provide raw sensor data, such as accelerometer and gyroscope output, for download as JSON or CSV.\n\n#### 1.2.5. View AI Analysis & Suggestions\n\n:::usecase-flow\ntitle: View AI Analysis & Suggestions\nimage: /images/docs/doctor-usecase-flows/view-ai-analysis-and-suggestions.svg\n:::\n\nDoctor views AI-generated summary, progress, problem areas, and suggestions. The doctor can inspect confidence scores and timestamps, trigger re-analysis, and mark suggestions as reviewed.\n\nRequired Interfaces / Capabilities:\n\n- Provide per-patient AI analysis summary with confidence metrics and timestamp.\n- Accept manual re-analysis requests and return results asynchronously.\n- Retrieve AI-generated suggestions sorted by date.\n- Update suggestion status to `reviewed`.\n\n#### 1.2.6. Write Manual Suggestion\n\n:::usecase-flow\ntitle: Write Manual Suggestion\nimage: /images/docs/doctor-usecase-flows/write-manual-suggestion.svg\n:::\n\nDoctor writes free-text suggestions, optionally attaching images or PDFs. Suggestions can be edited, soft-deleted, versioned, and marked as critical.\n\nRequired Interfaces / Capabilities:\n\n- Store suggestions with patient ID, doctor ID, timestamp, text content, and priority flag.\n- Accept file uploads such as images and PDFs and return URLs.\n- Support editing with version and change history.\n- Support soft deletion.\n\n#### 1.2.7. Manage Patient Rehabilitation Plan\n\n:::usecase-flow\ntitle: Manage Patient Rehabilitation Plan\nimage: /images/docs/doctor-usecase-flows/manage-patient-rehabilitation-plan.svg\n:::\n\nDoctor views the current plan and its history. The doctor can add or remove exercises, adjust sets, reps, and frequency, add notes, duplicate a plan from another patient, set dates, and manage draft versus published states. Concurrent edit conflicts must be handled.\n\nRequired Interfaces / Capabilities:\n\n- Retrieve the active plan and version history.\n- Insert, update, and delete exercises and plan parameters such as frequency and dates.\n- Store exercise-level notes.\n- Duplicate another patient's plan.\n- Support optimistic locking for concurrent edits.\n- Support draft and published states for plans.\n\n#### 1.2.8. View Patient Progress Reports\n\n:::usecase-flow\ntitle: View Patient Progress Reports\nimage: /images/docs/doctor-usecase-flows/view-patient-progress-reports.svg\n:::\n\nDoctor generates weekly or monthly progress reports in PDF format with summary charts and text. The report can be downloaded or emailed to the patient.\n\nRequired Interfaces / Capabilities:\n\n- Aggregate adherence and score trends over the specified period.\n- Generate PDF output from HTML.\n- Send email with PDF attachment through the email service.\n\n#### 1.2.9. Handle Anomaly Alerts\n\n:::usecase-flow\ntitle: Handle Anomaly Alerts\nimage: /images/docs/doctor-usecase-flows/handle-anomaly-alerts.svg\n:::\n\nDoctor views a list of alerts for assigned patients, filtered by severity. Alert details can be opened, alerts can be marked as resolved, private notes can be added, and similar alerts can be muted for a period.\n\nRequired Interfaces / Capabilities:\n\n- Retrieve alerts with severity, time, and patient association.\n- Provide motion snippet and explanation for an alert.\n- Update alert status to `resolved`.\n- Store private notes per alert.\n- Store mute rules to suppress future similar alerts.\n\n#### 1.2.10. Collaborate on Patient Cases\n\n:::usecase-flow\ntitle: Collaborate on Patient Cases\nimage: /images/docs/doctor-usecase-flows/collaborate-on-patient-cases.svg\n:::\n\nDoctor starts a discussion thread about a patient and can invite other doctors. Replies, mentions, notifications, and resolved status must all be supported. The doctor can also review unresolved threads across patients.\n\nRequired Interfaces / Capabilities:\n\n- Create and store discussion threads scoped to a patient.\n- Store replies with timestamp and author.\n- Support `@mentions` with user search and notification.\n- Update thread status to `resolved`.\n- Query unresolved threads for the doctor.\n\n#### 1.2.11. Manage Notifications\n\n:::usecase-flow\ntitle: Manage Notifications\nimage: /images/docs/doctor-usecase-flows/manage-notifications.svg\n:::\n\nDoctor receives in-app notifications for alerts, mentions, and messages. Individual notifications or the full set can be marked as read.\n\nRequired Interfaces / Capabilities:\n\n- Store notifications per doctor.\n- Return unread count and notification list.\n- Support single update to `read` status.\n- Support batch update to `read` status.\n\n#### 1.2.12. Manage Account\n\n:::usecase-flow\ntitle: Manage Account\nimage: /images/docs/doctor-usecase-flows/manage-account.svg\n:::\n\nDoctor changes password, updates email, enables 2FA, views login history, or requests account deactivation pending admin approval.\n\nRequired Interfaces / Capabilities:\n\n- Verify old password hash and update to new hash.\n- Store and validate email address.\n- Generate and verify TOTP secrets for 2FA.\n- Store and retrieve login session metadata such as time, IP, and device.\n- Mark account as inactive pending admin approval for deactivation.\n\n### 1.3. Administration - Detailed scenarios\n\n| Case | Description | Required Interfaces / Capabilities |\n| ---- | ----------- | ---------------------------------- |\n| **Admin Login/Logout** | Administrator authenticates with credentials. System handles wrong password, account locking, and token revocation. | - Authenticate admin role.<br>- Track failed attempts and lock account after threshold.<br>- Generate/revoke session tokens. |\n| **Monitor System Health** | Admin views overall health status of all backend services (database, AI, storage, sensor gateway), with detailed metrics (latency, error rate). Can set alert thresholds and simulate outages for testing. | - Each service provides a `/health` endpoint.<br>- Aggregate status into a dashboard.<br>- Provide detailed metrics endpoints.<br>- Store threshold configurations and evaluate against metrics.<br>- Inject controlled failures for testing. |\n| **Manage APIs** | Admin views all API endpoints (REST/WebSocket) with versions, status, and usage statistics. Can enable/disable endpoints, configure rate limits per endpoint/role, and view auto-generated OpenAPI docs. | - Register API endpoints with metadata.<br>- Dynamically enable/disable routing.<br>- Collect and query API usage metrics (count, latency, errors).<br>- Enforce rate limits based on configuration.<br>- Serve OpenAPI specification. |\n| **Manage Logs** | Admin views, searches (full-text), and downloads recent logs. Can set log retention policy, and view aggregated error patterns. | - Query logs by time range, level, service.<br>- Perform full-text search on log messages.<br>- Export log data to CSV/JSON.<br>- Auto-delete logs older than retention period.<br>- Group similar error messages with counts. |\n| **Manage Users** | Admin lists, searches, creates, edits, enables/disables, and deletes users (any role). Can reset passwords, export all user data (GDPR), and view a user's data export. | - Query all users with pagination and filters (by role, status, etc.).<br>- Insert/update user fields (email, role, active flag).<br>- Change user password hash.<br>- Cascade delete user and all associated data.<br>- Serialize all user-related data to JSON. |\n| **Manage Sensors** | Admin lists all sensor devices, views assignment history, assigns/unassigns sensors to patients, marks sensors as broken, and views live sensor data stream for debugging. | - Query device registry (ID, type, battery, status, assigned patient).<br>- Store and retrieve sensor assignment logs.<br>- Update device assignment and status.<br>- Subscribe to real-time sensor data feed. |\n| **Manage AI Models** | Admin lists AI model versions, uploads new models, sets the active model, rolls back to previous versions, configures A/B testing (traffic splitting), views model performance metrics (accuracy, latency), and schedules automatic retraining. | - Provide model metadata (version, date, accuracy, status).<br>- Accept model file upload and deploy to serving infrastructure.<br>- Switch inference endpoint to selected model.<br>- Split inference requests between model versions.<br>- Collect and display model inference metrics.<br>- Trigger retraining pipeline on a schedule. |\n| **Manage Database** | Admin views database health (connection pool, query latency, slow queries), runs read-only ad-hoc SQL queries, triggers backups, restores from backups, and views backup history. | - Provide database metrics endpoint.<br>- Execute read-only SQL queries and return results.<br>- Perform full database backup to configured storage.<br>- Restore database from backup.<br>- List backup metadata (time, size). |\n| **Monitor Performance** | Admin views CPU/memory usage, request latency (p99, p95), error rates (HTTP 5xx), and slowest endpoints for all services. Can set up alerts based on metric thresholds. | - Collect and expose system metrics (e.g., Prometheus).<br>- Compute latency percentiles from request logs.<br>- Count errors per time interval.<br>- Aggregate and sort endpoints by latency.<br>- Evaluate metrics against thresholds and send notifications. |\n| **Manage Security** | Admin views failed login attempts and API access logs, rotates internal API keys, configures CORS allowed origins, views active user sessions, and can revoke any session. | - Log failed logins and API access with user identity.<br>- Generate new API keys and invalidate old ones.<br>- Update CORS policy dynamically.<br>- Query active session tokens.<br>- Invalidate a specific session token. |\n| **Manage Configuration** | Admin views system configuration (env vars, feature flags), updates feature flags and logging levels in real-time, and exports/imports configuration as JSON. | - Expose current configuration (non-secret).<br>- Change feature flag values without redeploy.<br>- Dynamically change log level of running service.<br>- Serialize and apply configuration from JSON. |\n| **Export Data & Manage Retention** | Admin exports all patient data (anonymized for research) by date range, schedules automatic exports, sets data retention policies (e.g., keep motion data for 1 year), and runs dry-run deletions. | - Aggregate anonymized data and generate archive.<br>- Filter data by timestamp.<br>- Run export jobs on a cron schedule.<br>- Auto-delete data older than retention period.<br>- Count records that would be deleted without committing. |\n| **View Audit Log** | Admin views a log of all administrative actions (who did what, when), searches by admin user, and exports the audit log for compliance. | - Log admin actions (create user, delete data, change config).<br>- Query audit logs by user ID.<br>- Generate CSV/JSON of audit log entries. |\n| **Configure Email & Notifications** | Admin tests SMTP settings, updates email templates, configures webhook URLs for system alerts, and tests webhook delivery. | - Send email via configured SMTP server.<br>- Store and render email templates.<br>- Send HTTP POST to webhook on specified events.<br>- Send a sample event to test webhook. |\n| **Manage System Upgrade** | Admin checks for platform updates, applies updates (frontend/backend with minimal downtime), and rolls back to a previous version. | - Query version manifest from update server.<br>- Orchestrate rolling update of services.<br>- Revert to previous deployment. |\n| **Manage Developer API & Portal** | Admin generates/revokes API tokens for programmatic access with scoped permissions, views token usage, manages OAuth client applications, and serves API documentation to external developers. | - Create and store API tokens with permissions.<br>- Invalidate tokens.<br>- Log and aggregate token usage.<br>- Store OAuth client credentials (client ID, secret, redirect URIs).<br>- Serve OpenAPI spec and interactive docs. |\n\n## 2. Key Examples\n\n### 2.1. User Register\n\n#### 2.1.1. Basic info\n\n- Reference to Use Case 1.1.\n- Version: 0.1\n- Created: Apr 1\n- Authors: Lee\n- Source: Web Interface\n- Actors: Patient\n- Goal: Allow users to become platform members through registration.\n- Summary: New users input basic information, and the system validates and creates a user account.\n- Trigger: User clicks the \"Register\" button.\n- Frequency: Depends on the number of new users.\n- Precondition: The system permits new user registration.\n- Postconditions: The system returns registration success information and creates an account.\n\n#### 2.1.2. Basic Flow\n\n| Actor | System |\n| ----- | ------ |\n| User fills in registration information (username, password, email, age, etc.) | |\n| User clicks the \"Register\" button | |\n| | Validate input (username uniqueness, password strength, email format, required fields) |\n| | Create user account and store in the database |\n| | Return success information to the interface |\n| User receives registration success notification | |\n\n#### 2.1.3. Alternative Flow\n\n| Actor | System |\n| ----- | ------ |\n| | Validation fails (e.g., username exists, weak password, invalid email, missing fields), return specific error message |\n\n### 2.2. Sensor Connection\n\n#### 2.2.1. Basic Info\n\n- Reference to Use Case 1.1. (Patient - Execute Motion with Guidance)\n- Version: 1.0\n- Created: Apr 1\n- Authors: Lee\n- Source: Sensor Device / Mobile SDK\n- Actors: Logged-in Patient\n- Goal: Allow patients to connect sensor devices to the platform and upload motion data.\n- Summary: Users connect sensor devices via Bluetooth/WiFi; the system validates the connection and begins receiving motion data streams.\n- Trigger: User clicks the \"Connect Device\" button.\n- Frequency: Before each rehabilitation training session.\n- Precondition: User is logged in; sensor device is powered on and has sufficient battery; device is within connection range.\n- Postconditions: The system successfully binds the sensor to the user account and begins receiving and storing motion data.\n\n#### 2.2.2. Basic Flow\n\n| Actor | System |\n| ----- | ------ |\n| User clicks the \"Connect Sensor\" button and selects device type | |\n| | Scan for nearby available sensor devices and return the list |\n| User selects the target device from the list | |\n| | Initiate pairing request, verify device identity, and confirm successful pairing |\n| | Display \"Device Connected\" status and begin receiving sensor data stream |\n| User starts training session | |\n\n#### 2.2.3. Alternative Flow\n\n| Actor | System |\n| ----- | ------ |\n| | No devices found, display \"No devices found. Please check Bluetooth/WiFi.\" |\n| | Pairing fails, display \"Pairing failed. Please ensure the device is discoverable.\" |\n| | Connection interrupted, display \"Connection lost. Attempting to reconnect...\" and handle reconnection logic |\n| | Low sensor battery, display \"Low battery. Please charge the device.\" |",
       "sourcePath": "content/en/docs/software-requirements-specification-v0-1.md"
     },
     {
@@ -1428,7 +1480,7 @@
       },
       {
         "value": "update",
-        "count": 3
+        "count": 4
       },
       {
         "value": "weekly-report",
@@ -1446,6 +1498,10 @@
       },
       {
         "value": "demo",
+        "count": 1
+      },
+      {
+        "value": "docs",
         "count": 1
       },
       {
@@ -1501,11 +1557,19 @@
         "count": 1
       },
       {
+        "value": "requirements",
+        "count": 1
+      },
+      {
         "value": "research",
         "count": 5
       },
       {
         "value": "roles",
+        "count": 2
+      },
+      {
+        "value": "srs",
         "count": 2
       },
       {
@@ -1536,7 +1600,7 @@
       },
       {
         "value": "attention:M2",
-        "count": 30
+        "count": 31
       },
       {
         "value": "attention:V2",
@@ -1550,11 +1614,11 @@
       },
       {
         "value": "M2",
-        "count": 30
+        "count": 31
       },
       {
         "value": "PM",
-        "count": 8
+        "count": 9
       },
       {
         "value": "V2",
@@ -1564,7 +1628,7 @@
     "years": [
       {
         "value": "2026",
-        "count": 30
+        "count": 31
       }
     ],
     "collections": [
@@ -1574,7 +1638,7 @@
       },
       {
         "value": "logs",
-        "count": 16
+        "count": 17
       }
     ]
   }
