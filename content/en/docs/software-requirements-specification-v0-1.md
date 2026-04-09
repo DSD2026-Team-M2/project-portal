@@ -68,7 +68,7 @@ Our team is responsible for designing and developing a web-based platform with t
 
 :::usecase-flow
 title: Doctor Register
-image: /images/docs/doctor-usecase-flows/doctor-register.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/doctor-register.svg
 :::
 
 Doctor creates an account with username and password. The system validates input format, ensures username uniqueness, and stores credentials with `role=doctor`.
@@ -82,7 +82,7 @@ Required Interfaces / Capabilities:
 
 :::usecase-flow
 title: Doctor Login
-image: /images/docs/doctor-usecase-flows/doctor-login.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/doctor-login.svg
 :::
 
 Doctor authenticates, receives a session token. The system handles wrong password, non-existent user, account locking, session expiry, and concurrent sessions.
@@ -97,7 +97,7 @@ Required Interfaces / Capabilities:
 
 :::usecase-flow
 title: Manage Patient List
-image: /images/docs/doctor-usecase-flows/manage-patient-list.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/manage-patient-list.svg
 :::
 
 Doctor views, searches, sorts, filters, and paginates a list of assigned patients. The list can be exported to CSV and individual patient profiles can be opened.
@@ -116,7 +116,7 @@ Required Interfaces / Capabilities:
 
 :::usecase-flow
 title: View Patient Motion Data
-image: /images/docs/doctor-usecase-flows/view-patient-motion-data.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/view-patient-motion-data.svg
 :::
 
 Doctor views time-series charts of motion quality scores and joint angles. The view supports date range and exercise filters, joint comparison, and raw sensor data download.
@@ -132,7 +132,7 @@ Required Interfaces / Capabilities:
 
 :::usecase-flow
 title: View AI Analysis & Suggestions
-image: /images/docs/doctor-usecase-flows/view-ai-analysis-and-suggestions.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/view-ai-analysis-and-suggestions.svg
 :::
 
 Doctor views AI-generated summary, progress, problem areas, and suggestions. The doctor can inspect confidence scores and timestamps, trigger re-analysis, and mark suggestions as reviewed.
@@ -148,7 +148,7 @@ Required Interfaces / Capabilities:
 
 :::usecase-flow
 title: Write Manual Suggestion
-image: /images/docs/doctor-usecase-flows/write-manual-suggestion.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/write-manual-suggestion.svg
 :::
 
 Doctor writes free-text suggestions, optionally attaching images or PDFs. Suggestions can be edited, soft-deleted, versioned, and marked as critical.
@@ -164,7 +164,7 @@ Required Interfaces / Capabilities:
 
 :::usecase-flow
 title: Manage Patient Rehabilitation Plan
-image: /images/docs/doctor-usecase-flows/manage-patient-rehabilitation-plan.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/manage-patient-rehabilitation-plan.svg
 :::
 
 Doctor views the current plan and its history. The doctor can add or remove exercises, adjust sets, reps, and frequency, add notes, duplicate a plan from another patient, set dates, and manage draft versus published states. Concurrent edit conflicts must be handled.
@@ -182,7 +182,7 @@ Required Interfaces / Capabilities:
 
 :::usecase-flow
 title: View Patient Progress Reports
-image: /images/docs/doctor-usecase-flows/view-patient-progress-reports.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/view-patient-progress-reports.svg
 :::
 
 Doctor generates weekly or monthly progress reports in PDF format with summary charts and text. The report can be downloaded or emailed to the patient.
@@ -197,7 +197,7 @@ Required Interfaces / Capabilities:
 
 :::usecase-flow
 title: Handle Anomaly Alerts
-image: /images/docs/doctor-usecase-flows/handle-anomaly-alerts.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/handle-anomaly-alerts.svg
 :::
 
 Doctor views a list of alerts for assigned patients, filtered by severity. Alert details can be opened, alerts can be marked as resolved, private notes can be added, and similar alerts can be muted for a period.
@@ -214,7 +214,7 @@ Required Interfaces / Capabilities:
 
 :::usecase-flow
 title: Collaborate on Patient Cases
-image: /images/docs/doctor-usecase-flows/collaborate-on-patient-cases.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/collaborate-on-patient-cases.svg
 :::
 
 Doctor starts a discussion thread about a patient and can invite other doctors. Replies, mentions, notifications, and resolved status must all be supported. The doctor can also review unresolved threads across patients.
@@ -231,7 +231,7 @@ Required Interfaces / Capabilities:
 
 :::usecase-flow
 title: Manage Notifications
-image: /images/docs/doctor-usecase-flows/manage-notifications.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/manage-notifications.svg
 :::
 
 Doctor receives in-app notifications for alerts, mentions, and messages. Individual notifications or the full set can be marked as read.
@@ -247,7 +247,7 @@ Required Interfaces / Capabilities:
 
 :::usecase-flow
 title: Manage Account
-image: /images/docs/doctor-usecase-flows/manage-account.svg
+image: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/doctor-usecase-flows/manage-account.svg
 :::
 
 Doctor changes password, updates email, enables 2FA, views login history, or requests account deactivation pending admin approval.

@@ -94,7 +94,7 @@ export const teamMembers: TeamMemberRecord[] = [
   },
   {
     id: "duhai-xu",
-    name: "Shu",
+    name: "Hai",
     displayCode: "Hai-DuhaiXU-21230517",
     role: "Programmer",
     timezone: "Asia/Shanghai",
@@ -147,7 +147,7 @@ export const teamMembers: TeamMemberRecord[] = [
   },
   {
     id: "shu-wang",
-    name: "Hai",
+    name: "Shu",
     displayCode: "Shu-ShuWANG-35232116",
     role: "System Architect and Designer",
     timezone: "Asia/Shanghai",

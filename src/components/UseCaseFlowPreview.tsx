@@ -1,5 +1,6 @@
 import { ChevronDown, GitBranch } from "lucide-react";
 import { useId, useState } from "react";
+import { resolveAssetHref } from "../utils/links";
 
 type UseCaseFlowPreviewProps = {
   imageSrc: string;
@@ -12,6 +13,7 @@ export function UseCaseFlowPreview({ imageSrc, title }: UseCaseFlowPreviewProps)
   const [isHovered, setIsHovered] = useState(false);
   const [isHoverSuppressed, setIsHoverSuppressed] = useState(false);
   const isOpen = isPinned || (isHovered && !isHoverSuppressed);
+  const resolvedImageSrc = resolveAssetHref(imageSrc);
 
   const handleClick = () => {
     if (isPinned) {
@@ -60,7 +62,7 @@ export function UseCaseFlowPreview({ imageSrc, title }: UseCaseFlowPreviewProps)
         <div id={panelId} className="usecase-flow-panel">
           <div className="usecase-flow-image-shell">
             <img
-              src={imageSrc}
+              src={resolvedImageSrc}
               alt={`${title} sequence diagram`}
               loading="lazy"
               className="usecase-flow-image"

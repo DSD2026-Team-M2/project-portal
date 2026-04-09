@@ -22,7 +22,7 @@ import { useReadingPreferences } from "../contexts/ReadingPreferencesContext";
 import type { SupportedLanguage } from "../i18n/language";
 import type { GeneratedContentEntry } from "../utils/content";
 import { formatDate } from "../utils/date";
-import { isExternalHref } from "../utils/links";
+import { isExternalHref, resolveAssetHref } from "../utils/links";
 import { ArticleShell } from "./ArticleShell";
 import { AttentionTag } from "./AttentionTag";
 import { BionicReadingToggle } from "./BionicReadingToggle";
@@ -368,6 +368,14 @@ export function MarkdownArticle({
     ),
     td: ({ children }: { children?: ReactNode }) => (
       <td className="border border-slate-200 px-4 py-3.5 align-top text-slate-700">{children}</td>
+    ),
+    img: ({ src, alt }: { src?: string; alt?: string }) => (
+      <img
+        src={resolveAssetHref(src ?? "")}
+        alt={alt ?? ""}
+        loading="lazy"
+        className="mt-6 max-w-full rounded-2xl border border-slate-200 bg-white/95 shadow-[0_8px_24px_rgba(148,163,184,0.08)]"
+      />
     ),
     code: ({ className, children }: { className?: string; children?: ReactNode }) => (
       <code className={`rounded bg-slate-100 px-1.5 py-0.5 text-[0.92em] text-slate-900 ${className ?? ""}`}>
