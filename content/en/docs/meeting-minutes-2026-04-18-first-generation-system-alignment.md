@@ -72,6 +72,17 @@ All six teams were represented:
 - **V1**: Borges
 - **V2**: Nuno (attending on behalf of Moniz)
 
+## Meeting Photos
+
+The following two photos preserve part of the online discussion context for this six-team alignment meeting.
+
+:::photo-grid
+image: /images/docs/0418-1.jpg
+alt: Six-team joint meeting photo 1
+image: /images/docs/0418-2.jpg
+alt: Six-team joint meeting photo 2
+:::
+
 ## 3. Meeting Goal
 
 The meeting was held to recover delayed requirement alignment work and establish a practical shared understanding of what must be completed before **April 30** for the first-generation system. The discussion focused on:

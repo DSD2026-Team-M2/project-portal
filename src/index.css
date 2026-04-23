@@ -868,6 +868,25 @@
       inset 0 1px 0 rgba(255, 255, 255, 0.94);
   }
 
+  .article-photo-grid {
+    @apply mt-6 grid grid-cols-2 gap-4;
+  }
+
+  .article-photo-card {
+    @apply overflow-hidden rounded-[18px] border border-slate-200 bg-white/95 p-2;
+    box-shadow:
+      0 8px 24px rgba(148, 163, 184, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92);
+  }
+
+  .article-photo-image {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 14px;
+  }
+
   .usecase-flow-trigger {
     @apply flex w-full items-center justify-between gap-3 border-0 px-4 py-3 text-left transition;
     background: linear-gradient(90deg, rgba(239, 246, 255, 0.88), rgba(236, 254, 255, 0.66));

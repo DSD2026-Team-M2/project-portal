@@ -41,6 +41,15 @@ archived: false
 
 On the evening of April 18, the six teams held a joint meeting to align responsibilities, key data flow, and next interface tasks for the first-generation system. The shared view was clear: the most important thing at this stage is not to expand the feature list, but to make the most basic working loop actually run.
 
+The following two meeting photos record part of the online alignment session and help preserve the context of this round of six-team discussion.
+
+:::photo-grid
+image: /images/docs/0418-1.jpg
+alt: Six-team joint meeting photo 1
+image: /images/docs/0418-2.jpg
+alt: Six-team joint meeting photo 2
+:::
+
 ## A Working First-Generation Scope
 
 One of the most important outcomes of the meeting was a sharper definition of what the first-generation system should include. Rather than pursuing advanced functions, the teams aligned around a minimum but operational chain: the patient side starts a session, the sensor collects data, raw input is processed into usable results, AI returns a basic recommendation, the backend stores and routes the result, and the doctor side displays it while allowing manual advice to be added.

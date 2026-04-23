@@ -53,7 +53,8 @@ type HeadingProps = HTMLAttributes<HTMLHeadingElement>;
 type HeadingTag = "h1" | "h2" | "h3" | "h4";
 type MarkdownSegment =
   | { kind: "markdown"; content: string }
-  | { kind: "usecase-flow"; imageSrc: string; title: string };
+  | { kind: "usecase-flow"; imageSrc: string; title: string }
+  | { kind: "photo-grid"; images: Array<{ src: string; alt: string }> };
 
 const BIONIC_MIN_WORDS = 12;
 
@@ -128,30 +129,57 @@ function ArticleLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
 
 function splitMarkdownSegments(body: string): MarkdownSegment[] {
   const segments: MarkdownSegment[] = [];
-  const blockPattern = /:::usecase-flow\s*\r?\n([\s\S]*?):::/g;
+  const blockPattern = /:::(usecase-flow|photo-grid)\s*\r?\n([\s\S]*?):::/g;
   let cursor = 0;
   let match: RegExpExecArray | null;
 
   while ((match = blockPattern.exec(body)) !== null) {
     const markdownBefore = body.slice(cursor, match.index);
-    const definition = match[1]?.trim() ?? "";
-    const lines = definition
+    const blockType = match[1]?.trim() ?? "";
+    const lines = (match[2]?.trim() ?? "")
       .split(/\r?\n/)
       .map((line) => line.trim())
       .filter(Boolean);
-    const titleLine = lines.find((line) => line.startsWith("title:"));
-    const imageLine = lines.find((line) => line.startsWith("image:"));
 
     if (markdownBefore.trim()) {
       segments.push({ kind: "markdown", content: markdownBefore });
     }
 
-    if (titleLine && imageLine) {
-      segments.push({
-        kind: "usecase-flow",
-        title: titleLine.replace("title:", "").trim(),
-        imageSrc: imageLine.replace("image:", "").trim(),
-      });
+    if (blockType === "usecase-flow") {
+      const titleLine = lines.find((line) => line.startsWith("title:"));
+      const imageLine = lines.find((line) => line.startsWith("image:"));
+
+      if (titleLine && imageLine) {
+        segments.push({
+          kind: "usecase-flow",
+          title: titleLine.replace("title:", "").trim(),
+          imageSrc: imageLine.replace("image:", "").trim(),
+        });
+      } else {
+        segments.push({ kind: "markdown", content: match[0] });
+      }
+    } else if (blockType === "photo-grid") {
+      const images: Array<{ src: string; alt: string }> = [];
+
+      for (const line of lines) {
+        if (line.startsWith("image:")) {
+          images.push({
+            src: line.replace("image:", "").trim(),
+            alt: "",
+          });
+          continue;
+        }
+
+        if (line.startsWith("alt:") && images.length > 0) {
+          images[images.length - 1].alt = line.replace("alt:", "").trim();
+        }
+      }
+
+      if (images.length > 0) {
+        segments.push({ kind: "photo-grid", images });
+      } else {
+        segments.push({ kind: "markdown", content: match[0] });
+      }
     } else {
       segments.push({ kind: "markdown", content: match[0] });
     }
@@ -402,6 +430,19 @@ export function MarkdownArticle({
             >
               {segment.content}
             </ReactMarkdown>
+          ) : segment.kind === "photo-grid" ? (
+            <div key={`photo-grid-${index}`} className="article-photo-grid">
+              {segment.images.map((image, imageIndex) => (
+                <div key={`${image.src}-${imageIndex}`} className="article-photo-card">
+                  <img
+                    src={resolveAssetHref(image.src)}
+                    alt={image.alt}
+                    loading="lazy"
+                    className="article-photo-image"
+                  />
+                </div>
+              ))}
+            </div>
           ) : (
             <UseCaseFlowPreview
               key={`usecase-flow-${segment.title}-${index}`}
