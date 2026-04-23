@@ -4,7 +4,11 @@ import type { SupportedLanguage } from "../i18n/language";
 import type { GeneratedContentEntry } from "../utils/content";
 
 const visibleExampleSlugs = new Set<string>(siteMode.visibleExampleSlugs);
-const visibleDocSlugs = new Set<string>(["software-requirements-specification-v0-1"]);
+const visibleDocSlugs = new Set<string>([
+  "software-requirements-specification-v0-1",
+  "meeting-minutes-index-v1",
+  "meeting-minutes-2026-04-18-first-generation-system-alignment",
+]);
 
 function selectLocalizedEntry(entries: GeneratedContentEntry[], language: SupportedLanguage): GeneratedContentEntry | null {
   return (

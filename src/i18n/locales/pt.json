@@ -40,8 +40,8 @@
         "description": "Membros, papéis, foco de trabalho e contexto de colaboração entre fusos."
       },
       "examples": {
-        "title": "Exemplos",
-        "description": "Entradas modelo para documentos, logs, reuniões e notas de investigação."
+        "title": "Modelo",
+        "description": "Entradas de modelo para documentos, logs, reuniões e notas de investigação."
       },
       "notFound": {
         "title": "Página não encontrada",
@@ -60,7 +60,7 @@
     "architecture": "Arquitetura",
     "calendar": "Calendário",
     "team": "Equipa",
-    "examples": "Exemplos",
+    "examples": "Modelo",
     "language": "Idioma",
     "logoAlt": "Logótipo da equipa M2",
     "primaryAria": "Navegação principal",
@@ -90,7 +90,7 @@
     "meetTheTeam": "Conhecer a equipa",
     "openArchitecture": "Abrir arquitetura",
     "openFullProgress": "Abrir progresso completo",
-    "openExamples": "Abrir exemplos",
+    "openExamples": "Abrir modelo",
     "viewTemplates": "Ver modelos",
     "viewDetails": "Ver detalhes",
     "openLinkedRecord": "Abrir registo ligado",
@@ -454,16 +454,16 @@
     "timezonesLead": "Como a coordenação do portal depende frequentemente dos horários da China e de Portugal, estes fusos permanecem visíveis."
   },
   "examples": {
-    "title": "Exemplos e Modelos",
-    "lead": "Os exemplos ficam agrupados num só local para que a equipa aprenda a estrutura esperada sem misturar modelos com registos factuais.",
+    "title": "Modelo",
+    "lead": "Os modelos ficam reunidos num só local para que a equipa reutilize a estrutura esperada sem misturar modelos com registos factuais.",
     "policyTitle": "Política de mock",
     "policyBody": "Qualquer conteúdo não factual deve ser marcado claramente como SAMPLE, EXAMPLE, MOCK ou TEMPLATE. Estas entradas servem para explicar a estrutura, não para imitar o histórico real do projeto.",
     "authoringTitle": "Lembrete de autoria",
     "authoringBody": "Logs, docs, relatórios semanais, atas e notas de investigação devem ser atualizados primeiro por markdown. Mantenha slugs estáveis e ligue evidências sempre que a afirmação importar.",
     "docsTitle": "Modelos de Documento",
-    "docsLead": "{{count}} entradas de exemplo do tipo documento estão indexadas neste momento.",
+    "docsLead": "{{count}} modelos de documento estão indexados neste momento.",
     "logsTitle": "Modelos de Log",
-    "logsLead": "{{count}} entradas de exemplo do tipo log estão indexadas neste momento."
+    "logsLead": "{{count}} modelos de log estão indexados neste momento."
   },
   "notFound": {
     "title": "Página não encontrada",

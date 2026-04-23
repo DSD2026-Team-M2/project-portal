@@ -136,6 +136,10 @@ export const teamResourceLinks: Record<string, TeamResourceLinks> = {
     },
   },
   V2: {
+    repo: {
+      label: "V2 GitHub",
+      href: "https://github.com/smonizzzz/dsd2026-teamv2",
+    },
     overview: {
       label: "V2 Overview",
       href: "https://smonizzzz.github.io/dsd2026-teamv2/",

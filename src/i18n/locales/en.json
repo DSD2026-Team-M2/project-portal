@@ -40,8 +40,8 @@
         "description": "Team members, roles, working focus and cross-timezone collaboration context."
       },
       "examples": {
-        "title": "Examples",
-        "description": "Template and example entries for docs, logs, meetings and research notes."
+        "title": "Template",
+        "description": "Template entries for docs, logs, meetings and research notes."
       },
       "notFound": {
         "title": "Page Not Found",
@@ -60,7 +60,7 @@
     "architecture": "Architecture",
     "calendar": "Calendar",
     "team": "Team",
-    "examples": "Examples",
+    "examples": "Template",
     "language": "Language",
     "logoAlt": "M2 team logo",
     "primaryAria": "Primary navigation",
@@ -90,7 +90,7 @@
     "meetTheTeam": "Meet the team",
     "openArchitecture": "Open architecture",
     "openFullProgress": "Open full progress",
-    "openExamples": "Open examples",
+    "openExamples": "Open template",
     "viewTemplates": "View templates",
     "viewDetails": "View details",
     "openLinkedRecord": "Open linked record",
@@ -454,16 +454,16 @@
     "timezonesLead": "China and Portugal time are kept visible because coordination decisions in the portal often depend on them."
   },
   "examples": {
-    "title": "Examples and Templates",
-    "lead": "Examples stay visible in one place so teammates can learn the expected writing structure without mixing templates into factual records.",
+    "title": "Template",
+    "lead": "Templates stay visible in one place so teammates can reuse the expected structure without mixing templates into factual records.",
     "policyTitle": "Mock policy",
     "policyBody": "Any non-factual content must stay clearly marked as SAMPLE, EXAMPLE, MOCK or TEMPLATE. These entries exist to teach structure, not to impersonate real project history.",
     "authoringTitle": "Authoring reminder",
     "authoringBody": "Logs, docs, weekly reports, meeting notes and research notes should be updated through markdown first. Keep slugs stable and link evidence whenever the claim matters.",
     "docsTitle": "Document Templates",
-    "docsLead": "{{count}} example document entries are currently indexed.",
+    "docsLead": "{{count}} document templates are currently indexed.",
     "logsTitle": "Log Templates",
-    "logsLead": "{{count}} example log-style entries are currently indexed."
+    "logsLead": "{{count}} log templates are currently indexed."
   },
   "notFound": {
     "title": "Page not found",

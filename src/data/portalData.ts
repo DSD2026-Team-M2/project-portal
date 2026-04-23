@@ -571,6 +571,24 @@ export const calendarEvents: CalendarEventRecord[] = [
     sample: true,
   },
   {
+    id: "2026-04-03-six-team-joint-meeting",
+    title: text(
+      "Six-Team Joint Meeting (2026-04-03)",
+      "六队联席会议（2026-04-03）",
+      "Reuniao conjunta das seis equipas (2026-04-03)",
+    ),
+    type: "meeting",
+    start: "2026-04-03T23:00:00+08:00",
+    relatedTeams: ["S1", "S2", "V1", "V2", "M1", "M2"],
+    summary: text(
+      "First six-team joint meeting focused on requirement analysis, team responsibilities, target users and inter-module dependencies.",
+      "首次六队联席会议，聚焦需求分析、职责定位、目标受众与模块依赖关系。",
+      "Primeira reuniao conjunta das seis equipas, focada em analise de requisitos, responsabilidades das equipas, publico-alvo e dependencias entre modulos.",
+    ),
+    link: "/logs/2026-04-03-first-leads-meeting-on-requirements",
+    tags: ["meeting", "coordination", "requirements"],
+  },
+  {
     id: "2026-04-07-portal-overview-release",
     title: text("Portal overview release", "Portal 总览发布", "Lançamento da visão geral do portal"),
     type: "milestone",
@@ -633,6 +651,24 @@ export const calendarEvents: CalendarEventRecord[] = [
     link: "/logs",
     tags: ["deadline", "deliverable"],
     sample: true,
+  },
+  {
+    id: "2026-04-18-six-team-joint-meeting",
+    title: text(
+      "Six-Team Joint Meeting (2026-04-18)",
+      "六队联席会议（2026-04-18）",
+      "Reuniao conjunta das seis equipas (2026-04-18)",
+    ),
+    type: "meeting",
+    start: "2026-04-18T23:30:00+08:00",
+    relatedTeams: ["S1", "S2", "V1", "V2", "M1", "M2"],
+    summary: text(
+      "Second six-team joint meeting focused on first-generation system scope, cross-team responsibilities, key data flow and immediate interface coordination.",
+      "第二次六队联席会议，聚焦第一代系统范围、跨队职责、关键数据流与近期接口推进。",
+      "Segunda reuniao conjunta das seis equipas, focada no ambito do sistema de primeira geracao, responsabilidades entre equipas, fluxo principal de dados e coordenacao imediata de interfaces.",
+    ),
+    link: "/docs/meeting-minutes-2026-04-18-first-generation-system-alignment",
+    tags: ["meeting", "coordination", "requirements", "integration"],
   },
   {
     id: "2026-05-05-presentation-rehearsal",

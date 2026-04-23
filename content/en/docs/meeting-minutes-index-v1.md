@@ -19,10 +19,14 @@ attentionTags:
   - attention:M2
 version: v1.0
 reviewStatus: in-review
-lastUpdated: 2026-03-24
+lastUpdated: 2026-04-20
 links:
-  - label: Kickoff meeting record
-    href: /logs/2026-03-19-course-begins-first-video-meeting
+  - label: Six-Team Joint Meeting (2026-04-03)
+    href: /logs/2026-04-03-first-leads-meeting-on-requirements
+  - label: Six-team joint meeting minutes (2026-04-18)
+    href: /docs/meeting-minutes-2026-04-18-first-generation-system-alignment
+  - label: Six-Team Joint Meeting (2026-04-18)
+    href: /logs/2026-04-18-first-generation-system-alignment-meeting-held
 evidence:
   - label: Logs hub
     href: /logs
@@ -32,3 +36,9 @@ actionItems: []
 ## Purpose
 
 This entry indexes meeting records so reviewers can quickly find discussion history, decisions and follow-up actions without scanning the repository manually.
+
+## Current Records
+
+- [Six-Team Joint Meeting (2026-04-03) - Requirement Alignment Initiated](/logs/2026-04-03-first-leads-meeting-on-requirements)
+- [Six-Team Joint Meeting Minutes (2026-04-18)](/docs/meeting-minutes-2026-04-18-first-generation-system-alignment)
+- [Six-Team Joint Meeting (2026-04-18) - First-Generation Roles and Data Flow Clarified](/logs/2026-04-18-first-generation-system-alignment-meeting-held)
