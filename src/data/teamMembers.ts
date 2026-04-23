@@ -175,7 +175,7 @@ export const teamMembers: TeamMemberRecord[] = [
   },
   {
     id: "prof-rui-zhang",
-    name: "Rui ZHANG",
+    name: "Prof. Zhang Rui",
     role: "",
     timezone: "Asia/Shanghai",
     group: "faculty",
@@ -187,7 +187,7 @@ export const teamMembers: TeamMemberRecord[] = [
   },
   {
     id: "prof-pedro-mestre-da-silva",
-    name: "Pedro Mestre da Silva",
+    name: "Prof. Pedro Mestre da Silva",
     role: "",
     timezone: "Europe/Lisbon",
     group: "faculty",
@@ -199,7 +199,7 @@ export const teamMembers: TeamMemberRecord[] = [
   },
   {
     id: "prof-antonio-cunha",
-    name: "Antonio Cunha",
+    name: "Prof. Antonio Cunha",
     role: "",
     timezone: "Europe/Lisbon",
     group: "faculty",
@@ -211,7 +211,7 @@ export const teamMembers: TeamMemberRecord[] = [
   },
   {
     id: "prof-antonio-jorge-gouveia",
-    name: "António Jorge Gouveia",
+    name: "Prof. António Jorge Gouveia",
     role: "",
     timezone: "Europe/Lisbon",
     group: "faculty",
