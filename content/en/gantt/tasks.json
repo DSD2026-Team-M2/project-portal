@@ -28,6 +28,34 @@
       "category": "planning"
     },
     {
+      "id": "pm-admin-usecase-finalization",
+      "name": "Final Admin Use Case",
+      "role": "P.M.",
+      "owner": "Yihang LI",
+      "start": "2026-04-01",
+      "end": "2026-04-09",
+      "progress": 100,
+      "status": "completed",
+      "dependencies": [
+        "pm-requirement-analysis"
+      ],
+      "category": "analysis"
+    },
+    {
+      "id": "pm-six-team-requirement-sync",
+      "name": "Six-Team Requirement Sync",
+      "role": "P.M.",
+      "owner": "Yihang LI",
+      "start": "2026-04-03",
+      "end": "2026-04-18",
+      "progress": 100,
+      "status": "completed",
+      "dependencies": [
+        "pm-requirement-analysis"
+      ],
+      "category": "planning"
+    },
+    {
       "id": "vp-testing-qa",
       "name": "Testing & QA",
       "role": "V.P.M./Programmer1",
@@ -88,6 +116,20 @@
       "category": "frontend"
     },
     {
+      "id": "webmaster-news-log-updates",
+      "name": "News & Log Updates",
+      "role": "Webmaster",
+      "owner": "Congming LI",
+      "start": "2026-03-31",
+      "end": "2026-05-27",
+      "progress": 45,
+      "status": "in-progress",
+      "dependencies": [
+        "webmaster-team-website-development"
+      ],
+      "category": "frontend"
+    },
+    {
       "id": "sa-ui-design",
       "name": "UI Design",
       "role": "S.A.",
@@ -109,6 +151,20 @@
       "progress": 100,
       "status": "completed",
       "dependencies": [],
+      "category": "analysis"
+    },
+    {
+      "id": "sa-doctor-usecase-confirmation",
+      "name": "Doctor Use Case Confirmation",
+      "role": "S.A.",
+      "owner": "Shu WANG",
+      "start": "2026-04-14",
+      "end": "2026-04-16",
+      "progress": 100,
+      "status": "completed",
+      "dependencies": [
+        "sa-use-case-diagram"
+      ],
       "category": "analysis"
     }
   ]
