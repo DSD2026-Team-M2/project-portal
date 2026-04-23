@@ -57,6 +57,7 @@ type MarkdownSegment =
   | { kind: "photo-grid"; images: Array<{ src: string; alt: string }> };
 
 const BIONIC_MIN_WORDS = 12;
+const HTML_BREAK_PATTERN = /<br\s*\/?>/gi;
 
 function countWords(text: string): number {
   return text.trim().split(/\s+/).filter(Boolean).length;
@@ -72,12 +73,39 @@ function renderBionicText(text: string, key: string): ReactNode {
   return <span key={key} className="bionic-text" dangerouslySetInnerHTML={{ __html: highlightedText }} />;
 }
 
-function transformBionicChildren(children: ReactNode, enabled: boolean): ReactNode {
-  if (!enabled) return children;
+function renderInlineText(text: string, key: string, bionicEnabled: boolean): ReactNode {
+  return bionicEnabled ? renderBionicText(text, key) : text;
+}
 
+function transformArticleChildren(
+  children: ReactNode,
+  bionicEnabled: boolean,
+  allowHtmlBreaks = false,
+): ReactNode {
   return Children.map(children, (child, index) => {
     if (typeof child === "string") {
-      return renderBionicText(child, `bionic-${index}`);
+      if (!allowHtmlBreaks) {
+        return renderInlineText(child, `text-${index}`, bionicEnabled);
+      }
+
+      const parts = child.split(HTML_BREAK_PATTERN);
+      if (parts.length === 1) {
+        return renderInlineText(child, `text-${index}`, bionicEnabled);
+      }
+
+      return parts.flatMap((part, partIndex) => {
+        const nodes: ReactNode[] = [];
+
+        if (part) {
+          nodes.push(renderInlineText(part, `text-${index}-${partIndex}`, bionicEnabled));
+        }
+
+        if (partIndex < parts.length - 1) {
+          nodes.push(<br key={`br-${index}-${partIndex}`} />);
+        }
+
+        return nodes;
+      });
     }
 
     if (!isValidElement(child)) return child;
@@ -87,7 +115,7 @@ function transformBionicChildren(children: ReactNode, enabled: boolean): ReactNo
 
     return cloneElement(child as ReactElement<{ children?: ReactNode }>, {
       ...props,
-      children: transformBionicChildren(props.children, enabled),
+      children: transformArticleChildren(props.children, bionicEnabled, allowHtmlBreaks),
     });
   });
 }
@@ -120,10 +148,18 @@ function ArticleLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
     );
   }
 
+  if (href.startsWith("#")) {
+    return (
+      <a {...props} href={href} className="article-link">
+        {props.children}
+      </a>
+    );
+  }
+
   return (
-    <a {...props} href={href} className="article-link">
+    <Link to={href} className="article-link">
       {props.children}
-    </a>
+    </Link>
   );
 }
 
@@ -375,14 +411,14 @@ export function MarkdownArticle({
     h2: ArticleHeading("h2", "mt-12 text-[2rem] font-bold tracking-tight text-slate-950", resolveHeadingHref),
     h3: ArticleHeading("h3", "mt-9 text-[1.45rem] font-bold tracking-tight text-slate-950", resolveHeadingHref),
     h4: ArticleHeading("h4", "mt-7 text-[1.18rem] font-bold tracking-tight text-slate-900", resolveHeadingHref),
-    p: ({ children }: { children?: ReactNode }) => <p className="mt-5">{transformBionicChildren(children, bionicEnabled)}</p>,
-    li: ({ children }: { children?: ReactNode }) => <li>{transformBionicChildren(children, bionicEnabled)}</li>,
+    p: ({ children }: { children?: ReactNode }) => <p className="mt-5">{transformArticleChildren(children, bionicEnabled)}</p>,
+    li: ({ children }: { children?: ReactNode }) => <li>{transformArticleChildren(children, bionicEnabled)}</li>,
     a: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => <ArticleLink {...props} />,
     ul: ({ children }: { children?: ReactNode }) => <ul className="mt-4 list-disc space-y-2 pl-6">{children}</ul>,
     ol: ({ children }: { children?: ReactNode }) => <ol className="mt-4 list-decimal space-y-2 pl-6">{children}</ol>,
     blockquote: ({ children }: { children?: ReactNode }) => (
       <blockquote className="mt-6 border-l-4 border-sky-200 bg-sky-50/70 px-5 py-4 text-slate-700">
-        {transformBionicChildren(children, bionicEnabled)}
+        {transformArticleChildren(children, bionicEnabled)}
       </blockquote>
     ),
     hr: () => <hr className="my-8 border-slate-200" />,
@@ -392,10 +428,14 @@ export function MarkdownArticle({
       </div>
     ),
     th: ({ children }: { children?: ReactNode }) => (
-      <th className="border border-slate-300 px-4 py-3.5 font-bold text-slate-950">{children}</th>
+      <th className="border border-slate-300 px-4 py-3.5 font-bold text-slate-950">
+        {transformArticleChildren(children, false, true)}
+      </th>
     ),
     td: ({ children }: { children?: ReactNode }) => (
-      <td className="border border-slate-200 px-4 py-3.5 align-top text-slate-700">{children}</td>
+      <td className="border border-slate-200 px-4 py-3.5 align-top text-slate-700">
+        {transformArticleChildren(children, bionicEnabled, true)}
+      </td>
     ),
     img: ({ src, alt }: { src?: string; alt?: string }) => (
       <img
