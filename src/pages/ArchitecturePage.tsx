@@ -101,6 +101,7 @@ export function ArchitecturePage() {
       ],
     },
   ];
+  const [mainProjectResourceCard, portalProjectResourceCard] = projectResourceSlots;
 
   useDocumentTitle("meta.pages.architecture.title", { descriptionKey: "meta.pages.architecture.description" });
 
@@ -262,29 +263,27 @@ export function ArchitecturePage() {
         <SectionTitle title={t("architecture.linkSlots.title")} />
         <SectionLead>{t("architecture.linkSlots.lead")}</SectionLead>
 
-        <div className="mt-6 grid gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
-          <div className="space-y-4">
-            <div>
-              <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">
-                {t("architecture.linkSlots.projectLinks")}
-              </p>
-              <div className="mt-3 space-y-3">
-                {projectResourceSlots.map((card) => (
-                  <article key={card.id} className="surface-card p-5">
-                    <p className="text-xl font-bold text-slate-950">{card.title}</p>
-                    <p className="mt-2 text-[0.98rem] leading-8 text-slate-600">{card.summary}</p>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                      {card.slots.map((slot) => (
-                        <ResourcePlaceholderPill
-                          key={`${card.id}-${slot.label}`}
-                          slot={slot}
-                          pendingLabel={t("architecture.linkSlots.pending")}
-                        />
-                      ))}
-                    </div>
-                  </article>
-                ))}
-              </div>
+        <div className="mt-6 space-y-6">
+          <div>
+            <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">
+              {t("architecture.linkSlots.projectLinks")}
+            </p>
+            <div className="mt-3 max-w-4xl space-y-3">
+              {[mainProjectResourceCard, portalProjectResourceCard].map((card) => (
+                <article key={card.id} className="surface-card p-5">
+                  <p className="text-xl font-bold text-slate-950">{card.title}</p>
+                  <p className="mt-2 text-[0.98rem] leading-8 text-slate-600">{card.summary}</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {card.slots.map((slot) => (
+                      <ResourcePlaceholderPill
+                        key={`${card.id}-${slot.label}`}
+                        slot={slot}
+                        pendingLabel={t("architecture.linkSlots.pending")}
+                      />
+                    ))}
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
 
@@ -292,12 +291,14 @@ export function ArchitecturePage() {
             <p className="text-[0.8rem] font-bold uppercase tracking-[0.22em] text-slate-600">
               {t("architecture.linkSlots.historicalLinks")}
             </p>
-            <div className="mt-3 grid gap-3 md:grid-cols-2">
+            <div className="mt-3 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
               {historicalReferenceLinks.map((card) => (
-                <article key={card.id} className="surface-card p-5">
-                  <p className="text-lg font-bold text-slate-950">{card.label}</p>
-                  <p className="mt-2 text-[0.98rem] leading-8 text-slate-600">{t("architecture.linkSlots.historicalCardSummary")}</p>
-                  <div className="mt-4 flex flex-wrap gap-2">
+                <article key={card.id} className="surface-card p-4 sm:p-5">
+                  <p className="text-[1.35rem] font-bold tracking-tight text-slate-950">{card.label}</p>
+                  <p className="mt-2 text-[0.94rem] leading-7 text-slate-600">
+                    {t("architecture.linkSlots.historicalCardSummary")}
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-2">
                     <ResourcePlaceholderPill
                       slot={card.repo ?? { label: t("architecture.linkSlots.buttons.teamRepo") }}
                       pendingLabel={t("architecture.linkSlots.pending")}

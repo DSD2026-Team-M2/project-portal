@@ -66,6 +66,7 @@ const GANTT_LANE_WIDTH = 290;
 const GANTT_LANE_WIDTH_COMPACT = 236;
 const COMPLETED_COLOR = "#09b24d";
 const IN_PROGRESS_COLOR = "#f0e400";
+const SHOW_DEPENDENCY_ARROWS = false;
 
 function addDays(date: Date, days: number) {
   const value = new Date(date);
@@ -287,7 +288,7 @@ function buildDatasetTask(task: DatasetTask): BuiltTask {
     custom_class: customClass,
     color: colors.color,
     color_progress: colors.color_progress,
-    dependencies: task.dependencies,
+    dependencies: SHOW_DEPENDENCY_ARROWS ? task.dependencies : undefined,
     _meta: {
       id: task.id,
       role: task.role,
@@ -649,20 +650,28 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         .legend-chip {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          padding: 8px 12px;
-          border-radius: 999px;
-          background: white;
-          border: 1px solid rgba(148, 163, 184, 0.2);
-          color: #334155;
+          justify-content: center;
+          min-width: 132px;
+          padding: 7px 16px;
+          border-radius: 10px;
+          border: 1px solid rgba(148, 163, 184, 0.24);
+          box-shadow:
+            0 6px 14px rgba(148, 163, 184, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.34);
           font-size: 13px;
+          font-weight: 700;
+          line-height: 1.2;
+          white-space: nowrap;
         }
 
-        .legend-dot {
-          width: 12px;
-          height: 12px;
-          border-radius: 999px;
-          flex: 0 0 12px;
+        .legend-chip-completed {
+          background: ${COMPLETED_COLOR};
+          color: #ffffff;
+        }
+
+        .legend-chip-progress {
+          background: ${IN_PROGRESS_COLOR};
+          color: #0f172a;
         }
 
         .gantt-detail-card {
@@ -800,12 +809,10 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         </div>
 
         <div className="mt-5 flex flex-wrap gap-3">
-          <span className="legend-chip">
-            <span className="legend-dot" style={{ background: COMPLETED_COLOR }} />
+          <span className="legend-chip legend-chip-completed">
             Completed
           </span>
-          <span className="legend-chip">
-            <span className="legend-dot" style={{ background: IN_PROGRESS_COLOR }} />
+          <span className="legend-chip legend-chip-progress">
             In Progress
           </span>
         </div>

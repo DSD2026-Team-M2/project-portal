@@ -21,15 +21,15 @@ attentionTags:
   - attention:M2
 lastUpdated: 2026-04-09
 links:
-  - label: Updated SRS
-    href: /docs/software-requirements-specification-v0-1
+  - label: Detailed SRS archive
+    href: /docs/software-requirements-specification-v0-1-archive
   - label: Requirement analysis
     href: /docs/requirement-analysis-v1
 ---
 
 ## What Changed
 
-- Replaced the previous SRS page with the newer draft provided by the team.
+- Replaced the previous SRS page with the newer draft provided by the team. That detailed version is now preserved in the archive.
 - Expanded the use case section from a high-level list into detailed patient, doctor, and administration scenarios.
 - Added required interface and capability coverage for each major scenario.
 - Updated the key example flows so the registration and sensor connection examples align with the newer scope.

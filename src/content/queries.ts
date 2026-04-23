@@ -6,6 +6,7 @@ import type { GeneratedContentEntry } from "../utils/content";
 const visibleExampleSlugs = new Set<string>(siteMode.visibleExampleSlugs);
 const visibleDocSlugs = new Set<string>([
   "software-requirements-specification-v0-1",
+  "software-requirements-specification-v0-1-archive",
   "meeting-minutes-index-v1",
   "meeting-minutes-2026-04-18-first-generation-system-alignment",
 ]);
