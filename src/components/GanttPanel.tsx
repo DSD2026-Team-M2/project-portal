@@ -15,17 +15,24 @@ type DatasetTask = {
   owner: string;
   start: string;
   end: string;
+  plannedStart?: string;
+  plannedEnd?: string;
+  actualStart?: string;
+  actualEnd?: string;
   progress: number;
   status: string;
   dependencies?: string[];
   category?: string;
 };
 
+type TaskStatus = "Completed" | "In Progress";
+type TaskBarKind = "planned" | "actual";
+
 type GanttRow = {
   role: string;
   name: string;
   task: string;
-  status: "Completed" | "In Progress";
+  status: TaskStatus;
   weekStart: number;
   weekEnd: number;
   progress: number;
@@ -46,10 +53,31 @@ type BuiltTask = {
   dependencies?: string[];
   _meta: GanttRow & {
     id: string;
+    groupId: string;
+    barKind: TaskBarKind;
     startDate: Date;
     endDate: Date;
+    plannedStartDate: Date;
+    plannedEndDate: Date;
+    actualStartDate: Date;
+    actualEndDate: Date;
+    actualProgress: number;
     category?: string;
   };
+};
+
+type TaskGroup = {
+  id: string;
+  role: string;
+  name: string;
+  task: string;
+  status: TaskStatus;
+  progress: number;
+  category?: string;
+  plannedStartDate: Date;
+  plannedEndDate: Date;
+  actualStartDate: Date;
+  actualEndDate: Date;
 };
 
 type GanttPopupContext = {
@@ -66,6 +94,8 @@ const GANTT_LANE_WIDTH = 290;
 const GANTT_LANE_WIDTH_COMPACT = 236;
 const COMPLETED_COLOR = "#09b24d";
 const IN_PROGRESS_COLOR = "#f0e400";
+const PLANNED_BAR_FILL = "rgba(148, 163, 184, 0.24)";
+const PLANNED_BAR_STROKE = "#94a3b8";
 const SHOW_DEPENDENCY_ARROWS = false;
 
 function addDays(date: Date, days: number) {
@@ -222,7 +252,7 @@ const rawRows: GanttRow[] = [
   },
 ];
 
-function getTaskColors(status: GanttRow["status"]) {
+function getTaskColors(status: TaskStatus) {
   if (status === "Completed") {
     return {
       color: COMPLETED_COLOR,
@@ -236,7 +266,7 @@ function getTaskColors(status: GanttRow["status"]) {
   };
 }
 
-function normalizeStatus(status: string): GanttRow["status"] {
+function normalizeStatus(status: string): TaskStatus {
   const value = status.trim().toLowerCase();
 
   if (value === "completed" || value === "done") return "Completed";
@@ -266,52 +296,123 @@ function buildLegacyTask(row: GanttRow, index: number): BuiltTask {
     _meta: {
       ...row,
       id,
+      groupId: id,
+      barKind: "actual",
       startDate,
       endDate,
+      plannedStartDate: startDate,
+      plannedEndDate: endDate,
+      actualStartDate: startDate,
+      actualEndDate: endDate,
+      actualProgress: row.progress,
     },
   };
 }
 
-function buildDatasetTask(task: DatasetTask): BuiltTask {
+function buildDatasetTaskGroup(task: DatasetTask): TaskGroup {
   const status = normalizeStatus(task.status);
-  const customClass = getCustomClass(status);
-  const colors = getTaskColors(status);
-  const startDate = new Date(`${task.start}T00:00:00`);
-  const endDate = new Date(`${task.end}T00:00:00`);
+  const plannedStart = task.plannedStart ?? task.start;
+  const plannedEnd = task.plannedEnd ?? task.end;
+  const actualStart = task.actualStart ?? task.start;
+  const actualEnd = task.actualEnd ?? task.end;
 
   return {
     id: task.id,
-    name: `${task.owner} · ${task.name}`,
-    start: task.start,
-    end: task.end,
+    role: task.role,
+    name: task.owner,
+    task: task.name,
+    status,
     progress: task.progress,
-    custom_class: customClass,
-    color: colors.color,
-    color_progress: colors.color_progress,
-    dependencies: SHOW_DEPENDENCY_ARROWS ? task.dependencies : undefined,
-    _meta: {
-      id: task.id,
-      role: task.role,
-      name: task.owner,
-      task: task.name,
-      status,
-      weekStart: 1,
-      weekEnd: 1,
-      progress: task.progress,
-      customClass,
-      startDate,
-      endDate,
-      category: task.category,
-    },
+    category: task.category,
+    plannedStartDate: new Date(`${plannedStart}T00:00:00`),
+    plannedEndDate: new Date(`${plannedEnd}T00:00:00`),
+    actualStartDate: new Date(`${actualStart}T00:00:00`),
+    actualEndDate: new Date(`${actualEnd}T00:00:00`),
   };
+}
+
+function buildDatasetTaskBars(task: DatasetTask): BuiltTask[] {
+  const group = buildDatasetTaskGroup(task);
+  const actualClass = getCustomClass(group.status);
+  const actualColors = getTaskColors(group.status);
+
+  const makeMeta = (
+    id: string,
+    barKind: TaskBarKind,
+    startDate: Date,
+    endDate: Date,
+    progress: number,
+    customClass: GanttRow["customClass"],
+  ): BuiltTask["_meta"] => ({
+    id,
+    groupId: group.id,
+    barKind,
+    role: group.role,
+    name: group.name,
+    task: group.task,
+    status: group.status,
+    weekStart: 1,
+    weekEnd: 1,
+    progress,
+    customClass,
+    startDate,
+    endDate,
+    plannedStartDate: group.plannedStartDate,
+    plannedEndDate: group.plannedEndDate,
+    actualStartDate: group.actualStartDate,
+    actualEndDate: group.actualEndDate,
+    actualProgress: group.progress,
+    category: group.category,
+  });
+
+  return [
+    {
+      id: `${task.id}__planned`,
+      name: `${task.owner} · ${task.name} · Planned`,
+      start: toDateString(group.plannedStartDate),
+      end: toDateString(group.plannedEndDate),
+      progress: 100,
+      custom_class: "task-planned",
+      color: PLANNED_BAR_FILL,
+      color_progress: PLANNED_BAR_FILL,
+      _meta: makeMeta(
+        `${task.id}__planned`,
+        "planned",
+        group.plannedStartDate,
+        group.plannedEndDate,
+        100,
+        "task-progress",
+      ),
+    },
+    {
+      id: `${task.id}__actual`,
+      name: `${task.owner} · ${task.name} · Actual`,
+      start: toDateString(group.actualStartDate),
+      end: toDateString(group.actualEndDate),
+      progress: group.progress,
+      custom_class: actualClass,
+      color: actualColors.color,
+      color_progress: actualColors.color_progress,
+      dependencies: SHOW_DEPENDENCY_ARROWS ? task.dependencies : undefined,
+      _meta: makeMeta(
+        `${task.id}__actual`,
+        "actual",
+        group.actualStartDate,
+        group.actualEndDate,
+        group.progress,
+        actualClass,
+      ),
+    },
+  ];
 }
 
 function isLegacyTask(task: GanttSourceTask): task is GanttRow {
   return "weekStart" in task && "weekEnd" in task;
 }
 
-function getSidebarTone(status: GanttRow["status"]) {
-  if (status === "Completed") return "gantt-sidebar-completed";
+function getSidebarTone(task: BuiltTask) {
+  if (task._meta.barKind === "planned") return "gantt-sidebar-planned";
+  if (task._meta.status === "Completed") return "gantt-sidebar-completed";
   return "gantt-sidebar-progress";
 }
 
@@ -319,48 +420,76 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
   const { t } = useTranslation();
   const ganttRef = useRef<HTMLDivElement | null>(null);
   const sidebarRowsRef = useRef<HTMLDivElement | null>(null);
-  const selectedTaskIdRef = useRef("");
+  const selectedGroupIdRef = useRef("");
   const [viewMode, setViewMode] = useState("Day");
   const [error, setError] = useState("");
-  const [selectedTaskId, setSelectedTaskId] = useState<string>("");
+  const [selectedGroupId, setSelectedGroupId] = useState<string>("");
 
   const sourceTasks = useMemo(() => (tasks && tasks.length ? tasks : rawRows), [tasks]);
-  const builtTasks = useMemo(
-    () =>
-      sourceTasks.map((task, index) => (isLegacyTask(task) ? buildLegacyTask(task, index) : buildDatasetTask(task))),
-    [sourceTasks],
-  );
+  const { builtTasks, taskGroups } = useMemo(() => {
+    const nextBuiltTasks: BuiltTask[] = [];
+    const nextTaskGroups: TaskGroup[] = [];
+
+    sourceTasks.forEach((task, index) => {
+      if (isLegacyTask(task)) {
+        const builtTask = buildLegacyTask(task, index);
+        nextBuiltTasks.push(builtTask);
+        nextTaskGroups.push({
+          id: builtTask.id,
+          role: builtTask._meta.role,
+          name: builtTask._meta.name,
+          task: builtTask._meta.task,
+          status: builtTask._meta.status,
+          progress: builtTask._meta.actualProgress,
+          category: builtTask._meta.category,
+          plannedStartDate: builtTask._meta.plannedStartDate,
+          plannedEndDate: builtTask._meta.plannedEndDate,
+          actualStartDate: builtTask._meta.actualStartDate,
+          actualEndDate: builtTask._meta.actualEndDate,
+        });
+        return;
+      }
+
+      nextBuiltTasks.push(...buildDatasetTaskBars(task));
+      nextTaskGroups.push(buildDatasetTaskGroup(task));
+    });
+
+    return { builtTasks: nextBuiltTasks, taskGroups: nextTaskGroups };
+  }, [sourceTasks]);
+  const builtTaskMap = useMemo(() => new Map(builtTasks.map((task) => [task.id, task])), [builtTasks]);
   const validationIssues = useMemo(
     () => (sourceTasks.every(isLegacyTask) ? validateRows(sourceTasks) : validateBuiltTasks(builtTasks)),
     [builtTasks, sourceTasks],
   );
-  const selectedTask = useMemo(
-    () => builtTasks.find((task) => task.id === selectedTaskId) ?? null,
-    [builtTasks, selectedTaskId],
+  const selectedTaskGroup = useMemo(
+    () => taskGroups.find((task) => task.id === selectedGroupId) ?? null,
+    [selectedGroupId, taskGroups],
   );
 
-  const applySelectedBarState = (taskId: string) => {
+  const applySelectedBarState = (groupId: string) => {
     const host = ganttRef.current;
     if (!host) return;
 
     host.querySelectorAll<SVGGElement>(".bar-wrapper").forEach((wrapper) => {
-      wrapper.classList.toggle("is-selected", wrapper.getAttribute("data-id") === taskId);
+      const taskId = wrapper.getAttribute("data-id") ?? "";
+      const builtTask = builtTaskMap.get(taskId);
+      wrapper.classList.toggle("is-selected", builtTask?._meta.groupId === groupId);
     });
   };
 
   useEffect(() => {
-    if (!builtTasks.length) {
-      setSelectedTaskId("");
+    if (!taskGroups.length) {
+      setSelectedGroupId("");
       return;
     }
 
-    setSelectedTaskId((current) => (current && builtTasks.some((task) => task.id === current) ? current : builtTasks[0].id));
-  }, [builtTasks]);
+    setSelectedGroupId((current) => (current && taskGroups.some((task) => task.id === current) ? current : taskGroups[0].id));
+  }, [taskGroups]);
 
   useEffect(() => {
-    selectedTaskIdRef.current = selectedTaskId;
-    applySelectedBarState(selectedTaskId);
-  }, [selectedTaskId]);
+    selectedGroupIdRef.current = selectedGroupId;
+    applySelectedBarState(selectedGroupId);
+  }, [selectedGroupId, builtTaskMap]);
 
   useEffect(() => {
     if (!ganttRef.current) return;
@@ -399,7 +528,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
           popup: false,
           on_click: (task: unknown) => {
             const clickedTask = task as BuiltTask | undefined;
-            if (clickedTask?.id) setSelectedTaskId(clickedTask.id);
+            if (clickedTask?._meta.groupId) setSelectedGroupId(clickedTask._meta.groupId);
           },
         });
 
@@ -423,8 +552,9 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
           if (!(target instanceof Element)) return;
 
           const barWrapper = target.closest(".bar-wrapper");
-          const nextTaskId = barWrapper?.getAttribute("data-id");
-          if (nextTaskId) setSelectedTaskId(nextTaskId);
+          const nextTaskId = barWrapper?.getAttribute("data-id") ?? "";
+          const nextTask = builtTaskMap.get(nextTaskId);
+          if (nextTask?._meta.groupId) setSelectedGroupId(nextTask._meta.groupId);
         };
 
         chartContainer.addEventListener("scroll", syncSidebarOffset, { passive: true });
@@ -432,7 +562,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         chartContainer.addEventListener("click", handleBarClick);
 
         syncSidebarOffset();
-        applySelectedBarState(selectedTaskIdRef.current);
+        applySelectedBarState(selectedGroupIdRef.current);
 
         return () => {
           chartContainer.removeEventListener("scroll", syncSidebarOffset);
@@ -457,7 +587,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
       if (ganttRef.current) ganttRef.current.innerHTML = "";
       if (sidebarRowsRef.current) sidebarRowsRef.current.style.transform = "translateY(0)";
     };
-  }, [builtTasks, validationIssues, viewMode]);
+  }, [builtTaskMap, builtTasks, validationIssues, viewMode]);
 
   return (
     <div className="overflow-hidden">
@@ -514,10 +644,10 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         .gantt-sidebar-row {
           display: flex;
           align-items: center;
-          gap: 10px;
+          gap: 8px;
           height: ${GANTT_ROW_HEIGHT}px;
           box-sizing: border-box;
-          padding: 0 14px;
+          padding: 0 12px;
           border-bottom: 1px solid rgba(226, 232, 240, 0.72);
           cursor: pointer;
           transition: background-color 0.2s ease;
@@ -541,6 +671,25 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
 
         .gantt-sidebar-copy {
           min-width: 0;
+          flex: 1 1 auto;
+        }
+
+        .gantt-sidebar-variant {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          width: 48px;
+          height: 20px;
+          flex: 0 0 48px;
+          border: 1px solid rgba(148, 163, 184, 0.32);
+          border-radius: 999px;
+          background: rgba(255, 255, 255, 0.72);
+          font-size: 9px;
+          font-weight: 700;
+          letter-spacing: 0.04em;
+          line-height: 1;
+          text-transform: uppercase;
+          color: #64748b;
         }
 
         .gantt-sidebar-owner {
@@ -549,6 +698,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
           white-space: nowrap;
           font-size: 12px;
           font-weight: 700;
+          line-height: 1.25;
           color: #0f172a;
         }
 
@@ -557,6 +707,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
           text-overflow: ellipsis;
           white-space: nowrap;
           font-size: 12px;
+          line-height: 1.25;
           color: #475569;
         }
 
@@ -568,8 +719,13 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
           background: ${IN_PROGRESS_COLOR};
         }
 
+        .gantt-sidebar-planned .gantt-sidebar-dot {
+          background: #94a3b8;
+        }
+
         .gantt-chart {
           min-width: 0;
+          overflow: hidden;
           background: #ffffff;
         }
 
@@ -636,6 +792,13 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
           fill: ${COMPLETED_COLOR};
         }
 
+        .gantt-chart .task-planned .bar,
+        .gantt-chart .task-planned .bar-progress {
+          fill: ${PLANNED_BAR_FILL};
+          stroke: ${PLANNED_BAR_STROKE};
+          stroke-dasharray: 5 3;
+        }
+
         .gantt-chart .task-progress .bar,
         .gantt-chart .task-progress .bar-progress {
           fill: ${IN_PROGRESS_COLOR};
@@ -667,6 +830,13 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         .legend-chip-completed {
           background: ${COMPLETED_COLOR};
           color: #ffffff;
+        }
+
+        .legend-chip-planned {
+          background: #ffffff;
+          color: #475569;
+          border-style: dashed;
+          border-color: ${PLANNED_BAR_STROKE};
         }
 
         .legend-chip-progress {
@@ -726,7 +896,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
 
         .gantt-detail-grid {
           display: grid;
-          grid-template-columns: repeat(3, minmax(0, 1fr));
+          grid-template-columns: repeat(5, minmax(0, 1fr));
           gap: 10px;
         }
 
@@ -770,8 +940,8 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
             </div>
             <h3 className="text-3xl font-semibold tracking-tight text-slate-900">{t("progress.gantt.title")}</h3>
             <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-600">
-              This gantt view uses exact daily dates internally and can switch between day, week, and month scales
-              without losing the task schedule.
+              This gantt view compares planned and actual timing for each task and can switch between day, week, and
+              month scales without losing the schedule.
             </p>
           </div>
 
@@ -809,11 +979,14 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         </div>
 
         <div className="mt-5 flex flex-wrap gap-3">
+          <span className="legend-chip legend-chip-planned">
+            Planned
+          </span>
           <span className="legend-chip legend-chip-completed">
-            Completed
+            Actual Completed
           </span>
           <span className="legend-chip legend-chip-progress">
-            In Progress
+            Actual In Progress
           </span>
         </div>
 
@@ -829,13 +1002,13 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
             </div>
           ) : null}
 
-          {selectedTask ? (
+          {selectedTaskGroup ? (
             <div className="gantt-detail-card">
               <div className="gantt-detail-top">
                 <div>
-                  <div className="gantt-detail-title">{selectedTask._meta.task}</div>
+                  <div className="gantt-detail-title">{selectedTaskGroup.task}</div>
                   <div className="gantt-detail-subtitle">
-                    {selectedTask._meta.role} · {selectedTask._meta.name}
+                    {selectedTaskGroup.role} · {selectedTaskGroup.name}
                   </div>
                 </div>
 
@@ -843,25 +1016,33 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
                   <span
                     className="gantt-detail-status-dot"
                     style={{
-                      background: selectedTask._meta.status === "Completed" ? COMPLETED_COLOR : IN_PROGRESS_COLOR,
+                      background: selectedTaskGroup.status === "Completed" ? COMPLETED_COLOR : IN_PROGRESS_COLOR,
                     }}
                   />
-                  {selectedTask._meta.status}
+                  {selectedTaskGroup.status}
                 </div>
               </div>
 
               <div className="gantt-detail-grid">
                 <div className="gantt-detail-item">
                   <div className="gantt-detail-label">Progress</div>
-                  <div className="gantt-detail-value">{selectedTask.progress}%</div>
+                  <div className="gantt-detail-value">{selectedTaskGroup.progress}%</div>
                 </div>
                 <div className="gantt-detail-item">
-                  <div className="gantt-detail-label">Start</div>
-                  <div className="gantt-detail-value">{formatFullDate(selectedTask._meta.startDate)}</div>
+                  <div className="gantt-detail-label">Planned Start</div>
+                  <div className="gantt-detail-value">{formatFullDate(selectedTaskGroup.plannedStartDate)}</div>
                 </div>
                 <div className="gantt-detail-item">
-                  <div className="gantt-detail-label">End</div>
-                  <div className="gantt-detail-value">{formatFullDate(selectedTask._meta.endDate)}</div>
+                  <div className="gantt-detail-label">Planned End</div>
+                  <div className="gantt-detail-value">{formatFullDate(selectedTaskGroup.plannedEndDate)}</div>
+                </div>
+                <div className="gantt-detail-item">
+                  <div className="gantt-detail-label">Actual Start</div>
+                  <div className="gantt-detail-value">{formatFullDate(selectedTaskGroup.actualStartDate)}</div>
+                </div>
+                <div className="gantt-detail-item">
+                  <div className="gantt-detail-label">Actual End</div>
+                  <div className="gantt-detail-value">{formatFullDate(selectedTaskGroup.actualEndDate)}</div>
                 </div>
               </div>
             </div>
@@ -881,13 +1062,16 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
                   {builtTasks.map((task) => (
                     <div
                       key={`sidebar-${task.id}`}
-                      className={`gantt-sidebar-row ${getSidebarTone(task._meta.status)} ${
-                        selectedTaskId === task.id ? "is-selected" : ""
+                      className={`gantt-sidebar-row ${getSidebarTone(task)} ${
+                        selectedGroupId === task._meta.groupId ? "is-selected" : ""
                       }`}
-                      title={`${task._meta.role} · ${task._meta.name} · ${task._meta.task}`}
-                      onClick={() => setSelectedTaskId(task.id)}
+                      title={`${task._meta.role} · ${task._meta.name} · ${task._meta.task} · ${task._meta.barKind}`}
+                      onClick={() => setSelectedGroupId(task._meta.groupId)}
                     >
                       <span className="gantt-sidebar-dot" />
+                      <span className="gantt-sidebar-variant">
+                        {task._meta.barKind === "planned" ? "Plan" : "Actual"}
+                      </span>
                       <div className="gantt-sidebar-copy">
                         <div className="gantt-sidebar-owner">{task._meta.name}</div>
                         <div className="gantt-sidebar-task">{task._meta.task}</div>
@@ -898,7 +1082,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
               </div>
 
               <div className="gantt-chart">
-                <div ref={ganttRef} className="w-full min-w-[980px] lg:min-w-[1180px]" />
+                <div ref={ganttRef} className="w-full" />
               </div>
             </div>
           </div>

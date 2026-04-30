@@ -56,6 +56,42 @@
       "category": "planning"
     },
     {
+      "id": "pm-m1-system-requirements-merge",
+      "name": "Support M1 System Requirements Merge",
+      "role": "P.M.",
+      "owner": "Yihang LI",
+      "start": "2026-04-11",
+      "end": "2026-04-17",
+      "plannedStart": "2026-04-10",
+      "plannedEnd": "2026-04-16",
+      "actualStart": "2026-04-11",
+      "actualEnd": "2026-04-17",
+      "progress": 100,
+      "status": "completed",
+      "dependencies": [
+        "pm-admin-usecase-finalization"
+      ],
+      "category": "analysis"
+    },
+    {
+      "id": "pm-interface-protocol-sync",
+      "name": "Inter-Team Interface Protocol Sync",
+      "role": "P.M.",
+      "owner": "Yihang LI",
+      "start": "2026-04-18",
+      "end": "2026-04-26",
+      "plannedStart": "2026-04-18",
+      "plannedEnd": "2026-04-24",
+      "actualStart": "2026-04-18",
+      "actualEnd": "2026-04-26",
+      "progress": 88,
+      "status": "in-progress",
+      "dependencies": [
+        "pm-six-team-requirement-sync"
+      ],
+      "category": "interface"
+    },
+    {
       "id": "vp-testing-qa",
       "name": "Testing & QA",
       "role": "V.P.M./Programmer1",
@@ -66,6 +102,22 @@
       "status": "in-progress",
       "dependencies": [],
       "category": "testing"
+    },
+    {
+      "id": "vp-runtime-environment-setup",
+      "name": "Runtime Environment Setup",
+      "role": "V.P.M./Programmer1",
+      "owner": "Kika Vasconcelos Francisca",
+      "start": "2026-04-20",
+      "end": "2026-04-22",
+      "plannedStart": "2026-04-19",
+      "plannedEnd": "2026-04-21",
+      "actualStart": "2026-04-20",
+      "actualEnd": "2026-04-22",
+      "progress": 100,
+      "status": "completed",
+      "dependencies": [],
+      "category": "infrastructure"
     },
     {
       "id": "prog-gantt-diagram",
@@ -164,6 +216,42 @@
       "status": "completed",
       "dependencies": [
         "sa-use-case-diagram"
+      ],
+      "category": "analysis"
+    },
+    {
+      "id": "sa-interface-document-refinement",
+      "name": "Interface Document Refinement",
+      "role": "S.A.",
+      "owner": "Shu WANG",
+      "start": "2026-04-19",
+      "end": "2026-04-27",
+      "plannedStart": "2026-04-18",
+      "plannedEnd": "2026-04-24",
+      "actualStart": "2026-04-19",
+      "actualEnd": "2026-04-27",
+      "progress": 86,
+      "status": "in-progress",
+      "dependencies": [
+        "pm-six-team-requirement-sync"
+      ],
+      "category": "interface"
+    },
+    {
+      "id": "sa-rehabilitation-suggestions-consolidation",
+      "name": "Rehabilitation Suggestion Consolidation",
+      "role": "S.A.",
+      "owner": "Shu WANG",
+      "start": "2026-04-16",
+      "end": "2026-04-21",
+      "plannedStart": "2026-04-16",
+      "plannedEnd": "2026-04-20",
+      "actualStart": "2026-04-16",
+      "actualEnd": "2026-04-21",
+      "progress": 100,
+      "status": "completed",
+      "dependencies": [
+        "sa-doctor-usecase-confirmation"
       ],
       "category": "analysis"
     }

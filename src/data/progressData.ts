@@ -33,6 +33,10 @@ export type GanttTask = {
   owner: string;
   start: string;
   end: string;
+  plannedStart?: string;
+  plannedEnd?: string;
+  actualStart?: string;
+  actualEnd?: string;
   progress: number;
   status: string;
   dependencies: string[];
