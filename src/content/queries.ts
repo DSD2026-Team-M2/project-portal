@@ -9,6 +9,7 @@ const visibleDocSlugs = new Set<string>([
   "software-requirements-specification-v0-1-archive",
   "meeting-minutes-index-v1",
   "meeting-minutes-2026-04-18-first-generation-system-alignment",
+  "meeting-minutes-2026-05-18-dr-yin-knee-function-assessment-consultation",
 ]);
 
 function selectLocalizedEntry(entries: GeneratedContentEntry[], language: SupportedLanguage): GeneratedContentEntry | null {

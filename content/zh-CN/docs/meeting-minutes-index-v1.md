@@ -19,7 +19,7 @@ attentionTags:
   - attention:M2
 version: v1.0
 reviewStatus: in-review
-lastUpdated: 2026-04-20
+lastUpdated: 2026-05-19
 links:
   - label: 六队联席会议（2026-04-03）
     href: /logs/2026-04-03-first-leads-meeting-on-requirements
@@ -27,6 +27,10 @@ links:
     href: /docs/meeting-minutes-2026-04-18-first-generation-system-alignment
   - label: 六队联席会议（2026-04-18）
     href: /logs/2026-04-18-first-generation-system-alignment-meeting-held
+  - label: 尹医生膝关节功能评估系统咨询会议纪要（2026-05-18）
+    href: /docs/meeting-minutes-2026-05-18-dr-yin-knee-function-assessment-consultation
+  - label: 对应新闻记录（2026-05-18）
+    href: /logs/2026-05-18-dr-yin-knee-function-assessment-consultation
 evidence:
   - label: 日志页
     href: /logs
@@ -42,3 +46,5 @@ actionItems: []
 - [六队联席会议（2026-04-03）- 需求分析协同启动](/logs/2026-04-03-first-leads-meeting-on-requirements)
 - [六队联席会议纪要（2026-04-18）](/docs/meeting-minutes-2026-04-18-first-generation-system-alignment)
 - [六队联席会议（2026-04-18）- 第一代系统职责与数据流进一步明确](/logs/2026-04-18-first-generation-system-alignment-meeting-held)
+- [尹医生膝关节功能评估系统咨询会议纪要（2026-05-18）](/docs/meeting-minutes-2026-05-18-dr-yin-knee-function-assessment-consultation)
+- [M2 队长与尹医生召开膝关节功能评估系统线上咨询会议](/logs/2026-05-18-dr-yin-knee-function-assessment-consultation)
