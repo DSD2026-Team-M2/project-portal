@@ -55,6 +55,7 @@ type BuiltTask = {
     id: string;
     groupId: string;
     barKind: TaskBarKind;
+    rowIndex: number;
     startDate: Date;
     endDate: Date;
     plannedStartDate: Date;
@@ -68,6 +69,7 @@ type BuiltTask = {
 
 type TaskGroup = {
   id: string;
+  rowIndex: number;
   role: string;
   name: string;
   task: string;
@@ -80,18 +82,34 @@ type TaskGroup = {
   actualEndDate: Date;
 };
 
+type TaskEntry = {
+  group: TaskGroup;
+  bars: BuiltTask[];
+};
+
+type OwnerGroup = {
+  owner: string;
+  role: string;
+  tasks: TaskGroup[];
+};
+
 type GanttPopupContext = {
   task?: BuiltTask;
 };
 
-const GANTT_BAR_HEIGHT = 28;
-const GANTT_PADDING = 18;
+const GANTT_BAR_HEIGHT = 8;
+const GANTT_PADDING = 28;
 const GANTT_ROW_HEIGHT = GANTT_BAR_HEIGHT + GANTT_PADDING;
 const GANTT_UPPER_HEADER_HEIGHT = 45;
 const GANTT_LOWER_HEADER_HEIGHT = 30;
 const GANTT_HEADER_HEIGHT = GANTT_UPPER_HEADER_HEIGHT + GANTT_LOWER_HEADER_HEIGHT + 10;
-const GANTT_LANE_WIDTH = 290;
-const GANTT_LANE_WIDTH_COMPACT = 236;
+const GANTT_LANE_WIDTH = 360;
+const GANTT_LANE_WIDTH_COMPACT = 260;
+const GANTT_OWNER_WIDTH = 124;
+const GANTT_OWNER_WIDTH_COMPACT = 88;
+const GANTT_BAR_RADIUS = 4;
+const GANTT_PLANNED_OFFSET = 8;
+const GANTT_ACTUAL_OFFSET = 21;
 const COMPLETED_COLOR = "#09b24d";
 const IN_PROGRESS_COLOR = "#f0e400";
 const PLANNED_BAR_FILL = "rgba(148, 163, 184, 0.24)";
@@ -298,6 +316,7 @@ function buildLegacyTask(row: GanttRow, index: number): BuiltTask {
       id,
       groupId: id,
       barKind: "actual",
+      rowIndex: 0,
       startDate,
       endDate,
       plannedStartDate: startDate,
@@ -318,6 +337,7 @@ function buildDatasetTaskGroup(task: DatasetTask): TaskGroup {
 
   return {
     id: task.id,
+    rowIndex: 0,
     role: task.role,
     name: task.owner,
     task: task.name,
@@ -347,6 +367,7 @@ function buildDatasetTaskBars(task: DatasetTask): BuiltTask[] {
     id,
     groupId: group.id,
     barKind,
+    rowIndex: group.rowIndex,
     role: group.role,
     name: group.name,
     task: group.task,
@@ -410,10 +431,143 @@ function isLegacyTask(task: GanttSourceTask): task is GanttRow {
   return "weekStart" in task && "weekEnd" in task;
 }
 
-function getSidebarTone(task: BuiltTask) {
-  if (task._meta.barKind === "planned") return "gantt-sidebar-planned";
-  if (task._meta.status === "Completed") return "gantt-sidebar-completed";
-  return "gantt-sidebar-progress";
+function assignRowIndex(entry: TaskEntry, rowIndex: number): TaskEntry {
+  return {
+    group: {
+      ...entry.group,
+      rowIndex,
+    },
+    bars: entry.bars.map((bar) => ({
+      ...bar,
+      _meta: {
+        ...bar._meta,
+        rowIndex,
+      },
+    })),
+  };
+}
+
+function groupTaskEntriesByOwner(entries: TaskEntry[]) {
+  const ownerOrder: string[] = [];
+  const entriesByOwner = new Map<string, TaskEntry[]>();
+
+  entries.forEach((entry) => {
+    const owner = entry.group.name;
+    if (!entriesByOwner.has(owner)) {
+      ownerOrder.push(owner);
+      entriesByOwner.set(owner, []);
+    }
+
+    entriesByOwner.get(owner)?.push(entry);
+  });
+
+  return ownerOrder.flatMap((owner) => entriesByOwner.get(owner) ?? []);
+}
+
+function getTaskRowTone(task: TaskGroup) {
+  if (task.status === "Completed") return "gantt-task-completed";
+  return "gantt-task-progress";
+}
+
+function formatTaskProgress(task: TaskGroup) {
+  if (task.status === "Completed") return `${task.progress}%`;
+  return "In progress";
+}
+
+function getCompactChartHeight(rowCount: number) {
+  return GANTT_HEADER_HEIGHT + rowCount * GANTT_ROW_HEIGHT + 8;
+}
+
+function getCompactBarY(rowIndex: number, barKind: TaskBarKind) {
+  const rowTop = GANTT_HEADER_HEIGHT + rowIndex * GANTT_ROW_HEIGHT;
+  return rowTop + (barKind === "planned" ? GANTT_PLANNED_OFFSET : GANTT_ACTUAL_OFFSET);
+}
+
+function setSvgRectBarShape(rect: SVGRectElement, y: number) {
+  rect.setAttribute("y", String(y));
+  rect.setAttribute("height", String(GANTT_BAR_HEIGHT));
+  rect.setAttribute("rx", String(GANTT_BAR_RADIUS));
+  rect.setAttribute("ry", String(GANTT_BAR_RADIUS));
+}
+
+// Frappe Gantt renders one SVG row per bar. The portal keeps planned and actual as separate bars,
+// then compacts each pair into one task row so both timings remain selectable.
+function compactRenderedGanttRows(
+  host: HTMLElement,
+  chartContainer: HTMLElement,
+  builtTaskMap: Map<string, BuiltTask>,
+  rowCount: number,
+) {
+  const chartHeight = getCompactChartHeight(rowCount);
+  const bodyHeight = Math.max(0, chartHeight - GANTT_HEADER_HEIGHT);
+
+  chartContainer.style.setProperty("--gv-grid-height", `${chartHeight}px`);
+  chartContainer.style.height = `${chartHeight}px`;
+
+  const svg = host.querySelector<SVGSVGElement>("svg.gantt");
+  svg?.setAttribute("height", String(chartHeight));
+
+  const background = host.querySelector<SVGRectElement>(".grid-background");
+  background?.setAttribute("height", String(chartHeight));
+
+  host.querySelectorAll<SVGRectElement>(".grid-row").forEach((row, index) => {
+    if (index >= rowCount) {
+      row.style.display = "none";
+      return;
+    }
+
+    row.style.display = "";
+    row.setAttribute("y", String(GANTT_HEADER_HEIGHT + index * GANTT_ROW_HEIGHT));
+    row.setAttribute("height", String(GANTT_ROW_HEIGHT));
+  });
+
+  host.querySelectorAll<SVGLineElement>(".row-line").forEach((line, index) => {
+    if (index >= rowCount) {
+      line.style.display = "none";
+      return;
+    }
+
+    const y = GANTT_HEADER_HEIGHT + (index + 1) * GANTT_ROW_HEIGHT;
+    line.style.display = "";
+    line.setAttribute("y1", String(y));
+    line.setAttribute("y2", String(y));
+  });
+
+  host.querySelectorAll<SVGPathElement>(".tick").forEach((tick) => {
+    const path = tick.getAttribute("d") ?? "";
+    const match = /^M\s+([^\s]+)\s+([^\s]+)\s+v\s+([^\s]+)$/i.exec(path);
+    if (!match) return;
+
+    tick.setAttribute("d", `M ${match[1]} ${GANTT_HEADER_HEIGHT} v ${bodyHeight}`);
+  });
+
+  host.querySelectorAll<SVGRectElement>(".holiday-highlight, .grid-column, .ignored-bar").forEach((rect) => {
+    rect.setAttribute("y", String(GANTT_HEADER_HEIGHT));
+    rect.setAttribute("height", String(bodyHeight));
+  });
+
+  chartContainer.querySelectorAll<HTMLElement>(".current-highlight").forEach((highlight) => {
+    highlight.style.top = `${GANTT_HEADER_HEIGHT}px`;
+    highlight.style.height = `${bodyHeight}px`;
+  });
+
+  host.querySelectorAll<SVGGElement>(".bar-wrapper").forEach((wrapper) => {
+    const taskId = wrapper.getAttribute("data-id") ?? "";
+    const task = builtTaskMap.get(taskId);
+    if (!task) return;
+
+    const y = getCompactBarY(task._meta.rowIndex, task._meta.barKind);
+    wrapper.setAttribute("data-row-index", String(task._meta.rowIndex));
+    wrapper.setAttribute("data-bar-kind", task._meta.barKind);
+
+    wrapper.querySelectorAll<SVGRectElement>(".bar, .bar-progress, .bar-expected-progress").forEach((rect) => {
+      setSvgRectBarShape(rect, y);
+    });
+
+    wrapper.querySelectorAll<SVGTextElement>(".bar-label").forEach((label) => {
+      label.setAttribute("y", String(y + GANTT_BAR_HEIGHT / 2));
+    });
+  });
 }
 
 export function GanttPanel({ tasks }: GanttPanelProps) {
@@ -427,36 +581,66 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
 
   const sourceTasks = useMemo(() => (tasks && tasks.length ? tasks : rawRows), [tasks]);
   const { builtTasks, taskGroups } = useMemo(() => {
-    const nextBuiltTasks: BuiltTask[] = [];
-    const nextTaskGroups: TaskGroup[] = [];
+    const entries: TaskEntry[] = [];
 
     sourceTasks.forEach((task, index) => {
       if (isLegacyTask(task)) {
         const builtTask = buildLegacyTask(task, index);
-        nextBuiltTasks.push(builtTask);
-        nextTaskGroups.push({
-          id: builtTask.id,
-          role: builtTask._meta.role,
-          name: builtTask._meta.name,
-          task: builtTask._meta.task,
-          status: builtTask._meta.status,
-          progress: builtTask._meta.actualProgress,
-          category: builtTask._meta.category,
-          plannedStartDate: builtTask._meta.plannedStartDate,
-          plannedEndDate: builtTask._meta.plannedEndDate,
-          actualStartDate: builtTask._meta.actualStartDate,
-          actualEndDate: builtTask._meta.actualEndDate,
+        entries.push({
+          group: {
+            id: builtTask.id,
+            rowIndex: 0,
+            role: builtTask._meta.role,
+            name: builtTask._meta.name,
+            task: builtTask._meta.task,
+            status: builtTask._meta.status,
+            progress: builtTask._meta.actualProgress,
+            category: builtTask._meta.category,
+            plannedStartDate: builtTask._meta.plannedStartDate,
+            plannedEndDate: builtTask._meta.plannedEndDate,
+            actualStartDate: builtTask._meta.actualStartDate,
+            actualEndDate: builtTask._meta.actualEndDate,
+          },
+          bars: [builtTask],
         });
         return;
       }
 
-      nextBuiltTasks.push(...buildDatasetTaskBars(task));
-      nextTaskGroups.push(buildDatasetTaskGroup(task));
+      entries.push({
+        group: buildDatasetTaskGroup(task),
+        bars: buildDatasetTaskBars(task),
+      });
     });
 
-    return { builtTasks: nextBuiltTasks, taskGroups: nextTaskGroups };
+    const orderedEntries = groupTaskEntriesByOwner(entries).map(assignRowIndex);
+
+    return {
+      builtTasks: orderedEntries.flatMap((entry) => entry.bars),
+      taskGroups: orderedEntries.map((entry) => entry.group),
+    };
   }, [sourceTasks]);
   const builtTaskMap = useMemo(() => new Map(builtTasks.map((task) => [task.id, task])), [builtTasks]);
+  const ownerGroups = useMemo<OwnerGroup[]>(() => {
+    const groups: OwnerGroup[] = [];
+    const groupByOwner = new Map<string, OwnerGroup>();
+
+    taskGroups.forEach((task) => {
+      let ownerGroup = groupByOwner.get(task.name);
+      if (!ownerGroup) {
+        ownerGroup = {
+          owner: task.name,
+          role: task.role,
+          tasks: [],
+        };
+        groupByOwner.set(task.name, ownerGroup);
+        groups.push(ownerGroup);
+      }
+
+      ownerGroup.tasks.push(task);
+    });
+
+    return groups;
+  }, [taskGroups]);
   const validationIssues = useMemo(
     () => (sourceTasks.every(isLegacyTask) ? validateRows(sourceTasks) : validateBuiltTasks(builtTasks)),
     [builtTasks, sourceTasks],
@@ -512,8 +696,8 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
           view_mode: viewMode,
           column_width: viewMode === "Day" ? 40 : viewMode === "Week" ? 72 : 120,
           bar_height: GANTT_BAR_HEIGHT,
-          bar_corner_radius: 6,
-          container_height: builtTasks.length * GANTT_ROW_HEIGHT + 90,
+          bar_corner_radius: GANTT_BAR_RADIUS,
+          container_height: getCompactChartHeight(taskGroups.length),
           padding: GANTT_PADDING,
           upper_header_height: GANTT_UPPER_HEADER_HEIGHT,
           lower_header_height: GANTT_LOWER_HEADER_HEIGHT,
@@ -534,6 +718,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
 
         const chartContainer = ganttRef.current.querySelector<HTMLElement>(".gantt-container");
         if (!chartContainer) return () => {};
+        compactRenderedGanttRows(ganttRef.current, chartContainer, builtTaskMap, taskGroups.length);
 
         const syncSidebarOffset = () => {
           if (!sidebarRowsRef.current) return;
@@ -587,18 +772,21 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
       if (ganttRef.current) ganttRef.current.innerHTML = "";
       if (sidebarRowsRef.current) sidebarRowsRef.current.style.transform = "translateY(0)";
     };
-  }, [builtTaskMap, builtTasks, validationIssues, viewMode]);
+  }, [builtTaskMap, builtTasks, taskGroups.length, validationIssues, viewMode]);
 
   return (
     <div className="overflow-hidden">
       <style>{`
         .gantt-shell {
-          overflow: hidden;
+          overflow-x: auto;
+          overflow-y: hidden;
+          padding-bottom: 2px;
         }
 
         .gantt-board {
           display: grid;
           grid-template-columns: ${GANTT_LANE_WIDTH}px minmax(0, 1fr);
+          min-width: 860px;
           border: 1px solid rgba(148, 163, 184, 0.18);
           border-radius: 24px;
           overflow: hidden;
@@ -613,12 +801,23 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         }
 
         .gantt-sidebar-header {
-          display: flex;
-          align-items: center;
+          display: grid;
+          grid-template-columns: ${GANTT_OWNER_WIDTH}px minmax(0, 1fr);
           height: ${GANTT_HEADER_HEIGHT}px;
           box-sizing: border-box;
-          padding: 18px 16px 14px;
           border-bottom: 1px solid rgba(148, 163, 184, 0.16);
+        }
+
+        .gantt-sidebar-header-cell {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          min-width: 0;
+          padding: 14px 14px 12px;
+        }
+
+        .gantt-sidebar-header-cell + .gantt-sidebar-header-cell {
+          border-left: 1px solid rgba(148, 163, 184, 0.14);
         }
 
         .gantt-sidebar-header-label {
@@ -641,10 +840,52 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
           will-change: transform;
         }
 
-        .gantt-sidebar-row {
+        .gantt-owner-group {
+          display: grid;
+          grid-template-columns: ${GANTT_OWNER_WIDTH}px minmax(0, 1fr);
+          border-bottom: 1px solid rgba(203, 213, 225, 0.78);
+        }
+
+        .gantt-owner-cell {
           display: flex;
+          flex-direction: column;
+          justify-content: center;
+          min-width: 0;
+          box-sizing: border-box;
+          padding: 10px 12px;
+          border-right: 1px solid rgba(148, 163, 184, 0.14);
+          background: rgba(248, 250, 252, 0.78);
+        }
+
+        .gantt-owner-name {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 12px;
+          font-weight: 800;
+          line-height: 1.25;
+          color: #0f172a;
+        }
+
+        .gantt-owner-role {
+          margin-top: 4px;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          font-size: 10px;
+          font-weight: 700;
+          line-height: 1.2;
+          text-transform: uppercase;
+          color: #64748b;
+        }
+
+        .gantt-task-list {
+          min-width: 0;
+        }
+
+        .gantt-task-row {
+          display: grid;
+          grid-template-columns: 14px minmax(0, 1fr);
           align-items: center;
-          gap: 8px;
+          column-gap: 8px;
           height: ${GANTT_ROW_HEIGHT}px;
           box-sizing: border-box;
           padding: 0 12px;
@@ -653,46 +894,30 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
           transition: background-color 0.2s ease;
         }
 
-        .gantt-sidebar-row:hover {
+        .gantt-task-row:last-child {
+          border-bottom: 0;
+        }
+
+        .gantt-task-row:hover {
           background: rgba(241, 245, 249, 0.8);
         }
 
-        .gantt-sidebar-row.is-selected {
+        .gantt-task-row.is-selected {
           background: rgba(226, 232, 240, 0.76);
         }
 
-        .gantt-sidebar-dot {
-          width: 10px;
-          height: 10px;
+        .gantt-task-dot {
+          width: 9px;
+          height: 9px;
           border-radius: 999px;
-          flex: 0 0 10px;
           box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9);
         }
 
-        .gantt-sidebar-copy {
+        .gantt-task-copy {
           min-width: 0;
-          flex: 1 1 auto;
         }
 
-        .gantt-sidebar-variant {
-          display: inline-flex;
-          align-items: center;
-          justify-content: center;
-          width: 48px;
-          height: 20px;
-          flex: 0 0 48px;
-          border: 1px solid rgba(148, 163, 184, 0.32);
-          border-radius: 999px;
-          background: rgba(255, 255, 255, 0.72);
-          font-size: 9px;
-          font-weight: 700;
-          letter-spacing: 0.04em;
-          line-height: 1;
-          text-transform: uppercase;
-          color: #64748b;
-        }
-
-        .gantt-sidebar-owner {
+        .gantt-task-title {
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
@@ -702,25 +927,25 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
           color: #0f172a;
         }
 
-        .gantt-sidebar-task {
+        .gantt-task-meta {
+          margin-top: 3px;
           overflow: hidden;
           text-overflow: ellipsis;
           white-space: nowrap;
-          font-size: 12px;
+          font-size: 10px;
+          font-weight: 700;
+          letter-spacing: 0.06em;
           line-height: 1.25;
+          text-transform: uppercase;
           color: #475569;
         }
 
-        .gantt-sidebar-completed .gantt-sidebar-dot {
+        .gantt-task-completed .gantt-task-dot {
           background: ${COMPLETED_COLOR};
         }
 
-        .gantt-sidebar-progress .gantt-sidebar-dot {
+        .gantt-task-progress .gantt-task-dot {
           background: ${IN_PROGRESS_COLOR};
-        }
-
-        .gantt-sidebar-planned .gantt-sidebar-dot {
-          background: #94a3b8;
         }
 
         .gantt-chart {
@@ -774,7 +999,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         }
 
         .gantt-chart .bar-progress {
-          display: none;
+          display: block;
         }
 
         .gantt-chart .bar-wrapper .bar {
@@ -783,8 +1008,23 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
         }
 
         .gantt-chart .bar-wrapper.is-selected .bar {
-          stroke: #0f172a;
-          stroke-width: 2;
+          stroke-width: 1.5;
+        }
+
+        .gantt-chart .bar-wrapper.is-selected .bar-progress {
+          stroke-width: 0;
+        }
+
+        .gantt-chart .task-completed.is-selected .bar {
+          stroke: #059669;
+        }
+
+        .gantt-chart .task-progress.is-selected .bar {
+          stroke: #ca8a04;
+        }
+
+        .gantt-chart .task-planned.is-selected .bar {
+          stroke: ${PLANNED_BAR_STROKE};
         }
 
         .gantt-chart .task-completed .bar,
@@ -806,7 +1046,32 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
 
         @media (max-width: 900px) {
           .gantt-board {
-            grid-template-columns: ${GANTT_LANE_WIDTH_COMPACT}px minmax(0, 1fr);
+            grid-template-columns: ${GANTT_LANE_WIDTH_COMPACT}px minmax(520px, 1fr);
+            min-width: 780px;
+          }
+
+          .gantt-sidebar-header,
+          .gantt-owner-group {
+            grid-template-columns: ${GANTT_OWNER_WIDTH_COMPACT}px minmax(0, 1fr);
+          }
+        }
+
+        @media (max-width: 520px) {
+          .gantt-board {
+            grid-template-columns: 220px minmax(500px, 1fr);
+            min-width: 720px;
+          }
+
+          .gantt-sidebar-header,
+          .gantt-owner-group {
+            grid-template-columns: 76px minmax(0, 1fr);
+          }
+
+          .gantt-sidebar-header-cell,
+          .gantt-owner-cell,
+          .gantt-task-row {
+            padding-left: 10px;
+            padding-right: 10px;
           }
         }
 
@@ -1026,7 +1291,7 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
               <div className="gantt-detail-grid">
                 <div className="gantt-detail-item">
                   <div className="gantt-detail-label">Progress</div>
-                  <div className="gantt-detail-value">{selectedTaskGroup.progress}%</div>
+                  <div className="gantt-detail-value">{formatTaskProgress(selectedTaskGroup)}</div>
                 </div>
                 <div className="gantt-detail-item">
                   <div className="gantt-detail-label">Planned Start</div>
@@ -1052,29 +1317,44 @@ export function GanttPanel({ tasks }: GanttPanelProps) {
             <div className="gantt-board">
               <div className="gantt-sidebar">
                 <div className="gantt-sidebar-header">
-                  <div>
+                  <div className="gantt-sidebar-header-cell">
                     <div className="gantt-sidebar-header-label">Fixed Lane</div>
-                    <div className="gantt-sidebar-header-title">Owner · Task</div>
+                    <div className="gantt-sidebar-header-title">Owner</div>
+                  </div>
+                  <div className="gantt-sidebar-header-cell">
+                    <div className="gantt-sidebar-header-label">Grouped Tasks</div>
+                    <div className="gantt-sidebar-header-title">Task</div>
                   </div>
                 </div>
 
                 <div ref={sidebarRowsRef} className="gantt-sidebar-rows">
-                  {builtTasks.map((task) => (
+                  {ownerGroups.map((ownerGroup) => (
                     <div
-                      key={`sidebar-${task.id}`}
-                      className={`gantt-sidebar-row ${getSidebarTone(task)} ${
-                        selectedGroupId === task._meta.groupId ? "is-selected" : ""
-                      }`}
-                      title={`${task._meta.role} · ${task._meta.name} · ${task._meta.task} · ${task._meta.barKind}`}
-                      onClick={() => setSelectedGroupId(task._meta.groupId)}
+                      key={`owner-${ownerGroup.owner}`}
+                      className="gantt-owner-group"
+                      style={{ height: ownerGroup.tasks.length * GANTT_ROW_HEIGHT }}
                     >
-                      <span className="gantt-sidebar-dot" />
-                      <span className="gantt-sidebar-variant">
-                        {task._meta.barKind === "planned" ? "Plan" : "Actual"}
-                      </span>
-                      <div className="gantt-sidebar-copy">
-                        <div className="gantt-sidebar-owner">{task._meta.name}</div>
-                        <div className="gantt-sidebar-task">{task._meta.task}</div>
+                      <div className="gantt-owner-cell" title={`${ownerGroup.role} · ${ownerGroup.owner}`}>
+                        <div className="gantt-owner-name">{ownerGroup.owner}</div>
+                        <div className="gantt-owner-role">{ownerGroup.role}</div>
+                      </div>
+                      <div className="gantt-task-list">
+                        {ownerGroup.tasks.map((task) => (
+                          <div
+                            key={`task-${task.id}`}
+                            className={`gantt-task-row ${getTaskRowTone(task)} ${
+                              selectedGroupId === task.id ? "is-selected" : ""
+                            }`}
+                            title={`${task.role} · ${task.name} · ${task.task}`}
+                            onClick={() => setSelectedGroupId(task.id)}
+                          >
+                            <span className="gantt-task-dot" />
+                            <div className="gantt-task-copy">
+                              <div className="gantt-task-title">{task.task}</div>
+                              <div className="gantt-task-meta">{task.status}</div>
+                            </div>
+                          </div>
+                        ))}
                       </div>
                     </div>
                   ))}
