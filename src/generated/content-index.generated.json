@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-19T15:46:30.093Z",
+  "generatedAt": "2026-05-20T06:20:45.170Z",
   "entries": [
     {
       "id": "log-2026-05-18-dr-yin-knee-function-assessment-consultation",
@@ -2115,55 +2115,6 @@
     {
       "id": "doc-requirement-analysis-v1",
       "slug": "requirement-analysis-v1",
-      "locale": "zh-CN",
-      "collection": "docs",
-      "routeBase": "docs",
-      "title": "需求分析",
-      "type": "requirement-analysis",
-      "date": "2026-03-20",
-      "owner": "PM",
-      "ownerRole": "PM",
-      "status": "final",
-      "summary": "定义 portal 的角色、边界与最小页面结构，明确它是汇报、文档与协作中枢，而不是产品站。",
-      "relatedTeams": [
-        "PM",
-        "M2"
-      ],
-      "relatedRepos": [
-        "project-portal"
-      ],
-      "tags": [
-        "deliverable",
-        "milestone"
-      ],
-      "attentionTags": [
-        "attention:M2"
-      ],
-      "lastUpdated": "2026-03-20",
-      "version": "v1.0",
-      "reviewStatus": "final",
-      "links": [
-        {
-          "label": "系统设计提纲",
-          "href": "/docs/system-design-outline-v1"
-        }
-      ],
-      "evidence": [
-        {
-          "label": "团队结构提案",
-          "href": "/logs/2026-03-team-structure-proposal-shared"
-        }
-      ],
-      "actionItems": [],
-      "featured": false,
-      "archived": false,
-      "markers": [],
-      "body": "## 范围\n\n定义 project-portal 的定位、边界、信息架构与最低实现范围。\n\n## 必须回答的问题\n\n- 这是什么项目？\n- portal 是做什么的？\n- M2 负责什么？\n- 日志、里程碑、文档和交付物在哪里？\n\n## 约束\n\n- portal 不能冒充主产品网页。\n- 实现必须足够简单，适合正在学习 Vite、React、TypeScript 的同学继续维护。\n- 内容更新应优先通过 markdown 和生成脚本完成。",
-      "sourcePath": "content/zh-CN/docs/requirement-analysis-v1.md"
-    },
-    {
-      "id": "doc-requirement-analysis-v1",
-      "slug": "requirement-analysis-v1",
       "locale": "pt",
       "collection": "docs",
       "routeBase": "docs",
@@ -2209,6 +2160,55 @@
       "markers": [],
       "body": "## Âmbito\n\nDefinir o papel, as fronteiras e a estrutura mínima de páginas do `project-portal`.\n\n## Perguntas obrigatórias\n\n- O que é o projeto no seu todo?\n- Para que serve o portal?\n- O que está sob responsabilidade da M2?\n- Onde estão os registos, marcos, documentos e entregáveis?",
       "sourcePath": "content/pt/docs/requirement-analysis-v1.md"
+    },
+    {
+      "id": "doc-requirement-analysis-v1",
+      "slug": "requirement-analysis-v1",
+      "locale": "zh-CN",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "需求分析",
+      "type": "requirement-analysis",
+      "date": "2026-03-20",
+      "owner": "PM",
+      "ownerRole": "PM",
+      "status": "final",
+      "summary": "定义 portal 的角色、边界与最小页面结构，明确它是汇报、文档与协作中枢，而不是产品站。",
+      "relatedTeams": [
+        "PM",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-20",
+      "version": "v1.0",
+      "reviewStatus": "final",
+      "links": [
+        {
+          "label": "系统设计提纲",
+          "href": "/docs/system-design-outline-v1"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "团队结构提案",
+          "href": "/logs/2026-03-team-structure-proposal-shared"
+        }
+      ],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## 范围\n\n定义 project-portal 的定位、边界、信息架构与最低实现范围。\n\n## 必须回答的问题\n\n- 这是什么项目？\n- portal 是做什么的？\n- M2 负责什么？\n- 日志、里程碑、文档和交付物在哪里？\n\n## 约束\n\n- portal 不能冒充主产品网页。\n- 实现必须足够简单，适合正在学习 Vite、React、TypeScript 的同学继续维护。\n- 内容更新应优先通过 markdown 和生成脚本完成。",
+      "sourcePath": "content/zh-CN/docs/requirement-analysis-v1.md"
     },
     {
       "id": "log-2026-03-19-course-begins-first-video-meeting",

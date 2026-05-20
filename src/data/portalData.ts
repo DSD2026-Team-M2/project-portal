@@ -686,6 +686,25 @@ export const calendarEvents: CalendarEventRecord[] = [
     tags: ["milestone", "demo"],
     sample: true,
   },
+  {
+    id: "2026-05-18-dr-yin-knee-function-assessment-consultation",
+    title: text(
+      "Consultation with Dr. Yin",
+      "与尹大夫交流会",
+      "Consulta com o Dr. Yin",
+    ),
+    type: "meeting",
+    start: "2026-05-18T20:00:00+08:00",
+    end: "2026-05-18T21:00:00+08:00",
+    relatedTeams: ["M2"],
+    summary: text(
+      "Online consultation between M2 team lead Lee and course consultant Dr. Yin on the knee-function assessment system, doctor-side workflow, standard movement collection, doctor-patient binding, and AI suggestion boundaries.",
+      "M2 队长 Lee 与课程顾问尹大夫围绕膝关节功能评估系统、医生端流程、标准动作采集、医患绑定与 AI 建议边界进行线上交流。",
+      "Consulta online entre o líder da equipa M2, Lee, e o consultor Dr. Yin sobre o sistema de avaliação funcional do joelho, fluxo do lado médico, recolha de movimentos padrão, ligação médico-paciente e limites das sugestões de IA.",
+    ),
+    link: "/logs/2026-05-18-dr-yin-knee-function-assessment-consultation",
+    tags: ["meeting", "consultation", "doctor-side", "knee-assessment", "requirements"],
+  },
 ];
 
 export const m2Contribution = {

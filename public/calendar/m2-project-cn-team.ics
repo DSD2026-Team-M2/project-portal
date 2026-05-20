@@ -288,6 +288,55 @@ DTEND;VALUE=DATE:20260522
 X-DSD-RELATED-TEAMS:CN
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-04-03-six-team-joint-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Six-Team Joint Meeting (2026-04-03)
+DESCRIPTION:First six-team joint meeting focused on requirement analysis\
+ , team responsibilities\, target users and inter-module dependencies.\n\
+ nPortal link: https://dsd2026-team-m2.github.io/project-portal/#/logs/20
+ 26-04-03-first-leads-meeting-on-requirements
+URL:https://dsd2026-team-m2.github.io/project-portal/#/logs/2026-04-03-fi
+ rst-leads-meeting-on-requirements
+CATEGORIES:meeting,project-portal
+DTSTART:20260403T150000Z
+DTEND:20260403T160000Z
+X-DSD-RELATED-TEAMS:S1\, S2\, V1\, V2\, M1\, M2
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-04-18-six-team-joint-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Six-Team Joint Meeting (2026-04-18)
+DESCRIPTION:Second six-team joint meeting focused on first-generation sys
+ tem scope\, cross-team responsibilities\, key data flow and immediate in
+ terface coordination.\n\nPortal link: https://dsd2026-team-m2.github.io/
+ project-portal/#/docs/meeting-minutes-2026-04-18-first-generation-system
+ -alignment
+URL:https://dsd2026-team-m2.github.io/project-portal/#/docs/meeting-minut
+ es-2026-04-18-first-generation-system-alignment
+CATEGORIES:meeting,project-portal
+DTSTART:20260418T153000Z
+DTEND:20260418T163000Z
+X-DSD-RELATED-TEAMS:S1\, S2\, V1\, V2\, M1\, M2
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-18-dr-yin-knee-function-assessment-consultation@dsd2026-team-
+ m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Consultation with Dr. Yin
+DESCRIPTION:Online consultation between M2 team lead Lee and course consu
+ ltant Dr. Yin on the knee-function assessment system\, doctor-side workf
+ low\, standard movement collection\, doctor-patient binding\, and AI sug
+ gestion boundaries.\n\nPortal link: https://dsd2026-team-m2.github.io/pr
+ oject-portal/#/logs/2026-05-18-dr-yin-knee-function-assessment-consultat
+ ion
+URL:https://dsd2026-team-m2.github.io/project-portal/#/logs/2026-05-18-dr
+ -yin-knee-function-assessment-consultation
+CATEGORIES:meeting,project-portal
+DTSTART:20260518T120000Z
+DTEND:20260518T130000Z
+X-DSD-RELATED-TEAMS:M2
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-01-01-holiday-pt@dsd2026-team-m2.github.io
 DTSTAMP:20260402T000000Z
 SUMMARY:Ano Novo
