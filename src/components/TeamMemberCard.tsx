@@ -35,8 +35,8 @@ export function TeamMemberCard({ member, language }: TeamMemberCardProps) {
   const hasRelatedRepos = member.relatedRepos.length > 0;
 
   return (
-    <article className="surface-card h-full p-5 sm:p-6">
-      <div className="flex items-start justify-between gap-4">
+    <article className="surface-card h-full min-w-0 p-5 sm:p-6">
+      <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex min-w-0 items-start gap-4">
           <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-3xl border border-white/80 bg-[linear-gradient(135deg,#dbeafe,#f8fafc_52%,#e2e8f0)] shadow-sm">
             {showPhoto ? (

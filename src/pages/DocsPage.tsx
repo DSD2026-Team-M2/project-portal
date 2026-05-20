@@ -56,33 +56,47 @@ export function DocsPage() {
           title={t("docs.current.title")}
           action={siteMode.showTemplateExamples ? <InternalLinkPill to="/examples">{t("common.viewTemplates")}</InternalLinkPill> : undefined}
         />
+        <SectionLead>{t("docs.current.lead", { count: currentEntries.length })}</SectionLead>
 
-        <div className="mt-6 space-y-4">
-          {currentEntries.map((entry) => (
-            <DocListItem
-              key={entry.slug}
-              entry={entry}
-              language={language}
-              showFallback={entry.locale !== language && language !== "en"}
-            />
-          ))}
-        </div>
-      </RevealOnScroll>
-
-      <RevealOnScroll as="section" className="section-shell p-6 sm:p-8">
-        <SectionTitle title={t("docs.archived.title")} />
-
-        <div className="mt-6 space-y-4">
-          {archivedEntries.map((entry) => (
-            <div key={entry.slug} className="opacity-85">
+        {currentEntries.length > 0 ? (
+          <div className="mt-6 space-y-4">
+            {currentEntries.map((entry) => (
               <DocListItem
+                key={entry.slug}
                 entry={entry}
                 language={language}
                 showFallback={entry.locale !== language && language !== "en"}
               />
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="home-empty-state mt-6" data-empty-state>
+            {t("docs.current.emptyFiltered")}
+          </div>
+        )}
+      </RevealOnScroll>
+
+      <RevealOnScroll as="section" className="section-shell p-6 sm:p-8">
+        <SectionTitle title={t("docs.archived.title")} />
+        <SectionLead>{t("docs.archived.lead", { count: archivedEntries.length })}</SectionLead>
+
+        {archivedEntries.length > 0 ? (
+          <div className="mt-6 space-y-4">
+            {archivedEntries.map((entry) => (
+              <div key={entry.slug} className="opacity-85">
+                <DocListItem
+                  entry={entry}
+                  language={language}
+                  showFallback={entry.locale !== language && language !== "en"}
+                />
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="home-empty-state mt-6" data-empty-state>
+            {t("docs.archived.emptyFiltered")}
+          </div>
+        )}
       </RevealOnScroll>
     </main>
   );

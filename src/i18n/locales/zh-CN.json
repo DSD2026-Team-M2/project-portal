@@ -322,6 +322,7 @@
     "lead": "日志中心负责聚合更新、会议、周报、研究记录与决策内容，并保持可筛选、可分享。",
     "feedTitle": "日志流",
     "feedLead": "当前筛选下共有 {{count}} 条记录。",
+    "emptyFiltered": "当前筛选条件下没有匹配的日志记录。",
     "filters": {
       "type": "类型",
       "ownerRole": "角色",
@@ -337,11 +338,13 @@
     "lead": "按分类、评审状态和归档状态浏览项目文档与交付物。",
     "current": {
       "title": "当前文档",
-      "lead": "当前筛选下共有 {{count}} 条现行文档。"
+      "lead": "当前筛选下共有 {{count}} 条现行文档。",
+      "emptyFiltered": "当前分类下没有匹配的现行文档。"
     },
     "archived": {
       "title": "归档文档",
-      "lead": "共有 {{count}} 条归档条目保留供追溯。"
+      "lead": "共有 {{count}} 条归档条目保留供追溯。",
+      "emptyFiltered": "当前分类下没有匹配的归档文档。"
     },
     "categories": {
       "requirement-analysis": "需求分析",

@@ -322,6 +322,7 @@
     "lead": "The logs hub keeps updates, meetings, weekly reports, research notes and decisions searchable and shareable.",
     "feedTitle": "Logs Feed",
     "feedLead": "{{count}} entries match the current filters.",
+    "emptyFiltered": "No log entries match the current filters.",
     "filters": {
       "type": "Type",
       "ownerRole": "Owner role",
@@ -337,11 +338,13 @@
     "lead": "Browse project documents and deliverables by category, review state and archive state.",
     "current": {
       "title": "Current Documents",
-      "lead": "{{count}} current documents match the active category filter."
+      "lead": "{{count}} current documents match the active category filter.",
+      "emptyFiltered": "No current documents match this category."
     },
     "archived": {
       "title": "Archived Documents",
-      "lead": "{{count}} archived entries remain available for traceability."
+      "lead": "{{count}} archived entries remain available for traceability.",
+      "emptyFiltered": "No archived documents match this category."
     },
     "categories": {
       "requirement-analysis": "Requirement Analysis",

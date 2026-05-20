@@ -322,6 +322,7 @@
     "lead": "O hub de logs agrega atualizações, reuniões, relatórios semanais, investigação e decisões, mantendo tudo filtrável e partilhável.",
     "feedTitle": "Fluxo de Logs",
     "feedLead": "{{count}} entradas correspondem aos filtros atuais.",
+    "emptyFiltered": "Nenhuma entrada de log corresponde aos filtros atuais.",
     "filters": {
       "type": "Tipo",
       "ownerRole": "Papel do owner",
@@ -337,11 +338,13 @@
     "lead": "Explore documentos e entregáveis do projeto por categoria, estado de revisão e arquivo.",
     "current": {
       "title": "Documentos Atuais",
-      "lead": "{{count}} documentos atuais correspondem ao filtro ativo."
+      "lead": "{{count}} documentos atuais correspondem ao filtro ativo.",
+      "emptyFiltered": "Nenhum documento atual corresponde a esta categoria."
     },
     "archived": {
       "title": "Documentos Arquivados",
-      "lead": "{{count}} entradas arquivadas continuam disponíveis para rastreabilidade."
+      "lead": "{{count}} entradas arquivadas continuam disponíveis para rastreabilidade.",
+      "emptyFiltered": "Nenhum documento arquivado corresponde a esta categoria."
     },
     "categories": {
       "requirement-analysis": "Análise de requisitos",

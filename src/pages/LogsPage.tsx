@@ -164,17 +164,24 @@ export function LogsPage() {
           title={t("logs.feedTitle")}
           action={siteMode.showTemplateExamples ? <InternalLinkPill to="/examples">{t("common.viewTemplates")}</InternalLinkPill> : undefined}
         />
+        <SectionLead>{t("logs.feedLead", { count: filteredEntries.length })}</SectionLead>
 
-        <div className="mt-6 divide-y divide-slate-200/80">
-          {filteredEntries.map((entry) => (
-            <LogListItem
-              key={entry.slug}
-              entry={entry}
-              language={language}
-              showFallback={entry.locale !== language && language !== "en"}
-            />
-          ))}
-        </div>
+        {filteredEntries.length > 0 ? (
+          <div className="mt-6 divide-y divide-slate-200/80">
+            {filteredEntries.map((entry) => (
+              <LogListItem
+                key={entry.slug}
+                entry={entry}
+                language={language}
+                showFallback={entry.locale !== language && language !== "en"}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="home-empty-state mt-6" data-empty-state>
+            {t("logs.emptyFiltered")}
+          </div>
+        )}
       </RevealOnScroll>
     </main>
   );
