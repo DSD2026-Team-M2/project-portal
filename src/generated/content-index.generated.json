@@ -1,6 +1,63 @@
 {
-  "generatedAt": "2026-05-20T06:20:45.170Z",
+  "generatedAt": "2026-05-21T10:54:36.912Z",
   "entries": [
+    {
+      "id": "log-2026-05-20-project-requirements-updated-after-meeting-with-doctor-yin",
+      "slug": "2026-05-20-project-requirements-updated-after-meeting-with-doctor-yin",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "Project Requirements Updated After Meeting with Doctor Yin",
+      "type": "update",
+      "date": "2026-05-20T18:00:00+08:00",
+      "owner": "Lee",
+      "ownerRole": "PM",
+      "status": "completed",
+      "summary": "After the recent discussion with Doctor Yin, M2 summarized updated requirements and development priorities, with core data collection, patient assessment, and usability work taking priority over the doctor-side AI assistant.",
+      "relatedTeams": [
+        "M2",
+        "M1",
+        "S1",
+        "S2",
+        "V1",
+        "V2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "tags": [
+        "requirements",
+        "prioritization",
+        "doctor-side",
+        "knee-assessment"
+      ],
+      "attentionTags": [
+        "attention:M2",
+        "attention:M1",
+        "attention:S1",
+        "attention:S2",
+        "attention:V1",
+        "attention:V2"
+      ],
+      "lastUpdated": "2026-05-21",
+      "links": [
+        {
+          "label": "Related consultation log",
+          "href": "/logs/2026-05-18-dr-yin-knee-function-assessment-consultation"
+        },
+        {
+          "label": "Detailed meeting minutes",
+          "href": "/docs/meeting-minutes-2026-05-18-dr-yin-knee-function-assessment-consultation"
+        }
+      ],
+      "evidence": [],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "Following a recent discussion with Doctor Yin, M2 Team has summarized the latest project requirements and development priorities. The team will use these requirements as a reference for the next stage of work.\n\nDue to current time and budget constraints, the doctor-side AI assistant module will not be prioritized at this stage. The team will instead focus on the core functions needed for data collection, patient assessment, and system usability.\n\nSpecial thanks to @QiaoYanbo for helping organize the requirement summary document.\n\n---\n\nPosted by Team M2 · DSD 2025-2026 · UTAD × JLU",
+      "sourcePath": "content/en/logs/2026-05-20-project-requirements-updated-after-meeting-with-doctor-yin.md"
+    },
     {
       "id": "log-2026-05-18-dr-yin-knee-function-assessment-consultation",
       "slug": "2026-05-18-dr-yin-knee-function-assessment-consultation",
@@ -314,6 +371,140 @@
       "markers": [],
       "body": "# 2026 年 5 月 18 日 M2 队长与课程顾问尹医生线上会议纪要\n\n## 一、会议基本信息\n\n- **会议时间**：2026 年 5 月 18 日，北京时间\n- **会议形式**：线上会议、屏幕共享演示\n- **参会人员**：M2 队长 Lee，课程顾问尹医生\n- **会议主题**：膝关节功能评估系统医生端功能演示与下一阶段需求确认\n- **会议目标**：向课程顾问展示当前医生端与管理员端网页系统，听取医学场景需求反馈，明确下一阶段的数据采集、功能评估、医患绑定、患者端训练与 AI 建议模块优化方向。\n\n## 二、当前系统演示情况\n\n### 2.1 医生注册与管理员审核流程\n\nLee 首先展示了当前医生端网页系统。系统支持语言切换，本次以中文界面展示。医生注册时需要填写显示名称、邮箱或手机号、密码，并上传医生证件照或工作证照片。注册提交后，系统提示申请已提交，需要等待管理员审批，审批后再登录。\n\n随后，Lee 展示了管理员端。管理员可以查看医生注册申请及上传的证件照，并选择通过或拒绝。若申请被拒绝，医生需重新上传材料；若审核通过，医生即可登录医生端系统。\n\n### 2.2 医生端患者列表与数据查看\n\n当前医生端登录后可查看患者列表。由于患者端团队尚未完成“患者注册后选择医生”或“医生分配患者”等功能，目前系统中所有医生均可看到所有患者数据。Lee 说明，这是当前系统的临时状态，并非最终设计。\n\n医生端中每一行代表一名患者。部分患者账号已创建但尚未完成有效采集，因此进入后显示暂无记录。对于已有采集数据的患者，系统可展示多次采集记录，每一次 session 对应一次患者传感器数据采集。\n\n### 2.3 曲线展示与采集记录\n\nLee 展示了患者角度数据曲线。系统当前能够显示左腿、右腿的多条角度曲线，并支持图表缩放、局部时间段筛选、整体时间轴浏览和单次采集记录查看。\n\nLee 说明，当前“会话记录”命名并不准确，更合适的说法应为“采集记录”。每一次 session 实际上是患者进行一次传感器数据采集，而不是医患聊天。尹医生对此表示认可，并强调医疗行为不宜设计为线上聊天或网络问诊，系统应聚焦于患者数据评估，而不是医患对话功能。\n\n## 三、尹医生对系统核心方向的反馈\n\n### 3.1 系统重点应从界面展示转向标准化功能评估\n\n尹医生指出，当前团队在界面使用方式、图表呈现方式上投入了较多精力，但从医生角度看，更关键的问题是数据采集本身是否具有医学评估意义。当前曲线较乱，若没有标准动作、标准曲线和评估基准，即使界面展示较完整，医生也很难根据这些曲线判断患者膝关节功能状态。\n\n会议形成的核心判断是：系统下一阶段不应仅展示患者角度变化，而应围绕 **标准动作、标准曲线、患者曲线、差异解释** 建立功能评估框架。\n\n### 3.2 需要设计标准动作，而不是随意采集\n\n尹医生认为，患者不能随意绑上传感器后“有时动、有时不动”地采集数据。系统应设计一套标准化动作流程，使采集结果具有可比性。\n\n会议建议优先围绕日常生活中常见、能体现膝关节功能的动作进行设计，先完成三类动作：\n\n| 动作 | 评估意义 |\n| --- | --- |\n| 坐下/起立或蹲起动作 | 观察患者从屈膝到伸膝、从坐位到站立过程中的活动幅度、动作速度和控制能力。 |\n| 平路向前行走 | 可设计为连续向前走一段距离，例如约 5 米，用于观察患者步态、膝关节活动节律和行走稳定性。 |\n| 上下楼动作 | 上下楼需要克服体重负荷，与普通平路行走不同，更能体现膝关节力量、控制能力和功能限制。 |\n\n这三类动作均与实际生活场景相关，能够比单纯“伸直 - 弯曲”更全面地体现患者功能状态。\n\n### 3.3 需要建立正常人标准曲线作为基线\n\n尹医生强调，系统必须有一套标准曲线或基线曲线。膝关节运动曲线不像心电图那样已有成熟的临床读图标准，因此项目组可以先通过正常人采集建立参考曲线。\n\n建议做法：\n\n1. 组织若干健康被试者。\n2. 让健康被试者完成同一组标准动作。\n3. 对采集曲线进行平均或归一化处理。\n4. 形成标准基线曲线或参考区间。\n5. 后续患者采集时，将患者曲线与基线曲线同时展示。\n\n外部资料也支持这一方向。OARSI 推荐的膝关节或下肢功能相关表现型测试包括 30 秒坐站、40 米快速步行、楼梯测试、Timed Up and Go、6 分钟步行等；Timed Up and Go 的标准流程也包含从椅子起身、步行、转身、返回并坐下。这与尹医生会上提出的“坐下/起立、平路行走、上下楼”等日常动作评估思路基本一致。\n\n### 3.4 曲线差异应对应可解释的功能问题\n\n尹医生提出，医生真正关心的是患者曲线与正常曲线之间的差异，而不是曲线本身是否漂亮。差异主要可以从动作幅度、速度、周期宽度和规律性等维度理解。\n\n| 曲线表现 | 可能含义 | 初步解释 |\n| --- | --- | --- |\n| 振幅变低 | 活动角度不足 | 可能提示膝关节活动度受限或结构性问题。 |\n| 周期变宽 / 动作变慢 | 完成动作速度下降 | 可能提示肌肉力量不足、驱动力不足或控制能力下降。 |\n| 振幅低且周期宽 | 活动度与力量均受限 | 可能提示功能状态较差，需要综合康复干预。 |\n| 曲线不规则 | 动作不标准或控制能力差 | 需结合采集过程判断是否为操作问题或功能问题。 |\n\n尹医生举例说明，如果患者完成蹲起动作的幅度足够，但耗时明显更长，可能不是活动度问题，而更可能是肌肉力量或驱动力不足；如果患者幅度明显不够，则可能涉及膝关节活动度本身的问题。\n\n## 四、医患绑定与患者注册逻辑\n\n### 4.1 当前问题\n\n当前系统中，任意医生登录后均可看到所有患者。Lee 询问后续应由医生选择患者，还是由患者注册时选择医生。\n\n### 4.2 会议决定\n\n尹医生建议采用更简单、可控的一对多结构：一个医生对应多个患者，患者单向绑定至某一医生；不能让所有医生查看所有患者。\n\n具体流程建议如下：\n\n1. 医生生成注册链接或二维码。\n2. 患者通过医生提供的链接或二维码进入注册页面。\n3. 患者完成注册后，自动绑定至该医生。\n4. 该患者数据仅对应医生可见。\n5. 患者不允许脱离医生独立注册。\n\n### 4.3 设计理由\n\n尹医生认为，系统不应设计成复杂的医患网状交流结构。实际场景中，患者应在医生建议下使用系统，并由负责医生查看其数据。这样更符合线下诊疗和康复随访逻辑，也有利于控制数据权限。\n\n## 五、患者采集设备与使用场景\n\n### 5.1 不建议依赖患者个人手机\n\nLee 提出，当前患者测量需要打开手机、连接传感器并完成采集。如果患者没有智能手机，或老年患者不熟悉操作，是否需要由医生端代为采集。\n\n尹医生指出，实际应用中不应过度依赖患者个人手机。不同品牌和系统的手机与传感器蓝牙适配可能存在问题，例如国产手机、进口手机、苹果、安卓之间的适配情况不一致。若要求每位患者自行连接传感器，实际执行难度较大。\n\n### 5.2 建议使用医生端固定设备\n\n会议建议将传感器与医生端固定设备绑定。例如，在医生诊室中配置一台专门用于本项目的平板或设备，并提前与传感器完成适配。患者来到诊室后，在医生指导下完成标准动作和数据采集。\n\n| 方面 | 优点 |\n| --- | --- |\n| 设备适配 | 避免不同手机蓝牙适配不稳定。 |\n| 操作流程 | 医生或工作人员可现场指导患者完成动作。 |\n| 数据质量 | 更容易保证动作标准化和采集完整性。 |\n| 系统定位 | 更符合患者数据评估工具，而非线上问诊工具的定位。 |\n\n## 六、康复建议与训练动作模块\n\n### 6.1 当前医生端康复建议下发功能\n\nLee 展示了医生端向患者下发训练建议的功能。医生可以选择或填写训练动作、组数、次数、时间和临床备注。例如要求患者进行某类膝关节屈伸训练，设置为“10 次 x 3 组”，并补充注意事项。患者端可看到医生下发的训练任务，完成后可标记已执行完毕。\n\n### 6.2 临床备注功能\n\n医生端还支持对患者添加临床备注。该备注仅供医生自己查看，患者不可见。用途是帮助医生记录患者特殊情况、曲线表现、与正常状态的差异及后续随访注意事项。尹医生认为该功能没有问题。\n\n### 6.3 患者端训练视频功能\n\nLee 进一步介绍了患者端团队设想：患者完成测量后，可根据医生建议在手机端查看康复训练动作。每个动作可配有教学视频，患者跟随视频进行练习。\n\n尹医生认为，该功能可以保留，但不必强求患者训练时继续佩戴传感器。患者按照医生建议和动作视频完成训练即可。训练动作数量不必过多，约十个左右即可，系统可以将可选动作放入动作库，由医生为不同患者选择合适的动作组合。\n\n## 七、AI 建议模块讨论\n\n### 7.1 当前 AI 建议存在的问题\n\nLee 说明，系统界面中预留了 AI 建议模块，但目前 AI 组尚未给出有效建议内容。设想中，AI 可根据患者曲线判断其角度范围、功能状态，并给出康复建议。\n\n### 7.2 尹医生意见：现阶段 AI 介入偏早\n\n尹医生明确指出，AI 建议当前介入较早，主要原因有两点：\n\n1. **缺乏足够数据量**：医学 AI 的有效训练通常需要大量标注数据。没有足够患者数据和标准样本，AI 很难形成可靠判断。\n2. **缺乏标准化标签和医生定义**：AI 训练前需要由医生或专家先定义哪些数据代表正常、哪些代表异常、异常类型是什么。若前期没有人工定义和标注，AI 输出容易失真。\n\n尹医生类比医学影像 AI：训练模型前，需要先由人工筛选并标注大量肿瘤片和非肿瘤片，再让 AI 从中学习规律。膝关节曲线分析同样需要先建立数据标准和医生判断规则。\n\n### 7.3 AI 模块阶段性定位\n\n会议建议，当前阶段不应把 AI 作为医学判断核心，而应先完成以下基础工作：\n\n1. 标准动作设计。\n2. 正常人基线曲线采集。\n3. 患者曲线与基线曲线对比展示。\n4. 医生可解释的差异指标。\n5. 医生人工备注和训练建议。\n\n在此基础上，后续 AI 可作为辅助分析工具，帮助医生减少读图时间，而不是替代医生直接给出诊断性结论。\n\n## 八、其他扩展讨论\n\n### 8.1 医生助理型 AI\n\n会议后半段，尹医生提到个人层面的 AI 医生助理需求，例如通过微信号回答患者常见问题、协助预约门诊等。Lee 解释了当前微信自动回复与真正 AI agent 的区别，并说明微信生态是否允许大量 AI 自动回复存在不确定性。\n\n该议题被暂时归为后续研究方向，不作为当前系统核心任务。\n\n### 8.2 未来动作捕捉方向\n\n尹医生提到，原计划中曾考虑开发类似“动态小人”的动作捕捉展示，即通过传感器呈现患者动作状态。Lee 认为三维重建或动作捕捉复杂度较高。会议最终决定，当前阶段先完成标准动作、标准曲线和评估流程；若下一阶段完成度较好，再考虑动作捕捉方向。\n\n## 九、会议形成的主要决策\n\n| 编号 | 决策事项 | 具体内容 |\n| --- | --- | --- |\n| D1 | 系统定位 | 聚焦患者膝关节功能数据评估，不做线上问诊或医患聊天。 |\n| D2 | 采集逻辑 | 从随意采集改为标准动作采集。 |\n| D3 | 标准动作 | 优先完成坐下/起立或蹲起、平路行走、上下楼三类动作。 |\n| D4 | 标准曲线 | 采集正常人数据，建立标准基线曲线。 |\n| D5 | 曲线展示 | 患者曲线必须与标准曲线同时展示。 |\n| D6 | 医患绑定 | 患者通过医生链接或二维码注册，并单向绑定至医生。 |\n| D7 | 患者注册 | 不允许患者脱离医生独立注册。 |\n| D8 | 采集设备 | 优先使用医生端固定平板或专用设备，不依赖患者个人手机。 |\n| D9 | AI 建议 | 当前阶段暂不作为核心医学判断功能，先完成标准数据体系。 |\n| D10 | 康复动作库 | 可建立动作库，由医生选择动作并下发给患者。 |\n| D11 | 动作捕捉 | 作为后续扩展方向，不作为当前优先任务。 |\n\n## 十、后续待办事项\n\n| 优先级 | 任务 | 负责人/相关组 | 说明 |\n| --- | --- | --- | --- |\n| 高 | 将“会话记录”统一改名为“采集记录” | M2 / 前端组 | 避免误解为医患聊天。 |\n| 高 | 设计三类标准动作采集流程 | M2 / 采集组 / 尹医生指导 | 坐下/起立或蹲起、平路行走、上下楼。 |\n| 高 | 采集正常人标准曲线 | 采集组 | 多名健康被试采集后取平均或建立参考区间。 |\n| 高 | 实现患者曲线与标准曲线同图对比 | M2 / 前端组 | 用颜色区分标准曲线和患者曲线。 |\n| 高 | 增加医生-患者绑定机制 | 患者端组 / 后端组 | 医生生成链接或二维码，患者注册后自动绑定。 |\n| 高 | 限制医生数据权限 | 后端组 | 医生只能查看自己绑定患者。 |\n| 中 | 优化图表加载速度 | M2 / 前端组 / 后端组 | 当前部署到服务器后加载较慢。 |\n| 中 | 建立康复动作库 | 患者端组 / 医学顾问 | 动作数量不必过多，先做约十个可展示动作。 |\n| 中 | 医生端训练建议下发功能完善 | M2 / 前端组 | 支持动作选择、次数、组数、备注。 |\n| 中 | 明确 AI 建议模块阶段性输出 | AI 组 | 当前以规则化摘要或占位为主，不宜直接诊断。 |\n| 低 | 调研微信 AI 医生助理可行性 | 后续研究方向 | 不纳入当前主线。 |\n| 低 | 调研动作捕捉/动态小人展示 | 后续版本 | 当前先不作为核心目标。 |\n\n## 十一、风险与注意事项\n\n| 风险 | 表现 | 应对建议 |\n| --- | --- | --- |\n| 采集数据不标准 | 曲线杂乱，无法解释。 | 必须先规定动作、时间、姿势和流程。 |\n| 缺乏基线曲线 | 医生无法判断患者曲线是否异常。 | 采集正常人数据，建立标准曲线。 |\n| 手机适配不稳定 | 不同手机与传感器蓝牙连接差异大。 | 使用医生端固定设备。 |\n| 医生权限过宽 | 所有医生可查看所有患者。 | 建立医生-患者绑定和权限隔离。 |\n| AI 输出不可靠 | 数据量不足，建议可能失真。 | 暂缓 AI 医学判断，先做规则与医生备注。 |\n| 系统定位偏移 | 被理解为线上问诊或聊天。 | 明确定位为数据评估与康复辅助工具。 |\n| 图表性能不足 | 服务器部署后加载缓慢。 | 优化数据加载、图表渲染和接口设计。 |\n\n## 十二、会议结论\n\n本次会议明确了膝关节功能评估系统的下一阶段核心方向：系统不应停留在“展示传感器角度曲线”，而应围绕标准动作、标准曲线和患者曲线差异建立可解释的功能评估流程。尹医生建议项目组先完成贴近日常生活的三类动作评估，即坐下/起立或蹲起、平路行走、上下楼，并通过正常人采集建立基线曲线。患者数据应与标准曲线同图展示，使医生能够从幅度、速度、周期等维度判断患者功能状态。\n\n会议同时明确，患者应通过医生提供的链接或二维码注册，并绑定至对应医生；采集设备宜由医生端统一配置，不宜依赖患者个人手机。AI 建议模块在当前阶段不宜作为核心医学判断功能，应在标准动作、标准数据和医生标注体系建立后再逐步介入。后续团队应优先完成标准化采集、权限绑定、曲线对比展示和康复动作库建设，再考虑动作捕捉及医生助理型 AI 等扩展方向。\n\n---\n\nPosted by Team M2 · DSD 2025-2026 · UTAD × JLU",
       "sourcePath": "content/zh-CN/docs/meeting-minutes-2026-05-18-dr-yin-knee-function-assessment-consultation.md"
+    },
+    {
+      "id": "log-2026-05-16-m2-web-system-successfully-deployed-online",
+      "slug": "2026-05-16-m2-web-system-successfully-deployed-online",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "M2 Web System Successfully Deployed Online",
+      "type": "update",
+      "date": "2026-05-16T16:00:00+08:00",
+      "owner": "Lee",
+      "ownerRole": "PM",
+      "status": "completed",
+      "summary": "The M2 web system has been deployed online, providing an accessible project server environment for testing, demonstrations, and continued development.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "tags": [
+        "deployment",
+        "web-system",
+        "testing"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-05-21",
+      "links": [
+        {
+          "label": "Project server",
+          "href": "http://113.44.220.94/"
+        }
+      ],
+      "evidence": [],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "The M2 web system has been successfully deployed online. Team members and collaborators can access the current version through the project server:\n\n[http://113.44.220.94/](http://113.44.220.94/)\n\nThis deployment provides an online environment for further testing, demonstration, and project development.\n\n---\n\nPosted by Team M2 · DSD 2025-2026 · UTAD × JLU",
+      "sourcePath": "content/en/logs/2026-05-16-m2-web-system-successfully-deployed-online.md"
+    },
+    {
+      "id": "log-2026-05-06-web-team-completes-database-connection-and-initial-testing",
+      "slug": "2026-05-06-web-team-completes-database-connection-and-initial-testing",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "Web Team Completes Database Connection and Initial Testing",
+      "type": "update",
+      "date": "2026-05-06T20:00:00+08:00",
+      "owner": "Lee",
+      "ownerRole": "PM",
+      "status": "completed",
+      "summary": "The M2 Web Team has connected the project database and completed initial testing of doctor and administrator functions, with further integration pending patient-related test data.",
+      "relatedTeams": [
+        "M2",
+        "V2",
+        "S2",
+        "V1"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "tags": [
+        "database",
+        "testing",
+        "integration",
+        "doctor-side",
+        "admin-side"
+      ],
+      "attentionTags": [
+        "attention:M2",
+        "attention:V2",
+        "attention:S2",
+        "attention:V1"
+      ],
+      "lastUpdated": "2026-05-21",
+      "links": [
+        {
+          "label": "Current testing address",
+          "href": "http://113.44.220.94:3000"
+        }
+      ],
+      "evidence": [],
+      "actionItems": [
+        {
+          "owner": "Data Processing Team and AI Team",
+          "task": "Upload patient-related test data such as joint angles and rehabilitation recommendations for further integration testing."
+        }
+      ],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "The M2 Web Team has successfully connected the project database and completed initial testing of the doctor and administrator functions.\n\nAt present, the database does not yet contain patient-related data such as joint angles or rehabilitation recommendations. The Data Processing Team and AI Team are encouraged to upload test data so that further integration, testing, and development can continue.\n\nThe current testing address is:\n\n[http://113.44.220.94:3000](http://113.44.220.94:3000)\n\nTeam members should use this address instead of the previous Railway deployment.\n\n---\n\nPosted by Team M2 · DSD 2025-2026 · UTAD × JLU",
+      "sourcePath": "content/en/logs/2026-05-06-web-team-completes-database-connection-and-initial-testing.md"
+    },
+    {
+      "id": "log-2026-05-02-cloud-server-trial-begins",
+      "slug": "2026-05-02-cloud-server-trial-begins",
+      "locale": "en",
+      "collection": "logs",
+      "routeBase": "logs",
+      "title": "Cloud Server Trial Begins",
+      "type": "update",
+      "date": "2026-05-02T10:00:00+08:00",
+      "owner": "Lee",
+      "ownerRole": "PM",
+      "status": "completed",
+      "summary": "M2 has rented a temporary Ubuntu cloud server for development and testing so the team can evaluate whether it is suitable before purchasing a formal monthly server plan.",
+      "relatedTeams": [
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "tags": [
+        "infrastructure",
+        "deployment",
+        "testing"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-05-21",
+      "links": [],
+      "evidence": [],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "M2 has rented a temporary Ubuntu cloud server for project development and testing. The server will be available for several days as a trial environment.\n\nTeam members are encouraged to test whether the server is suitable for the project workflow. If the trial environment meets project requirements, the team will proceed with purchasing a formal monthly server plan.\n\n---\n\nPosted by Team M2 · DSD 2025-2026 · UTAD × JLU",
+      "sourcePath": "content/en/logs/2026-05-02-cloud-server-trial-begins.md"
     },
     {
       "id": "log-2026-04-18-first-generation-system-alignment-meeting-held",
@@ -2115,55 +2306,6 @@
     {
       "id": "doc-requirement-analysis-v1",
       "slug": "requirement-analysis-v1",
-      "locale": "pt",
-      "collection": "docs",
-      "routeBase": "docs",
-      "title": "Análise de Requisitos",
-      "type": "requirement-analysis",
-      "date": "2026-03-20",
-      "owner": "PM",
-      "ownerRole": "PM",
-      "status": "final",
-      "summary": "Análise base que define o portal como centro de relatório, documentação e colaboração, e não como site do produto.",
-      "relatedTeams": [
-        "PM",
-        "M2"
-      ],
-      "relatedRepos": [
-        "project-portal"
-      ],
-      "tags": [
-        "deliverable",
-        "milestone"
-      ],
-      "attentionTags": [
-        "attention:M2"
-      ],
-      "lastUpdated": "2026-03-20",
-      "version": "v1.0",
-      "reviewStatus": "final",
-      "links": [
-        {
-          "label": "Esboço de desenho do sistema",
-          "href": "/docs/system-design-outline-v1"
-        }
-      ],
-      "evidence": [
-        {
-          "label": "Proposta de estrutura da equipa",
-          "href": "/logs/2026-03-team-structure-proposal-shared"
-        }
-      ],
-      "actionItems": [],
-      "featured": false,
-      "archived": false,
-      "markers": [],
-      "body": "## Âmbito\n\nDefinir o papel, as fronteiras e a estrutura mínima de páginas do `project-portal`.\n\n## Perguntas obrigatórias\n\n- O que é o projeto no seu todo?\n- Para que serve o portal?\n- O que está sob responsabilidade da M2?\n- Onde estão os registos, marcos, documentos e entregáveis?",
-      "sourcePath": "content/pt/docs/requirement-analysis-v1.md"
-    },
-    {
-      "id": "doc-requirement-analysis-v1",
-      "slug": "requirement-analysis-v1",
       "locale": "zh-CN",
       "collection": "docs",
       "routeBase": "docs",
@@ -2209,6 +2351,55 @@
       "markers": [],
       "body": "## 范围\n\n定义 project-portal 的定位、边界、信息架构与最低实现范围。\n\n## 必须回答的问题\n\n- 这是什么项目？\n- portal 是做什么的？\n- M2 负责什么？\n- 日志、里程碑、文档和交付物在哪里？\n\n## 约束\n\n- portal 不能冒充主产品网页。\n- 实现必须足够简单，适合正在学习 Vite、React、TypeScript 的同学继续维护。\n- 内容更新应优先通过 markdown 和生成脚本完成。",
       "sourcePath": "content/zh-CN/docs/requirement-analysis-v1.md"
+    },
+    {
+      "id": "doc-requirement-analysis-v1",
+      "slug": "requirement-analysis-v1",
+      "locale": "pt",
+      "collection": "docs",
+      "routeBase": "docs",
+      "title": "Análise de Requisitos",
+      "type": "requirement-analysis",
+      "date": "2026-03-20",
+      "owner": "PM",
+      "ownerRole": "PM",
+      "status": "final",
+      "summary": "Análise base que define o portal como centro de relatório, documentação e colaboração, e não como site do produto.",
+      "relatedTeams": [
+        "PM",
+        "M2"
+      ],
+      "relatedRepos": [
+        "project-portal"
+      ],
+      "tags": [
+        "deliverable",
+        "milestone"
+      ],
+      "attentionTags": [
+        "attention:M2"
+      ],
+      "lastUpdated": "2026-03-20",
+      "version": "v1.0",
+      "reviewStatus": "final",
+      "links": [
+        {
+          "label": "Esboço de desenho do sistema",
+          "href": "/docs/system-design-outline-v1"
+        }
+      ],
+      "evidence": [
+        {
+          "label": "Proposta de estrutura da equipa",
+          "href": "/logs/2026-03-team-structure-proposal-shared"
+        }
+      ],
+      "actionItems": [],
+      "featured": false,
+      "archived": false,
+      "markers": [],
+      "body": "## Âmbito\n\nDefinir o papel, as fronteiras e a estrutura mínima de páginas do `project-portal`.\n\n## Perguntas obrigatórias\n\n- O que é o projeto no seu todo?\n- Para que serve o portal?\n- O que está sob responsabilidade da M2?\n- Onde estão os registos, marcos, documentos e entregáveis?",
+      "sourcePath": "content/pt/docs/requirement-analysis-v1.md"
     },
     {
       "id": "log-2026-03-19-course-begins-first-video-meeting",
@@ -2376,7 +2567,7 @@
       },
       {
         "value": "update",
-        "count": 4
+        "count": 8
       },
       {
         "value": "weekly-report",
@@ -2384,6 +2575,10 @@
       }
     ],
     "tags": [
+      {
+        "value": "admin-side",
+        "count": 1
+      },
       {
         "value": "archive",
         "count": 1
@@ -2401,6 +2596,10 @@
         "count": 6
       },
       {
+        "value": "database",
+        "count": 1
+      },
+      {
         "value": "deliverable",
         "count": 19
       },
@@ -2409,20 +2608,28 @@
         "count": 1
       },
       {
+        "value": "deployment",
+        "count": 2
+      },
+      {
         "value": "docs",
         "count": 1
       },
       {
         "value": "doctor-side",
-        "count": 4
+        "count": 6
       },
       {
         "value": "frontend",
         "count": 2
       },
       {
+        "value": "infrastructure",
+        "count": 1
+      },
+      {
         "value": "integration",
-        "count": 2
+        "count": 3
       },
       {
         "value": "interface",
@@ -2434,7 +2641,7 @@
       },
       {
         "value": "knee-assessment",
-        "count": 4
+        "count": 5
       },
       {
         "value": "launch",
@@ -2465,6 +2672,10 @@
         "count": 2
       },
       {
+        "value": "prioritization",
+        "count": 1
+      },
+      {
         "value": "proposal",
         "count": 2
       },
@@ -2478,7 +2689,7 @@
       },
       {
         "value": "requirements",
-        "count": 13
+        "count": 14
       },
       {
         "value": "research",
@@ -2505,7 +2716,15 @@
         "count": 5
       },
       {
+        "value": "testing",
+        "count": 3
+      },
+      {
         "value": "update",
+        "count": 1
+      },
+      {
+        "value": "web-system",
         "count": 1
       },
       {
@@ -2516,37 +2735,37 @@
     "attentionTags": [
       {
         "value": "attention:M1",
-        "count": 13
+        "count": 14
       },
       {
         "value": "attention:M2",
-        "count": 45
+        "count": 49
       },
       {
         "value": "attention:S1",
-        "count": 10
+        "count": 11
       },
       {
         "value": "attention:S2",
-        "count": 10
-      },
-      {
-        "value": "attention:V1",
         "count": 12
       },
       {
+        "value": "attention:V1",
+        "count": 14
+      },
+      {
         "value": "attention:V2",
-        "count": 11
+        "count": 13
       }
     ],
     "teams": [
       {
         "value": "M1",
-        "count": 13
+        "count": 14
       },
       {
         "value": "M2",
-        "count": 45
+        "count": 49
       },
       {
         "value": "PM",
@@ -2554,25 +2773,25 @@
       },
       {
         "value": "S1",
-        "count": 10
+        "count": 11
       },
       {
         "value": "S2",
-        "count": 10
-      },
-      {
-        "value": "V1",
         "count": 12
       },
       {
+        "value": "V1",
+        "count": 14
+      },
+      {
         "value": "V2",
-        "count": 11
+        "count": 13
       }
     ],
     "years": [
       {
         "value": "2026",
-        "count": 45
+        "count": 49
       }
     ],
     "collections": [
@@ -2582,7 +2801,7 @@
       },
       {
         "value": "logs",
-        "count": 25
+        "count": 29
       }
     ]
   }
