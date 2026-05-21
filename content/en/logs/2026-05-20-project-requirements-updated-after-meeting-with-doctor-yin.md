@@ -39,7 +39,7 @@ links:
     href: /docs/phase-ii-requirement-meeting-minutes-rehabilitation-system
 evidence:
   - label: PDF attachment - Phase II requirement meeting minutes
-    href: /files/phase-ii-requirement-meeting-minutes-rehabilitation.pdf
+    href: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/files/phase-ii-requirement-meeting-minutes-rehabilitation.pdf
 actionItems: []
 featured: false
 archived: false
@@ -50,6 +50,12 @@ Following a recent discussion with Doctor Yin, M2 Team has summarized the latest
 Due to current time and budget constraints, the doctor-side AI assistant module will not be prioritized at this stage. The team will instead focus on the core functions needed for data collection, patient assessment, and system usability.
 
 Special thanks to @QiaoYanbo for helping organize the requirement summary document.
+
+:::file-card
+title: phase-ii-requirement-meeting-minutes-rehabilitation.pdf
+subtitle: Open document page
+href: /docs/phase-ii-requirement-meeting-minutes-rehabilitation-system
+:::
 
 ---
 

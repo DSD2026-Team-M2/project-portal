@@ -2,6 +2,10 @@ export function isExternalHref(href: string): boolean {
   return /^https?:\/\//i.test(href);
 }
 
+export function isStaticAssetHref(href: string): boolean {
+  return href.startsWith("/files/");
+}
+
 export function resolveAssetHref(href: string): string {
   if (!href) return href;
 

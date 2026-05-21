@@ -24,8 +24,8 @@ export type HistoricalReferenceDefinition = {
 
 export const brandAssets = {
   m2Logo: "https://dsd2026-team-m2.github.io/m2-recruitment/images/logos/team-logo.png",
-  jluLogo: "/images/logos/jlu-logo.webp",
-  utadLogo: "/images/logos/utad-logo.jpg",
+  jluLogo: "https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/logos/jlu-logo.webp",
+  utadLogo: "https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/logos/utad-logo.jpg",
 } as const;
 
 export const externalLinks = {

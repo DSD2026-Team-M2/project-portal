@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, Copy } from "lucide-react";
+import { ArrowLeft, ArrowRight, Copy, ExternalLink } from "lucide-react";
 import {
   Children,
   cloneElement,
@@ -22,7 +22,7 @@ import { useReadingPreferences } from "../contexts/ReadingPreferencesContext";
 import type { SupportedLanguage } from "../i18n/language";
 import type { GeneratedContentEntry } from "../utils/content";
 import { formatDate } from "../utils/date";
-import { isExternalHref, resolveAssetHref } from "../utils/links";
+import { isExternalHref, isStaticAssetHref, resolveAssetHref } from "../utils/links";
 import { ArticleShell } from "./ArticleShell";
 import { AttentionTag } from "./AttentionTag";
 import { BionicReadingToggle } from "./BionicReadingToggle";
@@ -54,7 +54,8 @@ type HeadingTag = "h1" | "h2" | "h3" | "h4";
 type MarkdownSegment =
   | { kind: "markdown"; content: string }
   | { kind: "usecase-flow"; imageSrc: string; title: string }
-  | { kind: "photo-grid"; images: Array<{ src: string; alt: string }> };
+  | { kind: "photo-grid"; images: Array<{ src: string; alt: string }> }
+  | { kind: "file-card"; href: string; title: string; subtitle: string };
 
 const BIONIC_MIN_WORDS = 12;
 const HTML_BREAK_PATTERN = /<br\s*\/?>/gi;
@@ -140,9 +141,9 @@ function ArticleHeading(level: HeadingTag, className: string, resolveHref: (id: 
 function ArticleLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
   const href = props.href ?? "#";
 
-  if (isExternalHref(href)) {
+  if (isExternalHref(href) || isStaticAssetHref(href)) {
     return (
-      <a {...props} href={href} target="_blank" rel="noreferrer" className="article-link">
+      <a {...props} href={resolveAssetHref(href)} target="_blank" rel="noreferrer" className="article-link">
         {props.children}
       </a>
     );
@@ -163,9 +164,56 @@ function ArticleLink(props: AnchorHTMLAttributes<HTMLAnchorElement>) {
   );
 }
 
+function FileCard({ href, title, subtitle }: { href: string; title: string; subtitle: string }) {
+  const content = (
+    <>
+      <div className="flex min-w-0 items-center gap-4">
+        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-rose-100 bg-rose-50">
+          <div className="flex h-8 w-7 items-center justify-center rounded-md bg-rose-500 text-[0.6rem] font-bold uppercase tracking-wide text-white shadow-sm">
+            PDF
+          </div>
+        </div>
+        <div className="min-w-0">
+          <p className="truncate text-lg font-semibold tracking-tight text-slate-950">{title}</p>
+          <p className="mt-1 inline-flex items-center gap-1 text-sm text-slate-500">
+            <span>{subtitle}</span>
+            <ExternalLink className="h-3.5 w-3.5" />
+          </p>
+        </div>
+      </div>
+      <span className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-4 py-2 text-sm font-semibold text-slate-700 transition group-hover:border-slate-300 group-hover:bg-white group-hover:text-slate-950 sm:self-auto">
+        Open
+        <ExternalLink className="h-4 w-4" />
+      </span>
+    </>
+  );
+
+  const className =
+    "group mt-8 flex flex-col gap-4 rounded-[18px] border border-slate-200/90 bg-white/90 px-5 py-4 shadow-[0_10px_28px_rgba(148,163,184,0.12)] transition hover:-translate-y-0.5 hover:border-sky-200 hover:bg-sky-50/50 hover:shadow-[0_14px_34px_rgba(148,163,184,0.16)] sm:flex-row sm:items-center sm:justify-between";
+
+  if (!isExternalHref(href) && !isStaticAssetHref(href)) {
+    return (
+      <Link to={href} className={className}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a
+      href={resolveAssetHref(href)}
+      target="_blank"
+      rel="noreferrer"
+      className={className}
+    >
+      {content}
+    </a>
+  );
+}
+
 function splitMarkdownSegments(body: string): MarkdownSegment[] {
   const segments: MarkdownSegment[] = [];
-  const blockPattern = /:::(usecase-flow|photo-grid)\s*\r?\n([\s\S]*?):::/g;
+  const blockPattern = /:::(usecase-flow|photo-grid|file-card)\s*\r?\n([\s\S]*?):::/g;
   let cursor = 0;
   let match: RegExpExecArray | null;
 
@@ -213,6 +261,21 @@ function splitMarkdownSegments(body: string): MarkdownSegment[] {
 
       if (images.length > 0) {
         segments.push({ kind: "photo-grid", images });
+      } else {
+        segments.push({ kind: "markdown", content: match[0] });
+      }
+    } else if (blockType === "file-card") {
+      const titleLine = lines.find((line) => line.startsWith("title:"));
+      const hrefLine = lines.find((line) => line.startsWith("href:"));
+      const subtitleLine = lines.find((line) => line.startsWith("subtitle:"));
+
+      if (titleLine && hrefLine) {
+        segments.push({
+          kind: "file-card",
+          title: titleLine.replace("title:", "").trim(),
+          href: hrefLine.replace("href:", "").trim(),
+          subtitle: subtitleLine ? subtitleLine.replace("subtitle:", "").trim() : "Open preview",
+        });
       } else {
         segments.push({ kind: "markdown", content: match[0] });
       }
@@ -282,8 +345,8 @@ export function MarkdownArticle({
         <MetadataPanel title={t("common.links")}>
           <div className="flex flex-wrap gap-2">
             {entry.links.map((item) =>
-              isExternalHref(item.href) ? (
-                <ExternalLinkPill key={item.href} href={item.href}>
+              isExternalHref(item.href) || isStaticAssetHref(item.href) ? (
+                <ExternalLinkPill key={item.href} href={resolveAssetHref(item.href)}>
                   {item.label}
                 </ExternalLinkPill>
               ) : (
@@ -300,8 +363,8 @@ export function MarkdownArticle({
         <MetadataPanel title={t("common.evidence")}>
           <div className="flex flex-wrap gap-2">
             {entry.evidence.map((item) =>
-              isExternalHref(item.href) ? (
-                <ExternalLinkPill key={item.href} href={item.href}>
+              isExternalHref(item.href) || isStaticAssetHref(item.href) ? (
+                <ExternalLinkPill key={item.href} href={resolveAssetHref(item.href)}>
                   {item.label}
                 </ExternalLinkPill>
               ) : (
@@ -483,11 +546,18 @@ export function MarkdownArticle({
                 </div>
               ))}
             </div>
-          ) : (
+          ) : segment.kind === "usecase-flow" ? (
             <UseCaseFlowPreview
               key={`usecase-flow-${segment.title}-${index}`}
               title={segment.title}
               imageSrc={segment.imageSrc}
+            />
+          ) : (
+            <FileCard
+              key={`file-card-${segment.title}-${index}`}
+              title={segment.title}
+              subtitle={segment.subtitle}
+              href={segment.href}
             />
           ),
         )}

@@ -92,6 +92,48 @@
       "category": "interface"
     },
     {
+      "id": "pm-phase-ii-requirements",
+      "name": "Phase II Requirements",
+      "role": "P.M.",
+      "owner": "Yihang LI",
+      "start": "2026-05-14",
+      "end": "2026-05-20",
+      "progress": 100,
+      "status": "completed",
+      "dependencies": [
+        "pm-interface-protocol-sync"
+      ],
+      "category": "analysis"
+    },
+    {
+      "id": "pm-web-server-deployment",
+      "name": "Deploy Web End to Server",
+      "role": "P.M.",
+      "owner": "Yihang LI",
+      "start": "2026-05-14",
+      "end": "2026-05-16",
+      "progress": 100,
+      "status": "completed",
+      "dependencies": [
+        "pm-interface-protocol-sync"
+      ],
+      "category": "infrastructure"
+    },
+    {
+      "id": "pm-portugal-side-communication",
+      "name": "Portugal-Side Communication",
+      "role": "P.M.",
+      "owner": "Yihang LI",
+      "start": "2026-05-14",
+      "end": "2026-05-20",
+      "progress": 100,
+      "status": "completed",
+      "dependencies": [
+        "pm-phase-ii-requirements"
+      ],
+      "category": "planning"
+    },
+    {
       "id": "vp-testing-qa",
       "name": "Testing & QA",
       "role": "V.P.M./Programmer1",
@@ -120,6 +162,18 @@
       "category": "infrastructure"
     },
     {
+      "id": "vp-portuguese-review",
+      "name": "Portuguese Review",
+      "role": "V.P.M./Programmer1",
+      "owner": "Kika Vasconcelos Francisca",
+      "start": "2026-05-14",
+      "end": "2026-05-20",
+      "progress": 100,
+      "status": "completed",
+      "dependencies": [],
+      "category": "testing"
+    },
+    {
       "id": "prog-gantt-diagram",
       "name": "Gantt Diagram",
       "role": "Programmer2",
@@ -132,15 +186,29 @@
       "category": "frontend"
     },
     {
-      "id": "prog-3d-reconstruction",
-      "name": "3D Reconstruction",
+      "id": "prog-doctor-admin-web-maintenance",
+      "name": "Doctor/Admin Web Maintenance",
       "role": "Programmer2",
       "owner": "Duhai XU",
-      "start": "2026-04-02",
-      "end": "2026-04-22",
-      "progress": 55,
-      "status": "in-progress",
+      "start": "2026-05-14",
+      "end": "2026-05-20",
+      "progress": 100,
+      "status": "completed",
       "dependencies": [],
+      "category": "frontend"
+    },
+    {
+      "id": "prog-code-development-maintenance",
+      "name": "Code Development & Maintenance",
+      "role": "Programmer2",
+      "owner": "Duhai XU",
+      "start": "2026-05-01",
+      "end": "2026-05-27",
+      "progress": 78,
+      "status": "in-progress",
+      "dependencies": [
+        "prog-gantt-diagram"
+      ],
       "category": "frontend"
     },
     {
@@ -187,9 +255,13 @@
       "role": "S.A.",
       "owner": "Shu WANG",
       "start": "2026-03-26",
-      "end": "2026-04-15",
-      "progress": 50,
-      "status": "in-progress",
+      "end": "2026-05-16",
+      "plannedStart": "2026-03-26",
+      "plannedEnd": "2026-04-15",
+      "actualStart": "2026-03-26",
+      "actualEnd": "2026-05-16",
+      "progress": 100,
+      "status": "completed",
       "dependencies": [],
       "category": "analysis"
     },

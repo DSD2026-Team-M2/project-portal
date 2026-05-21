@@ -42,7 +42,7 @@ links:
     href: /docs/meeting-minutes-2026-05-18-dr-yin-knee-function-assessment-consultation
 evidence:
   - label: Download PDF
-    href: /files/phase-ii-requirement-meeting-minutes-rehabilitation.pdf
+    href: https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/files/phase-ii-requirement-meeting-minutes-rehabilitation.pdf
 actionItems: []
 featured: false
 archived: false
@@ -54,7 +54,11 @@ This document records the Phase II requirement summary for the rehabilitation sy
 
 ## Attachment
 
-- [Download the original PDF](/files/phase-ii-requirement-meeting-minutes-rehabilitation.pdf)
+:::file-card
+title: phase-ii-requirement-meeting-minutes-rehabilitation.pdf
+subtitle: Open preview
+href: https://github.com/DSD2026-Team-M2/project-portal/blob/main/public/files/phase-ii-requirement-meeting-minutes-rehabilitation.pdf
+:::
 
 ## Main Topics
 
