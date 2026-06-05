@@ -96,6 +96,30 @@ function createWeeklyCalendarEvents(
   return events;
 }
 
+function createAssessmentDeadlineEvents() {
+  let assessmentNumber = 0;
+
+  return createWeeklyCalendarEvents("2026-04-01", "2026-06-03", 3, (isoDate) => {
+    assessmentNumber += 1;
+
+    return {
+      id: `${isoDate}-assessment-ddl`,
+      title: text(`Assessment #${assessmentNumber}`, `Assessment #${assessmentNumber}`, `Assessment #${assessmentNumber}`),
+      type: "deadline",
+      start: isoDate,
+      allDay: true,
+      relatedTeams: ["All"],
+      summary: text(
+        `Weekly Assessment #${assessmentNumber} deadline.`,
+        `每周一次的 Assessment #${assessmentNumber} 截止时间。`,
+        `Prazo semanal do Assessment #${assessmentNumber}.`,
+      ),
+      link: "/calendar",
+      tags: ["deadline", "assessment"],
+    };
+  });
+}
+
 export const projectMeta = {
   projectName: "Limb Motion Recognition and Assistant",
   courseName: text(
@@ -524,21 +548,7 @@ export const calendarEvents: CalendarEventRecord[] = [
     link: "/team",
     tags: ["meeting", "m2", "cn", "pt"],
   },
-  ...createWeeklyCalendarEvents("2026-03-25", "2026-05-20", 3, (isoDate) => ({
-    id: `${isoDate}-assessment-ddl`,
-    title: text("Assessment DDL", "Assessment 截止", "Prazo de Assessment"),
-    type: "deadline",
-    start: isoDate,
-    allDay: true,
-    relatedTeams: ["All"],
-    summary: text(
-      "Weekly Assessment deadline.",
-      "每周一次的 Assessment 截止时间。",
-      "Prazo semanal de Assessment.",
-    ),
-    link: "/calendar",
-    tags: ["deadline", "assessment"],
-  })),
+  ...createAssessmentDeadlineEvents(),
   ...createWeeklyCalendarEvents("2026-03-19", "2026-05-21", 4, (isoDate) => ({
     id: `${isoDate}-cn-course-meeting`,
     title: text("CN project course", "中方项目课", "Aula CN do projeto"),

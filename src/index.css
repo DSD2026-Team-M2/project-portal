@@ -1083,6 +1083,26 @@
     @apply rounded-full bg-slate-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500;
   }
 
+  @media (max-width: 520px) {
+    .calendar-board .fc .fc-daygrid-day-top {
+      @apply justify-start px-1;
+    }
+
+    .calendar-day-number-shell {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .calendar-day-month-chip {
+      max-width: 2.65rem;
+      padding-inline: 0.4rem;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: 0.08em;
+    }
+  }
+
   .calendar-board .fc .fc-daygrid-event {
     @apply mx-0 my-[2px] rounded-full border px-2 py-0.5 shadow-none;
     box-sizing: border-box;

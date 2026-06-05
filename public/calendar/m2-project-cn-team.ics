@@ -31,24 +31,11 @@ DTEND;VALUE=DATE:20260401
 X-DSD-RELATED-TEAMS:M2\, CN\, PT
 END:VEVENT
 BEGIN:VEVENT
-UID:2026-03-25-assessment-ddl@dsd2026-team-m2.github.io
-DTSTAMP:20260402T000000Z
-SUMMARY:Assessment DDL
-DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
- eam-m2.github.io/project-portal/#/calendar#2026-03-25-assessment-ddl
-URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-03-2
- 5-assessment-ddl
-CATEGORIES:deadline,project-portal
-DTSTART;VALUE=DATE:20260325
-DTEND;VALUE=DATE:20260326
-X-DSD-RELATED-TEAMS:All
-END:VEVENT
-BEGIN:VEVENT
 UID:2026-04-01-assessment-ddl@dsd2026-team-m2.github.io
 DTSTAMP:20260402T000000Z
-SUMMARY:Assessment DDL
-DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
- eam-m2.github.io/project-portal/#/calendar#2026-04-01-assessment-ddl
+SUMMARY:Assessment #1
+DESCRIPTION:Weekly Assessment #1 deadline.\n\nPortal link: https://dsd202
+ 6-team-m2.github.io/project-portal/#/calendar#2026-04-01-assessment-ddl
 URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-0
  1-assessment-ddl
 CATEGORIES:deadline,project-portal
@@ -59,9 +46,9 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-04-08-assessment-ddl@dsd2026-team-m2.github.io
 DTSTAMP:20260402T000000Z
-SUMMARY:Assessment DDL
-DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
- eam-m2.github.io/project-portal/#/calendar#2026-04-08-assessment-ddl
+SUMMARY:Assessment #2
+DESCRIPTION:Weekly Assessment #2 deadline.\n\nPortal link: https://dsd202
+ 6-team-m2.github.io/project-portal/#/calendar#2026-04-08-assessment-ddl
 URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-0
  8-assessment-ddl
 CATEGORIES:deadline,project-portal
@@ -72,9 +59,9 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-04-15-assessment-ddl@dsd2026-team-m2.github.io
 DTSTAMP:20260402T000000Z
-SUMMARY:Assessment DDL
-DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
- eam-m2.github.io/project-portal/#/calendar#2026-04-15-assessment-ddl
+SUMMARY:Assessment #3
+DESCRIPTION:Weekly Assessment #3 deadline.\n\nPortal link: https://dsd202
+ 6-team-m2.github.io/project-portal/#/calendar#2026-04-15-assessment-ddl
 URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-1
  5-assessment-ddl
 CATEGORIES:deadline,project-portal
@@ -85,9 +72,9 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-04-22-assessment-ddl@dsd2026-team-m2.github.io
 DTSTAMP:20260402T000000Z
-SUMMARY:Assessment DDL
-DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
- eam-m2.github.io/project-portal/#/calendar#2026-04-22-assessment-ddl
+SUMMARY:Assessment #4
+DESCRIPTION:Weekly Assessment #4 deadline.\n\nPortal link: https://dsd202
+ 6-team-m2.github.io/project-portal/#/calendar#2026-04-22-assessment-ddl
 URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-2
  2-assessment-ddl
 CATEGORIES:deadline,project-portal
@@ -98,9 +85,9 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-04-29-assessment-ddl@dsd2026-team-m2.github.io
 DTSTAMP:20260402T000000Z
-SUMMARY:Assessment DDL
-DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
- eam-m2.github.io/project-portal/#/calendar#2026-04-29-assessment-ddl
+SUMMARY:Assessment #5
+DESCRIPTION:Weekly Assessment #5 deadline.\n\nPortal link: https://dsd202
+ 6-team-m2.github.io/project-portal/#/calendar#2026-04-29-assessment-ddl
 URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-04-2
  9-assessment-ddl
 CATEGORIES:deadline,project-portal
@@ -111,9 +98,9 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-05-06-assessment-ddl@dsd2026-team-m2.github.io
 DTSTAMP:20260402T000000Z
-SUMMARY:Assessment DDL
-DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
- eam-m2.github.io/project-portal/#/calendar#2026-05-06-assessment-ddl
+SUMMARY:Assessment #6
+DESCRIPTION:Weekly Assessment #6 deadline.\n\nPortal link: https://dsd202
+ 6-team-m2.github.io/project-portal/#/calendar#2026-05-06-assessment-ddl
 URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-0
  6-assessment-ddl
 CATEGORIES:deadline,project-portal
@@ -124,9 +111,9 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-05-13-assessment-ddl@dsd2026-team-m2.github.io
 DTSTAMP:20260402T000000Z
-SUMMARY:Assessment DDL
-DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
- eam-m2.github.io/project-portal/#/calendar#2026-05-13-assessment-ddl
+SUMMARY:Assessment #7
+DESCRIPTION:Weekly Assessment #7 deadline.\n\nPortal link: https://dsd202
+ 6-team-m2.github.io/project-portal/#/calendar#2026-05-13-assessment-ddl
 URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-1
  3-assessment-ddl
 CATEGORIES:deadline,project-portal
@@ -137,14 +124,40 @@ END:VEVENT
 BEGIN:VEVENT
 UID:2026-05-20-assessment-ddl@dsd2026-team-m2.github.io
 DTSTAMP:20260402T000000Z
-SUMMARY:Assessment DDL
-DESCRIPTION:Weekly Assessment deadline.\n\nPortal link: https://dsd2026-t
- eam-m2.github.io/project-portal/#/calendar#2026-05-20-assessment-ddl
+SUMMARY:Assessment #8
+DESCRIPTION:Weekly Assessment #8 deadline.\n\nPortal link: https://dsd202
+ 6-team-m2.github.io/project-portal/#/calendar#2026-05-20-assessment-ddl
 URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-2
  0-assessment-ddl
 CATEGORIES:deadline,project-portal
 DTSTART;VALUE=DATE:20260520
 DTEND;VALUE=DATE:20260521
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-05-27-assessment-ddl@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assessment #9
+DESCRIPTION:Weekly Assessment #9 deadline.\n\nPortal link: https://dsd202
+ 6-team-m2.github.io/project-portal/#/calendar#2026-05-27-assessment-ddl
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-2
+ 7-assessment-ddl
+CATEGORIES:deadline,project-portal
+DTSTART;VALUE=DATE:20260527
+DTEND;VALUE=DATE:20260528
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-06-03-assessment-ddl@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Assessment #10
+DESCRIPTION:Weekly Assessment #10 deadline.\n\nPortal link: https://dsd20
+ 26-team-m2.github.io/project-portal/#/calendar#2026-06-03-assessment-ddl
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-06-0
+ 3-assessment-ddl
+CATEGORIES:deadline,project-portal
+DTSTART;VALUE=DATE:20260603
+DTEND;VALUE=DATE:20260604
 X-DSD-RELATED-TEAMS:All
 END:VEVENT
 BEGIN:VEVENT
