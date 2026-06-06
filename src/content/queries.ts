@@ -11,6 +11,8 @@ const visibleDocSlugs = new Set<string>([
   "meeting-minutes-2026-04-18-first-generation-system-alignment",
   "meeting-minutes-2026-05-18-dr-yin-knee-function-assessment-consultation",
   "phase-ii-requirement-meeting-minutes-rehabilitation-system",
+  "m2-srs-phase-ii-doctor-web-end",
+  "m2-v2-interface-change-requests",
 ]);
 
 function selectLocalizedEntry(entries: GeneratedContentEntry[], language: SupportedLanguage): GeneratedContentEntry | null {
