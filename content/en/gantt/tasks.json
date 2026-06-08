@@ -84,8 +84,8 @@
       "plannedEnd": "2026-04-24",
       "actualStart": "2026-04-18",
       "actualEnd": "2026-04-26",
-      "progress": 88,
-      "status": "in-progress",
+      "progress": 100,
+      "status": "completed",
       "dependencies": [
         "pm-six-team-requirement-sync"
       ],
@@ -120,6 +120,20 @@
       "category": "infrastructure"
     },
     {
+      "id": "pm-project-deployment-server-maintenance",
+      "name": "Project Deployment & Server Maintenance",
+      "role": "P.M.",
+      "owner": "Yihang LI",
+      "start": "2026-05-10",
+      "end": "2026-06-09",
+      "progress": 92,
+      "status": "in-progress",
+      "dependencies": [
+        "pm-web-server-deployment"
+      ],
+      "category": "infrastructure"
+    },
+    {
       "id": "pm-portugal-side-communication",
       "name": "Portugal-Side Communication",
       "role": "P.M.",
@@ -132,6 +146,20 @@
         "pm-phase-ii-requirements"
       ],
       "category": "planning"
+    },
+    {
+      "id": "pm-phase-ii-interface-negotiation",
+      "name": "Phase II Interface Negotiation",
+      "role": "P.M.",
+      "owner": "Yihang LI",
+      "start": "2026-06-05",
+      "end": "2026-06-09",
+      "progress": 60,
+      "status": "in-progress",
+      "dependencies": [
+        "pm-phase-ii-requirements"
+      ],
+      "category": "interface"
     },
     {
       "id": "vp-testing-qa",
@@ -350,8 +378,8 @@
       "plannedEnd": "2026-04-24",
       "actualStart": "2026-04-19",
       "actualEnd": "2026-04-27",
-      "progress": 86,
-      "status": "in-progress",
+      "progress": 100,
+      "status": "completed",
       "dependencies": [
         "pm-six-team-requirement-sync"
       ],
