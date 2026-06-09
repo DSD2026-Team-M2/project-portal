@@ -3,7 +3,7 @@ id: doc-m2-srs-phase-ii-doctor-web-end
 slug: m2-srs-phase-ii-doctor-web-end
 title: Software Requirements Specification for M2 Doctor Web End - Phase II
 type: requirement-analysis
-date: 2026-06-06
+date: 2026-05-24
 owner: M2 Team
 ownerRole: Doctor Web Team
 status: completed
@@ -33,10 +33,12 @@ attentionTags:
   - attention:V2
 version: v2.0
 reviewStatus: completed
-lastUpdated: 2026-06-06
+lastUpdated: 2026-05-24
 links:
   - label: Release news
-    href: /logs/2026-06-06-m2-phase-ii-srs-released
+    href: /logs/2026-05-24-m2-phase-ii-srs-released
+  - label: Phase II diagrams
+    href: /docs/m2-phase-ii-workflow-and-use-case-diagrams
   - label: Interface change requests
     href: /docs/m2-v2-interface-change-requests
   - label: Phase II requirement meeting minutes
@@ -53,8 +55,8 @@ Revision History:
 
 | Date | Author | Description |
 | ---- | ------ | ----------- |
-| Jun 6, 2026 | M2 Team | Initial Phase II SRS for the doctor web end based on the Phase II requirement meeting |
-| Jun 6, 2026 | M2 Team | Updated according to the M2-to-V2 interface change requests, including `doctor_id`, `exercise_id`, `movement_type`, schedule data structure, AI suggestion storage, and administrator permission constraints |
+| May 24, 2026 | M2 Team | Initial Phase II SRS for the doctor web end based on the Phase II requirement meeting |
+| May 24, 2026 | M2 Team | Updated according to the M2-to-V2 interface change requests, including `doctor_id`, `exercise_id`, `movement_type`, schedule data structure, AI suggestion storage, and administrator permission constraints |
 
 ## 0. Background
 
@@ -272,7 +274,7 @@ flowchart LR
 
 - Reference to Use Case 1.1.
 - Version: 1.1
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: Phase II requirement meeting and M2-to-V2 interface change requests
 - Actors: Doctor, Doctor Web End, Backend System
@@ -315,7 +317,7 @@ flowchart LR
 
 - Reference to Use Case 1.2.
 - Version: 1.1
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: Phase II requirement meeting and M2-to-V2 interface change requests
 - Actors: Patient, Patient Mobile End, Backend System, Doctor Web End
@@ -361,7 +363,7 @@ flowchart LR
 
 - Reference to Use Case 1.3.
 - Version: 1.1
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: Phase II requirement meeting and M2-to-V2 interface change requests
 - Actors: Doctor, Doctor Web End, Backend System
@@ -405,7 +407,7 @@ flowchart LR
 
 - Reference to Use Case 1.4.
 - Version: 1.1
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: Phase II requirement meeting and M2-to-V2 interface change requests
 - Actors: Doctor, Doctor Web End, Backend System
@@ -452,7 +454,7 @@ flowchart LR
 
 - Reference to Use Case 1.5.
 - Version: 1.1
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: Phase II requirement meeting and M2-to-V2 interface change requests
 - Actors: Doctor, Doctor Web End, Backend System
@@ -497,7 +499,7 @@ flowchart LR
 
 - Reference to Use Case 1.6.
 - Version: 1.1
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: M2-to-V2 interface change requests
 - Actors: Doctor, Doctor Web End, Backend System
@@ -540,7 +542,7 @@ flowchart LR
 
 - Reference to Use Case 1.7.
 - Version: 1.1
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: Phase II requirement meeting and M2-to-V2 interface change requests
 - Actors: Doctor, Doctor Web End, Backend System, Patient Mobile End
@@ -589,7 +591,7 @@ flowchart LR
 
 - Reference to Use Case 1.8.
 - Version: 1.1
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: Phase II requirement meeting and M2-to-V2 interface change requests
 - Actors: Doctor, Doctor Web End, Backend System, Patient Mobile End
@@ -632,7 +634,7 @@ flowchart LR
 
 - Reference to Use Case 1.9.
 - Version: 0.5
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: M2-to-V2 interface change requests
 - Actors: Doctor, Doctor Web End, AI Module, Backend System
@@ -676,7 +678,7 @@ flowchart LR
 
 - Reference to Use Case 1.10.
 - Version: 0.5
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: M2-to-V2 interface change requests
 - Actors: Doctor, Doctor Web End, Backend System
@@ -716,7 +718,7 @@ flowchart LR
 
 - Reference to Use Case 1.11.
 - Version: 1.0
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: Phase II requirement meeting and M2-to-V2 interface change requests
 - Actors: Doctor, Doctor Web End, Backend System
@@ -756,7 +758,7 @@ flowchart LR
 
 - Reference to Use Case 1.12.
 - Version: 0.5
-- Created: Jun 6, 2026
+- Created: May 24, 2026
 - Authors: M2 Team
 - Source: M2-to-V2 interface change requests
 - Actors: Administrator, Backend System, Optional Admin Interface

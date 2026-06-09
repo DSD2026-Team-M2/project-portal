@@ -126,8 +126,8 @@
       "owner": "Yihang LI",
       "start": "2026-05-10",
       "end": "2026-06-09",
-      "progress": 92,
-      "status": "in-progress",
+      "progress": 100,
+      "status": "completed",
       "dependencies": [
         "pm-web-server-deployment"
       ],
@@ -154,8 +154,8 @@
       "owner": "Yihang LI",
       "start": "2026-06-05",
       "end": "2026-06-09",
-      "progress": 60,
-      "status": "in-progress",
+      "progress": 100,
+      "status": "completed",
       "dependencies": [
         "pm-phase-ii-requirements"
       ],
@@ -172,8 +172,8 @@
       "plannedEnd": "2026-05-27",
       "actualStart": "2026-03-26",
       "actualEnd": "2026-06-09",
-      "progress": 58,
-      "status": "in-progress",
+      "progress": 100,
+      "status": "completed",
       "dependencies": [],
       "category": "testing"
     },
@@ -244,8 +244,8 @@
       "plannedEnd": "2026-05-27",
       "actualStart": "2026-05-01",
       "actualEnd": "2026-06-09",
-      "progress": 78,
-      "status": "in-progress",
+      "progress": 100,
+      "status": "completed",
       "dependencies": [
         "prog-gantt-diagram"
       ],
@@ -274,8 +274,8 @@
       "plannedEnd": "2026-05-27",
       "actualStart": "2026-03-19",
       "actualEnd": "2026-06-09",
-      "progress": 41,
-      "status": "in-progress",
+      "progress": 100,
+      "status": "completed",
       "dependencies": [],
       "category": "frontend"
     },
@@ -290,8 +290,8 @@
       "plannedEnd": "2026-05-27",
       "actualStart": "2026-03-31",
       "actualEnd": "2026-06-09",
-      "progress": 45,
-      "status": "in-progress",
+      "progress": 100,
+      "status": "completed",
       "dependencies": [
         "webmaster-team-website-development"
       ],

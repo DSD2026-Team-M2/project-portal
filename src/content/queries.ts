@@ -12,6 +12,7 @@ const visibleDocSlugs = new Set<string>([
   "meeting-minutes-2026-05-18-dr-yin-knee-function-assessment-consultation",
   "phase-ii-requirement-meeting-minutes-rehabilitation-system",
   "m2-srs-phase-ii-doctor-web-end",
+  "m2-phase-ii-workflow-and-use-case-diagrams",
   "m2-v2-interface-change-requests",
 ]);
 

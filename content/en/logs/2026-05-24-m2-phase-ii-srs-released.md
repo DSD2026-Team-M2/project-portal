@@ -1,9 +1,9 @@
 ---
-id: log-2026-06-06-m2-phase-ii-srs-released
-slug: 2026-06-06-m2-phase-ii-srs-released
+id: log-2026-05-24-m2-phase-ii-srs-released
+slug: 2026-05-24-m2-phase-ii-srs-released
 title: M2 Phase II Doctor Web SRS Released
 type: update
-date: "2026-06-06T22:20:00+08:00"
+date: "2026-05-24T22:20:00+08:00"
 owner: M2 Team
 ownerRole: Doctor Web Team
 status: completed
@@ -31,10 +31,12 @@ attentionTags:
   - attention:S2
   - attention:V1
   - attention:V2
-lastUpdated: 2026-06-06
+lastUpdated: 2026-05-24
 links:
   - label: Phase II SRS
     href: /docs/m2-srs-phase-ii-doctor-web-end
+  - label: Phase II diagrams
+    href: /docs/m2-phase-ii-workflow-and-use-case-diagrams
   - label: Interface change requests
     href: /docs/m2-v2-interface-change-requests
   - label: Phase II requirement meeting minutes
