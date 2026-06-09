@@ -214,11 +214,7 @@ The term `exercise` should mainly refer to rehabilitation training items used in
 
 The complete visual diagram is maintained in the Phase II diagram appendix.
 
-![M2 Phase II Overall Use Case Diagram](https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/phase-ii/m2-phase-ii-overall-use-case-diagram.png)
-
-**Figure 1. M2 Phase II Overall Use Case Diagram**
-
-See also: [M2 Phase II Workflow and Use Case Diagrams](/docs/m2-phase-ii-workflow-and-use-case-diagrams).
+See : [M2 Phase II Workflow and Use Case Diagrams](/docs/m2-phase-ii-workflow-and-use-case-diagrams).
 
 ## 3. Key Examples
 
