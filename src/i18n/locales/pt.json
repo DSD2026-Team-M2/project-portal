@@ -474,22 +474,22 @@
     "backHome": "Voltar à página inicial"
   },
   "footer": {
-    "title": "Rodape do projeto M2",
+    "title": "Rodapé do projeto M2",
     "subtitle": "Entrada geral da Team M2 para o workspace mais amplo do projeto.",
-    "description": "Portal do projeto para documentos, revisao de progresso e registos de colaboracao.",
-    "sitemapTitle": "Mapa de paginas",
-    "sitemapDescription": "Abre rapidamente as principais areas do portal a partir do rodape durante revisao ou demonstracao.",
-    "relatedTitle": "Ligacoes relacionadas",
+    "description": "Portal do projeto para documentos, revisão de progresso e registos de colaboração.",
+    "sitemapTitle": "Mapa de páginas",
+    "sitemapDescription": "Abre rapidamente as principais áreas do portal a partir do rodapé durante revisão ou demonstração.",
+    "relatedTitle": "Ligações relacionadas",
     "groups": {
-      "overview": "Visao geral e planeamento",
-      "records": "Registos e evidencias",
+      "overview": "Visão geral e planeamento",
+      "records": "Registos e evidências",
       "collaboration": "Equipa e apoio"
     },
     "maintainedBy": "Mantido por",
     "lastUpdated": "Última atualização",
     "license": "Licença",
     "relatedOrg": "Organização relacionada",
-    "maintained": "Maintained on GitHub",
+    "maintained": "Mantido no GitHub",
     "copyright": "Portal do projeto DSD 2025-2026",
     "language": "Idioma"
   }
