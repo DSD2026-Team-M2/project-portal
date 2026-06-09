@@ -844,6 +844,17 @@
     background: linear-gradient(180deg, rgba(254, 240, 138, 0.7), rgba(253, 224, 71, 0.45));
   }
 
+  .article-prose .article-code-block code {
+    display: block;
+    min-width: max-content;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    color: rgb(30 41 59);
+    line-height: 1.7;
+    white-space: pre;
+  }
+
   .article-prose thead th {
     background: rgba(241, 245, 249, 0.88);
   }

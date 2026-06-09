@@ -6,7 +6,7 @@ type: requirement-analysis
 date: 2026-04-09
 owner: Lee
 ownerRole: PM
-status: archived
+status: completed
 summary: Archived detailed multi-role SRS covering patient, doctor, and administration scenarios before the simplified doctor-module draft replaced it as the main specification page.
 relatedTeams:
   - PM
@@ -21,7 +21,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v1.1
-reviewStatus: archived
+reviewStatus: completed
 lastUpdated: 2026-04-23
 links:
   - label: Current simplified SRS

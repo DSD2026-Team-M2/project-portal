@@ -6,7 +6,7 @@ type: research
 date: 2026-02-12
 owner: M2
 ownerRole: PM
-status: archived
+status: completed
 summary: Archived retrospective note for the earlier M2 recruitment site, kept as a historical outcome rather than part of the portal's main narrative.
 relatedTeams:
   - M2
@@ -17,7 +17,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v1.0
-reviewStatus: archived
+reviewStatus: completed
 lastUpdated: 2026-02-12
 links:
   - label: Recruitment repo section

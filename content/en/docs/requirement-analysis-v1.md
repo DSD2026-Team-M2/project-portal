@@ -6,7 +6,7 @@ type: requirement-analysis
 date: 2026-03-20
 owner: PM
 ownerRole: PM
-status: final
+status: completed
 summary: Baseline requirement analysis defining the portal as a reporting, documentation and collaboration hub rather than a product site.
 relatedTeams:
   - PM
@@ -19,7 +19,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v1.0
-reviewStatus: final
+reviewStatus: completed
 lastUpdated: 2026-03-20
 links:
   - label: System design outline

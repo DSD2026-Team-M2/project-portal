@@ -6,7 +6,7 @@ type: system-design
 date: 2026-03-31
 owner: M2
 ownerRole: Programmer
-status: draft
+status: completed
 summary: Template entry for a formal portal document. Use this when the team needs a versioned design, requirement or deliverable page.
 relatedTeams:
   - M2
@@ -18,7 +18,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v0.0
-reviewStatus: draft
+reviewStatus: completed
 lastUpdated: 2026-03-31
 links:
   - label: Content authoring guide

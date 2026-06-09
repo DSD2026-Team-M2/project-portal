@@ -31,7 +31,7 @@ attentionTags:
   - attention:M2
 lastUpdated: 2026-04-20
 version: v1.0
-reviewStatus: in-review
+reviewStatus: completed
 links:
   - label: Related news log
     href: /logs/2026-04-18-first-generation-system-alignment-meeting-held

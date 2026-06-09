@@ -6,7 +6,7 @@ type: testing
 date: 2026-03-29
 owner: M2 Tester
 ownerRole: Tester
-status: draft
+status: completed
 summary: Testing checklist covering routing, generated content, language fallback, calendar visibility and link stability.
 relatedTeams:
   - M2
@@ -17,7 +17,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v0.2
-reviewStatus: draft
+reviewStatus: completed
 lastUpdated: 2026-03-29
 links:
   - label: First main mockup

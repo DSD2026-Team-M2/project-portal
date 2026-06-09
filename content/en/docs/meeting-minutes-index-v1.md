@@ -6,7 +6,7 @@ type: meeting-minutes
 date: 2026-03-24
 owner: Vice PM
 ownerRole: Vice PM
-status: in-review
+status: completed
 summary: Index entry grouping formal meeting records used for project tracking and interface coordination.
 relatedTeams:
   - PM
@@ -18,7 +18,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v1.0
-reviewStatus: in-review
+reviewStatus: completed
 lastUpdated: 2026-05-19
 links:
   - label: Six-Team Joint Meeting (2026-04-03)

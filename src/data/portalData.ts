@@ -519,6 +519,21 @@ export const roleMatrix: RoleRecord[] = [
 
 export const calendarEvents: CalendarEventRecord[] = [
   {
+    id: "2026-03-19-all-sites-meeting",
+    title: text("All Sites Meeting", "All Sites Meeting", "All Sites Meeting"),
+    type: "meeting",
+    start: "2026-03-19",
+    allDay: true,
+    relatedTeams: ["All"],
+    summary: text(
+      "All-sites project meeting for shared course and project coordination.",
+      "全站点项目会议，用于课程与项目协同。",
+      "Reuniao de todos os sites para coordenacao comum do curso e do projeto.",
+    ),
+    link: "/calendar",
+    tags: ["meeting", "all-sites", "coordination"],
+  },
+  {
     id: "2026-03-29-m2-members-meeting-cn",
     title: text("M2 members meeting (CN)", "M2 成员会议（中国）", "Reunião de membros da M2 (China)"),
     type: "meeting",
@@ -697,6 +712,21 @@ export const calendarEvents: CalendarEventRecord[] = [
     sample: true,
   },
   {
+    id: "2026-05-07-all-sites-meeting",
+    title: text("All Sites Meeting", "All Sites Meeting", "All Sites Meeting"),
+    type: "meeting",
+    start: "2026-05-07",
+    allDay: true,
+    relatedTeams: ["All"],
+    summary: text(
+      "All-sites project meeting for shared course and project coordination.",
+      "全站点项目会议，用于课程与项目协同。",
+      "Reuniao de todos os sites para coordenacao comum do curso e do projeto.",
+    ),
+    link: "/calendar",
+    tags: ["meeting", "all-sites", "coordination"],
+  },
+  {
     id: "2026-05-18-dr-yin-knee-function-assessment-consultation",
     title: text(
       "Consultation with Dr. Yin",
@@ -714,6 +744,36 @@ export const calendarEvents: CalendarEventRecord[] = [
     ),
     link: "/logs/2026-05-18-dr-yin-knee-function-assessment-consultation",
     tags: ["meeting", "consultation", "doctor-side", "knee-assessment", "requirements"],
+  },
+  {
+    id: "2026-06-09-all-sites-meeting",
+    title: text("All Sites Meeting", "All Sites Meeting", "All Sites Meeting"),
+    type: "meeting",
+    start: "2026-06-09",
+    allDay: true,
+    relatedTeams: ["All"],
+    summary: text(
+      "All-sites project meeting for shared course and project coordination.",
+      "全站点项目会议，用于课程与项目协同。",
+      "Reuniao de todos os sites para coordenacao comum do curso e do projeto.",
+    ),
+    link: "/calendar",
+    tags: ["meeting", "all-sites", "coordination"],
+  },
+  {
+    id: "2026-06-09-final-presentation",
+    title: text("Final Presentation", "Final Presentation", "Final Presentation"),
+    type: "demo",
+    start: "2026-06-09",
+    allDay: true,
+    relatedTeams: ["All"],
+    summary: text(
+      "Final project presentation for the DSD 2025-2026 project.",
+      "DSD 2025-2026 项目最终展示。",
+      "Apresentacao final do projeto DSD 2025-2026.",
+    ),
+    link: "/progress#milestones",
+    tags: ["presentation", "final", "demo", "all-sites"],
   },
 ];
 

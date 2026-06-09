@@ -32,7 +32,7 @@ attentionTags:
   - attention:V2
 lastUpdated: 2026-05-21
 version: v1.0
-reviewStatus: in-review
+reviewStatus: completed
 links:
   - label: Related news log
     href: /logs/2026-05-20-project-requirements-updated-after-meeting-with-doctor-yin

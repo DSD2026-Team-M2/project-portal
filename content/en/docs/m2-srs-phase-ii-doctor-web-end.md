@@ -212,59 +212,13 @@ The term `exercise` should mainly refer to rehabilitation training items used in
 
 ### 2.1 Use Case Diagram
 
-```mermaid
-flowchart LR
-    Doctor((Doctor))
-    Patient((Patient))
-    Admin((Administrator))
-    M2[Doctor Web End / M2]
-    M1[Patient Mobile End / M1]
-    V2[(Backend and Database / V2)]
-    AI[V1 AI Module]
-    Std[Embedded Standard Curves in M2]
+The complete visual diagram is maintained in the Phase II diagram appendix.
 
-    Doctor --> UC1[Generate registration link or QR code]
-    UC1 --> M2 --> V2
+![M2 Phase II Overall Use Case Diagram](https://raw.githubusercontent.com/DSD2026-Team-M2/project-portal/main/public/images/docs/phase-ii/m2-phase-ii-overall-use-case-diagram.png)
 
-    Patient --> UC2[Register through doctor link]
-    UC2 --> M1 --> V2
-    V2 --> Bind[Bind patient with doctor_id]
+**Figure 1. M2 Phase II Overall Use Case Diagram**
 
-    Doctor --> UC3[View bound patient list]
-    UC3 --> M2 --> V2
-
-    Doctor --> UC4[View session records by movement_type]
-    UC4 --> M2 --> V2
-
-    Doctor --> UC5[Compare patient curve with standard curve]
-    UC5 --> M2
-    M2 --> V2
-    M2 --> Std
-
-    Doctor --> UC6[View preset exercise list]
-    UC6 --> M2 --> V2
-
-    Doctor --> UC7[Create schedule or prescription]
-    UC7 --> M2 --> V2 --> M1
-
-    Patient --> UC8[Mark completed]
-    UC8 --> M1 --> V2
-    Doctor --> UC9[View completion status]
-    UC9 --> M2 --> V2
-
-    Doctor --> UC10[Generate AI suggestion]
-    UC10 --> M2 --> AI
-    UC10 --> V2
-
-    Doctor --> UC11[Retrieve saved AI suggestion]
-    UC11 --> M2 --> V2
-
-    Doctor --> UC12[Attempt unauthorized access]
-    UC12 --> M2 --> V2
-
-    Admin --> UC13[View all patients or modify doctor_id]
-    UC13 --> V2
-```
+See also: [M2 Phase II Workflow and Use Case Diagrams](/docs/m2-phase-ii-workflow-and-use-case-diagrams).
 
 ## 3. Key Examples
 

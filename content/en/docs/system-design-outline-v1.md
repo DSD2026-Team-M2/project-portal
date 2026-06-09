@@ -6,7 +6,7 @@ type: system-design
 date: 2026-03-25
 owner: M2 Architect
 ownerRole: Architect
-status: in-review
+status: completed
 summary: Design outline for routed pages, generated content indexes, language fallback, markdown rendering and static holiday data.
 relatedTeams:
   - M2
@@ -17,7 +17,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v0.9
-reviewStatus: in-review
+reviewStatus: completed
 lastUpdated: 2026-03-29
 links:
   - label: Portal launch log

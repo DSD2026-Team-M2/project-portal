@@ -6,7 +6,7 @@ type: research
 date: 2026-03-28
 owner: M2 Architect
 ownerRole: Architect
-status: in-review
+status: completed
 summary: Index entry grouping research notes and design rationale records that explain why the portal is structured this way.
 relatedTeams:
   - M2
@@ -18,7 +18,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v1.0
-reviewStatus: in-review
+reviewStatus: completed
 lastUpdated: 2026-03-28
 links:
   - label: Team structure proposal

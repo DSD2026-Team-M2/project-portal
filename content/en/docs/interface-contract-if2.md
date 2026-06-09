@@ -6,7 +6,7 @@ type: interface
 date: 2026-03-24
 owner: V2 and M2
 ownerRole: Architect
-status: in-review
+status: completed
 summary: Working interface contract for the IF2 fields currently consumed by monitor-side pages and portal-facing explanations.
 relatedTeams:
   - V2
@@ -23,7 +23,7 @@ attentionTags:
   - attention:M1
   - attention:M2
 version: v0.6
-reviewStatus: in-review
+reviewStatus: completed
 lastUpdated: 2026-03-24
 links:
   - label: Related log archive

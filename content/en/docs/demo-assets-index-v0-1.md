@@ -6,7 +6,7 @@ type: demo-assets
 date: 2026-03-31
 owner: M2
 ownerRole: Programmer
-status: draft
+status: completed
 summary: Index entry for screenshots, rehearsal notes and placeholder demo assets used by the portal walkthrough.
 relatedTeams:
   - M2
@@ -18,7 +18,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v0.1
-reviewStatus: draft
+reviewStatus: completed
 lastUpdated: 2026-03-31
 links:
   - label: First main mockup

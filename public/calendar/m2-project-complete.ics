@@ -7,6 +7,20 @@ X-WR-CALNAME:Limb Motion Recognition and Assistant · M2 Calendar · Comple
  te
 X-WR-TIMEZONE:Asia/Shanghai
 BEGIN:VEVENT
+UID:2026-03-19-all-sites-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:All Sites Meeting
+DESCRIPTION:All-sites project meeting for shared course and project coord
+ ination.\n\nPortal link: https://dsd2026-team-m2.github.io/project-porta
+ l/#/calendar#2026-03-19-all-sites-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-03-1
+ 9-all-sites-meeting
+CATEGORIES:meeting,project-portal
+DTSTART;VALUE=DATE:20260319
+DTEND;VALUE=DATE:20260320
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-03-29-m2-members-meeting-cn@dsd2026-team-m2.github.io
 DTSTAMP:20260402T000000Z
 SUMMARY:M2 members meeting (CN)
@@ -332,6 +346,20 @@ DTEND:20260418T163000Z
 X-DSD-RELATED-TEAMS:S1\, S2\, V1\, V2\, M1\, M2
 END:VEVENT
 BEGIN:VEVENT
+UID:2026-05-07-all-sites-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:All Sites Meeting
+DESCRIPTION:All-sites project meeting for shared course and project coord
+ ination.\n\nPortal link: https://dsd2026-team-m2.github.io/project-porta
+ l/#/calendar#2026-05-07-all-sites-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-05-0
+ 7-all-sites-meeting
+CATEGORIES:meeting,project-portal
+DTSTART;VALUE=DATE:20260507
+DTEND;VALUE=DATE:20260508
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
 UID:2026-05-18-dr-yin-knee-function-assessment-consultation@dsd2026-team-
  m2.github.io
 DTSTAMP:20260402T000000Z
@@ -348,6 +376,34 @@ CATEGORIES:meeting,project-portal
 DTSTART:20260518T120000Z
 DTEND:20260518T130000Z
 X-DSD-RELATED-TEAMS:M2
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-06-09-all-sites-meeting@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:All Sites Meeting
+DESCRIPTION:All-sites project meeting for shared course and project coord
+ ination.\n\nPortal link: https://dsd2026-team-m2.github.io/project-porta
+ l/#/calendar#2026-06-09-all-sites-meeting
+URL:https://dsd2026-team-m2.github.io/project-portal/#/calendar#2026-06-0
+ 9-all-sites-meeting
+CATEGORIES:meeting,project-portal
+DTSTART;VALUE=DATE:20260609
+DTEND;VALUE=DATE:20260610
+X-DSD-RELATED-TEAMS:All
+END:VEVENT
+BEGIN:VEVENT
+UID:2026-06-09-final-presentation@dsd2026-team-m2.github.io
+DTSTAMP:20260402T000000Z
+SUMMARY:Final Presentation
+DESCRIPTION:Final project presentation for the DSD 2025-2026 project.\n\n
+ Portal link: https://dsd2026-team-m2.github.io/project-portal/#/progress
+ #milestones
+URL:https://dsd2026-team-m2.github.io/project-portal/#/progress#milestone
+ s
+CATEGORIES:demo,project-portal
+DTSTART;VALUE=DATE:20260609
+DTEND;VALUE=DATE:20260610
+X-DSD-RELATED-TEAMS:All
 END:VEVENT
 BEGIN:VEVENT
 UID:2026-01-01-holiday-cn@dsd2026-team-m2.github.io

@@ -6,7 +6,7 @@ type: requirement-analysis
 date: 2026-03-20
 owner: PM
 ownerRole: PM
-status: final
+status: completed
 summary: Análise base que define o portal como centro de relatório, documentação e colaboração, e não como site do produto.
 relatedTeams:
   - PM
@@ -19,7 +19,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v1.0
-reviewStatus: final
+reviewStatus: completed
 lastUpdated: 2026-03-20
 links:
   - label: Esboço de desenho do sistema

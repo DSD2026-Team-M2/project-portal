@@ -6,7 +6,7 @@ type: presentation
 date: 2026-03-30
 owner: PM
 ownerRole: PM
-status: in-review
+status: completed
 summary: Teacher-facing walkthrough outline for explaining the portal as a process and collaboration hub.
 relatedTeams:
   - PM
@@ -19,7 +19,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v1.0
-reviewStatus: in-review
+reviewStatus: completed
 lastUpdated: 2026-03-30
 links:
   - label: First main mockup

@@ -514,7 +514,7 @@ export function MarkdownArticle({
       </code>
     ),
     pre: ({ children }: { children?: ReactNode }) => (
-      <pre className="mt-6 overflow-x-auto rounded-2xl bg-slate-950 px-5 py-4 text-sm text-slate-100">
+      <pre className="article-code-block mt-6 overflow-x-auto rounded-2xl border border-slate-200 bg-slate-50/90 px-5 py-4 text-sm text-slate-800 shadow-[inset_0_1px_0_rgba(255,255,255,0.75)]">
         {children}
       </pre>
     ),

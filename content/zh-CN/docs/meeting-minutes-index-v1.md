@@ -6,7 +6,7 @@ type: meeting-minutes
 date: 2026-03-24
 owner: Vice PM
 ownerRole: Vice PM
-status: in-review
+status: completed
 summary: 汇总正式会议纪要与相关新闻记录，方便追踪讨论背景、决定与后续行动项。
 relatedTeams:
   - PM
@@ -18,7 +18,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v1.0
-reviewStatus: in-review
+reviewStatus: completed
 lastUpdated: 2026-05-19
 links:
   - label: 六队联席会议（2026-04-03）

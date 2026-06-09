@@ -6,7 +6,7 @@ type: requirement-analysis
 date: 2026-04-01
 owner: Lee
 ownerRole: PM
-status: draft
+status: completed
 summary: Simplified draft SRS for the M2 doctor module, reflecting consolidated use cases and the April 16 doctor-side requirement updates.
 relatedTeams:
   - PM
@@ -20,7 +20,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v1.2-draft
-reviewStatus: in-review
+reviewStatus: completed
 lastUpdated: 2026-04-16
 links:
   - label: Requirement analysis

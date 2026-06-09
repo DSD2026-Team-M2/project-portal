@@ -32,7 +32,7 @@ attentionTags:
   - attention:V2
 lastUpdated: 2026-05-19
 version: v1.0
-reviewStatus: in-review
+reviewStatus: completed
 links:
   - label: Related news log
     href: /logs/2026-05-18-dr-yin-knee-function-assessment-consultation

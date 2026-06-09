@@ -6,7 +6,7 @@ type: requirement-analysis
 date: 2026-03-20
 owner: PM
 ownerRole: PM
-status: final
+status: completed
 summary: 定义 portal 的角色、边界与最小页面结构，明确它是汇报、文档与协作中枢，而不是产品站。
 relatedTeams:
   - PM
@@ -19,7 +19,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v1.0
-reviewStatus: final
+reviewStatus: completed
 lastUpdated: 2026-03-20
 links:
   - label: 系统设计提纲

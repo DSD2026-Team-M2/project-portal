@@ -6,7 +6,7 @@ type: weekly-report
 date: 2026-03-30
 owner: PM
 ownerRole: PM
-status: in-review
+status: completed
 summary: Index entry for weekly reports that summarize progress, blockers and next steps.
 relatedTeams:
   - PM
@@ -18,7 +18,7 @@ tags:
 attentionTags:
   - attention:M2
 version: v1.0
-reviewStatus: in-review
+reviewStatus: completed
 lastUpdated: 2026-03-30
 links:
   - label: Logs hub
